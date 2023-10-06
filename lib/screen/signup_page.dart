@@ -1,3 +1,4 @@
+import 'package:dcrown_mart/screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
@@ -9,7 +10,10 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _LoginPageState();
 }
 
+bool _passwordVisible = false;
+
 class _LoginPageState extends State<SignupPage> {
+  String? countryCode = '+1';
   bool rememberMe = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -36,6 +40,17 @@ class _LoginPageState extends State<SignupPage> {
     return null;
   }
 
+  String? _validatePasswordConfirmation(String? confirmPassword) {
+    final password = confirmPassword;
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return 'Please enter your password';
+    }
+    if (password != confirmPassword) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
   void handleLogin() {
     if (_formKey.currentState!.validate()) {
       print("Signup Button Clicked");
@@ -45,12 +60,13 @@ class _LoginPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50.0),
+            SizedBox(height: 20.0),
             Text(
               "Let's get Started!",
               style: TextStyle(
@@ -83,101 +99,206 @@ class _LoginPageState extends State<SignupPage> {
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your name';
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
-                          labelText: "Name",
+                          hintText: "Name",
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.person),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                          prefixIcon: Icon(Icons.person, color: Colors.grey),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(color: Colors.yellow),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 15.0),
                   Center(
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
                         validator: _validateEmail,
                         decoration: InputDecoration(
-                          labelText: "Email",
+                          hintText: "Email",
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.email),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                          prefixIcon: Icon(Icons.email, color: Colors.grey),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(color: Colors.yellow),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 15.0),
                   Center(
-                    child: Container(
-                      height: 50.0,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: "Mobile",
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.mobile_friendly),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide(color: Colors.yellow),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 120.0,
+                          height: 50.0,
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your country code';
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              suffixIcon: Icon(Icons.arrow_drop_down),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(color: Colors.yellow),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                  color: Colors.yellow,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        obscureText: true,
-                      ),
+                        SizedBox(width: 10.0),
+                        Container(
+                          width: 338.0,
+                          height: 50.0,
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your mobile number';
+                              }
+                              if (value.length < 10) {
+                                return 'Mobile number must be 10 digits';
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                              hintText: "Mobile",
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(Icons.mobile_friendly,
+                                  color: Colors.grey),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(color: Colors.yellow),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                  color: Colors.yellow,
+                                ),
+                              ),
+                            ),
+                            obscureText: true,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 15.0),
                   Center(
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
                         validator: _validatePassword,
                         decoration: InputDecoration(
-                          labelText: "Password",
+                          hintText: "Password",
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.lock),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                          prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(color: Colors.yellow),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                            ),
+                          ),
                         ),
-                        obscureText: true,
+                        obscureText: !_passwordVisible,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 15.0),
                   Center(
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
-                        validator: _validatePassword,
+                        validator: _validatePasswordConfirmation,
                         decoration: InputDecoration(
-                          labelText: "Confirm Password",
+                          hintText: "Confirm Password",
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.lock),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                          prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(color: Colors.yellow),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                            ),
+                          ),
                         ),
-                        obscureText: true,
+                        obscureText: !_passwordVisible,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 15.0),
             Center(
               child: Container(
                 child: Row(
@@ -203,8 +324,8 @@ class _LoginPageState extends State<SignupPage> {
                     Text(
                       "By signing up, you agree to our Terms and Policy",
                       style: TextStyle(
-                        fontSize: 13.0,
-                        color: Colors.black,
+                        fontSize: 14.0,
+                        color: Colors.grey[700],
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -248,7 +369,10 @@ class _LoginPageState extends State<SignupPage> {
                     ),
                   ),
                   TextButton(
-                    onPressed: handleLogin,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     child: Text(
                       "Login Here",
                       style: TextStyle(

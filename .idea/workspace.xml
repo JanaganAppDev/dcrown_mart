@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravind -  completed input validate and modified ui design as specified" />
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- conflict issue fixed">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup_page.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +35,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/welcome/AndroidStudioProjects/dcrown_mart",
+    "last_opened_file_path": "D:/flutter/dcrown_mart",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -67,21 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696515807473</updated>
     </task>
-    <task id="LOCAL-00003" summary="Aravid -  added signup page navigator">
-      <created>1696568205808</created>
+    <task id="LOCAL-00003" summary="Kathiresh- conflict issue fixed">
+      <created>1696568517736</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1696568205808</updated>
+      <updated>1696568517736</updated>
     </task>
-    <task id="LOCAL-00004" summary="Aravind -  completed input validate and modified ui design as specified">
-      <created>1696600535123</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1696600535123</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,8 +98,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Aravid -  conflict error fexed" />
-    <MESSAGE value="Aravid -  added signup page navigator" />
-    <MESSAGE value="Aravind -  completed input validate and modified ui design as specified" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aravind -  completed input validate and modified ui design as specified" />
+    <MESSAGE value="Kathiresh- conflict issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- conflict issue fixed" />
   </component>
 </project>
