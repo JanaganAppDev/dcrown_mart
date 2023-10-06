@@ -4,15 +4,30 @@ import 'package:flutter/material.dart';
 
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key });
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+bool _passwordVisible = false;
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String? _email;
-  String? _password;
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter an email or username';
+    }
+
+    return null;
+  }
+
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a password';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,58 +65,69 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               height: 50.0,
               child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Mobile No/Email id/User id',
+    decoration: InputDecoration(
+                  hintText: 'Mobile No/Email id/User id',
                   filled: true,
                   fillColor: Colors.white,
-                  prefixIcon: Icon(Icons.person),
-                  border: OutlineInputBorder(
+                  prefixIcon: Icon(Icons.person,color: Colors.grey),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an email';
-                  }
-                  final emailRegex = RegExp(
-                    r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
-                  );
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Please enter a valid email address';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _email = value;
-                },
+                validator: validateEmail,
               ),
             ),
+
             SizedBox(height: 10),
             Container(
               height: 50.0,
               child: TextFormField(
+
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  hintText: 'Password',
                   filled: true,
                   fillColor: Colors.white,
-                  prefixIcon: Icon(Icons.lock),
-                  border: OutlineInputBorder(
+                  prefixIcon: Icon(Icons.lock,color: Colors.grey),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
                   ),
                 ),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a password';
-                  }
-
-                  return null;
-                },
-                onSaved: (value) {
-                  _password = value;
-                },
+                obscureText: !_passwordVisible,
+                validator: validatePassword,
               ),
             ),
+
+
             SizedBox(height: 20),
             Align(
               alignment: Alignment.topRight,
@@ -122,7 +148,8 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                 onPressed: () {
                   // Validate the form
-                  if (Form.of(context)!.validate()) {
+                  if (_formKey.currentState!.validate()) {
+
 
                   }
                 },
@@ -143,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "Don't have an account?",
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 15.0,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                     ),
