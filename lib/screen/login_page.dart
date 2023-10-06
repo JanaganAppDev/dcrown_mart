@@ -1,5 +1,5 @@
+import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:flutter/material.dart';
-
 
 
 
@@ -9,6 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String? _email;
   String? _password;
@@ -46,54 +47,60 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 10),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Mobile No/Email id/User id',
-                filled: true,
-                fillColor: Colors.white,
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+            Container(
+              height: 50.0,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Mobile No/Email id/User id',
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an email';
+                  }
+                  final emailRegex = RegExp(
+                    r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+                  );
+                  if (!emailRegex.hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _email = value;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter an email';
-                }
-                final emailRegex = RegExp(
-                  r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
-                );
-                if (!emailRegex.hasMatch(value)) {
-                  return 'Please enter a valid email address';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                _email = value;
-              },
             ),
             SizedBox(height: 10),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Password',
-                filled: true,
-                fillColor: Colors.white,
-                prefixIcon: Icon(Icons.lock),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+            Container(
+              height: 50.0,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.lock),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
-              ),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a password';
-                }
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a password';
+                  }
 
-                return null;
-              },
-              onSaved: (value) {
-                _password = value;
-              },
+                  return null;
+                },
+                onSaved: (value) {
+                  _password = value;
+                },
+              ),
             ),
             SizedBox(height: 20),
             Align(
@@ -110,8 +117,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 40.0),
             Container(
-              width: 150.0,
-              height: 40.0,
+              width: 140.0,
+              height: 50.0,
               child: ElevatedButton(
                 onPressed: () {
                   // Validate the form
@@ -128,6 +135,33 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text('Log In'),
               ),
             ),
+            SizedBox(height: 30.0),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed:(){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -136,5 +170,11 @@ class _LoginPageState extends State<LoginPage> {
 
   void handleForgotPassword() {
     print("Forget your password? clicked");
+  }
+
+  void handleSignup() {
+    if(_formKey.currentState!.validate()){
+      print("Login Button clicked");
+    }
   }
 }
