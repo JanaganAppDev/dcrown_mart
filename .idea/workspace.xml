@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravid -  added signup page navigator">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login_page.dart" afterDir="false" />
-    </list>
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravind -  completed input validate and modified ui design as specified" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,12 +74,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696568205808</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Aravind -  completed input validate and modified ui design as specified">
+      <created>1696600535123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696600535123</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Aravid -  conflict error fexed" />
     <MESSAGE value="Aravid -  added signup page navigator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aravid -  added signup page navigator" />
+    <MESSAGE value="Aravind -  completed input validate and modified ui design as specified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aravind -  completed input validate and modified ui design as specified" />
   </component>
 </project>
