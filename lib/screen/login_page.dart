@@ -15,18 +15,17 @@ class _LoginPageState extends State<LoginPage> {
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter an email or username';
+      return 'Please enter an email mobile number, or user id';
     }
 
     return null;
   }
+  final emailPattern = RegExp(
+    r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+  );
+  final mobilePattern = RegExp(r'^\d{10}$');
 
-  String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter a password';
-    }
-    return null;
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +122,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 obscureText: !_passwordVisible,
-                validator: validatePassword,
               ),
             ),
 
@@ -149,8 +147,6 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   // Validate the form
                   if (_formKey.currentState!.validate()) {
-
-
                   }
                 },
                 style: ElevatedButton.styleFrom(
