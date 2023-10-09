@@ -1,21 +1,76 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
+import 'package:http/http.dart' as http;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
 
   @override
-  State<SignupPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
 bool _passwordVisible = false;
 
-class _LoginPageState extends State<SignupPage> {
+class _SignupPageState extends State<SignupPage> {
   String? countryCode = '+1';
   bool rememberMe = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String globalVariable = "";
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPass = TextEditingController();
+
+  void signup(String name, email, mobile, password) async {
+    try {
+      final url = Uri.parse("http://localhost:5000/api/users/register");
+
+      final response = await http.post(url, body: {
+        'name': name,
+        'email': email,
+        'phone': mobile,
+        'password': password,
+      });
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body.toString());
+
+        print(data);
+        setState(() {
+          globalVariable = data["token"];
+          print(globalVariable);
+          print("Registration successful!");
+
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Registeration Successful"),
+                content: Text("You have successfully registered."),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("OK")),
+                ],
+              );
+            },
+          );
+        });
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -40,12 +95,14 @@ class _LoginPageState extends State<SignupPage> {
     return null;
   }
 
-  String? _validatePasswordConfirmation(String? confirmPassword) {
+  String? _validatePasswordConfirmation(
+    String? confirmPassword,
+  ) {
     final password = confirmPassword;
     if (confirmPassword == null || confirmPassword.isEmpty) {
       return 'Please enter your password';
     }
-    if (password != confirmPassword) {
+    if (password != passwordController.text) {
       return 'Passwords do not match';
     }
     return null;
@@ -105,6 +162,7 @@ class _LoginPageState extends State<SignupPage> {
                           }
                           return null;
                         },
+                        controller: nameController,
                         decoration: InputDecoration(
                           hintText: "Name",
                           filled: true,
@@ -130,6 +188,7 @@ class _LoginPageState extends State<SignupPage> {
                       height: 50.0,
                       child: TextFormField(
                         validator: _validateEmail,
+                        controller: emailController,
                         decoration: InputDecoration(
                           hintText: "Email",
                           filled: true,
@@ -166,7 +225,8 @@ class _LoginPageState extends State<SignupPage> {
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
-                              suffixIcon: Icon(Icons.arrow_drop_down),
+                              suffixIcon: Icon(Icons.arrow_drop_down,
+                                  color: Colors.grey),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                                 borderSide: BorderSide(color: Colors.yellow),
@@ -194,6 +254,7 @@ class _LoginPageState extends State<SignupPage> {
                               }
                               return null;
                             },
+                            controller: mobileController,
                             decoration: InputDecoration(
                               hintText: "Mobile",
                               filled: true,
@@ -211,7 +272,7 @@ class _LoginPageState extends State<SignupPage> {
                                 ),
                               ),
                             ),
-                            obscureText: true,
+                            obscureText: false,
                           ),
                         ),
                       ],
@@ -223,6 +284,7 @@ class _LoginPageState extends State<SignupPage> {
                       height: 50.0,
                       child: TextFormField(
                         validator: _validatePassword,
+                        controller: passwordController,
                         decoration: InputDecoration(
                           hintText: "Password",
                           filled: true,
@@ -261,6 +323,7 @@ class _LoginPageState extends State<SignupPage> {
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
+                        controller: confirmPass,
                         validator: _validatePasswordConfirmation,
                         decoration: InputDecoration(
                           hintText: "Confirm Password",
@@ -340,9 +403,21 @@ class _LoginPageState extends State<SignupPage> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
+                    /* signup(
+                      nameController.text.toString(),
+                      emailController.text.toString(),
+                      mobileController.text.toString(),
+                      confirmPass.text.toString(),
+                    );*/
+
                     if (_formKey.currentState!.validate()) {
+                      signup(
+                          nameController.text.toString(),
+                          emailController.text.toString(),
+                          mobileController.text.toString(),
+                          passwordController.text.toString());
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     }
                   },
                   style: ElevatedButton.styleFrom(
