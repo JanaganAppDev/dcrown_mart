@@ -41,13 +41,16 @@ class _SignupPageState extends State<SignupPage> {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body.toString());
 
-        print(data);
+        print(response.body);
         setState(() {
           globalVariable = data["token"];
           print(globalVariable);
           print("Registration successful!");
-
-          showDialog(
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Register successfully!'),
+            duration: Duration(seconds: 3),
+          ));
+          /*       showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
@@ -62,7 +65,7 @@ class _SignupPageState extends State<SignupPage> {
                 ],
               );
             },
-          );
+          );*/
         });
       } else {
         print('failed');
