@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 
 class LoginPage extends StatefulWidget {
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
     print(email);
     print(password);
     try{
-      final response = await post(
+      final response = await http.post(
           Uri.parse('http://localhost:5000/api/users/login'),
           body:{
             'email': email.toString(),
@@ -214,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                     if (_formKey.currentState!.validate()) {
                       print("test");
                       login(emailControler.text.toString(),passwordControler.text.toString());
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Homepage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
                     }else{
                       print("test1");
                     }
