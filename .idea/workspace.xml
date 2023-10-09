@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- completed data base settings and modified UI and API Integration with popup notification">
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- completed data base settings and modified UI and API Integration with popup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "D:/flutter/sample",
+    "last_opened_file_path": "D:/flutter/dcrown_mart",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -112,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696863484398</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Kathiresh- completed data base settings and modified UI and API Integration with popup">
+      <created>1696864362974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696864362974</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +140,7 @@
     <MESSAGE value="Kathiresh- completed data base settings and started api integration" />
     <MESSAGE value="Kathiresh- completed data base settings and modified UI and API Integration" />
     <MESSAGE value="Kathiresh- completed data base settings and modified UI and API Integration with popup notification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- completed data base settings and modified UI and API Integration with popup notification" />
+    <MESSAGE value="Kathiresh- completed data base settings and modified UI and API Integration with popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- completed data base settings and modified UI and API Integration with popup" />
   </component>
 </project>
