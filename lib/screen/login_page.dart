@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dcrown_mart/screen/ForgotPassword_page.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:flutter/material.dart';
@@ -194,7 +195,9 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
-                  onPressed: handleForgotPassword,
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgotPassword()));
+                  },
                   child: Text(
                     "Forgot your password?",
                     style: TextStyle(
@@ -243,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     TextButton(
                         onPressed:(){
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
                         },
                         child: Text(
                           "Sign up",
@@ -262,8 +265,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void handleForgotPassword() {
-    print("Forget your password? clicked");
-  }
 
 }
