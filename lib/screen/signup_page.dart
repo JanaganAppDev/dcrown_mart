@@ -14,6 +14,7 @@ class SignupPage extends StatefulWidget {
 }
 
 bool _passwordVisible = false;
+bool _confirmpasswordVisible = false;
 
 class _SignupPageState extends State<SignupPage> {
   String? countryCode = '+1';
@@ -166,6 +167,7 @@ class _SignupPageState extends State<SignupPage> {
                           return null;
                         },
                         controller: nameController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Name",
                           filled: true,
@@ -192,6 +194,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextFormField(
                         validator: _validateEmail,
                         controller: emailController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Email",
                           filled: true,
@@ -225,6 +228,7 @@ class _SignupPageState extends State<SignupPage> {
                               }
                               return null;
                             },
+                            cursorColor: Colors.grey[700],
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
@@ -258,6 +262,7 @@ class _SignupPageState extends State<SignupPage> {
                               return null;
                             },
                             controller: mobileController,
+                            cursorColor: Colors.grey[700],
                             decoration: InputDecoration(
                               hintText: "Mobile",
                               filled: true,
@@ -288,6 +293,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextFormField(
                         validator: _validatePassword,
                         controller: passwordController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Password",
                           filled: true,
@@ -327,6 +333,7 @@ class _SignupPageState extends State<SignupPage> {
                       height: 50.0,
                       child: TextFormField(
                         controller: confirmPass,
+                        cursorColor: Colors.grey[700],
                         validator: _validatePasswordConfirmation,
                         decoration: InputDecoration(
                           hintText: "Confirm Password",
@@ -335,14 +342,15 @@ class _SignupPageState extends State<SignupPage> {
                           prefixIcon: Icon(Icons.lock, color: Colors.grey),
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _passwordVisible
+                              _confirmpasswordVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                               color: Colors.grey,
                             ),
                             onPressed: () {
                               setState(() {
-                                _passwordVisible = !_passwordVisible;
+                                _confirmpasswordVisible =
+                                    !_confirmpasswordVisible;
                               });
                             },
                           ),
@@ -357,7 +365,7 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                           ),
                         ),
-                        obscureText: !_passwordVisible,
+                        obscureText: !_confirmpasswordVisible,
                       ),
                     ),
                   ),

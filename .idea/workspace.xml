@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- completed data base settings and modified UI and API Integration">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- completed otp page">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/dcrown_mart_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/dcrown_mart_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dcrown_mart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dcrown_mart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/otp_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/otp_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screen/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +129,7 @@
     <MESSAGE value="Kathiresh- completed input validator and modified UI design as specified" />
     <MESSAGE value="Kathiresh- completed data base settings and started api integration" />
     <MESSAGE value="Kathiresh- completed data base settings and modified UI and API Integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- completed data base settings and modified UI and API Integration" />
+    <MESSAGE value="Kathiresh- completed otp page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- completed otp page" />
   </component>
 </project>
