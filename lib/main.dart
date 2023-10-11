@@ -1,3 +1,4 @@
+import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

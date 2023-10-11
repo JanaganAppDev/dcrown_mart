@@ -246,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     TextButton(
                         onPressed:(){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
                         },
                         child: Text(
                           "Sign up",
