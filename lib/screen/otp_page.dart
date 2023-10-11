@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:flutter/material.dart';
 
 class OtpPage extends StatefulWidget {
@@ -128,7 +129,12 @@ class _OtpPageState extends State<OtpPage> {
                       width: 140.0,
                       height: 40.0,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NewPassword()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.yellow[700],
                           shape: RoundedRectangleBorder(
