@@ -1,3 +1,4 @@
+import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -37,7 +38,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         padding: EdgeInsets.all(16.0),
         child: Form(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 40.0),
             Image.asset("forgotpage_icon.PNG",
@@ -61,7 +61,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
             SizedBox(height: 10),
-            Text("Email",
+            Align(
+              alignment: (Alignment.centerLeft),
+            ),
+            Text("Email",style: TextStyle(color: Colors.grey),
             ),
             Container(
               height: 50.0,
@@ -90,7 +93,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               width: 140.0,
               height: 50.0,
               child: ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> OtpPage()));
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.yellow,
                   shape: RoundedRectangleBorder(
