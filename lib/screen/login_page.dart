@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 bool _passwordVisible = false;
+bool _isButtonClicked = false;
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -146,6 +147,12 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.yellow,
                       ),
                     ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        color: _isButtonClicked ? Colors.red : Colors.yellow,
+                      ),
+                    ),
                   ),
                   validator: _validateEmail,
                 ),
@@ -185,6 +192,12 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.yellow,
                       ),
                     ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
+                      borderSide: BorderSide(
+                        color: _isButtonClicked ? Colors.grey : Colors.yellow,
+                      ),
+                    ),
                   ),
                   obscureText: !_passwordVisible,
                   validator: _validatePassword,
@@ -215,6 +228,9 @@ class _LoginPageState extends State<LoginPage> {
                     // Validate the form
 
                     if (_formKey.currentState!.validate()) {
+                      setState(() {
+                        _isButtonClicked = true; // Set to true when the button is clicked
+                      });
                       print("test");
                       login(emailControler.text.toString(),passwordControler.text.toString());
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
@@ -246,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     TextButton(
                         onPressed:(){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
                         },
                         child: Text(
                           "Sign up",
