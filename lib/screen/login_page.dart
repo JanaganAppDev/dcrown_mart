@@ -5,13 +5,14 @@ import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({Key? key });
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
 bool _passwordVisible = false;
+bool _isButtonClicked = false;
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -19,17 +20,19 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
 
-  void login(String email, password) async {
+  void login(String email,password) async{
     print(email);
     print(password);
-    try {
-      final response = await http
-          .post(Uri.parse('http://localhost:5000/api/users/login'), body: {
-        'email': email.toString(),
-        'password': password.toString(),
-      });
+    try{
+      final response = await http.post(
+          Uri.parse('http://localhost:5000/api/users/login'),
+          body:{
+            'email': email.toString(),
+            'password':password.toString(),
+          }
+      );
 
-      if (response.statusCode == 200) {
+      if(response.statusCode==200){
         var data = jsonDecode(response.body.toString());
         print(response.body);
 
@@ -49,11 +52,16 @@ class _LoginPageState extends State<LoginPage> {
             );
           },
         );
-      } else {
+
+
+      }
+      else{
         print('failed');
       }
-    } catch (e) {
+
+    }catch(e){
       print(e.toString());
+
     }
   }
 
@@ -80,6 +88,8 @@ class _LoginPageState extends State<LoginPage> {
     return null;
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,10 +101,12 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 50.0),
-              Image(
-                  width: 100.0,
-                  height: 100.0,
-                  image: AssetImage("assets/crown_logo.png")),
+             Image(
+                 width: 100.0,
+                 height: 100.0,
+                 image: AssetImage("assets/crown_logo.png")
+
+             ),
               SizedBox(height: 10.0),
               Text(
                 "Welcome back!",
@@ -122,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Mobile No/Email id/User id',
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.person, color: Colors.grey),
+                    prefixIcon: Icon(Icons.person,color: Colors.grey),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(
@@ -135,10 +147,17 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.yellow,
                       ),
                     ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        color: _isButtonClicked ? Colors.red : Colors.yellow,
+                      ),
+                    ),
                   ),
                   validator: _validateEmail,
                 ),
               ),
+
               SizedBox(height: 10),
               Container(
                 height: 50.0,
@@ -148,12 +167,10 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Password',
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                    prefixIcon: Icon(Icons.lock,color: Colors.grey),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
                         color: Colors.grey,
                       ),
                       onPressed: () {
@@ -162,6 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                         });
                       },
                     ),
+
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(
@@ -174,20 +192,24 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.yellow,
                       ),
                     ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
+                      borderSide: BorderSide(
+                        color: _isButtonClicked ? Colors.grey : Colors.yellow,
+                      ),
+                    ),
                   ),
                   obscureText: !_passwordVisible,
                   validator: _validatePassword,
                 ),
               ),
+
               SizedBox(height: 20),
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ForgotPassword()));
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgotPassword()));
                   },
                   child: Text(
                     "Forgot your password?",
@@ -206,12 +228,13 @@ class _LoginPageState extends State<LoginPage> {
                     // Validate the form
 
                     if (_formKey.currentState!.validate()) {
+                      setState(() {
+                        _isButtonClicked = true; // Set to true when the button is clicked
+                      });
                       print("test");
-                      login(emailControler.text.toString(),
-                          passwordControler.text.toString());
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    } else {
+                      login(emailControler.text.toString(),passwordControler.text.toString());
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                    }else{
                       print("test1");
                     }
                   },
@@ -238,18 +261,15 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupPage()));
-                      },
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(
-                          color: Colors.yellow,
+                        onPressed:(){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
+                        },
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                            color: Colors.yellow,
+                          ),
                         ),
-                      ),
                     ),
                   ],
                 ),
@@ -260,4 +280,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+
 }
