@@ -14,10 +14,13 @@ class SignupPage extends StatefulWidget {
 }
 
 bool _passwordVisible = false;
+bool _confirmpasswordVisible = false;
+bool _isButtonClicked = false;
 
 class _SignupPageState extends State<SignupPage> {
   String? countryCode = '+1';
   bool rememberMe = false;
+  bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
 
@@ -166,6 +169,7 @@ class _SignupPageState extends State<SignupPage> {
                           return null;
                         },
                         controller: nameController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Name",
                           filled: true,
@@ -181,6 +185,14 @@ class _SignupPageState extends State<SignupPage> {
                               color: Colors.yellow,
                             ),
                           ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -192,6 +204,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextFormField(
                         validator: _validateEmail,
                         controller: emailController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Email",
                           filled: true,
@@ -205,6 +218,14 @@ class _SignupPageState extends State<SignupPage> {
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
                               color: Colors.yellow,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
                             ),
                           ),
                         ),
@@ -225,6 +246,7 @@ class _SignupPageState extends State<SignupPage> {
                               }
                               return null;
                             },
+                            cursorColor: Colors.grey[700],
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
@@ -240,42 +262,63 @@ class _SignupPageState extends State<SignupPage> {
                                   color: Colors.yellow,
                                 ),
                               ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                    _isButtonClicked ? 30.0 : 20.0),
+                                borderSide: BorderSide(
+                                  color: _isButtonClicked
+                                      ? Colors.red
+                                      : Colors.yellow,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(width: 10.0),
-                        Container(
-                          width: 338.0,
-                          height: 50.0,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your mobile number';
-                              }
-                              if (value.length < 10) {
-                                return 'Mobile number must be 10 digits';
-                              }
-                              return null;
-                            },
-                            controller: mobileController,
-                            decoration: InputDecoration(
-                              hintText: "Mobile",
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: Icon(Icons.mobile_friendly,
-                                  color: Colors.grey),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(color: Colors.yellow),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(
-                                  color: Colors.yellow,
+                        Expanded(
+                          child: Container(
+                            width: 338.0,
+                            height: 50.0,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your mobile number';
+                                }
+                                if (value.length < 10) {
+                                  return 'Mobile number must be 10 digits';
+                                }
+                                return null;
+                              },
+                              controller: mobileController,
+                              cursorColor: Colors.grey[700],
+                              decoration: InputDecoration(
+                                hintText: "Mobile",
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: Icon(Icons.mobile_friendly,
+                                    color: Colors.grey),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(color: Colors.yellow),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.yellow,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      _isButtonClicked ? 30.0 : 20.0),
+                                  borderSide: BorderSide(
+                                    color: _isButtonClicked
+                                        ? Colors.red
+                                        : Colors.yellow,
+                                  ),
                                 ),
                               ),
+                              obscureText: false,
                             ),
-                            obscureText: false,
                           ),
                         ),
                       ],
@@ -288,6 +331,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextFormField(
                         validator: _validatePassword,
                         controller: passwordController,
+                        cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           hintText: "Password",
                           filled: true,
@@ -316,6 +360,14 @@ class _SignupPageState extends State<SignupPage> {
                               color: Colors.yellow,
                             ),
                           ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
+                            ),
+                          ),
                         ),
                         obscureText: !_passwordVisible,
                       ),
@@ -327,6 +379,7 @@ class _SignupPageState extends State<SignupPage> {
                       height: 50.0,
                       child: TextFormField(
                         controller: confirmPass,
+                        cursorColor: Colors.grey[700],
                         validator: _validatePasswordConfirmation,
                         decoration: InputDecoration(
                           hintText: "Confirm Password",
@@ -335,14 +388,15 @@ class _SignupPageState extends State<SignupPage> {
                           prefixIcon: Icon(Icons.lock, color: Colors.grey),
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _passwordVisible
+                              _confirmpasswordVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                               color: Colors.grey,
                             ),
                             onPressed: () {
                               setState(() {
-                                _passwordVisible = !_passwordVisible;
+                                _confirmpasswordVisible =
+                                    !_confirmpasswordVisible;
                               });
                             },
                           ),
@@ -356,8 +410,16 @@ class _SignupPageState extends State<SignupPage> {
                               color: Colors.yellow,
                             ),
                           ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
+                            ),
+                          ),
                         ),
-                        obscureText: !_passwordVisible,
+                        obscureText: !_confirmpasswordVisible,
                       ),
                     ),
                   ),

@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:flutter/material.dart';
 
 class OtpPage extends StatefulWidget {
@@ -8,6 +11,31 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
+  TextEditingController otpController = TextEditingController();
+  int countdown = 60;
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (countdown > 0) {
+        setState(() {
+          countdown--;
+        });
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,72 +80,84 @@ class _OtpPageState extends State<OtpPage> {
                 color: Colors.grey[800],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(
-                6,
-                (index) => SizedBox(
-                  width: 40.0,
-                  child: TextField(
-                    controller: TextEditingController(),
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    maxLength: 1,
-                    decoration: InputDecoration(
-                      counterText: '',
-                      hintText: '',
-                    ),
-                    onChanged: (value) {
-                      if (value.length == 1) {
-                        // Automatically focus the next field when one character is entered.
-                        if (index < 5) {
-                          FocusScope.of(context).nextFocus();
-                        } else {
-                          // The last digit has been entered.
-                          // You can perform validation or submit the OTP here.
-                        }
-                      }
-                    },
+            SizedBox(height: 30.0),
+            Container(
+              height: 130.0,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 4,
+                    spreadRadius: -2.1,
+                    offset: Offset(-1, 2),
                   ),
-                ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(
+                      6,
+                      (index) => SizedBox(
+                        width: 30.0,
+                        child: TextField(
+                          controller: TextEditingController(),
+                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.number,
+                          cursorColor: Colors.grey[700],
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            counterText: '',
+                          ),
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              if (index < 5) {
+                                FocusScope.of(context).nextFocus();
+                              } else {}
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
+                  Center(
+                    child: Container(
+                      width: 140.0,
+                      height: 40.0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NewPassword()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.yellow[700],
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                        child: Text("Submit"),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 20.0),
-            Center(
-              child: Container(
-                width: 140.0,
-                height: 50.0,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow[700],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                  child: Text("Submit"),
-                ),
+            SizedBox(height: 30.0),
+            Text("Did not recive the code?"),
+            SizedBox(height: 10.0),
+            Text(
+              "$countdown Seconds Wait",
+              style: TextStyle(
+                fontSize: 12.0,
+                color: Colors.grey[800],
               ),
-            )
-            /*ListView.builder(
-              itemCount: 1,
-              itemBuilder: (BuildContext context, index) {
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 4,
-                        spreadRadius: -2.1,
-                        offset: Offset(-1, 2),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            )*/
+            ),
           ],
         ),
       ),
