@@ -15,10 +15,12 @@ class SignupPage extends StatefulWidget {
 
 bool _passwordVisible = false;
 bool _confirmpasswordVisible = false;
+bool _isButtonClicked = false;
 
 class _SignupPageState extends State<SignupPage> {
   String? countryCode = '+1';
   bool rememberMe = false;
+  bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
 
@@ -183,6 +185,14 @@ class _SignupPageState extends State<SignupPage> {
                               color: Colors.yellow,
                             ),
                           ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -208,6 +218,14 @@ class _SignupPageState extends State<SignupPage> {
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
                               color: Colors.yellow,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
                             ),
                           ),
                         ),
@@ -244,43 +262,63 @@ class _SignupPageState extends State<SignupPage> {
                                   color: Colors.yellow,
                                 ),
                               ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                    _isButtonClicked ? 30.0 : 20.0),
+                                borderSide: BorderSide(
+                                  color: _isButtonClicked
+                                      ? Colors.red
+                                      : Colors.yellow,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(width: 10.0),
-                        Container(
-                          width: 338.0,
-                          height: 50.0,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your mobile number';
-                              }
-                              if (value.length < 10) {
-                                return 'Mobile number must be 10 digits';
-                              }
-                              return null;
-                            },
-                            controller: mobileController,
-                            cursorColor: Colors.grey[700],
-                            decoration: InputDecoration(
-                              hintText: "Mobile",
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: Icon(Icons.mobile_friendly,
-                                  color: Colors.grey),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(color: Colors.yellow),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(
-                                  color: Colors.yellow,
+                        Expanded(
+                          child: Container(
+                            width: 338.0,
+                            height: 50.0,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your mobile number';
+                                }
+                                if (value.length < 10) {
+                                  return 'Mobile number must be 10 digits';
+                                }
+                                return null;
+                              },
+                              controller: mobileController,
+                              cursorColor: Colors.grey[700],
+                              decoration: InputDecoration(
+                                hintText: "Mobile",
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: Icon(Icons.mobile_friendly,
+                                    color: Colors.grey),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(color: Colors.yellow),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.yellow,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      _isButtonClicked ? 30.0 : 20.0),
+                                  borderSide: BorderSide(
+                                    color: _isButtonClicked
+                                        ? Colors.red
+                                        : Colors.yellow,
+                                  ),
                                 ),
                               ),
+                              obscureText: false,
                             ),
-                            obscureText: false,
                           ),
                         ),
                       ],
@@ -320,6 +358,14 @@ class _SignupPageState extends State<SignupPage> {
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
                               color: Colors.yellow,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
                             ),
                           ),
                         ),
@@ -362,6 +408,14 @@ class _SignupPageState extends State<SignupPage> {
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
                               color: Colors.yellow,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color:
+                                  _isButtonClicked ? Colors.red : Colors.yellow,
                             ),
                           ),
                         ),
