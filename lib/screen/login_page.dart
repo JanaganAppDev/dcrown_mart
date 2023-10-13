@@ -126,82 +126,78 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 10),
-              Container(
-                height: 50.0,
-                child: TextFormField(
-                  controller: emailControler,
-                  decoration: InputDecoration(
-                    hintText: 'Mobile No/Email id/User id',
-                    filled: true,
-                    fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.person,color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: _isButtonClicked ? Colors.red : Colors.yellow,
-                      ),
+              TextFormField(
+                controller: emailControler,
+                cursorColor: Colors.grey[700],
+                decoration: InputDecoration(
+                  hintText: 'Mobile No/Email id/User id',
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.person,color: Colors.grey),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
                     ),
                   ),
-                  validator: _validateEmail,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: _isButtonClicked ? Colors.red : Colors.yellow,
+                    ),
+                  ),
                 ),
+                validator: _validateEmail,
               ),
 
               SizedBox(height: 10),
-              Container(
-                height: 50.0,
-                child: TextFormField(
-                  controller: passwordControler,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    filled: true,
-                    fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.lock,color: Colors.grey),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                        color: Colors.grey,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _passwordVisible = !_passwordVisible;
-                        });
-                      },
+              TextFormField(
+                controller: passwordControler,
+                cursorColor: Colors.grey[700],
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.lock,color: Colors.grey),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey,
                     ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
 
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
-                      borderSide: BorderSide(
-                        color: _isButtonClicked ? Colors.grey : Colors.yellow,
-                      ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
                     ),
                   ),
-                  obscureText: !_passwordVisible,
-                  validator: _validatePassword,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
+                    borderSide: BorderSide(
+                      color: _isButtonClicked ? Colors.grey : Colors.yellow,
+                    ),
+                  ),
                 ),
+                obscureText: !_passwordVisible,
+                validator: _validatePassword,
               ),
 
               SizedBox(height: 20),
