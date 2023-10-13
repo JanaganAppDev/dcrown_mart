@@ -69,6 +69,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Container(
               height: 50.0,
               child: TextFormField(
+                cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,

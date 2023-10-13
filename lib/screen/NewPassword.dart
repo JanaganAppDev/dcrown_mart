@@ -39,6 +39,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
                   hintText: 'Password',
                   suffixIcon: IconButton(
@@ -57,6 +58,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
                   hintText: 'Confirm password',
                   suffixIcon: IconButton(
