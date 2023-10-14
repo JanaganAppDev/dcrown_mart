@@ -11,13 +11,27 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
-  TextEditingController otpController = TextEditingController();
+  List<TextEditingController> otpControllers = List.generate(
+    6,
+    (index) => TextEditingController(),
+  );
+
   int countdown = 60;
   late Timer timer;
 
   @override
   void initState() {
     super.initState();
+
+    for (int i = 0; i < otpControllers.length; i++) {
+      otpControllers[i].text = ''; // Initialize text for each controller
+      otpControllers[i].addListener(() {
+        if (otpControllers[i].text.isNotEmpty && i < 5) {
+          // Automatically move focus to the next field when a digit is entered
+          FocusScope.of(context).nextFocus();
+        }
+      });
+    }
 
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (countdown > 0) {
@@ -74,7 +88,7 @@ class _OtpPageState extends State<OtpPage> {
             ),
             SizedBox(height: 20.0),
             Text(
-              "We have sent you an MAIL on santhiya.\n duskcoder@gmail.com \nwith 6 digit verification code",
+              "We have sent you an MAIL on santhiya.\n duskcoder@gmail.com \nwith 6-digit verification code",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey[800],
@@ -104,7 +118,7 @@ class _OtpPageState extends State<OtpPage> {
                       (index) => SizedBox(
                         width: 30.0,
                         child: TextField(
-                          controller: TextEditingController(),
+                          controller: otpControllers[index],
                           textAlign: TextAlign.center,
                           keyboardType: TextInputType.number,
                           cursorColor: Colors.grey[700],
@@ -112,13 +126,6 @@ class _OtpPageState extends State<OtpPage> {
                           decoration: InputDecoration(
                             counterText: '',
                           ),
-                          onChanged: (value) {
-                            if (value.length == 1) {
-                              if (index < 5) {
-                                FocusScope.of(context).nextFocus();
-                              } else {}
-                            }
-                          },
                         ),
                       ),
                     ),
@@ -149,7 +156,7 @@ class _OtpPageState extends State<OtpPage> {
               ),
             ),
             SizedBox(height: 30.0),
-            Text("Did not recive the code?"),
+            Text("Did not receive the code?"),
             SizedBox(height: 10.0),
             Text(
               "$countdown Seconds Wait",

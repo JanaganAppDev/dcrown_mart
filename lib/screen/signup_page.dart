@@ -78,6 +78,19 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
+  String? validateName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your name';
+    }
+
+    final nameRegex = RegExp(r'^[a-zA-Z\s]+$');
+    if (!nameRegex.hasMatch(value)) {
+      return 'Please enter a valid name';
+    }
+
+    return null;
+  }
+
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
@@ -158,270 +171,235 @@ class _SignupPageState extends State<SignupPage> {
               key: _formKey,
               child: Column(
                 children: [
-                  Center(
-                    child: Container(
-                      height: 50.0,
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your name';
-                          }
-                          return null;
+                  TextFormField(
+                    validator: validateName,
+                    controller: nameController,
+                    cursorColor: Colors.grey[700],
+                    decoration: InputDecoration(
+                      hintText: "Name",
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.person, color: Colors.grey),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: Colors.yellow),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            _isButtonClicked ? 30.0 : 20.0),
+                        borderSide: BorderSide(
+                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  TextFormField(
+                    validator: _validateEmail,
+                    controller: emailController,
+                    cursorColor: Colors.grey[700],
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.email, color: Colors.grey),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: Colors.yellow),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            _isButtonClicked ? 30.0 : 20.0),
+                        borderSide: BorderSide(
+                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 120.0,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your country code';
+                            }
+                            return null;
+                          },
+                          cursorColor: Colors.grey[700],
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            suffixIcon:
+                                Icon(Icons.arrow_drop_down, color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(color: Colors.yellow),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.yellow,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0,
+                              ),
+                              borderSide: BorderSide(
+                                color: _isButtonClicked
+                                    ? Colors.red
+                                    : Colors.yellow,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10.0),
+                      Expanded(
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your mobile number';
+                            }
+                            if (value.length < 10) {
+                              return 'Mobile number must be 10 digits';
+                            }
+                            return null;
+                          },
+                          controller: mobileController,
+                          cursorColor: Colors.grey[700],
+                          decoration: InputDecoration(
+                            hintText: "Mobile",
+                            filled: true,
+                            fillColor: Colors.white,
+                            prefixIcon:
+                                Icon(Icons.mobile_friendly, color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(color: Colors.yellow),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.yellow,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0,
+                              ),
+                              borderSide: BorderSide(
+                                color: _isButtonClicked
+                                    ? Colors.red
+                                    : Colors.yellow,
+                              ),
+                            ),
+                          ),
+                          obscureText: false,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 15.0),
+                  TextFormField(
+                    validator: _validatePassword,
+                    controller: passwordController,
+                    cursorColor: Colors.grey[700],
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
                         },
-                        controller: nameController,
-                        cursorColor: Colors.grey[700],
-                        decoration: InputDecoration(
-                          hintText: "Name",
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.person, color: Colors.grey),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(color: Colors.yellow),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                _isButtonClicked ? 30.0 : 20.0),
-                            borderSide: BorderSide(
-                              color:
-                                  _isButtonClicked ? Colors.red : Colors.yellow,
-                            ),
-                          ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: Colors.yellow),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            _isButtonClicked ? 30.0 : 20.0),
+                        borderSide: BorderSide(
+                          color: _isButtonClicked ? Colors.red : Colors.yellow,
                         ),
                       ),
                     ),
+                    obscureText: !_passwordVisible,
                   ),
                   SizedBox(height: 15.0),
-                  Center(
-                    child: Container(
-                      height: 50.0,
-                      child: TextFormField(
-                        validator: _validateEmail,
-                        controller: emailController,
-                        cursorColor: Colors.grey[700],
-                        decoration: InputDecoration(
-                          hintText: "Email",
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.email, color: Colors.grey),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(color: Colors.yellow),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                _isButtonClicked ? 30.0 : 20.0),
-                            borderSide: BorderSide(
-                              color:
-                                  _isButtonClicked ? Colors.red : Colors.yellow,
-                            ),
-                          ),
+                  TextFormField(
+                    controller: confirmPass,
+                    cursorColor: Colors.grey[700],
+                    validator: _validatePasswordConfirmation,
+                    decoration: InputDecoration(
+                      hintText: "Confirm Password",
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _confirmpasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _confirmpasswordVisible = !_confirmpasswordVisible;
+                          });
+                        },
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: Colors.yellow),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            _isButtonClicked ? 30.0 : 20.0),
+                        borderSide: BorderSide(
+                          color: _isButtonClicked ? Colors.red : Colors.yellow,
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Center(
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 120.0,
-                          height: 50.0,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your country code';
-                              }
-                              return null;
-                            },
-                            cursorColor: Colors.grey[700],
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              suffixIcon: Icon(Icons.arrow_drop_down,
-                                  color: Colors.grey),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(color: Colors.yellow),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(
-                                  color: Colors.yellow,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                    _isButtonClicked ? 30.0 : 20.0),
-                                borderSide: BorderSide(
-                                  color: _isButtonClicked
-                                      ? Colors.red
-                                      : Colors.yellow,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10.0),
-                        Expanded(
-                          child: Container(
-                            width: 338.0,
-                            height: 50.0,
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your mobile number';
-                                }
-                                if (value.length < 10) {
-                                  return 'Mobile number must be 10 digits';
-                                }
-                                return null;
-                              },
-                              controller: mobileController,
-                              cursorColor: Colors.grey[700],
-                              decoration: InputDecoration(
-                                hintText: "Mobile",
-                                filled: true,
-                                fillColor: Colors.white,
-                                prefixIcon: Icon(Icons.mobile_friendly,
-                                    color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(color: Colors.yellow),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.yellow,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      _isButtonClicked ? 30.0 : 20.0),
-                                  borderSide: BorderSide(
-                                    color: _isButtonClicked
-                                        ? Colors.red
-                                        : Colors.yellow,
-                                  ),
-                                ),
-                              ),
-                              obscureText: false,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Center(
-                    child: Container(
-                      height: 50.0,
-                      child: TextFormField(
-                        validator: _validatePassword,
-                        controller: passwordController,
-                        cursorColor: Colors.grey[700],
-                        decoration: InputDecoration(
-                          hintText: "Password",
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.lock, color: Colors.grey),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _passwordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Colors.grey,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _passwordVisible = !_passwordVisible;
-                              });
-                            },
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(color: Colors.yellow),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                _isButtonClicked ? 30.0 : 20.0),
-                            borderSide: BorderSide(
-                              color:
-                                  _isButtonClicked ? Colors.red : Colors.yellow,
-                            ),
-                          ),
-                        ),
-                        obscureText: !_passwordVisible,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Center(
-                    child: Container(
-                      height: 50.0,
-                      child: TextFormField(
-                        controller: confirmPass,
-                        cursorColor: Colors.grey[700],
-                        validator: _validatePasswordConfirmation,
-                        decoration: InputDecoration(
-                          hintText: "Confirm Password",
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.lock, color: Colors.grey),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _confirmpasswordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Colors.grey,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _confirmpasswordVisible =
-                                    !_confirmpasswordVisible;
-                              });
-                            },
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(color: Colors.yellow),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.yellow,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                _isButtonClicked ? 30.0 : 20.0),
-                            borderSide: BorderSide(
-                              color:
-                                  _isButtonClicked ? Colors.red : Colors.yellow,
-                            ),
-                          ),
-                        ),
-                        obscureText: !_confirmpasswordVisible,
-                      ),
-                    ),
+                    obscureText: !_confirmpasswordVisible,
                   ),
                 ],
               ),
