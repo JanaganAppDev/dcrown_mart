@@ -1,7 +1,8 @@
 import 'dart:async';
-
+import 'dart:convert';
 import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class OtpPage extends StatefulWidget {
   const OtpPage({Key? key});
@@ -19,15 +20,40 @@ class _OtpPageState extends State<OtpPage> {
   int countdown = 60;
   late Timer timer;
 
+  void otp(String otp) async {
+    try {
+      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/2");
+
+      final response = await http.post(url, body: {
+        'otp': otp,
+      });
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body.toString());
+
+        print(response.body);
+        setState(() {
+          var globalVariable = data["token"];
+          print(globalVariable);
+          print("Registration successful!");
+        });
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    throw Exception("");
+  }
+
   @override
   void initState() {
     super.initState();
 
     for (int i = 0; i < otpControllers.length; i++) {
-      otpControllers[i].text = ''; // Initialize text for each controller
+      otpControllers[i].text = '';
       otpControllers[i].addListener(() {
         if (otpControllers[i].text.isNotEmpty && i < 5) {
-          // Automatically move focus to the next field when a digit is entered
           FocusScope.of(context).nextFocus();
         }
       });
