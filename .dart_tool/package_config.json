@@ -104,12 +104,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "pin_code_text_field",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/pin_code_text_field-1.8.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -176,7 +170,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-10-15T15:04:39.986068Z",
+  "generated": "2023-10-12T17:11:59.796103Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }
