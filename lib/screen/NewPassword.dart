@@ -1,5 +1,7 @@
 import 'package:dcrown_mart/screen/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:dcrown_mart/service/api_response.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});
@@ -12,7 +14,46 @@ bool _passwordVisible = false;
 bool _confirmPasswordVisible = false;
 
 
+
 class _NewPasswordState extends State<NewPassword> {
+
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  String globalVariable = "";
+
+  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController confirmpassController = new TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("first");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  Future<void> generateOTP(String password , confirmpass) async {
+    // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
+    final url = Uri.parse("newpassword");
+    final response = await http.post(
+      url,
+      body: {"password": passwordController.text,
+        "confirmpass": confirmpassController.text,},
+    );
+    print(response.body);
+    print(passwordController.text);
+    if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(response.body)));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +80,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: passwordController,
                 cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -58,6 +100,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: confirmpassController,
                 cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
                   hintText: 'Confirm password',
