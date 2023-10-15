@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 class OtpPage extends StatefulWidget {
@@ -12,6 +13,8 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
+  List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
+
   List<TextEditingController> otpControllers = List.generate(
     6,
     (index) => TextEditingController(),
@@ -20,9 +23,11 @@ class _OtpPageState extends State<OtpPage> {
   int countdown = 60;
   late Timer timer;
 
+  get email => null;
+
   void otp(String otp) async {
     try {
-      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/2");
+      final url = Uri.parse("otp");
 
       final response = await http.post(url, body: {
         'otp': otp,
@@ -35,7 +40,7 @@ class _OtpPageState extends State<OtpPage> {
         setState(() {
           var globalVariable = data["token"];
           print(globalVariable);
-          print("Registration successful!");
+          print("Otp sent successfully");
         });
       } else {
         print('failed');
@@ -114,7 +119,7 @@ class _OtpPageState extends State<OtpPage> {
             ),
             SizedBox(height: 20.0),
             Text(
-              "We have sent you an MAIL on santhiya.\n duskcoder@gmail.com \nwith 6-digit verification code",
+              "We have sent you an MAIL on \n${email}\nwith 6-digit verification code",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey[800],
@@ -145,13 +150,32 @@ class _OtpPageState extends State<OtpPage> {
                         width: 30.0,
                         child: TextField(
                           controller: otpControllers[index],
+                          focusNode: _focusNodes[
+                              index], // Use a FocusNode for each TextField
                           textAlign: TextAlign.center,
                           keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter
+                                .digitsOnly, // Allow only numeric input
+                          ],
                           cursorColor: Colors.grey[700],
                           maxLength: 1,
                           decoration: InputDecoration(
                             counterText: '',
                           ),
+                          onChanged: (text) {
+                            if (text.isEmpty) {
+                              // If the field is empty, move focus to the previous field
+                              if (index > 0) {
+                                FocusScope.of(context)
+                                    .requestFocus(_focusNodes[index - 1]);
+                              }
+                            } else if (text.isNotEmpty && index < 5) {
+                              // If a number is entered and it's not the last field, move focus to the next field
+                              FocusScope.of(context)
+                                  .requestFocus(_focusNodes[index + 1]);
+                            }
+                          },
                         ),
                       ),
                     ),
