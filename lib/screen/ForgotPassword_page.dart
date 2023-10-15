@@ -137,10 +137,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   height: 50.0,
                   child: ElevatedButton(
                     onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Otp send sucessfully'),
+                          duration: const Duration(seconds: 1),
+
+                        ),
+                      );
+
                       generateOTP();
 
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => OtpPage()));
+                       Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => OtpPage()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow,
