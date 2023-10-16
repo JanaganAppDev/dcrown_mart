@@ -15,6 +15,7 @@ bool _confirmPasswordVisible = false;
 
 
 
+
 class _NewPasswordState extends State<NewPassword> {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -53,6 +54,35 @@ class _NewPasswordState extends State<NewPassword> {
     }
   }
 
+  String? _validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    }
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters long';
+    }
+    return null;
+  }
+
+  String? _validateconfirmpass(
+      String? confirmpass,
+      ) {
+    final password = confirmpass;
+    if (confirmpass == null || confirmpass.isEmpty) {
+      return 'Please enter your password';
+    }
+    if (password != passwordController.text) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
+  void handleLogin(){
+    if(_formkey.currentState!.validate()){
+      print("LoginPage Button clicked");
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +110,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                validator: _validatePassword,
                 controller: passwordController,
                 cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
@@ -100,6 +131,7 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                validator: _validateconfirmpass,
                 controller: confirmpassController,
                 cursorColor: Colors.grey[700],
                 decoration: InputDecoration(
@@ -123,9 +155,17 @@ class _NewPasswordState extends State<NewPassword> {
                 width: 140.0,
                 height: 50.0,
                 child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
-                  },
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      generateOTP(
+                          passwordController.text.toString(),
+                          confirmpassController.text.toString()
+                      );
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    }
+                    },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow,
                     shape: RoundedRectangleBorder(

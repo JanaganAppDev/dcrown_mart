@@ -139,6 +139,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: const Text('Otp send sucessfully'),
+                          backgroundColor: Colors.green,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0)),
                           duration: const Duration(seconds: 1),
 
                         ),
