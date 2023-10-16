@@ -150,13 +150,11 @@ class _OtpPageState extends State<OtpPage> {
                         width: 30.0,
                         child: TextField(
                           controller: otpControllers[index],
-                          focusNode: _focusNodes[
-                              index], // Use a FocusNode for each TextField
+                          focusNode: _focusNodes[index],
                           textAlign: TextAlign.center,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter
-                                .digitsOnly, // Allow only numeric input
+                            FilteringTextInputFormatter.digitsOnly,
                           ],
                           cursorColor: Colors.grey[700],
                           maxLength: 1,
@@ -165,13 +163,11 @@ class _OtpPageState extends State<OtpPage> {
                           ),
                           onChanged: (text) {
                             if (text.isEmpty) {
-                              // If the field is empty, move focus to the previous field
                               if (index > 0) {
                                 FocusScope.of(context)
                                     .requestFocus(_focusNodes[index - 1]);
                               }
                             } else if (text.isNotEmpty && index < 5) {
-                              // If a number is entered and it's not the last field, move focus to the next field
                               FocusScope.of(context)
                                   .requestFocus(_focusNodes[index + 1]);
                             }
