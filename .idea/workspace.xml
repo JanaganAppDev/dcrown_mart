@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravind- api intergation pedding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/ForgotPassword_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/ForgotPassword_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/NewPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/NewPassword.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/service/api_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/api_response.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +148,7 @@
     <MESSAGE value="Kathiresh- completed data base settings and modified UI and API Integration" />
     <MESSAGE value="Kathiresh- completed otp page timer and full UI design" />
     <MESSAGE value="Aravind- api intergation pedding" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aravind- api intergation pedding" />
+    <MESSAGE value="Aravind- newpassword api intergation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aravind- newpassword api intergation" />
   </component>
 </project>
