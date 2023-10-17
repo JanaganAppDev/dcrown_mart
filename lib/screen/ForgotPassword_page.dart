@@ -12,21 +12,27 @@ class ForgotPassword extends StatefulWidget {
   State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
+bool _isButtonClicked = false;
+
 String? _validateEmail(String? value) {
   if (value == null || value.isEmpty) {
     return 'Please enter your email';
-  }
-  final emailRegex = RegExp(
-    r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
-  );
-  if (!emailRegex.hasMatch(value)) {
-    return 'Please enter a valid email address';
+  } else {
+    final emailRegex = RegExp(
+      r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+    );
+    if (!emailRegex.hasMatch(value)) {
+      return 'Enter a valid email';
+    }
   }
   return null;
 }
 
+
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   @override
   void initState() {
@@ -73,6 +79,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         body: SingleChildScrollView(
           padding: EdgeInsets.all(16.0),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 SizedBox(height: 40.0),
@@ -107,29 +114,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   "Email",
                   style: TextStyle(color: Colors.grey),
                 ),
-                Container(
-                  height: 50.0,
-                  child: TextFormField(
-                    controller: emailController,
-                    cursorColor: Colors.grey[700],
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
-                        ),
+                TextFormField(
+                  controller: emailController,
+                  cursorColor: Colors.grey[700],
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        color: Colors.yellow,
                       ),
                     ),
-                    validator: _validateEmail,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        color: Colors.yellow,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
+                      borderSide: BorderSide(
+                        color: _isButtonClicked ? Colors.red : Colors.yellow,
+                      )
+                    )
                   ),
+                  validator: _validateEmail,
                 ),
                 SizedBox(height: 40.0),
                 Container(
@@ -137,22 +147,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   height: 50.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text('Otp send sucessfully'),
-                          backgroundColor: Colors.green,
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0)),
-                          duration: const Duration(seconds: 1),
-
-                        ),
-                      );
-
-                      generateOTP();
-
-                       Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => OtpPage()));
+                      if (_formKey.currentState!.validate()) {
+                        // The form is valid, proceed to generate OTP and navigate to the next page
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('Otp sent successfully'),
+                            backgroundColor: Colors.green,
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                            duration: const Duration(seconds: 1),
+                          ),
+                        );
+                        generateOTP();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OtpPage()));
+                      }
                     },
+
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow,
                       shape: RoundedRectangleBorder(
