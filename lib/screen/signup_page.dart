@@ -83,7 +83,7 @@ class _SignupPageState extends State<SignupPage> {
       return 'Please enter your name';
     }
 
-    final nameRegex = RegExp(r'^[a-zA-Z\s]+$');
+    final nameRegex = RegExp(r'^[a-zA-Z0-9\s]+$');
     if (!nameRegex.hasMatch(value)) {
       return 'Please enter a valid name';
     }

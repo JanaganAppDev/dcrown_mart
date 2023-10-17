@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dcrown_mart/screen/NewPassword.dart';
+import 'package:dcrown_mart/screen/ForgotPassword_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -11,6 +12,8 @@ class OtpPage extends StatefulWidget {
   @override
   State<OtpPage> createState() => _OtpPageState();
 }
+
+bool isOtpValid = false;
 
 class _OtpPageState extends State<OtpPage> {
   List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
@@ -40,7 +43,7 @@ class _OtpPageState extends State<OtpPage> {
         setState(() {
           var globalVariable = data["token"];
           print(globalVariable);
-          print("Otp sent successfully");
+          print("Otp verified successfully");
         });
       } else {
         print('failed');
@@ -54,6 +57,7 @@ class _OtpPageState extends State<OtpPage> {
   @override
   void initState() {
     super.initState();
+    isOtpValid = false;
 
     for (int i = 0; i < otpControllers.length; i++) {
       otpControllers[i].text = '';
@@ -183,10 +187,26 @@ class _OtpPageState extends State<OtpPage> {
                       height: 40.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => NewPassword()));
+                          if (otpControllers.every(
+                              (controller) => controller.text.isNotEmpty)) {
+                            setState(() {
+                              isOtpValid = true;
+                            });
+
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewPassword()));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Enter a valid OTP"),
+                              backgroundColor: Colors.redAccent,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              duration: Duration(seconds: 2),
+                            ));
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.yellow[700],
