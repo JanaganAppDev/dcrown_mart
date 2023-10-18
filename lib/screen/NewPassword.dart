@@ -2,6 +2,7 @@ import 'package:dcrown_mart/screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:dcrown_mart/service/api_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});
@@ -19,13 +20,14 @@ bool _confirmPasswordVisible = false;
 class _NewPasswordState extends State<NewPassword> {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  String globalVariable = "";
+  String email = "";
 
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController confirmpassController = new TextEditingController();
 
   @override
   void initState() {
+
     // TODO: implement initState
     super.initState();
     print("first");
@@ -36,23 +38,34 @@ class _NewPasswordState extends State<NewPassword> {
     super.didChangeDependencies();
   }
 
-  Future<void> generateOTP(String password, String confirmpass) async {
-    if (password == confirmpass) {
-      final url = Uri.parse("newpassword");
-      final response = await http.post(
-        url,
-        body: {
-          "password": passwordController.text,
-          "confirmpass": confirmpassController.text,
-        },
-      );
+  Future<void> generateOTP(confirmpass) async {
+    print("checkmail1");
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('email');
+    email = await prefs.getString('email')??"";
+    print("checkmail");
+    print(email);
+    print(confirmpass);
+      final url = Uri.parse(newpassword);
+      // final response = await http.post(
+      //   url,
+      //   body: {
+      //     "password": passwordController.text,
+      //     "confirmpass": confirmpassController.text,
+      //   },
+      // );
+      final response= await http.put(url,body:{
+        "email": email,
+        "cpassword":confirmpass,
+      });
+
       print(response.body);
-      print(passwordController.text);
+      //print(confirmpassController.text);
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.body)));
         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-      }
-    } else {
+      } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Passwords do not match")));
     }
   }
@@ -160,16 +173,25 @@ class _NewPasswordState extends State<NewPassword> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formkey.currentState!.validate()) {
-                      generateOTP(
-                          passwordController.text.toString(),
-                          confirmpassController.text.toString()
-                      );
+                    print("test1");
 
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    generateOTP(
+                      confirmpassController.text.toString(),
+                    );
+                    print("test2");
+
+                    /*if (_formkey.currentState!.validate()) {
+
+
+                       //Navigator.push(context,
+                           //MaterialPageRoute(builder: (context) => LoginPage()));
                     }
-                    },
+                    else{
+                      print("failed");
+                    }*/
+                    print("test3");
+
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow,
                     shape: RoundedRectangleBorder(
