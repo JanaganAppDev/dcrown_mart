@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({Key? key});
+  const OtpPage({Key? key, required String email});
 
   @override
   State<OtpPage> createState() => _OtpPageState();
