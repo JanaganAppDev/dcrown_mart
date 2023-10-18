@@ -26,7 +26,7 @@ class _OtpPageState extends State<OtpPage> {
   int countdown = 60;
   late Timer timer;
 
-  get email => null;
+  get email => ForgotPassword();
 
   void otp(String otp) async {
     try {
