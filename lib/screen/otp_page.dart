@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({Key? key});
-
+  final String email;
+  OtpPage({Key? key, required this.email}) : super(key: key);
   @override
   State<OtpPage> createState() => _OtpPageState();
 }
@@ -26,14 +26,16 @@ class _OtpPageState extends State<OtpPage> {
   int countdown = 60;
   late Timer timer;
 
-  get email => ForgotPassword();
+  get email => emailController;
+
+  get emailController => null;
 
   void otp(String otp) async {
     try {
-      final url = Uri.parse("otp");
+      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/2");
 
       final response = await http.post(url, body: {
-        'otp': otp,
+        "otp": otp,
       });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -47,11 +49,12 @@ class _OtpPageState extends State<OtpPage> {
         });
       } else {
         print('failed');
+        print("Request failed with status code: ${response.statusCode}");
+        print("Response body: ${response.body}");
       }
     } catch (e) {
       print(e.toString());
     }
-    throw Exception("");
   }
 
   @override
@@ -123,7 +126,7 @@ class _OtpPageState extends State<OtpPage> {
             ),
             SizedBox(height: 20.0),
             Text(
-              "We have sent you an MAIL on \n${email}\nwith 6-digit verification code",
+              "We have sent you an MAIL on \n${widget.email}\nwith 6-digit verification code",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey[800],
@@ -192,6 +195,25 @@ class _OtpPageState extends State<OtpPage> {
                             setState(() {
                               isOtpValid = true;
                             });
+                            if (otpControllers!.isNotEmpty) {
+                              otp(otpControllers.toString());
+                              print("test");
+                              print(otpControllers[0].text);
+                              print(otpControllers[1].text);
+                              print(otpControllers[2].text);
+                              print(otpControllers[3].text);
+                              print(otpControllers[4].text);
+                              print(otpControllers[5].text);
+                            }
+
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("OTP Verified successfully"),
+                              backgroundColor: Colors.green,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              duration: Duration(seconds: 2),
+                            ));
 
                             Navigator.push(
                                 context,

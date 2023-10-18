@@ -28,11 +28,10 @@ String? _validateEmail(String? value) {
   return null;
 }
 
-
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  String? email;
 
   @override
   void initState() {
@@ -58,8 +57,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     if (response.statusCode == 200) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(response.body)));
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => OtpPage()));
+      String email = emailController.text;
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => OtpPage(email: email)));
     }
   }
 
@@ -118,27 +118,27 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   controller: emailController,
                   cursorColor: Colors.grey[700],
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
+                      filled: true,
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
                       ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Colors.yellow,
+                        ),
                       ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(_isButtonClicked ? 30.0 : 20.0),
-                      borderSide: BorderSide(
-                        color: _isButtonClicked ? Colors.red : Colors.yellow,
-                      )
-                    )
-                  ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                              _isButtonClicked ? 30.0 : 20.0),
+                          borderSide: BorderSide(
+                            color:
+                                _isButtonClicked ? Colors.red : Colors.yellow,
+                          ))),
                   validator: _validateEmail,
                 ),
                 SizedBox(height: 40.0),
@@ -154,15 +154,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             content: const Text('Otp sent successfully'),
                             backgroundColor: Colors.green,
                             behavior: SnackBarBehavior.floating,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
                             duration: const Duration(seconds: 1),
                           ),
                         );
                         generateOTP();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => OtpPage()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    OtpPage(email: emailController.text)));
                       }
                     },
-
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow,
                       shape: RoundedRectangleBorder(
