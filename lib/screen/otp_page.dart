@@ -16,6 +16,7 @@ class OtpPage extends StatefulWidget {
 bool isOtpValid = false;
 
 class _OtpPageState extends State<OtpPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
 
   List<TextEditingController> otpControllers = List.generate(
@@ -32,21 +33,49 @@ class _OtpPageState extends State<OtpPage> {
 
   void otp(String otp) async {
     try {
-      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/2");
+      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/:id");
 
       final response = await http.post(url, body: {
         "otp": otp,
+        //"email": widget.email,
       });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body.toString());
+        var globalVariable = data["token"];
+        //var message = data["message"];
 
-        print(response.body);
-        setState(() {
-          var globalVariable = data["token"];
-          print(globalVariable);
-          print("Otp verified successfully");
-        });
+        // Check if the response indicates OTP verification success
+        if (globalVariable == "OTP verified successfully") {
+          setState(() {
+            isOtpValid = true;
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("OTP Verified successfully"),
+            backgroundColor: Colors.green,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            duration: Duration(seconds: 2),
+          ));
+
+          /*Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewPassword()),
+          );*/
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Enter a valid OTP"),
+            backgroundColor: Colors.redAccent,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            duration: Duration(seconds: 2),
+          ));
+        }
       } else {
         print('failed');
         print("Request failed with status code: ${response.statusCode}");
@@ -86,6 +115,12 @@ class _OtpPageState extends State<OtpPage> {
   void dispose() {
     timer.cancel();
     super.dispose();
+  }
+
+  void handleLogin() {
+    if (_formKey.currentState!.validate()) {
+      print("Submit Button Clicked");
+    }
   }
 
   @override
@@ -149,36 +184,39 @@ class _OtpPageState extends State<OtpPage> {
               ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(
-                      6,
-                      (index) => SizedBox(
-                        width: 30.0,
-                        child: TextField(
-                          controller: otpControllers[index],
-                          focusNode: _focusNodes[index],
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                          cursorColor: Colors.grey[700],
-                          maxLength: 1,
-                          decoration: InputDecoration(
-                            counterText: '',
-                          ),
-                          onChanged: (text) {
-                            if (text.isEmpty) {
-                              if (index > 0) {
+                  Form(
+                    key: _formKey,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                        6,
+                        (index) => SizedBox(
+                          width: 30.0,
+                          child: TextField(
+                            controller: otpControllers[index],
+                            focusNode: _focusNodes[index],
+                            textAlign: TextAlign.center,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            cursorColor: Colors.grey[700],
+                            maxLength: 1,
+                            decoration: InputDecoration(
+                              counterText: '',
+                            ),
+                            onChanged: (text) {
+                              if (text.isEmpty) {
+                                if (index > 0) {
+                                  FocusScope.of(context)
+                                      .requestFocus(_focusNodes[index - 1]);
+                                }
+                              } else if (text.isNotEmpty && index < 5) {
                                 FocusScope.of(context)
-                                    .requestFocus(_focusNodes[index - 1]);
+                                    .requestFocus(_focusNodes[index + 1]);
                               }
-                            } else if (text.isNotEmpty && index < 5) {
-                              FocusScope.of(context)
-                                  .requestFocus(_focusNodes[index + 1]);
-                            }
-                          },
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -192,18 +230,33 @@ class _OtpPageState extends State<OtpPage> {
                         onPressed: () {
                           if (otpControllers.every(
                               (controller) => controller.text.isNotEmpty)) {
-                            setState(() {
+                            /*setState(() {
                               isOtpValid = true;
-                            });
+                            });*/
                             if (otpControllers!.isNotEmpty) {
                               otp(otpControllers.toString());
-                              print("test");
+                              /*print("test");
                               print(otpControllers[0].text);
                               print(otpControllers[1].text);
                               print(otpControllers[2].text);
                               print(otpControllers[3].text);
                               print(otpControllers[4].text);
-                              print(otpControllers[5].text);
+                              print(otpControllers[5].text);*/
+
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("OTP Verified successfully"),
+                                backgroundColor: Colors.green,
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                duration: Duration(seconds: 2),
+                              ));
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewPassword()));
                             }
 
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -215,10 +268,10 @@ class _OtpPageState extends State<OtpPage> {
                               duration: Duration(seconds: 2),
                             ));
 
-                            Navigator.push(
+                            /*Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NewPassword()));
+                                    builder: (context) => NewPassword()));*/
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Enter a valid OTP"),
