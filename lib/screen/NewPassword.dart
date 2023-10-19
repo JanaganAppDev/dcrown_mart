@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -21,6 +23,7 @@ class _NewPasswordState extends State<NewPassword> {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   String email = "";
+  String globalVariable = "";
 
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController confirmpassController = new TextEditingController();
@@ -38,16 +41,16 @@ class _NewPasswordState extends State<NewPassword> {
     super.didChangeDependencies();
   }
 
-  Future<void> generateOTP(confirmpass) async {
+  Future<void> generateOTP(String confirmpass,password) async {
     print("checkmail1");
-
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('email');
-    email = await prefs.getString('email')??"";
-    print("checkmail");
-    print(email);
-    print(confirmpass);
-      final url = Uri.parse(newpassword);
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.remove('email');
+      email = await prefs.getString('email') ?? "";
+      print("checkmail");
+      print(email);
+      print(confirmpass);
+      final url = Uri.parse("http://localhost:5000/api/users/update");
       // final response = await http.post(
       //   url,
       //   body: {
@@ -55,18 +58,30 @@ class _NewPasswordState extends State<NewPassword> {
       //     "confirmpass": confirmpassController.text,
       //   },
       // );
-      final response= await http.put(url,body:{
+      final response = await http.put(url, body: {
         "email": email,
-        "cpassword":confirmpass,
+        "cpassword": confirmpass,
       });
 
-      print(response.body);
+
       //print(confirmpassController.text);
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.body)));
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+        var data = jsonDecode(response.body.toString());
+
+        print(response.body);
+        setState(() {
+          globalVariable = data["token"];
+          print(globalVariable);
+          print("otp sent successfully");
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(response.body))
+          );
+        });
       } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Passwords do not match")));
+        print("failed");
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 
@@ -78,7 +93,7 @@ class _NewPasswordState extends State<NewPassword> {
     if (value.length < 6) {
       return 'Password must be at least 6 characters long';
     }
-    return null;
+    //return null;
   }
 
   String? _validateconfirmpass(
@@ -91,7 +106,7 @@ class _NewPasswordState extends State<NewPassword> {
     if (password != passwordController.text) {
       return 'Passwords do not match';
     }
-    return null;
+    //return null;
   }
 
   void handleLogin(){
@@ -126,46 +141,53 @@ class _NewPasswordState extends State<NewPassword> {
                 ),
               ),
               SizedBox(height: 10),
-              TextFormField(
-                validator: _validatePassword,
-                controller: passwordController,
-                cursorColor: Colors.grey[700],
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.grey,
+              Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      validator: _validatePassword,
+                      controller: passwordController,
+                      cursorColor: Colors.grey[700],
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.grey,
 
-                    ),onPressed: () {
-                    setState(() {
-                      _passwordVisible = !_passwordVisible;
-                    });
-                  },
-                  ),
-                ),
-                obscureText: !_passwordVisible,
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                validator: _validateconfirmpass,
-                controller: confirmpassController,
-                cursorColor: Colors.grey[700],
-                decoration: InputDecoration(
-                  hintText: 'Confirm password',
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.grey,
+                          ),onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                        ),
+                      ),
+                      obscureText: !_passwordVisible,
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      validator: _validateconfirmpass,
+                      controller: confirmpassController,
+                      cursorColor: Colors.grey[700],
+                      decoration: InputDecoration(
+                        hintText: 'Confirm password',
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.grey,
 
-                    ),onPressed: () {
-                    setState(() {
-                      _confirmPasswordVisible = !_confirmPasswordVisible;
-                    });
-                  },
-                  ),
+                          ),onPressed: () {
+                          setState(() {
+                            _confirmPasswordVisible = !_confirmPasswordVisible;
+                          });
+                        },
+                        ),
+                      ),
+                      obscureText: !_confirmPasswordVisible,
+                    ),
+                  ],
                 ),
-                obscureText: !_confirmPasswordVisible,
               ),
               SizedBox(height: 40.0),
               Container(
@@ -173,22 +195,27 @@ class _NewPasswordState extends State<NewPassword> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
+
                     print("test1");
 
-                    generateOTP(
-                      confirmpassController.text.toString(),
-                    );
+                    /*generateOTP(
+                      passwordController.text.toString(),
+                      confirmpassController.text.toString()
+                    );*/
                     print("test2");
 
-                    /*if (_formkey.currentState!.validate()) {
+                  if (_formkey.currentState!.validate()) {
+                     generateOTP(
+                       passwordController.text.toString(),
+                       confirmpassController.text.toString()
+                     );
 
-
-                       //Navigator.push(context,
-                           //MaterialPageRoute(builder: (context) => LoginPage()));
+                       Navigator.push(context,
+                           MaterialPageRoute(builder: (context) => LoginPage()));
                     }
                     else{
                       print("failed");
-                    }*/
+                    }
                     print("test3");
 
                   },
