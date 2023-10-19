@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +63,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     if (response.statusCode == 200) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(response.body)));
+      try {
+        final response = await http.post(
+          Uri.parse("http://localhost:5000/api/forgots/forgot"),
+          body: {"email": emailController.text},
+        );
+        if (response.statusCode == 200) {
+          var data = jsonDecode(response.body.toString());
+          print(response.body);
+        } else {
 
+        }
+      } catch (error) {
+      }
       String email = emailController.text;
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => OtpPage(email:email)));
