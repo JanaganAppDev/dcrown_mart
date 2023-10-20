@@ -50,32 +50,42 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Future<void> generateOTP() async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
-    final url = Uri.parse("http://192.168.1.11:5000/api/forgots/forgot");
-    final response = await http.post(
-      url,
-      body: {"email": emailController.text},
-    );
-    print(response.body);
-    print(emailController.text);
-    if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(response.body)));
-      try {
-        final response = await http.post(
-          Uri.parse("http://localhost:5000/api/forgots/forgot"),
-          body: {"email": emailController.text},
-        );
-        if (response.statusCode == 200) {
-          var data = jsonDecode(response.body.toString());
-          print(response.body);
-        } else {
+    final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
+    print(emailController.text.toString());
+    try {
+      final response = await http.post(url,
+        body: {
+          "email":emailController.text,
+        },
+      );
+      print(response.body);
+      print(emailController.text);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(response.body);
 
-        }
-      } catch (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(response.body),
+            backgroundColor: Colors.green,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            duration: const Duration(seconds: 1),
+          ),
+        );
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    OtpPage(email: emailController.text)));
+
+      } else {
+        print("failed");
+
       }
-      String email = emailController.text;
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => OtpPage(email: email)));
+    } catch (error) {
     }
   }
 
@@ -170,8 +180,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       if (_formKey.currentState!.validate()) {
                         prefs.setString(
                             'email', emailController.text.toString());
-                        // The form is valid, proceed to generate OTP and navigate to the next page
-                        ScaffoldMessenger.of(context).showSnackBar(
+
+                        generateOTP();
+
+                        /*ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text('Otp sent successfully'),
                             backgroundColor: Colors.green,
@@ -182,12 +194,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         );
 
-                        generateOTP();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    OtpPage(email: emailController.text)));
+                                    OtpPage(email: emailController.text)));*/
                       }
                     },
                     style: ElevatedButton.styleFrom(
