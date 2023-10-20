@@ -53,22 +53,6 @@ class _SignupPageState extends State<SignupPage> {
             content: Text('Register successfully!'),
             duration: Duration(seconds: 3),
           ));
-          /*       showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text("Registeration Successful"),
-                content: Text("You have successfully registered."),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text("OK")),
-                ],
-              );
-            },
-          );*/
         });
       } else {
         print('failed');
