@@ -35,6 +35,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? email;
+  String? user_id;
+
+
 
   @override
   void initState() {
@@ -59,10 +62,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         },
       );
       print(response.body);
+
       print(emailController.text);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
+        String? user_id = data["user_id"];
+        print(user_id);
+
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -76,10 +83,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         );
 
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    OtpPage(email: emailController.text)));
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                OtpPage(email: emailController.text),
+          ),
+        );
+
 
       } else {
         print("failed");
@@ -180,6 +190,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       if (_formKey.currentState!.validate()) {
                         prefs.setString(
                             'email', emailController.text.toString());
+                        prefs.setString('user_id', user_id!);
 
                         generateOTP();
 
