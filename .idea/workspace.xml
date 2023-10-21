@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Otp Page api" />
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Otp Page api">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/otp_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/otp_page.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697382970616</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Kathiresh- Otp Page api">
+      <created>1697862249420</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697862249420</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +175,7 @@
     <MESSAGE value="Kathiresh- completed otp page timer and full UI design" />
     <MESSAGE value="Aravind- api intergation pedding" />
     <MESSAGE value="Aravind- newpassword api intergation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aravind- newpassword api intergation" />
+    <MESSAGE value="Kathiresh- Otp Page api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- Otp Page api" />
   </component>
 </project>

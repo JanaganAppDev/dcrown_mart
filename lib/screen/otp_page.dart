@@ -37,21 +37,23 @@ class _OtpPageState extends State<OtpPage> {
   void otp(String otp) async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      //id = await prefs.getString('id');
+      var user_id = await prefs.getString('user_id');
 
       final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/71");
       print("object");
       print(otp);
+      print(user_id);
 
       final response = await http.post(url, body: {
         "otp": otp,
-        //"email": widget.email,
       });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body.toString());
         //var globalVariable = data["token"];
         var message = data["message"];
+        //var user_id = data["user_id"];
+        print(user_id);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(response.body),
           backgroundColor: Colors.green,
@@ -254,10 +256,10 @@ class _OtpPageState extends State<OtpPage> {
                       width: 140.0,
                       height: 40.0,
                       child: ElevatedButton(
-                        onPressed: () async {
-                          SharedPreferences prefs =
+                        onPressed: () {
+                          /*SharedPreferences prefs =
                               await SharedPreferences.getInstance();
-                          print("shared");
+                          print("shared");*/
 
                           if (otpControllers.every(
                               (controller) => controller.text.isNotEmpty)) {
