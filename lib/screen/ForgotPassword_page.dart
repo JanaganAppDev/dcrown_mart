@@ -35,7 +35,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? email;
-  String? user_id;
 
 
 
@@ -67,8 +66,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-        String? user_id = data["user_id"];
-        print(user_id);
+        var user_id = data["user_id"];
+
+
+        SharedPreferences prefs =
+           await
+           SharedPreferences.getInstance();
+         prefs.setString('userId', user_id);
+         print("sf");
+        final user= await prefs.getString("userId");
+        print(user);
+        await prefs.remove('userId');
+
 
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -190,7 +199,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       if (_formKey.currentState!.validate()) {
                         prefs.setString(
                             'email', emailController.text.toString());
-                        prefs.setString('user_id', user_id!);
+
 
                         generateOTP();
 
