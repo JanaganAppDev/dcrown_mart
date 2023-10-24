@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class OtpPage extends StatefulWidget {
   final String email;
-  OtpPage({Key? key, required this.email }) : super(key: key);
+  OtpPage({Key? key, required this.email}) : super(key: key);
 
   @override
   State<OtpPage> createState() => _OtpPageState();
@@ -38,6 +38,7 @@ class _OtpPageState extends State<OtpPage> {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       var user_id = await prefs.getString('user_id');
+      print(user_id);
 
       final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/71");
       print("object");
