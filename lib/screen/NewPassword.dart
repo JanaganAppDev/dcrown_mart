@@ -11,26 +11,22 @@ class NewPassword extends StatefulWidget {
 
   @override
   State<NewPassword> createState() => _NewPasswordState();
-
 }
+
 bool _passwordVisible = false;
 bool _confirmPasswordVisible = false;
 
-
-
-
 class _NewPasswordState extends State<NewPassword> {
-
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   String email = "";
   String globalVariable = "";
 
   final TextEditingController passwordController = new TextEditingController();
-  final TextEditingController confirmpassController = new TextEditingController();
+  final TextEditingController confirmpassController =
+      new TextEditingController();
 
   @override
   void initState() {
-
     // TODO: implement initState
     super.initState();
     print("first");
@@ -41,7 +37,7 @@ class _NewPasswordState extends State<NewPassword> {
     super.didChangeDependencies();
   }
 
-  Future<void> generateOTP(String confirmpass,password) async {
+  Future<void> generateOTP(String confirmpass, password) async {
     print("checkmail1");
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -50,6 +46,7 @@ class _NewPasswordState extends State<NewPassword> {
       print("checkmail");
       print(email);
       print(confirmpass);
+
       final url = Uri.parse("http://localhost:5000/api/users/update");
       // final response = await http.post(
       //   url,
@@ -63,7 +60,6 @@ class _NewPasswordState extends State<NewPassword> {
         "cpassword": confirmpass,
       });
 
-
       //print(confirmpassController.text);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
@@ -73,9 +69,8 @@ class _NewPasswordState extends State<NewPassword> {
           globalVariable = data["token"];
           print(globalVariable);
           print("otp sent successfully");
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(response.body))
-          );
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response.body)));
         });
       } else {
         print("failed");
@@ -84,7 +79,6 @@ class _NewPasswordState extends State<NewPassword> {
       print(e.toString());
     }
   }
-
 
   String? _validatePassword(String? value) {
     if (value == null || value.isEmpty) {
@@ -97,8 +91,8 @@ class _NewPasswordState extends State<NewPassword> {
   }
 
   String? _validateconfirmpass(
-      String? confirmpass,
-      ) {
+    String? confirmpass,
+  ) {
     final password = confirmpass;
     if (confirmpass == null || confirmpass.isEmpty) {
       return 'Please enter your password';
@@ -109,12 +103,11 @@ class _NewPasswordState extends State<NewPassword> {
     //return null;
   }
 
-  void handleLogin(){
-    if(_formkey.currentState!.validate()){
+  void handleLogin() {
+    if (_formkey.currentState!.validate()) {
       print("LoginPage Button clicked");
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -129,9 +122,15 @@ class _NewPasswordState extends State<NewPassword> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height:40.0),
-              Image.asset("forgotpage_icon.PNG",height: 100.0,width: 100.0,),
-              SizedBox(height: 10.0,),
+              SizedBox(height: 40.0),
+              Image.asset(
+                "forgotpage_icon.PNG",
+                height: 100.0,
+                width: 100.0,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
               Text(
                 "Enter New Password",
                 style: TextStyle(
@@ -153,14 +152,16 @@ class _NewPasswordState extends State<NewPassword> {
                         hintText: 'Password',
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
                             color: Colors.grey,
-
-                          ),onPressed: () {
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
                         ),
                       ),
                       obscureText: !_passwordVisible,
@@ -174,14 +175,17 @@ class _NewPasswordState extends State<NewPassword> {
                         hintText: 'Confirm password',
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _confirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                            _confirmPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
                             color: Colors.grey,
-
-                          ),onPressed: () {
-                          setState(() {
-                            _confirmPasswordVisible = !_confirmPasswordVisible;
-                          });
-                        },
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _confirmPasswordVisible =
+                                  !_confirmPasswordVisible;
+                            });
+                          },
                         ),
                       ),
                       obscureText: !_confirmPasswordVisible,
@@ -195,7 +199,6 @@ class _NewPasswordState extends State<NewPassword> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
-
                     print("test1");
 
                     /*generateOTP(
@@ -204,26 +207,21 @@ class _NewPasswordState extends State<NewPassword> {
                     );*/
                     print("test2");
 
-                  if (_formkey.currentState!.validate()) {
-                     generateOTP(
-                       passwordController.text.toString(),
-                       confirmpassController.text.toString()
-                     );
+                    if (_formkey.currentState!.validate()) {
+                      generateOTP(passwordController.text.toString(),
+                          confirmpassController.text.toString());
 
-                       Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => LoginPage()));
-                    }
-                    else{
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    } else {
                       print("failed");
                     }
                     print("test3");
-
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
-
                     ),
                   ),
                   child: Text('Submit'),

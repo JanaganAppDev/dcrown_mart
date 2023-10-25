@@ -10,37 +10,63 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  /*TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController mobileController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmpasswordController = TextEditingController();
-
-  void signup(String name, email, mobile, password, confirmpassword) async {
-    try {
-      Response response = await post(
-          Uri.parse('http://localhost:5000/api/users/register'),
-          body: {
-            'name': 'kathir',
-            'email': 'kathiresh@gmail.com',
-            'mobile': '9988776655',
-            'password': '12345678',
-            'confirmpassword': '12345678'
-          });
-
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body.toString());
-      } else {
-        print('failed');
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.yellow[600],
+        title: Text("My App"),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("John Doe"),
+              accountEmail: Text("johndoe@example.com"),
+              currentAccountPicture: CircleAvatar(),
+            ),
+            ListTile(
+              title: Text("Home"),
+              leading: Icon(Icons.home),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("My Orders"),
+              leading: Icon(Icons.shopping_cart),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("My Address"),
+              leading: Icon(Icons.location_on),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Feedback"),
+              leading: Icon(Icons.lightbulb),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Contact Us"),
+              leading: Icon(Icons.chat_outlined),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Share"),
+              leading: Icon(Icons.share),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Logout"),
+              leading: Icon(Icons.logout),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text("Main content goes here"),
+      ),
     );
   }
 }
