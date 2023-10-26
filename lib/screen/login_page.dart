@@ -225,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     if (_formKey.currentState!.validate()) {
                       setState(() {
-                        _isButtonClicked = true; // Set to true when the button is clicked
+                        _isButtonClicked = true;
                       });
                       print("test");
                       login(emailControler.text.toString(),passwordControler.text.toString());
