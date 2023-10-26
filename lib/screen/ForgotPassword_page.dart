@@ -17,19 +17,20 @@ class ForgotPassword extends StatefulWidget {
 
 bool _isButtonClicked = false;
 
+
 String? _validateEmail(String? value) {
   if (value == null || value.isEmpty) {
     return 'Please enter your email';
-  } else {
-    final emailRegex = RegExp(
-      r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
-    );
-    if (!emailRegex.hasMatch(value)) {
-      return 'Enter a valid email';
-    }
+  }
+  final emailRegex = RegExp(
+    r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+  );
+  if (!emailRegex.hasMatch(value)) {
+    return 'Please enter a valid email address';
   }
   return null;
 }
+
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
@@ -50,14 +51,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     super.didChangeDependencies();
   }
 
-  Future<void> generateOTP() async {
+  Future<void> generateOTP(String email) async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
       final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
       print(emailController.text.toString());
+
       try {
         final response = await http.post(url,
           body: {
-            "email": emailController.text,
+            "email": email,
           },
         );
         print(response.body);
@@ -66,6 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         if (response.statusCode == 200) {
           var data = jsonDecode(response.body.toString());
           print(response.body);
+          var message = data["message"];
           var user_id = data["user_id"];
 
 
@@ -78,19 +81,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           final user = await prefs.getString("userId");
           print('user from SharedPreferences: $user');
           await prefs.remove('userId');
-
+          print("fazil");
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(response.body),
+              content: Text(message),
               backgroundColor: Colors.green,
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
               duration: const Duration(seconds: 2),
             ),
           );
-
 
           Navigator.push(
             context,
@@ -100,9 +103,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           );
         } else {
+          var data = jsonDecode(response.body.toString());
+          var message = data["message"];
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(response.body),
+              content: Text(message),
               backgroundColor: Colors.red,
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(
@@ -112,7 +117,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           );
           print("failed");
         }
-      } catch (error) {}
+      } catch (error) {
+      }
   }
 
   @override
@@ -193,6 +199,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ))),
                   validator: _validateEmail,
                 ),
+
                 SizedBox(height: 40.0),
                 Container(
                   width: 140.0,
@@ -208,7 +215,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             'email', emailController.text.toString());
 
 
-                        generateOTP();
+                        generateOTP(emailController.text.toString());
 
                         /*ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -223,11 +230,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
 
                       }
-                      Navigator.push(
+                     /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  OtpPage(email: emailController.text)));
+                                  OtpPage(email: emailController.text)));*/
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow,
