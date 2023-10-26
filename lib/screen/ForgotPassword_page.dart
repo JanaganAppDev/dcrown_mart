@@ -36,8 +36,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? email;
 
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -52,67 +50,62 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Future<void> generateOTP() async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
-      final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
-      print(emailController.text.toString());
-      try {
-        final response = await http.post(url,
-          body: {
-            "email": emailController.text,
-          },
-        );
+    final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
+    print(emailController.text.toString());
+    try {
+      final response = await http.post(
+        url,
+        body: {
+          "email": emailController.text,
+        },
+      );
+      print(response.body);
+
+      print(emailController.text);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
         print(response.body);
+        var user_id = data["user_id"];
 
-        print(emailController.text);
-        if (response.statusCode == 200) {
-          var data = jsonDecode(response.body.toString());
-          print(response.body);
-          var user_id = data["user_id"];
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        print('user_id: $user_id');
+        prefs.setString('userId', user_id);
+        // print("sf");
+        final user = await prefs.getString("userId");
+        print('user from SharedPreferences: $user');
+        //await prefs.remove('userId');
 
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(response.body),
+            backgroundColor: Colors.green,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            duration: const Duration(seconds: 2),
+          ),
+        );
 
-          SharedPreferences prefs =
-          await
-          SharedPreferences.getInstance();
-          print('user_id: $user_id');
-          prefs.setString('userId', user_id);
-          // print("sf");
-          final user = await prefs.getString("userId");
-          print('user from SharedPreferences: $user');
-          await prefs.remove('userId');
-
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(response.body),
-              backgroundColor: Colors.green,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              duration: const Duration(seconds: 2),
-            ),
-          );
-
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  OtpPage(email: emailController.text),
-            ),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(response.body),
-              backgroundColor: Colors.red,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              duration: const Duration(seconds: 2),
-            ),
-          );
-          print("failed");
-        }
-      } catch (error) {}
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OtpPage(email: emailController.text),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(response.body),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+        print("failed");
+      }
+    } catch (error) {}
   }
 
   @override
@@ -207,7 +200,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         prefs.setString(
                             'email', emailController.text.toString());
 
-
                         generateOTP();
 
                         /*ScaffoldMessenger.of(context).showSnackBar(
@@ -220,8 +212,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             duration: const Duration(seconds: 2),
                           ),
                         );*/
-
-
                       }
                       Navigator.push(
                           context,
