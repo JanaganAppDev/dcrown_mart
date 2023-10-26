@@ -15,21 +15,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow[600],
-        title: Text("My App"),
+        title: Text("Dcrown Mart"),
       ),
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("John Doe"),
-              accountEmail: Text("johndoe@example.com"),
+              accountName: Text("Yogesh krishna"),
+              accountEmail: Text("Free Member"),
               currentAccountPicture: CircleAvatar(),
             ),
             ListTile(
               title: Text("Home"),
               leading: Icon(Icons.home),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
             ),
             ListTile(
               title: Text("My Orders"),
