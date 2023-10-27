@@ -15,6 +15,8 @@ class OtpPage extends StatefulWidget {
   State<OtpPage> createState() => _OtpPageState();
 }
 
+//kathireshk9786@gmail.com
+
 bool isOtpValid = false;
 
 class _OtpPageState extends State<OtpPage> {
@@ -37,21 +39,25 @@ class _OtpPageState extends State<OtpPage> {
 
   void otp(String otp) async {
     try {
-      /*final SharedPreferences prefs = await SharedPreferences.getInstance();
-      var user_id = await prefs.getString('user_id');
-      print(user_id);*/
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      //await prefs.remove('userId');
+      userId = await prefs.getString('userId') ?? "";
+      print("check");
+      print(userId);
 
-      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/72");
+      final url =
+          Uri.parse("http://localhost:5000/api/forgots/otpVerify/$userId");
       print("object");
       print(otp);
-      //print(user_id);
 
       final response = await http.post(url, body: {
         "otp": otp,
       });
+      print("test1");
 
+      var data = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var data = jsonDecode(response.body.toString());
+        print("test2");
         //var globalVariable = data["token"];
         var message = data["message"];
         //var user_id = data["user_id"];
@@ -100,8 +106,9 @@ class _OtpPageState extends State<OtpPage> {
           print("failed");
         }*/
       } else {
-        var data = jsonDecode(response.body.toString());
+        //var data = jsonDecode(response.body.toString());
         var message = data["message"];
+        print("test3");
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(message),
           backgroundColor: Colors.redAccent,
@@ -125,9 +132,9 @@ class _OtpPageState extends State<OtpPage> {
     super.initState();
     isOtpValid = false;
 
-    print(userId);
+    //print(userID);
 
-    _getUserIDFromSharedPreferences();
+    //_getUserIDFromSharedPreferences();
 
     for (int i = 0; i < otpControllers.length; i++) {
       otpControllers[i].text = '';
@@ -149,7 +156,7 @@ class _OtpPageState extends State<OtpPage> {
     });
   }
 
-  void _getUserIDFromSharedPreferences() async {
+  /*void _getUserIDFromSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? storedUserID = prefs.getString('userId');
     if (storedUserID != null) {
@@ -158,7 +165,7 @@ class _OtpPageState extends State<OtpPage> {
         print(userId);
       });
     }
-  }
+  }*/
 
   @override
   void dispose() {

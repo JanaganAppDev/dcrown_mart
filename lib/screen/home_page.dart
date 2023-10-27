@@ -104,7 +104,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 20.0),
               Container(
                 child: Center(
                   child: Image.asset("assets/fruits.png",
