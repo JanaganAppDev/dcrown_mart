@@ -51,7 +51,12 @@ class _HomePageState extends State<HomePage> {
               UserAccountsDrawerHeader(
                 accountName: Text("Yogesh krishna"),
                 accountEmail: Text("Free Member"),
-                currentAccountPicture: CircleAvatar(),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage("assets/profile.png"),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.yellow,
+                ),
               ),
               ListTile(
                 title: Text("Home"),
@@ -103,7 +108,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 child: Center(
                   child: Image.asset("assets/fruits.png",
-                      width: 200.0, height: 200.0),
+                      width: 400.0, height: 200.0),
                 ),
               ),
             ],
