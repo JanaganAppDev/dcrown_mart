@@ -17,7 +17,6 @@ class ForgotPassword extends StatefulWidget {
 
 bool _isButtonClicked = false;
 
-
 String? _validateEmail(String? value) {
   if (value == null || value.isEmpty) {
     return 'Please enter your email';
@@ -31,13 +30,10 @@ String? _validateEmail(String? value) {
   return null;
 }
 
-
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController emailController = new TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? email;
-
-
 
   @override
   void initState() {
@@ -53,72 +49,68 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Future<void> generateOTP(String email) async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
-      final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
-      print(emailController.text.toString());
+    final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
+    print(emailController.text.toString());
 
-      try {
-        final response = await http.post(url,
-          body: {
-            "email": email,
-          },
-        );
+    try {
+      final response = await http.post(
+        url,
+        body: {
+          "email": email,
+        },
+      );
+      print(response.body);
+
+      print(emailController.text);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
         print(response.body);
+        var message = data["message"];
+        var user_id = data["user_id"];
 
-        print(emailController.text);
-        if (response.statusCode == 200) {
-          var data = jsonDecode(response.body.toString());
-          print(response.body);
-          var message = data["message"];
-          var user_id = data["user_id"];
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        print('user_id: $user_id');
+        prefs.setString('userId', user_id);
+        // print("sf");
+        final user = await prefs.getString("userId");
+        print('user from SharedPreferences: $user');
+        await prefs.remove('userId');
+        print("fazil");
 
-
-          SharedPreferences prefs =
-          await
-          SharedPreferences.getInstance();
-          print('user_id: $user_id');
-          prefs.setString('userId', user_id);
-          // print("sf");
-          final user = await prefs.getString("userId");
-          print('user from SharedPreferences: $user');
-          await prefs.remove('userId');
-          print("fazil");
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(message),
-              backgroundColor: Colors.green,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              duration: const Duration(seconds: 2),
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            backgroundColor: Colors.green,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
             ),
-          );
+            duration: const Duration(seconds: 2),
+          ),
+        );
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  OtpPage(email: emailController.text),
-            ),
-          );
-        } else {
-          var data = jsonDecode(response.body.toString());
-          var message = data["message"];
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(message),
-              backgroundColor: Colors.red,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              duration: const Duration(seconds: 2),
-            ),
-          );
-          print("failed");
-        }
-      } catch (error) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OtpPage(email: emailController.text),
+          ),
+        );
+      } else {
+        var data = jsonDecode(response.body.toString());
+        var message = data["message"];
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+        print("failed");
       }
+    } catch (error) {}
   }
 
   @override
@@ -199,7 +191,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ))),
                   validator: _validateEmail,
                 ),
-
                 SizedBox(height: 40.0),
                 Container(
                   width: 140.0,
@@ -214,7 +205,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         prefs.setString(
                             'email', emailController.text.toString());
 
-
                         generateOTP(emailController.text.toString());
 
                         /*ScaffoldMessenger.of(context).showSnackBar(
@@ -227,10 +217,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             duration: const Duration(seconds: 2),
                           ),
                         );*/
-
-
                       }
-                     /* Navigator.push(
+                      /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
