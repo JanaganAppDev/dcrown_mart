@@ -53,20 +53,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Future<void> generateOTP(String email) async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
-      final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
-      print(emailController.text.toString());
+    final url = Uri.parse("http://192.168.1.10:5000/api/forgots/forgot");
+    print(emailController.text.toString());
+
 
       try {
         final response = await http.post(url,
           body: {
-            "email": email,
+            "email": '$email',
           },
         );
-        print(response.body);
+        var data = jsonDecode(response.body);
+        print(data);
 
         print(emailController.text);
         if (response.statusCode == 200) {
-          var data = jsonDecode(response.body.toString());
+
           print(response.body);
           var message = data["message"];
           var user_id = data["user_id"];
@@ -76,12 +78,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           await
           SharedPreferences.getInstance();
           print('user_id: $user_id');
-          prefs.setString('userId', user_id);
-          // print("sf");
-          final user = await prefs.getString("userId");
-          print('user from SharedPreferences: $user');
           await prefs.remove('userId');
-          print("fazil");
+          prefs.setString('userId', user_id.toString());
+          print("sf");
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -103,8 +102,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           );
         } else {
-          var data = jsonDecode(response.body.toString());
-          var message = data["message"];
+           var data = jsonDecode(response.body.toString());
+           var message = data["message"];
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(message),
@@ -210,6 +209,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           await SharedPreferences.getInstance();
                       print("test");
 
+                      prefs.remove("email");
                       if (_formKey.currentState!.validate()) {
                         prefs.setString(
                             'email', emailController.text.toString());
