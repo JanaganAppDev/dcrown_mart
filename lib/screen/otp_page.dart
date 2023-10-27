@@ -21,6 +21,7 @@ class _OtpPageState extends State<OtpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
   String i = "";
+  String userId = '';
 
   List<TextEditingController> otpControllers = List.generate(
     6,
@@ -36,14 +37,14 @@ class _OtpPageState extends State<OtpPage> {
 
   void otp(String otp) async {
     try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      /*final SharedPreferences prefs = await SharedPreferences.getInstance();
       var user_id = await prefs.getString('user_id');
-      print(user_id);
+      print(user_id);*/
 
-      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/71");
+      final url = Uri.parse("http://localhost:5000/api/forgots/otpVerify/72");
       print("object");
       print(otp);
-      print(user_id);
+      //print(user_id);
 
       final response = await http.post(url, body: {
         "otp": otp,
@@ -54,9 +55,10 @@ class _OtpPageState extends State<OtpPage> {
         //var globalVariable = data["token"];
         var message = data["message"];
         //var user_id = data["user_id"];
-        print(user_id);
+        print(userId);
+
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(response.body),
+          content: Text(message),
           backgroundColor: Colors.green,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
@@ -65,7 +67,6 @@ class _OtpPageState extends State<OtpPage> {
           duration: Duration(seconds: 2),
         ));
 
-        // Check if the response indicates OTP verification success
         /*if (globalVariable == "OTP verified successfully") {
           setState(() {
             isOtpValid = true;
@@ -81,10 +82,11 @@ class _OtpPageState extends State<OtpPage> {
             duration: Duration(seconds: 2),
           ));
 
-          */ /*Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => NewPassword()),
-          );*/ /*
+          */
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NewPassword()),
+        ); /*
         }*/ /*else {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(response.body),
@@ -98,8 +100,10 @@ class _OtpPageState extends State<OtpPage> {
           print("failed");
         }*/
       } else {
+        var data = jsonDecode(response.body.toString());
+        var message = data["message"];
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(response.body),
+          content: Text(message),
           backgroundColor: Colors.redAccent,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
@@ -121,6 +125,10 @@ class _OtpPageState extends State<OtpPage> {
     super.initState();
     isOtpValid = false;
 
+    print(userId);
+
+    _getUserIDFromSharedPreferences();
+
     for (int i = 0; i < otpControllers.length; i++) {
       otpControllers[i].text = '';
       otpControllers[i].addListener(() {
@@ -139,6 +147,17 @@ class _OtpPageState extends State<OtpPage> {
         timer.cancel();
       }
     });
+  }
+
+  void _getUserIDFromSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedUserID = prefs.getString('userId');
+    if (storedUserID != null) {
+      setState(() {
+        userId = storedUserID;
+        print(userId);
+      });
+    }
   }
 
   @override
