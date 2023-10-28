@@ -1,68 +1,49 @@
 import 'package:flutter/material.dart';
 
-/*class CategoryPage extends StatefulWidget {
-  const CategoryPage({super.key});
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key}) : super(key: key);
 
   @override
-  State<CategoryPage> createState() => _CategoryPageState();
-}*/
+  _CategoryPageState createState() => _CategoryPageState();
+}
 
-
-
-
-//class _CategoryPage extends State<CategoryPage> {
-  List<String> countries = ["Brazil", "Nepal", "India", "China", "USA", "Canada"];
+class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Horizonatl ListView"),
-          backgroundColor: Colors.redAccent,
-        ),
 
-        body: Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-
-                Container(
-                    height: 100,
-                    child:ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: countries.map((country){
-                        return box(country, Colors.deepPurpleAccent);
-                      }).toList(),
-                    )
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Container(
+          color: Colors.yellow,
+          margin: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
+          height: 150.0,
+          child: Row(
+            children: <Widget>[
+              for (int i = 0; i < 10; i++)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 30.0,
+                        backgroundColor: Colors.white,
+                      ),
+                      SizedBox(height: 8.0), // Add space between CircleAvatar and text
+                      Text(
+                        'grocery',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-
-                Container(
-                    height: 100,
-                    child:SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child:Row(
-                          children: countries.map((country){
-                            return box(country, Colors.deepOrangeAccent);
-                          }).toList(),
-                        )
-                    )
-                )
-
-              ],
-            )
-        )
-
+            ],
+          ),
+        ),
+      ),
     );
   }
-
-  Widget box(String title, Color backgroundcolor){
-    return Container(
-        margin: EdgeInsets.all(10),
-        width: 80,
-        color: backgroundcolor,
-        alignment: Alignment.center,
-        child: Text(title, style:TextStyle(
-            color: Colors.white,
-            fontSize: 20))
-    );
-  }
-//}
+}
