@@ -98,7 +98,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(message),
-            backgroundColor: Colors.red,
+            backgroundColor: Colors .red,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)),
