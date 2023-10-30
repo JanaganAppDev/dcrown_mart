@@ -15,10 +15,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.yellow[600],
-          /*leading: IconButton(
-          icon: Icon(Icons.menu), // Drawer button
-          onPressed: () {},
-        ),*/
           title: Row(
             children: [
               CircleAvatar(
@@ -115,14 +111,13 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 color: Colors.white,
-                height: 100, // Set the height of the container to 100
+                height: 100,
                 child: Row(
                   children: [
                     Expanded(
                       child: ListView.builder(
-                        scrollDirection: Axis
-                            .horizontal, // Make the list scroll horizontally
-                        itemCount: 10, // Adjust the number of boxes as needed
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
                         itemBuilder: (context, index) {
                           return Container(
                             width: 80,
@@ -142,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             child: Center(
                               child: Icon(
-                                Icons.phone_android, // Add the mobile icon
+                                Icons.phone_android,
                                 size: 30,
                                 color: Colors.grey[800],
                               ),
