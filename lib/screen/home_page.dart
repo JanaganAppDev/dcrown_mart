@@ -25,7 +25,10 @@ class _HomePageState extends State<HomePage> {
                 backgroundImage: AssetImage("assets/crown_img.jpg"),
               ),
               SizedBox(width: 8),
-              Text("Dcrown Mart"),
+              Text(
+                "Dcrown Mart",
+                style: TextStyle(fontSize: 19),
+              ),
             ],
           ),
           centerTitle: false,
@@ -100,14 +103,55 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
+                color: Colors.white,
                 child: Center(
                   child: Image.asset("assets/fruits.png",
                       width: 400.0, height: 200.0),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                height: 100, // Set the height of the container to 100
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis
+                            .horizontal, // Make the list scroll horizontally
+                        itemCount: 10, // Adjust the number of boxes as needed
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 80,
+                            height: 80,
+                            margin: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 4,
+                                  spreadRadius: -2.1,
+                                  offset: Offset(-3, 3),
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.phone_android, // Add the mobile icon
+                                size: 30,
+                                color: Colors.grey[800],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
