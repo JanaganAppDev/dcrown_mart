@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +79,10 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Text("Feedback"),
                 leading: Icon(Icons.lightbulb),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FeedBackPage()));
+                },
               ),
               ListTile(
                 title: Text("Contact Us"),
@@ -95,6 +99,48 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.logout),
                 onTap: () {},
               ),
+              ListTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "About",
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Privacy Policy",
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Terms & Conditions",
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -102,13 +148,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                color: Colors.white,
-                child: Center(
-                  child: Image.asset("assets/fruits.png",
-                      width: 400.0, height: 200.0),
-                ),
-              ),
+              Image.asset("assets/fruits.png", width: 400.0, height: 200.0),
               Container(
                 color: Colors.white,
                 height: 100,
@@ -149,6 +189,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              Image.asset("assets/superdeals.png", width: 400.0, height: 400.0),
             ],
           ),
         ));
