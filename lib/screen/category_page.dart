@@ -28,7 +28,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       children: [
                         CircleAvatar(
                           radius: 25.0,
-                          backgroundImage: AssetImage("assets/crown_img.jpg"),
+                          backgroundImage: AssetImage('assets/fruits.png'),
                         ),
                         SizedBox(height: 4.0),
                         Text('grocery'),
@@ -38,7 +38,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 },
               ),
             ),
-            SizedBox(height: 16.0), // Add a SizedBox with 16.0 pixels of height
+            SizedBox(height: 20.0),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -46,40 +46,250 @@ class _CategoryPageState extends State<CategoryPage> {
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white, // Change the color to your desired color
-                borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey, // Shadow color
-                    blurRadius: 5.0, // Spread of the shadow
-                    offset: Offset(0, 2), // Shadow offset (x, y)
-                  ),
-                ],
-              ),
-              height: 180.0, // Set the height of the container
-              width: 150.0, // Set the fixed width of the container
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align the content to the left
-                mainAxisAlignment: MainAxisAlignment.end, // Align the content to the bottom
-                children: [
-                  Image.asset('dishwash.jpeg',height: 100.0,width: 100.0,alignment: Alignment.center,), // Replace 'assets/your_image.png' with your image path
-                  SizedBox(height: 4.0), // Add spacing between the image and the text
-                  Text(
-                    "DISHWASH LIQUID",
-                    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                  SizedBox(height: 3.0),
-                  Text("Rs 150",style: TextStyle(fontSize:10.0,fontWeight: FontWeight.bold,color: Colors.yellow),
-                  )
-                ],
+            SizedBox(height: 10.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                height: 180.0,
+                width: 150.0,
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'dishwash.jpeg',
+                          height: 100.0,
+                          width: 100.0,
+                          alignment: Alignment.center,
+                        ),
+                        SizedBox(height: 4.0),
+                        Text(
+                          "DISHWASH LIQUID",
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 3.0),
+                        Row(
+                          children: [
+                            Text(
+                              "Rs150",
+                              style: TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.yellow),
+                            ),
+                            SizedBox(width: 5.0),
+                            Text(
+                              "Rs 200",
+                              style: TextStyle(
+                                fontSize: 10.0,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                            SizedBox(width: 29.0),
+                            Positioned(
+                              bottom: 8.0,
+                              right: 8.0,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Icon(Icons.add),
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(5, 5),
+                                  backgroundColor: Colors.yellow[700],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-
-
-
-
+            SizedBox(height: 20.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Popular Products",
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                height: 180.0,
+                width: 150.0,
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'dishwash.jpeg',
+                          height: 100.0,
+                          width: 100.0,
+                          alignment: Alignment.center,
+                        ),
+                        SizedBox(height: 4.0),
+                        Text(
+                          "DISHWASH LIQUID",
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 3.0),
+                        Row(
+                          children: [
+                            Text(
+                              "Rs150",
+                              style: TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.yellow),
+                            ),
+                            SizedBox(width: 5.0),
+                            Text(
+                              "Rs 200",
+                              style: TextStyle(
+                                fontSize: 10.0,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                            SizedBox(width: 29.0),
+                            Positioned(
+                              bottom: 8.0,
+                              right: 8.0,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Icon(Icons.add),
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(5, 5),
+                                  backgroundColor: Colors.yellow[700],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "New Products",
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                height: 180.0,
+                width: 150.0,
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'dishwash.jpeg',
+                          height: 100.0,
+                          width: 100.0,
+                          alignment: Alignment.center,
+                        ),
+                        SizedBox(height: 4.0),
+                        Text(
+                          "DISHWASH LIQUID",
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 3.0),
+                        Row(
+                          children: [
+                            Text(
+                              "Rs150",
+                              style: TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.yellow),
+                            ),
+                            SizedBox(width: 5.0),
+                            Text(
+                              "Rs 200",
+                              style: TextStyle(
+                                fontSize: 10.0,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                            SizedBox(width: 29.0),
+                            Positioned(
+                              bottom: 8.0,
+                              right: 8.0,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Icon(Icons.add),
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(5, 5),
+                                  backgroundColor: Colors.yellow[700],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
