@@ -9,6 +9,8 @@ class FeedBackPage extends StatefulWidget {
 }
 
 class _FeedBackPageState extends State<FeedBackPage> {
+  int _selectedRating = 0;
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -17,7 +19,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow[600],
-        title: Text("FeedBack"),
+        title: Text("Feedback"),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -61,16 +63,44 @@ class _FeedBackPageState extends State<FeedBackPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       5,
-                      (index) => Icon(
-                        Icons.star,
-                        size: 50.0,
-                        color: Colors.grey[300],
+                      (index) => GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _selectedRating = index + 1;
+                          });
+                        },
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                          color: (index < _selectedRating)
+                              ? Colors.yellow[600]
+                              : Colors.grey[300],
+                        ),
                       ),
                     ),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(hintText: "Type Feedback..."),
-                  )
+                  SizedBox(height: 20.0),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(hintText: "Type Feedback..."),
+                    ),
+                  ),
+                  Container(
+                    width: 140.0,
+                    height: 50.0,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print("Rating: $_selectedRating");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow[700],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Text("Submit"),
+                    ),
+                  ),
                 ],
               ),
             ),
