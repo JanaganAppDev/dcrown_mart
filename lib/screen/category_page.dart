@@ -39,12 +39,26 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             SizedBox(height: 20.0),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "crown super deals",
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "crown super deals",
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                TextButton(
+                  onPressed:(){},
+                  child: Text(
+                    "view all >",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 10.0),
             Align(
@@ -123,12 +137,26 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             SizedBox(height: 20.0),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Popular Products",
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Popular Products",
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                TextButton(
+                  onPressed:(){},
+                  child: Text(
+                    "view all >",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 20.0),
             Align(
@@ -207,12 +235,26 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             SizedBox(height: 10.0),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "New Products",
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "New Prodducts",
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                TextButton(
+                  onPressed:(){},
+                  child: Text(
+                    "view all >",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 20.0),
             Align(
