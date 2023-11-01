@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dcrown_mart/screen/feedback_page.dart';
+import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,10 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Text("My Orders"),
                 leading: Icon(Icons.shopping_cart),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyCartPage()));
+                },
               ),
               ListTile(
                 title: Text("My Address"),
@@ -170,8 +174,8 @@ class _HomePageState extends State<HomePage> {
                                 BoxShadow(
                                   color: Colors.grey,
                                   blurRadius: 4,
-                                  spreadRadius: -2.1,
-                                  offset: Offset(-3, 3),
+                                  spreadRadius: 0,
+                                  offset: Offset(0, 0),
                                 ),
                               ],
                             ),
