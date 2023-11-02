@@ -19,7 +19,13 @@ class _MyCartPageState extends State<MyCartPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorPrimary,
-        title: Text("My Cart"),
+        title: Text(
+          "MY Cart",
+          style: TextStyle(
+            fontSize: 16.0,
+            color: colorWhite,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -35,20 +41,20 @@ class _MyCartPageState extends State<MyCartPage> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(2.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     margin: EdgeInsets.all(8),
                     height: 100.0,
                     width: screenWidth,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: colorWhite,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey,
+                          color: colorGrey,
                           blurRadius: 4,
                           spreadRadius: 0,
                           offset: Offset(0, 0),
@@ -63,45 +69,98 @@ class _MyCartPageState extends State<MyCartPage> {
                         Column(
                           children: [
                             SizedBox(height: 10.0),
-                            Text(
-                              "DISHWASH LIQUID",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.grey[700],
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  "DISHWASH LIQUID",
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: colorGrey2,
+                                  ),
+                                ),
+                                SizedBox(width: 250),
+                                IconButton(
+                                  icon: Icon(Icons.delete_forever),
+                                  onPressed: () {},
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 10.0),
-                            Text(
-                              "Rs.150",
-                              style: TextStyle(
-                                color: colorPrimary,
-                              ),
-                            ),
-                            SizedBox(height: 5.0),
-                            Container(
-                              height: 25.0,
-                              width: 70.0,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20.0),
-                                border: Border.all(
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Rs.150",
+                                style: TextStyle(
                                   color: colorPrimary,
                                 ),
                               ),
-                              child: Center(
-                                child: Text(
-                                  "500ML",
-                                  style: TextStyle(
-                                    fontSize: 13.0,
-                                    color: Colors.grey[700],
+                            ),
+                            SizedBox(height: 5.0),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 25.0,
+                                  width: 70.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    border: Border.all(
+                                      color: colorPrimary,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "500ML",
+                                      style: TextStyle(
+                                        fontSize: 13.0,
+                                        color: colorGrey2,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                SizedBox(width: 220),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (itemCount > 0) {
+                                        itemCount--;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    height: 25.0,
+                                    width: 70.0,
+                                    decoration: BoxDecoration(
+                                      color: colorWhite,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      border: Border.all(
+                                        color: colorPrimary,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(Icons.remove,
+                                            color: colorBlack, size: 16),
+                                        Text(
+                                          itemCount.toString(),
+                                          style: TextStyle(
+                                            fontSize: 13.0,
+                                            color: colorBlack,
+                                          ),
+                                        ),
+                                        Icon(Icons.add,
+                                            color: colorBlack, size: 16),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        SizedBox(width: 50.0),
-                        Column(
+                        //SizedBox(width: 50.0),
+                        /*Column(
                           children: [
                             SizedBox(height: 10.0),
                             IconButton(
@@ -121,7 +180,7 @@ class _MyCartPageState extends State<MyCartPage> {
                                 height: 25.0,
                                 width: 70.0,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: colorWhite,
                                   borderRadius: BorderRadius.circular(20.0),
                                   border: Border.all(
                                     color: colorPrimary,
@@ -131,21 +190,23 @@ class _MyCartPageState extends State<MyCartPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Icon(Icons.remove, color: Colors.yellow),
+                                    Icon(Icons.remove,
+                                        color: colorBlack, size: 16),
                                     Text(
                                       itemCount.toString(),
                                       style: TextStyle(
                                         fontSize: 13.0,
-                                        color: Colors.grey[700],
+                                        color: colorBlack,
                                       ),
                                     ),
-                                    Icon(Icons.add, color: Colors.yellow),
+                                    Icon(Icons.add,
+                                        color: colorBlack, size: 16),
                                   ],
                                 ),
                               ),
                             ),
                           ],
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -163,25 +224,33 @@ class _MyCartPageState extends State<MyCartPage> {
                   Text(
                     "1 Item | Rs150",
                     style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
+                      color: colorBlack,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.0,
                     ),
                   ),
                   SizedBox(width: 100.0),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: colorWhite,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text(
-                      "Order   >",
-                      style: TextStyle(
-                        color: colorAccent,
-                        fontSize: 16.0,
-                      ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Order",
+                          style: TextStyle(
+                            color: colorAccent,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        SizedBox(width: 15.0),
+                        Icon(Icons.arrow_forward_ios,
+                            color: colorBlack, size: 15, weight: 20),
+                      ],
                     ),
                   ),
                 ],
