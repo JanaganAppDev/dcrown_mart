@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../const.dart';
 
+
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key}) : super(key: key);
 
@@ -151,7 +152,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               right: 8.0,
                               child: ElevatedButton(
                                 onPressed: () {},
-                                child: Icon(Icons.add),
+                                child: Icon(Icons.add_circle),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
                                   backgroundColor: golden,
@@ -282,7 +283,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               right: 8.0,
                               child: ElevatedButton(
                                 onPressed: () {},
-                                child: Icon(Icons.add),
+                                child: Icon(Icons.add_circle),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
                                   backgroundColor:golden ,
@@ -413,7 +414,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               right: 8.0,
                               child: ElevatedButton(
                                 onPressed: () {},
-                                child: Icon(Icons.add),
+                                child: Icon(Icons.add_circle),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
                                   backgroundColor: golden,
