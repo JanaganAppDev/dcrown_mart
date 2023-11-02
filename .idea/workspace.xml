@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- feedback page functions and My cart Page UI">
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- My cart Page UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/const.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/const.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/feedback_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/feedback_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/mycart_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/mycart_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/otp_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/otp_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697602338763</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Kathiresh- My cart Page UI">
+      <created>1698898146086</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698898146086</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +176,7 @@
     <MESSAGE value="Kathiresh- completed otp page timer and full UI design" />
     <MESSAGE value="Aravind- api intergation pedding" />
     <MESSAGE value="Aravind- newpassword api intergation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aravind- newpassword api intergation" />
+    <MESSAGE value="Kathiresh- My cart Page UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- My cart Page UI" />
   </component>
 </project>

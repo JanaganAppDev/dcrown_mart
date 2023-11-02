@@ -120,7 +120,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorWhite,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -131,16 +131,16 @@ class _SignupPageState extends State<SignupPage> {
               "Let's get Started!",
               style: TextStyle(
                 fontSize: 18.0,
-                color: Colors.black,
+                color: colorBlack,
                 fontWeight: FontWeight.w700,
               ),
             ),
             SizedBox(height: 10.0),
             Text(
-              "Create an account on to use all the features",
+              "Create an account on to use all \n                   the features",
               style: TextStyle(
                 fontSize: 15.0,
-                color: Colors.black,
+                color: colorGrey1,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -158,27 +158,28 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     validator: validateName,
                     controller: nameController,
-                    cursorColor: Colors.grey[700],
+                    cursorColor: colorGrey1,
                     decoration: InputDecoration(
                       hintText: "Name",
                       filled: true,
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.person, color: Colors.grey),
+                      fillColor: colorWhite,
+                      prefixIcon: Icon(Icons.person, color: colorGrey),
+                      hintStyle: TextStyle(color: colorGrey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.yellow),
+                        borderSide: BorderSide(color: colorPrimary),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             _isButtonClicked ? 30.0 : 20.0),
                         borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimary,
                         ),
                       ),
                     ),
@@ -187,27 +188,28 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     validator: _validateEmail,
                     controller: emailController,
-                    cursorColor: Colors.grey[700],
+                    cursorColor: colorGrey1,
                     decoration: InputDecoration(
                       hintText: "Email",
                       filled: true,
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.email, color: Colors.grey),
+                      fillColor: colorWhite,
+                      prefixIcon: Icon(Icons.email, color: colorGrey),
+                      hintStyle: TextStyle(color: colorGrey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.yellow),
+                        borderSide: BorderSide(color: colorPrimary),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             _isButtonClicked ? 30.0 : 20.0),
                         borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimary,
                         ),
                       ),
                     ),
@@ -224,20 +226,21 @@ class _SignupPageState extends State<SignupPage> {
                             }
                             return null;
                           },
-                          cursorColor: Colors.grey[700],
+                          cursorColor: colorGrey1,
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.white,
+                            fillColor: colorWhite,
                             suffixIcon:
-                                Icon(Icons.arrow_drop_down, color: Colors.grey),
+                                Icon(Icons.arrow_drop_down, color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
-                              borderSide: BorderSide(color: Colors.yellow),
+                              borderSide: BorderSide(color: colorPrimary),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(
-                                color: Colors.yellow,
+                                color: colorPrimary,
                               ),
                             ),
                             border: OutlineInputBorder(
@@ -245,9 +248,8 @@ class _SignupPageState extends State<SignupPage> {
                                 _isButtonClicked ? 30.0 : 20.0,
                               ),
                               borderSide: BorderSide(
-                                color: _isButtonClicked
-                                    ? Colors.red
-                                    : Colors.yellow,
+                                color:
+                                    _isButtonClicked ? colorRed : colorPrimary,
                               ),
                             ),
                           ),
@@ -266,21 +268,22 @@ class _SignupPageState extends State<SignupPage> {
                             return null;
                           },
                           controller: mobileController,
-                          cursorColor: Colors.grey[700],
+                          cursorColor: colorGrey1,
                           decoration: InputDecoration(
                             hintText: "Mobile",
                             filled: true,
-                            fillColor: Colors.white,
+                            fillColor: colorWhite,
                             prefixIcon:
-                                Icon(Icons.mobile_friendly, color: Colors.grey),
+                                Icon(Icons.mobile_friendly, color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
-                              borderSide: BorderSide(color: Colors.yellow),
+                              borderSide: BorderSide(color: colorPrimary),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(
-                                color: Colors.yellow,
+                                color: colorPrimary,
                               ),
                             ),
                             border: OutlineInputBorder(
@@ -288,9 +291,8 @@ class _SignupPageState extends State<SignupPage> {
                                 _isButtonClicked ? 30.0 : 20.0,
                               ),
                               borderSide: BorderSide(
-                                color: _isButtonClicked
-                                    ? Colors.red
-                                    : Colors.yellow,
+                                color:
+                                    _isButtonClicked ? colorRed : colorPrimary,
                               ),
                             ),
                           ),
@@ -303,18 +305,18 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     validator: _validatePassword,
                     controller: passwordController,
-                    cursorColor: Colors.grey[700],
+                    cursorColor: colorGrey1,
                     decoration: InputDecoration(
                       hintText: "Password",
                       filled: true,
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                      fillColor: colorWhite,
+                      prefixIcon: Icon(Icons.lock, color: colorGrey),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _passwordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.grey,
+                          color: colorGrey1,
                         ),
                         onPressed: () {
                           setState(() {
@@ -322,21 +324,22 @@ class _SignupPageState extends State<SignupPage> {
                           });
                         },
                       ),
+                      hintStyle: TextStyle(color: colorGrey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.yellow),
+                        borderSide: BorderSide(color: colorPrimary),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             _isButtonClicked ? 30.0 : 20.0),
                         borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimary,
                         ),
                       ),
                     ),
@@ -345,19 +348,19 @@ class _SignupPageState extends State<SignupPage> {
                   SizedBox(height: 15.0),
                   TextFormField(
                     controller: confirmPass,
-                    cursorColor: Colors.grey[700],
+                    cursorColor: colorGrey1,
                     validator: _validatePasswordConfirmation,
                     decoration: InputDecoration(
                       hintText: "Confirm Password",
                       filled: true,
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                      fillColor: colorWhite,
+                      prefixIcon: Icon(Icons.lock, color: colorGrey),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _confirmpasswordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.grey,
+                          color: colorGrey1,
                         ),
                         onPressed: () {
                           setState(() {
@@ -365,21 +368,22 @@ class _SignupPageState extends State<SignupPage> {
                           });
                         },
                       ),
+                      hintStyle: TextStyle(color: colorGrey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(color: Colors.yellow),
+                        borderSide: BorderSide(color: colorPrimary),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             _isButtonClicked ? 30.0 : 20.0),
                         borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimary,
                         ),
                       ),
                     ),
@@ -407,15 +411,15 @@ class _SignupPageState extends State<SignupPage> {
                               rememberMe = value!;
                             });
                           },
-                          activeColor: Colors.yellow,
+                          activeColor: colorPrimary,
                         ),
                       ),
                     ),
                     Text(
-                      "By signing up, you agree to our Terms and Policy",
+                      "By signing up, you agree to our Terms and \nPolicy",
                       style: TextStyle(
                         fontSize: 14.0,
-                        color: Colors.grey[700],
+                        color: colorGrey2,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -427,7 +431,7 @@ class _SignupPageState extends State<SignupPage> {
             Center(
               child: Container(
                 width: 140.0,
-                height: 50.0,
+                height: 45.0,
                 child: ElevatedButton(
                   onPressed: () {
                     /* signup(
@@ -448,10 +452,12 @@ class _SignupPageState extends State<SignupPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow[700],
+                    backgroundColor: colorPrimary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
+                    shadowColor: colorGrey,
+                    elevation: 8,
                   ),
                   child: Text("Signup"),
                 ),
@@ -466,7 +472,7 @@ class _SignupPageState extends State<SignupPage> {
                     "If you have an account?",
                     style: TextStyle(
                       fontSize: 12.0,
-                      color: Colors.grey[700],
+                      color: colorBlack,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -478,7 +484,7 @@ class _SignupPageState extends State<SignupPage> {
                     child: Text(
                       "Login Here",
                       style: TextStyle(
-                        color: Colors.yellow,
+                        color: colorPrimary,
                       ),
                     ),
                   ),
