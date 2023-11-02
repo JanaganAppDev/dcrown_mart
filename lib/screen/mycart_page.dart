@@ -1,3 +1,4 @@
+import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -17,7 +18,7 @@ class _MyCartPageState extends State<MyCartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow[600],
+        backgroundColor: colorPrimary,
         title: Text("My Cart"),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -38,7 +39,6 @@ class _MyCartPageState extends State<MyCartPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Your existing cart item here
                   Container(
                     margin: EdgeInsets.all(8),
                     height: 100.0,
@@ -74,7 +74,7 @@ class _MyCartPageState extends State<MyCartPage> {
                             Text(
                               "Rs.150",
                               style: TextStyle(
-                                color: Colors.yellow[500],
+                                color: colorPrimary,
                               ),
                             ),
                             SizedBox(height: 5.0),
@@ -85,7 +85,7 @@ class _MyCartPageState extends State<MyCartPage> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(20.0),
                                 border: Border.all(
-                                  color: Colors.yellow,
+                                  color: colorPrimary,
                                 ),
                               ),
                               child: Center(
@@ -124,7 +124,7 @@ class _MyCartPageState extends State<MyCartPage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20.0),
                                   border: Border.all(
-                                    color: Colors.yellow,
+                                    color: colorPrimary,
                                   ),
                                 ),
                                 child: Row(
@@ -153,9 +153,8 @@ class _MyCartPageState extends State<MyCartPage> {
               ),
             ),
           ),
-          // New container at the bottom
           Container(
-            color: Colors.yellow[600],
+            color: colorPrimary,
             height: 60.0,
             child: Center(
               child: Row(
@@ -180,7 +179,7 @@ class _MyCartPageState extends State<MyCartPage> {
                     child: Text(
                       "Order   >",
                       style: TextStyle(
-                        color: Colors.yellow,
+                        color: colorAccent,
                         fontSize: 16.0,
                       ),
                     ),

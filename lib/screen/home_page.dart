@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
+import 'package:dcrown_mart/const.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
@@ -16,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.yellow[600],
+          backgroundColor: colorPrimary,
           title: Row(
             children: [
               CircleAvatar(
@@ -46,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         drawer: Drawer(
-          backgroundColor: Colors.white,
+          backgroundColor: colorWhite,
           child: ListView(
             children: <Widget>[
               UserAccountsDrawerHeader(
@@ -56,51 +58,103 @@ class _HomePageState extends State<HomePage> {
                   backgroundImage: AssetImage("assets/profile.png"),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.yellow,
+                  color: colorPrimary,
                 ),
               ),
               ListTile(
-                title: Text("Home"),
-                leading: Icon(Icons.home),
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.home, color: colorBlack),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => HomePage()));
                 },
               ),
               ListTile(
-                title: Text("My Orders"),
-                leading: Icon(Icons.shopping_cart),
+                title: Text(
+                  "My Orders",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.shopping_cart, color: colorBlack),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyCartPage()));
                 },
               ),
               ListTile(
-                title: Text("My Address"),
-                leading: Icon(Icons.location_on),
-                onTap: () {},
+                title: Text(
+                  "My Address",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.location_on, color: colorBlack),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CategoryPage()));
+                },
               ),
               ListTile(
-                title: Text("Feedback"),
-                leading: Icon(Icons.lightbulb),
+                title: Text(
+                  "Feedback",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.lightbulb, color: colorBlack),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => FeedBackPage()));
                 },
               ),
               ListTile(
-                title: Text("Contact Us"),
-                leading: Icon(Icons.chat_outlined),
+                title: Text(
+                  "Contact Us",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.chat_outlined, color: colorBlack),
                 onTap: () {},
               ),
               ListTile(
-                title: Text("Share"),
-                leading: Icon(Icons.share),
+                title: Text(
+                  "Share",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.share, color: colorBlack),
                 onTap: () {},
               ),
               ListTile(
-                title: Text("Logout"),
-                leading: Icon(Icons.logout),
+                title: Text(
+                  "Logout",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: colorBlack,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                leading: Icon(Icons.logout, color: colorBlack),
                 onTap: () {},
               ),
               ListTile(
@@ -111,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       "About",
                       style: TextStyle(
-                        color: Colors.grey[700],
+                        color: colorGrey2,
                       ),
                     ),
                   ),
@@ -125,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       "Privacy Policy",
                       style: TextStyle(
-                        color: Colors.grey[700],
+                        color: colorGrey2,
                       ),
                     ),
                   ),
@@ -139,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       "Terms & Conditions",
                       style: TextStyle(
-                        color: Colors.grey[700],
+                        color: colorGrey2,
                       ),
                     ),
                   ),
@@ -150,11 +204,14 @@ class _HomePageState extends State<HomePage> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset("assets/fruits.png", width: 400.0, height: 200.0),
+              Image.asset(
+                "assets/fruits.png",
+                // width: 400.0, height: 200.0
+              ),
               Container(
-                color: Colors.white,
+                color: colorWhite,
                 height: 100,
                 child: Row(
                   children: [
@@ -165,14 +222,14 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           return Container(
                             width: 80,
-                            height: 80,
+                            height: 60,
                             margin: EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: colorWhite,
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey,
+                                  color: colorGrey,
                                   blurRadius: 4,
                                   spreadRadius: 0,
                                   offset: Offset(0, 0),
@@ -180,10 +237,17 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: Center(
-                              child: Icon(
-                                Icons.phone_android,
-                                size: 30,
-                                color: Colors.grey[800],
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 12.0),
+                                  Icon(
+                                    Icons.phone_android,
+                                    size: 30,
+                                    color: colorGrey2,
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Text("Prepaid"),
+                                ],
                               ),
                             ),
                           );
@@ -193,7 +257,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Image.asset("assets/superdeals.png", width: 400.0, height: 400.0),
+              Image.asset(
+                "assets/superdeals.png",
+                //width: 400.0, height: 400.0
+              ),
             ],
           ),
         ));

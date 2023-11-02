@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/NewPassword.dart';
 import 'package:dcrown_mart/screen/ForgotPassword_page.dart';
 import 'package:flutter/material.dart';
@@ -184,9 +185,9 @@ class _OtpPageState extends State<OtpPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dcrown Mart"),
-        backgroundColor: Colors.yellow[600],
+        backgroundColor: colorPrimary,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: colorWhite,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -211,7 +212,7 @@ class _OtpPageState extends State<OtpPage> {
                 6,
                 (index) => Icon(
                   Icons.star,
-                  color: Colors.yellow[600],
+                  color: colorPrimary,
                 ),
               ),
             ),
@@ -360,7 +361,7 @@ class _OtpPageState extends State<OtpPage> {
                           }*/
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.yellow[700],
+                          backgroundColor: colorPrimary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dcrown_mart/const.dart';
 import 'home_page.dart';
 
 class FeedBackPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow[600],
+        backgroundColor: colorPrimary,
         title: Text("Feedback"),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -30,10 +31,11 @@ class _FeedBackPageState extends State<FeedBackPage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               margin: EdgeInsets.all(8),
+              padding: EdgeInsets.all(16),
               height: screenHeight,
               width: screenWidth,
               decoration: BoxDecoration(
@@ -54,7 +56,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                   Text(
                     "Please take a minute to write a review",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -71,7 +73,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         },
                         child: Icon(
                           Icons.star,
-                          size: 50.0,
+                          size: 45.0,
                           color: (index < _selectedRating)
                               ? Colors.yellow[600]
                               : Colors.grey[300],
@@ -82,7 +84,10 @@ class _FeedBackPageState extends State<FeedBackPage> {
                   SizedBox(height: 20.0),
                   Expanded(
                     child: TextFormField(
-                      decoration: InputDecoration(hintText: "Type Feedback..."),
+                      maxLines: 8,
+                      decoration: InputDecoration.collapsed(
+                          hintText: "Type feedback..."),
+                      //decoration: InputDecoration(hintText: "Type Feedback..."),
                     ),
                   ),
                   Container(
@@ -93,7 +98,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         print("Rating: $_selectedRating");
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.yellow[700],
+                        backgroundColor: colorPrimary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
