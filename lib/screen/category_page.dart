@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../const.dart';
+
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key}) : super(key: key);
 
@@ -12,11 +14,12 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              color: Colors.yellow,
+              color:  colorPrimary,
               height: 100.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -24,17 +27,29 @@ class _CategoryPageState extends State<CategoryPage> {
                 itemBuilder: (context, index) {
                   return Container(
                     padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        /*BoxShadow(
+                          color: colorGrey,
+                          blurRadius: 9.0,
+                          offset: Offset(0, 0),
+                        ),*/
+                      ],
+                    ),
                     child: Column(
                       children: [
                         CircleAvatar(
-                          radius: 25.0,
-                          backgroundImage: AssetImage('assets/fruits.png'),
+                          radius: 30.0,
+                          backgroundImage: AssetImage('assets/grocery icon.png'),
                         ),
                         SizedBox(height: 4.0),
-                        Text('grocery'),
+                        Text('grocery',style:TextStyle(color: colorWhite) ,),
                       ],
                     ),
+
                   );
+
                 },
               ),
             ),
@@ -49,15 +64,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                   ),
                 ),
-                TextButton(
-                  onPressed:(){},
-                  child: Text(
-                    "view all >",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+
               ],
             ),
             SizedBox(height: 10.0),
@@ -65,20 +72,41 @@ class _CategoryPageState extends State<CategoryPage> {
               alignment: Alignment.centerLeft,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: colorWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
+                      color: colorGrey,
                       blurRadius: 5.0,
                       offset: Offset(0, 2),
                     ),
                   ],
                 ),
-                height: 180.0,
+                height: 182.0,
                 width: 150.0,
                 child: Stack(
                   children: [
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          color:toolbar,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5.0),
+                          ),
+                        ),
+                        child: Text(
+                          "25%",
+                          style: TextStyle(
+                            color: colorWhite,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -93,19 +121,21 @@ class _CategoryPageState extends State<CategoryPage> {
                         Text(
                           "DISHWASH LIQUID",
                           style: TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: notificationTitle,
+                          ),
                         ),
                         SizedBox(height: 3.0),
                         Row(
                           children: [
                             Text(
-                              "Rs150",
+                              "Rs 150",
                               style: TextStyle(
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.yellow),
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                                color: colorPrimaryDark,
+                              ),
                             ),
                             SizedBox(width: 5.0),
                             Text(
@@ -115,7 +145,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 decoration: TextDecoration.lineThrough,
                               ),
                             ),
-                            SizedBox(width: 29.0),
+                            SizedBox(width: 27.0),
                             Positioned(
                               bottom: 8.0,
                               right: 8.0,
@@ -124,17 +154,17 @@ class _CategoryPageState extends State<CategoryPage> {
                                 child: Icon(Icons.add),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
-                                  backgroundColor: Colors.yellow[700],
+                                  backgroundColor: golden,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
+              )
             ),
             SizedBox(height: 20.0),
             Row(
@@ -148,35 +178,66 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                 ),
                 TextButton(
-                  onPressed:(){},
-                  child: Text(
-                    "view all >",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
+                  onPressed: () {},
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "View All ",
+                        style: TextStyle(
+                          color: notificationTitle,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_right,  // Replace with your desired icon
+                        color: Colors.black,
+                      ),
+                    ],
                   ),
-                ),
+                )
+
+
               ],
             ),
             SizedBox(height: 20.0),
             Align(
               alignment: Alignment.centerLeft,
-              child: Container(
+              child:Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: colorWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
+                      color:colorGrey,
                       blurRadius: 5.0,
                       offset: Offset(0, 2),
                     ),
                   ],
                 ),
-                height: 180.0,
+                height: 182.0,
                 width: 150.0,
                 child: Stack(
                   children: [
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          color:toolbar,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5.0),
+                          ),
+                        ),
+                        child: Text(
+                          "25%",
+                          style: TextStyle(
+                            color: colorWhite,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -191,19 +252,21 @@ class _CategoryPageState extends State<CategoryPage> {
                         Text(
                           "DISHWASH LIQUID",
                           style: TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: notificationTitle,
+                          ),
                         ),
                         SizedBox(height: 3.0),
                         Row(
                           children: [
                             Text(
-                              "Rs150",
+                              "Rs 150",
                               style: TextStyle(
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.yellow),
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                                color: colorPrimaryDark ,
+                              ),
                             ),
                             SizedBox(width: 5.0),
                             Text(
@@ -213,7 +276,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 decoration: TextDecoration.lineThrough,
                               ),
                             ),
-                            SizedBox(width: 29.0),
+                            SizedBox(width: 27.0),
                             Positioned(
                               bottom: 8.0,
                               right: 8.0,
@@ -222,17 +285,18 @@ class _CategoryPageState extends State<CategoryPage> {
                                 child: Icon(Icons.add),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
-                                  backgroundColor: Colors.yellow[700],
+                                  backgroundColor:golden ,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
+              )
+
             ),
             SizedBox(height: 10.0),
             Row(
@@ -246,14 +310,23 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                 ),
                 TextButton(
-                  onPressed:(){},
-                  child: Text(
-                    "view all >",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
+                  onPressed: () {},
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "View All ",
+                        style: TextStyle(
+                          color: notificationTitle,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_right,  // Replace with your desired icon
+                        color: notificationTitle,
+                      ),
+                    ],
                   ),
-                ),
+                )
+
               ],
             ),
             SizedBox(height: 20.0),
@@ -261,11 +334,11 @@ class _CategoryPageState extends State<CategoryPage> {
               alignment: Alignment.centerLeft,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: colorWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
+                      color: colorGrey,
                       blurRadius: 5.0,
                       offset: Offset(0, 2),
                     ),
@@ -275,6 +348,27 @@ class _CategoryPageState extends State<CategoryPage> {
                 width: 150.0,
                 child: Stack(
                   children: [
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          color:  toolbar,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5.0),
+                          ),
+                        ),
+                        child: Text(
+                          "25%", // Replace with your desired percentage
+                          style: TextStyle(
+                            color: colorWhite,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -289,19 +383,21 @@ class _CategoryPageState extends State<CategoryPage> {
                         Text(
                           "DISHWASH LIQUID",
                           style: TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: notificationTitle,
+                          ),
                         ),
                         SizedBox(height: 3.0),
                         Row(
                           children: [
                             Text(
-                              "Rs150",
+                              "Rs 150",
                               style: TextStyle(
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.yellow),
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                                color:  colorPrimaryDark,
+                              ),
                             ),
                             SizedBox(width: 5.0),
                             Text(
@@ -311,7 +407,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 decoration: TextDecoration.lineThrough,
                               ),
                             ),
-                            SizedBox(width: 29.0),
+                            SizedBox(width: 27.0),
                             Positioned(
                               bottom: 8.0,
                               right: 8.0,
@@ -320,17 +416,18 @@ class _CategoryPageState extends State<CategoryPage> {
                                 child: Icon(Icons.add),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(5, 5),
-                                  backgroundColor: Colors.yellow[700],
+                                  backgroundColor: golden,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
+              )
+              ,
             ),
           ],
         ),
