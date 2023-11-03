@@ -82,15 +82,17 @@ class _FeedBackPageState extends State<FeedBackPage> {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  Expanded(
-                    child: TextFormField(
-                      maxLines: 8,
-                      decoration: InputDecoration.collapsed(
-                          hintText: "Type feedback..."),
-                      //decoration: InputDecoration(hintText: "Type Feedback..."),
+                  TextField(
+                    cursorColor: colorGrey2,
+                    maxLines: 8,
+                    decoration: InputDecoration(
+                      hintText: "Type feedback...",
+                      hintStyle: TextStyle(color: colorGrey),
                     ),
                   ),
+                  SizedBox(height: 100.0),
                   Container(
+                    //margin: EdgeInsets.only(top: 60.0),
                     width: 140.0,
                     height: 50.0,
                     child: ElevatedButton(
