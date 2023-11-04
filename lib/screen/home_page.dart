@@ -41,9 +41,39 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.notifications),
               onPressed: () {},
             ),
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+            Align(
+              alignment: Alignment.center,
+              child: Stack(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.shopping_cart),
+                    onPressed: () {},
+                  ),
+                  Positioned(
+                    bottom: 6,
+                    right: 2,
+                    child: Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      constraints: BoxConstraints(
+                        minWidth: 16,
+                        minHeight: 16,
+                      ),
+                      child: Text(
+                        '0',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -52,14 +82,89 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             children: <Widget>[
               UserAccountsDrawerHeader(
-                accountName: Text("Yogesh krishna"),
-                accountEmail: Text("Free Member"),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/profile.png"),
-                ),
                 decoration: BoxDecoration(
                   color: colorPrimary,
                 ),
+                accountName: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage("assets/profile.png"),
+                      ),
+                      //SizedBox(width: 10.0),
+                      Column(
+                        children: [
+                          SizedBox(height: 20.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 70),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Yogesh krishna",
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: colorBlack,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          //SizedBox(height: 5.0),
+                          Row(
+                            children: [
+                              Text("Free Member"),
+                              SizedBox(width: 5.0),
+                              Container(
+                                width: 80.0,
+                                height: 20.0,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: toolbar,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Upgrade",
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: colorWhite,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      /*Container(
+                        width: 80.0,
+                        height: 20.0,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: toolbar,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: Text(
+                            "Upgrade",
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              color: colorWhite,
+                            ),
+                          ),
+                        ),
+                      ),*/
+                    ],
+                  ),
+                ),
+                accountEmail: Text(""),
               ),
               ListTile(
                 title: Text(
@@ -204,11 +309,13 @@ class _HomePageState extends State<HomePage> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 "assets/fruits.png",
-                // width: 400.0, height: 200.0
+                width: double.infinity,
+                //height: 200,
+                fit: BoxFit.cover,
               ),
               Container(
                 color: colorWhite,
@@ -259,7 +366,9 @@ class _HomePageState extends State<HomePage> {
               ),
               Image.asset(
                 "assets/superdeals.png",
-                //width: 400.0, height: 400.0
+                width: double.infinity,
+                //height: 200,
+                fit: BoxFit.cover,
               ),
             ],
           ),
