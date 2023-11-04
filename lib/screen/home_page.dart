@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
+import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -96,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                       //SizedBox(width: 10.0),
                       Column(
                         children: [
-                          SizedBox(height: 20.0),
+                          //SizedBox(height: 20.0),
                           Padding(
                             padding: const EdgeInsets.only(right: 70),
                             child: Row(
@@ -236,7 +237,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 leading: Icon(Icons.chat_outlined, color: colorBlack),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyOrderPage()));
+                },
               ),
               ListTile(
                 title: Text(
