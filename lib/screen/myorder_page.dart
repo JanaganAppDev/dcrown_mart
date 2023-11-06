@@ -93,24 +93,27 @@ class _MyOrderPageState extends State<MyOrderPage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 50.0),
-                          child: Container(
-                            height: 22.0,
-                            width: 80.0,
-                            decoration: BoxDecoration(
-                              color: colorWhite,
-                              borderRadius: BorderRadius.circular(20.0),
-                              border: Border.all(
-                                color: colorPrimary,
+                        GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 50.0),
+                            child: Container(
+                              height: 22.0,
+                              width: 80.0,
+                              decoration: BoxDecoration(
+                                color: colorWhite,
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(
+                                  color: colorPrimary,
+                                ),
                               ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Cancel",
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  color: colorGrey2,
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                    fontSize: 13.0,
+                                    color: colorGrey2,
+                                  ),
                                 ),
                               ),
                             ),
