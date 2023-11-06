@@ -3,6 +3,8 @@ import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
+import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/screen/login_page.dart';
