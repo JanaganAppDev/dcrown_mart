@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- order list page UI">
-      <change afterPath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" afterDir="false" />
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravind- newpassword api intergation">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/ForgotPassword_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/ForgotPassword_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
@@ -143,28 +145,7 @@
       <option name="project" value="LOCAL" />
       <updated>1697602338763</updated>
     </task>
-    <task id="LOCAL-00012" summary="Kathiresh- My cart Page UI , Home page , Feedback page">
-      <created>1699070567470</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1699070567470</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Kathiresh- my order page UI">
-      <created>1699100569308</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1699100569308</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Kathiresh- my order page UI">
-      <created>1699244264800</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1699244264800</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,9 +168,6 @@
     <MESSAGE value="Kathiresh- completed otp page timer and full UI design" />
     <MESSAGE value="Aravind- api intergation pedding" />
     <MESSAGE value="Aravind- newpassword api intergation" />
-    <MESSAGE value="Kathiresh- My cart Page UI , Home page , Feedback page" />
-    <MESSAGE value="Kathiresh- my order page UI" />
-    <MESSAGE value="Kathiresh- order list page UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- order list page UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aravind- newpassword api intergation" />
   </component>
 </project>
