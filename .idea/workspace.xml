@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- my order page UI">
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- order list page UI">
+      <change afterPath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/category_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/category_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/myorder_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/myorder_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/orderlist_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/orderlist_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +189,7 @@
     <MESSAGE value="Aravind- newpassword api intergation" />
     <MESSAGE value="Kathiresh- My cart Page UI , Home page , Feedback page" />
     <MESSAGE value="Kathiresh- my order page UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- my order page UI" />
+    <MESSAGE value="Kathiresh- order list page UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- order list page UI" />
   </component>
 </project>
