@@ -6,6 +6,7 @@ import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
+import 'package:dcrown_mart/screen/payment_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/screen/login_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UpgradePage(),
+      home: CategoryPage(),
     );
   }
 }
