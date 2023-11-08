@@ -3,6 +3,7 @@ import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -97,7 +98,6 @@ class _HomePageState extends State<HomePage> {
                       //SizedBox(width: 10.0),
                       Column(
                         children: [
-                          //SizedBox(height: 20.0),
                           Padding(
                             padding: const EdgeInsets.only(right: 70),
                             child: Row(
@@ -113,32 +113,43 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          //SizedBox(height: 5.0),
-                          Row(
-                            children: [
-                              Text("Free Member"),
-                              SizedBox(width: 5.0),
-                              Container(
-                                width: 80.0,
-                                height: 20.0,
-                                child: ElevatedButton(
-                                  onPressed: () {},
+                          Flexible(
+                            child: Row(
+                              children: [
+                                Text("Free Member"),
+                                SizedBox(width: 5.0),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => UpgradePage(),
+                                      ),
+                                    );
+                                  },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: toolbar,
+                                    backgroundColor:
+                                        toolbar, // Background color
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
                                   ),
-                                  child: Text(
-                                    "Upgrade",
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: colorWhite,
+                                  child: Container(
+                                    width: 70.0,
+                                    height: 20,
+                                    child: Center(
+                                      child: Text(
+                                        "Upgrade",
+                                        style: TextStyle(
+                                          fontSize: 13.0,
+                                          color: colorWhite,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       ),
