@@ -16,6 +16,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentIndex = 0; // Track the current image index
+  final List<String> imagePaths = [
+    "assets/fruits.png",
+    "assets/fruits.png",
+    "assets/fruits.png",
+  ];
+
+  void moveToNextImage() {
+    if (currentIndex < imagePaths.length - 1) {
+      setState(() {
+        currentIndex++;
+      });
+    }
+  }
+
+  void moveToPreviousImage() {
+    if (currentIndex > 0) {
+      setState(() {
+        currentIndex--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -326,11 +349,27 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/fruits.png",
-                width: double.infinity,
-                //height: 200,
-                fit: BoxFit.cover,
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/fruits.png",
+                      width: 500.0,
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      "assets/fruits.png",
+                      width: 500.0,
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      "assets/fruits.png",
+                      width: 500.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
               ),
               Container(
                 color: colorWhite,

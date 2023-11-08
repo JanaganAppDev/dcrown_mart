@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/screen/home_page.dart';
+import 'package:dcrown_mart/screen/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 
@@ -68,7 +69,7 @@ class _UpgradePageState extends State<UpgradePage> {
               Padding(
                 padding: EdgeInsets.only(top: 20.0),
                 child: TextFormField(
-                  cursorColor: colorGrey1,
+                  cursorColor: colorPrimary,
                   decoration: InputDecoration(
                     hintText: "Referral ID",
                     filled: true,
@@ -192,6 +193,66 @@ class _UpgradePageState extends State<UpgradePage> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 240.0),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Payment Amount",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
+                            ),
+                          ),
+                          Text(
+                            "₹ 99",
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                color: colorBlack,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "Handle fee: ₹ 0.00",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: 60.0,
+                            height: 35.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PaymentPage()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: toolbar,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Text("Pay"),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
