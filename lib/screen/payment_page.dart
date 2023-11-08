@@ -12,8 +12,8 @@ bool _isButtonClicked = false;
 
 class _PaymentPageState extends State<PaymentPage> {
   // Define a list of payment modes for the dropdown
-  List<String> paymentModes = ['Credit Card', 'Debit Card', 'UPI', 'PayPal'];
-  String selectedPaymentMode = 'Credit Card';
+  List<String> paymentModes = ['Select Payment Mode','Direct Bank Transfer', 'Google Pay', 'Phonepe', 'Others'];
+  String selectedPaymentMode = 'Select Payment Mode';
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _PaymentPageState extends State<PaymentPage> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'Pay to this account:\nName: crownmart\nBank: Aixs Bank\nBranch: Chennai\nAcc no: 12345657\nIFSC: axis1234567',
+                  'Pay to this account:\nName: crownmart\nBank: Axis Bank\nBranch: Chennai\nAcc no: 12345657\nIFSC: axis1234567',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -55,6 +55,7 @@ class _PaymentPageState extends State<PaymentPage> {
               Column(
                 children: [
                   TextFormField(
+                    cursorColor: colorPrimary,
                     decoration: InputDecoration(
                       hintText: '₹60',
                       focusedBorder: OutlineInputBorder(
@@ -69,82 +70,110 @@ class _PaymentPageState extends State<PaymentPage> {
                           color: Colors.yellow,
                         ),
                       ),
-                      border: OutlineInputBorder(
+
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+
+                      child: Container(
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
+                        border: Border.all(
                           color: _isButtonClicked ? Colors.red : Colors.yellow,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: DropdownButtonFormField<String>(
+                        value: selectedPaymentMode,
+                        onChanged: (newValue) {
+                          setState(() {
+                            selectedPaymentMode = newValue!;
+                          });
+                        },
+                        items: paymentModes.map((mode) {
+                          return DropdownMenuItem<String>(
+                            value: mode,
+                            child: Text(mode),
+                          );
+                        }).toList(),
+                      ),
+                    )
+
+
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+
+                    child: TextFormField(
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.account_balance,color: colorGrey2),
+                        hintText: 'Transaction ID',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: TextFormField(
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.image,color: colorGrey2),
+                        hintText: 'ScreenShot',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
                   Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      border: Border.all(
-                        color: _isButtonClicked ? Colors.red : Colors.yellow,
-                      ),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: DropdownButtonFormField<String>(
-                      value: selectedPaymentMode,
-                      onChanged: (newValue) {
-                        setState(() {
-                          selectedPaymentMode = newValue!;
-                        });
+                    //margin: EdgeInsets.only(top: 60.0),
+                    width: 140.0,
+                    height: 50.0,
+                    child: ElevatedButton(
+                      onPressed: () {
                       },
-                      items: paymentModes.map((mode) {
-                        return DropdownMenuItem<String>(
-                          value: mode,
-                          child: Text(mode),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.food_bank),
-                      hintText: 'Transaction ID',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colorPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'ScreenShot',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.yellow,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
-                        ),
-                      ),
+                      child: Text("Upload"),
                     ),
                   ),
                 ],
