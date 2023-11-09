@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/const.dart';
+import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -253,7 +254,12 @@ class _MyCartPageState extends State<MyCartPage> {
                   Padding(
                     padding: const EdgeInsets.only(right: 40),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyOrderPage()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorWhite,
                         shape: RoundedRectangleBorder(

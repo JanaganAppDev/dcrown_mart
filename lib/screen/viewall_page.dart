@@ -7,14 +7,22 @@ class ViewallPage extends StatefulWidget {
   @override
   State<ViewallPage> createState() => _ViewallPageState();
 }
-List<bool> addedToCart = [false , false , false, false,false,false,false,false];
 
+List<bool> addedToCart = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+];
 
 class _ViewallPageState extends State<ViewallPage> {
   @override
   Widget build(BuildContext context) {
     double screenHeigth = MediaQuery.of(context).size.height;
-
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +34,6 @@ class _ViewallPageState extends State<ViewallPage> {
           },
         ),
         title: Text('Popular Product'),
-
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -88,7 +95,7 @@ class _ViewallPageState extends State<ViewallPage> {
                               padding: EdgeInsets.only(left: 10.0),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Rs 150",
@@ -112,7 +119,8 @@ class _ViewallPageState extends State<ViewallPage> {
                                       child: ElevatedButton(
                                         onPressed: () {
                                           setState(() {
-                                            addedToCart[index] = !addedToCart[index];
+                                            addedToCart[index] =
+                                                !addedToCart[index];
                                           });
                                         },
                                         child: Center(
@@ -128,7 +136,7 @@ class _ViewallPageState extends State<ViewallPage> {
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(10.0),
                                               bottomRight:
-                                              Radius.circular(10.0),
+                                                  Radius.circular(10.0),
                                             ),
                                           ),
                                           textStyle: TextStyle(
