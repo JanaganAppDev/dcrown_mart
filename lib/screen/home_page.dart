@@ -15,6 +15,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+List<bool> addedToCart = [false , false , false];
+
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -429,7 +432,7 @@ class _HomePageState extends State<HomePage> {
                                 child: CircleAvatar(
                                   radius: 30.0,
                                   backgroundImage:
-                                      AssetImage('assets/grocery icon.png'),
+                                  AssetImage('assets/grocery icon.png'),
                                 ),
                               ),
                               SizedBox(height: 4.0),
@@ -452,8 +455,7 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Crown Super Deals",
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -515,7 +517,7 @@ class _HomePageState extends State<HomePage> {
                                   padding: EdgeInsets.only(left: 10.0),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "Rs 150",
@@ -531,8 +533,7 @@ class _HomePageState extends State<HomePage> {
                                         style: TextStyle(
                                           fontSize: 10.0,
                                           fontWeight: FontWeight.bold,
-                                          decoration:
-                                              TextDecoration.lineThrough,
+                                          decoration: TextDecoration.lineThrough,
                                         ),
                                       ),
                                       Container(
@@ -540,12 +541,12 @@ class _HomePageState extends State<HomePage> {
                                           child: ElevatedButton(
                                             onPressed: () {
                                               setState(() {
-                                                addedToCart = !addedToCart;
+                                                addedToCart[index] = !addedToCart[index];
                                               });
                                             },
                                             child: Center(
                                               child: Icon(
-                                                addedToCart
+                                                addedToCart[index]
                                                     ? Icons.remove_circle
                                                     : Icons.add_circle,
                                                 color: colorWhite,
@@ -554,17 +555,16 @@ class _HomePageState extends State<HomePage> {
                                             style: ElevatedButton.styleFrom(
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
-                                                  topLeft:
-                                                      Radius.circular(10.0),
+                                                  topLeft: Radius.circular(10.0),
                                                   bottomRight:
-                                                      Radius.circular(10.0),
+                                                  Radius.circular(10.0),
                                                 ),
                                               ),
                                               textStyle: TextStyle(
                                                 fontSize: 18,
                                               ),
                                               padding: EdgeInsets.all(12.0),
-                                              backgroundColor: addedToCart
+                                              backgroundColor: addedToCart[index]
                                                   ? colorRed
                                                   : colorPrimary,
                                             ),
@@ -619,11 +619,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         "Popualr products",
-                        style: TextStyle(
-                            fontSize: 16.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                       ),
                       TextButton(
-                        onPressed: () {
+                        onPressed:(){
                           //Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
                         },
                         child: Row(
@@ -634,10 +633,10 @@ class _HomePageState extends State<HomePage> {
                                 color: colorGrey1,
                               ),
                             ),
-                            Icon(Icons.arrow_forward_ios,
-                                color: colorGrey1, size: 12.0),
+                            Icon(Icons.arrow_forward_ios,color: colorGrey1,size: 12.0),
                           ],
                         ),
+
                       ),
                     ],
                   ),
@@ -699,7 +698,7 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.only(left: 10.0),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             "Rs 150",
@@ -716,7 +715,7 @@ class _HomePageState extends State<HomePage> {
                                               fontSize: 10.0,
                                               fontWeight: FontWeight.bold,
                                               decoration:
-                                                  TextDecoration.lineThrough,
+                                              TextDecoration.lineThrough,
                                             ),
                                           ),
                                           Container(
@@ -724,12 +723,12 @@ class _HomePageState extends State<HomePage> {
                                               child: ElevatedButton(
                                                 onPressed: () {
                                                   setState(() {
-                                                    addedToCart = !addedToCart;
+                                                    addedToCart[index] = !addedToCart[index];
                                                   });
                                                 },
                                                 child: Center(
                                                   child: Icon(
-                                                    addedToCart
+                                                    addedToCart[index]
                                                         ? Icons.remove_circle
                                                         : Icons.add_circle,
                                                     color: colorWhite,
@@ -737,19 +736,17 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                                 style: ElevatedButton.styleFrom(
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10.0),
+                                                    borderRadius: BorderRadius.only(
+                                                      topLeft: Radius.circular(10.0),
                                                       bottomRight:
-                                                          Radius.circular(10.0),
+                                                      Radius.circular(10.0),
                                                     ),
                                                   ),
                                                   textStyle: TextStyle(
                                                     fontSize: 18,
                                                   ),
                                                   padding: EdgeInsets.all(12.0),
-                                                  backgroundColor: addedToCart
+                                                  backgroundColor: addedToCart[index]
                                                       ? colorRed
                                                       : colorPrimary,
                                                 ),
@@ -806,11 +803,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         "New products",
-                        style: TextStyle(
-                            fontSize: 16.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                       ),
                       TextButton(
-                        onPressed: () {
+                        onPressed:(){
                           //Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
                         },
                         child: Row(
@@ -821,10 +817,10 @@ class _HomePageState extends State<HomePage> {
                                 color: colorGrey1,
                               ),
                             ),
-                            Icon(Icons.arrow_forward_ios,
-                                color: colorGrey1, size: 12.0),
+                            Icon(Icons.arrow_forward_ios,color: colorGrey1,size: 12.0),
                           ],
                         ),
+
                       ),
                     ],
                   ),
@@ -886,7 +882,7 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.only(left: 10.0),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             "Rs 150",
@@ -903,7 +899,7 @@ class _HomePageState extends State<HomePage> {
                                               fontSize: 10.0,
                                               fontWeight: FontWeight.bold,
                                               decoration:
-                                                  TextDecoration.lineThrough,
+                                              TextDecoration.lineThrough,
                                             ),
                                           ),
                                           Container(
@@ -911,12 +907,12 @@ class _HomePageState extends State<HomePage> {
                                               child: ElevatedButton(
                                                 onPressed: () {
                                                   setState(() {
-                                                    addedToCart = !addedToCart;
+                                                    addedToCart[index] = !addedToCart[index];
                                                   });
                                                 },
                                                 child: Center(
                                                   child: Icon(
-                                                    addedToCart
+                                                    addedToCart[index]
                                                         ? Icons.remove_circle
                                                         : Icons.add_circle,
                                                     color: colorWhite,
@@ -924,19 +920,17 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                                 style: ElevatedButton.styleFrom(
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10.0),
+                                                    borderRadius: BorderRadius.only(
+                                                      topLeft: Radius.circular(10.0),
                                                       bottomRight:
-                                                          Radius.circular(10.0),
+                                                      Radius.circular(10.0),
                                                     ),
                                                   ),
                                                   textStyle: TextStyle(
                                                     fontSize: 18,
                                                   ),
                                                   padding: EdgeInsets.all(12.0),
-                                                  backgroundColor: addedToCart
+                                                  backgroundColor: addedToCart[index]
                                                       ? colorRed
                                                       : colorPrimary,
                                                 ),
