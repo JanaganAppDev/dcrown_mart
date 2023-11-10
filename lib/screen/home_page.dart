@@ -364,18 +364,21 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   Image.asset(
-                    "assets/fruits.png",
-                    width: 500.0,
+                    "assets/fruits1.jpg",
+                    //width: 500.0,
+                    height: 300,
                     fit: BoxFit.cover,
                   ),
                   Image.asset(
                     "assets/fruits2.jpg",
-                    width: 500.0,
+                    //width: 500.0,
+                    height: 300,
                     fit: BoxFit.cover,
                   ),
                   Image.asset(
                     "assets/fruits3.jpg",
-                    width: 500.0,
+                    //width: 500.0,
+                    height: 300,
                     fit: BoxFit.cover,
                   ),
                 ],
