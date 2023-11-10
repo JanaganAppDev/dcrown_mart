@@ -98,143 +98,139 @@ class _CategoryPageState extends State<CategoryPage> {
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    /* //height: 120.0,
-                     width: 130.0,*/
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: colorWhite,
-                            borderRadius: BorderRadius.circular(8.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: colorGrey,
-                                blurRadius: 5.0,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          // height: 185.0,
-                          // width: 140.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Center(
-                                child: Image.asset(
-                                  'dishwash.jpeg',
-                                  height: 130.0,
-                                  width: 130.0,
-                                  alignment: Alignment.center,
-                                ),
-                              ),
-                              SizedBox(height: 4.0),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.0),
-                                child: Text(
-                                  "DISHWASH LIQUID",
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: notificationTitle,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 3.0),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Rs 150",
-                                      style: TextStyle(
-                                        fontSize: 10.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: colorPrimaryDark,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5.0),
-                                    Text(
-                                      "Rs 200",
-                                      style: TextStyle(
-                                        fontSize: 10.0,
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                    Container(
-                                        width: 40,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              addedToCart[index] = !addedToCart[index];
-                                            });
-                                          },
-                                          child: Center(
-                                            child: Icon(
-                                              addedToCart[index]
-                                                  ? Icons.remove_circle
-                                                  : Icons.add_circle,
-                                              color: colorWhite,
-                                            ),
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(10.0),
-                                                bottomRight:
-                                                    Radius.circular(10.0),
-                                              ),
-                                            ),
-                                            textStyle: TextStyle(
-                                              fontSize: 18,
-                                            ),
-                                            padding: EdgeInsets.all(12.0),
-                                            backgroundColor: addedToCart[index]
-                                                ? colorRed
-                                                : colorPrimary,
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                  return Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: colorWhite,
+                          borderRadius: BorderRadius.circular(8.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: colorGrey,
+                              blurRadius: 5.0,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
-                        Positioned(
-                          top: 0,
-                          bottom: 0,
-                          right: 0,
-                          left: 0,
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 20,
-                              width: 35,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: toolbar,
-                                  borderRadius: BorderRadius.circular(15),
+                        // height: 185.0,
+                        // width: 140.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                'dishwash.jpeg',
+                                height: 130.0,
+                                width: 130.0,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                            SizedBox(height: 4.0),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Text(
+                                "DISHWASH LIQUID",
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: notificationTitle,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    "25%",
+                              ),
+                            ),
+                            SizedBox(height: 3.0),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Rs 150",
                                     style: TextStyle(
-                                      color: colorWhite,
+                                      fontSize: 10.0,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12.0,
+                                      color: colorPrimaryDark,
                                     ),
+                                  ),
+                                  SizedBox(width: 5.0),
+                                  Text(
+                                    "Rs 200",
+                                    style: TextStyle(
+                                      fontSize: 10.0,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                  Container(
+                                      width: 40,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            addedToCart[index] = !addedToCart[index];
+                                          });
+                                        },
+                                        child: Center(
+                                          child: Icon(
+                                            addedToCart[index]
+                                                ? Icons.remove_circle
+                                                : Icons.add_circle,
+                                            color: colorWhite,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10.0),
+                                              bottomRight:
+                                                  Radius.circular(10.0),
+                                            ),
+                                          ),
+                                          textStyle: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                          padding: EdgeInsets.all(12.0),
+                                          backgroundColor: addedToCart[index]
+                                              ? colorRed
+                                              : colorPrimary,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        right: 0,
+                        left: 0,
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: SizedBox(
+                            height: 20,
+                            width: 35,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: toolbar,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "25%",
+                                  style: TextStyle(
+                                    color: colorWhite,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12.0,
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 },
               ),
@@ -283,145 +279,141 @@ class _CategoryPageState extends State<CategoryPage> {
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
-                        Container(
-                          /* //height: 120.0,
-                       width: 130.0,*/
-                          child: Stack(
-                            children: [
-                              Container(
-                                width: 200.0,
-                                decoration: BoxDecoration(
-                                  color: colorWhite,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorGrey,
-                                      blurRadius: 5.0,
-                                      offset: Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                // height: 185.0,
-                                // width: 140.0,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Center(
-                                      child: Image.asset(
-                                        'dishwash.jpeg',
-                                        height: 130.0,
-                                        width: 130.0,
-                                        alignment: Alignment.center,
-                                      ),
-                                    ),
-                                    SizedBox(height: 4.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        "DISHWASH LIQUID",
-                                        style: TextStyle(
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: notificationTitle,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 3.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Rs 150",
-                                            style: TextStyle(
-                                              fontSize: 10.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: colorPrimaryDark,
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.0),
-                                          Text(
-                                            "Rs 200",
-                                            style: TextStyle(
-                                              fontSize: 10.0,
-                                              fontWeight: FontWeight.bold,
-                                              decoration:
-                                                  TextDecoration.lineThrough,
-                                            ),
-                                          ),
-                                          Container(
-                                              width: 40,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    addedToCart2[index] = !addedToCart2[index];
-                                                  });
-                                                },
-                                                child: Center(
-                                                  child: Icon(
-                                                    addedToCart2[index]
-                                                        ? Icons.remove_circle
-                                                        : Icons.add_circle,
-                                                    color: colorWhite,
-                                                  ),
-                                                ),
-                                                style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.only(
-                                                      topLeft: Radius.circular(10.0),
-                                                      bottomRight:
-                                                      Radius.circular(10.0),
-                                                    ),
-                                                  ),
-                                                  textStyle: TextStyle(
-                                                    fontSize: 18,
-                                                  ),
-                                                  padding: EdgeInsets.all(12.0),
-                                                  backgroundColor: addedToCart2[index]
-                                                      ? colorRed
-                                                      : colorPrimary,
-                                                ),
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 200.0,
+                              decoration: BoxDecoration(
+                                color: colorWhite,
+                                borderRadius: BorderRadius.circular(8.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: colorGrey,
+                                    blurRadius: 5.0,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
                               ),
-                              Positioned(
-                                top: 0,
-                                bottom: 0,
-                                right: 0,
-                                left: 0,
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: SizedBox(
-                                    height: 20,
-                                    width: 35,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: toolbar,
-                                        borderRadius: BorderRadius.circular(15),
+                              // height: 185.0,
+                              // width: 140.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Center(
+                                    child: Image.asset(
+                                      'dishwash.jpeg',
+                                      height: 130.0,
+                                      width: 130.0,
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
+                                  SizedBox(height: 4.0),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.0),
+                                    child: Text(
+                                      "DISHWASH LIQUID",
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: notificationTitle,
                                       ),
-                                      child: Center(
-                                        child: Text(
-                                          "25%",
+                                    ),
+                                  ),
+                                  SizedBox(height: 3.0),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Rs 150",
                                           style: TextStyle(
-                                            color: colorWhite,
+                                            fontSize: 10.0,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
+                                            color: colorPrimaryDark,
                                           ),
+                                        ),
+                                        SizedBox(width: 5.0),
+                                        Text(
+                                          "Rs 200",
+                                          style: TextStyle(
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.bold,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                        Container(
+                                            width: 40,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  addedToCart2[index] = !addedToCart2[index];
+                                                });
+                                              },
+                                              child: Center(
+                                                child: Icon(
+                                                  addedToCart2[index]
+                                                      ? Icons.remove_circle
+                                                      : Icons.add_circle,
+                                                  color: colorWhite,
+                                                ),
+                                              ),
+                                              style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(10.0),
+                                                    bottomRight:
+                                                    Radius.circular(10.0),
+                                                  ),
+                                                ),
+                                                textStyle: TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                                padding: EdgeInsets.all(12.0),
+                                                backgroundColor: addedToCart2[index]
+                                                    ? colorRed
+                                                    : colorPrimary,
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              bottom: 0,
+                              right: 0,
+                              left: 0,
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: SizedBox(
+                                  height: 20,
+                                  width: 35,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: toolbar,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "25%",
+                                        style: TextStyle(
+                                          color: colorWhite,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12.0,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     );
@@ -473,145 +465,141 @@ class _CategoryPageState extends State<CategoryPage> {
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
-                        Container(
-                          /* //height: 120.0,
-                       width: 130.0,*/
-                          child: Stack(
-                            children: [
-                              Container(
-                                width: 200.0,
-                                decoration: BoxDecoration(
-                                  color: colorWhite,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorGrey,
-                                      blurRadius: 5.0,
-                                      offset: Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                // height: 185.0,
-                                // width: 140.0,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Center(
-                                      child: Image.asset(
-                                        'dishwash.jpeg',
-                                        height: 130.0,
-                                        width: 130.0,
-                                        alignment: Alignment.center,
-                                      ),
-                                    ),
-                                    SizedBox(height: 4.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        "DISHWASH LIQUID",
-                                        style: TextStyle(
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: notificationTitle,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 3.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Rs 150",
-                                            style: TextStyle(
-                                              fontSize: 10.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: colorPrimaryDark,
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.0),
-                                          Text(
-                                            "Rs 200",
-                                            style: TextStyle(
-                                              fontSize: 10.0,
-                                              fontWeight: FontWeight.bold,
-                                              decoration:
-                                              TextDecoration.lineThrough,
-                                            ),
-                                          ),
-                                          Container(
-                                              width: 40,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    addedToCart3[index] = !addedToCart3[index];
-                                                  });
-                                                },
-                                                child: Center(
-                                                  child: Icon(
-                                                    addedToCart3[index]
-                                                        ? Icons.remove_circle
-                                                        : Icons.add_circle,
-                                                    color: colorWhite,
-                                                  ),
-                                                ),
-                                                style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.only(
-                                                      topLeft: Radius.circular(10.0),
-                                                      bottomRight:
-                                                      Radius.circular(10.0),
-                                                    ),
-                                                  ),
-                                                  textStyle: TextStyle(
-                                                    fontSize: 18,
-                                                  ),
-                                                  padding: EdgeInsets.all(12.0),
-                                                  backgroundColor: addedToCart3[index]
-                                                      ? colorRed
-                                                      : colorPrimary,
-                                                ),
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 200.0,
+                              decoration: BoxDecoration(
+                                color: colorWhite,
+                                borderRadius: BorderRadius.circular(8.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: colorGrey,
+                                    blurRadius: 5.0,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
                               ),
-                              Positioned(
-                                top: 0,
-                                bottom: 0,
-                                right: 0,
-                                left: 0,
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: SizedBox(
-                                    height: 20,
-                                    width: 35,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: toolbar,
-                                        borderRadius: BorderRadius.circular(15),
+                              // height: 185.0,
+                              // width: 140.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Center(
+                                    child: Image.asset(
+                                      'dishwash.jpeg',
+                                      height: 130.0,
+                                      width: 130.0,
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
+                                  SizedBox(height: 4.0),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.0),
+                                    child: Text(
+                                      "DISHWASH LIQUID",
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: notificationTitle,
                                       ),
-                                      child: Center(
-                                        child: Text(
-                                          "25%",
+                                    ),
+                                  ),
+                                  SizedBox(height: 3.0),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Rs 150",
                                           style: TextStyle(
-                                            color: colorWhite,
+                                            fontSize: 10.0,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
+                                            color: colorPrimaryDark,
                                           ),
+                                        ),
+                                        SizedBox(width: 5.0),
+                                        Text(
+                                          "Rs 200",
+                                          style: TextStyle(
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.bold,
+                                            decoration:
+                                            TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                        Container(
+                                            width: 40,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  addedToCart3[index] = !addedToCart3[index];
+                                                });
+                                              },
+                                              child: Center(
+                                                child: Icon(
+                                                  addedToCart3[index]
+                                                      ? Icons.remove_circle
+                                                      : Icons.add_circle,
+                                                  color: colorWhite,
+                                                ),
+                                              ),
+                                              style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(10.0),
+                                                    bottomRight:
+                                                    Radius.circular(10.0),
+                                                  ),
+                                                ),
+                                                textStyle: TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                                padding: EdgeInsets.all(12.0),
+                                                backgroundColor: addedToCart3[index]
+                                                    ? colorRed
+                                                    : colorPrimary,
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              bottom: 0,
+                              right: 0,
+                              left: 0,
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: SizedBox(
+                                  height: 20,
+                                  width: 35,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: toolbar,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "25%",
+                                        style: TextStyle(
+                                          color: colorWhite,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12.0,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     );
