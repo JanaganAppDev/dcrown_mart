@@ -10,6 +10,24 @@ class OrderListPage extends StatefulWidget {
 }
 
 class _OrderListPageState extends State<OrderListPage> {
+  List<Step> stepList() => [
+        const Step(
+            title: Text('Pending'),
+            content: Center(
+              child: Text(''),
+            )),
+        const Step(
+            title: Text('Ready to ship'),
+            content: Center(
+              child: Text(''),
+            )),
+        const Step(
+            title: Text('Delivered'),
+            content: Center(
+              child: Text(''),
+            ))
+      ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +57,13 @@ class _OrderListPageState extends State<OrderListPage> {
           itemBuilder: (BuildContext context, index) {
             return Container(
               margin: EdgeInsets.all(10.0),
-              padding: EdgeInsets.all(10.0),
-              height: 300.0,
+              //padding: EdgeInsets.all(10.0),
+              //height: 300.0,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(20.0),
+                ),
                 color: colorWhite,
                 boxShadow: [
                   BoxShadow(
@@ -58,14 +80,17 @@ class _OrderListPageState extends State<OrderListPage> {
                     alignment: Alignment.topRight,
                     child: Container(
                       //margin: EdgeInsets.only(top: 60.0),
-                      width: 120.0,
+                      width: 110.0,
                       height: 35.0,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorBlack,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20.0),
+                              bottomLeft: Radius.circular(20.0),
+                            ),
                           ),
                         ),
                         child: Text(
@@ -175,9 +200,14 @@ class _OrderListPageState extends State<OrderListPage> {
                       ),
                     ],
                   ),
-                  /*Container(
+                  Stepper(
+                    //type: StepperType.horizontal,
+                    steps: stepList(),
+                  ),
+                  Container(
                     margin: EdgeInsets.all(8),
-                    height: 100.0,
+                    padding: EdgeInsets.all(10.0),
+                    height: 70.0,
                     //width: screenWidth,
                     decoration: BoxDecoration(
                       color: colorWhite,
@@ -240,7 +270,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                       ),
                                     ),
                                     Text(
-                                      "Rs.150",
+                                      "Rs.150.0",
                                       style: TextStyle(
                                         color: colorPrimary,
                                       ),
@@ -253,7 +283,7 @@ class _OrderListPageState extends State<OrderListPage> {
                         ),
                       ],
                     ),
-                  ),*/
+                  ),
                 ],
               ),
               //padding: EdgeInsets.all(10),
