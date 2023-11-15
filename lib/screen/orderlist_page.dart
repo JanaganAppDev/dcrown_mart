@@ -104,105 +104,278 @@ class _OrderListPageState extends State<OrderListPage> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Order ID:8",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
+                  Container(
+                    padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Order ID:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "8",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Subtotal:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rs 150",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Subtotal Rs 150",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Date:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "2023-11-04",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Delivery:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rs 40",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Date:2023-11-04",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "QTY:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "1",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Tax(0.0%):",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rs0",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Delivery:Rs 40",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "TimeSlot:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "6.00AM-\n9.30PM",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Total:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rs190",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "QTY:1",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.brightness_1,
+                                      color: colorPrimary, size: 10),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Address:",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorGrey1,
+                                      //fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "01,sample address,chennai-600026",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: colorBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Tax(0.0%):Rs0",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "TimeSlot:6.00AM-\n9.30PM",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        "Total:Rs190",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "Address:01,sample address,chennai-600026",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: colorBlack,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Stepper(
                     //type: StepperType.horizontal,
                     steps: stepList(),
+                    controlsBuilder:
+                        (BuildContext context, ControlsDetails details) {
+                      return Container();
+                      /*return Row(
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: details.onStepContinue,
+                            child: const Text('NEXT'),
+                          ),
+                          TextButton(
+                            onPressed: details.onStepCancel,
+                            child: const Text('CANCEL'),
+                          ),
+                        ],
+                      );*/
+                    },
                   ),
                   Container(
                     margin: EdgeInsets.all(8),
