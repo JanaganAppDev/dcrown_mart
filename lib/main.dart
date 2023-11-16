@@ -14,6 +14,8 @@ import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:http/http.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
+import 'package:dcrown_mart/screen/myaddress_page.dart';
+import 'package:dcrown_mart/screen/addresslist_page.dart';
 
 import 'const.dart';
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: MyAddressPage(),
     );
   }
 }
