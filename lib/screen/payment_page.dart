@@ -11,7 +11,6 @@ class PaymentPage extends StatefulWidget {
 bool _isButtonClicked = false;
 
 class _PaymentPageState extends State<PaymentPage> {
-  // Define a list of payment modes for the dropdown
   List<String> paymentModes = ['Select Payment Mode','Direct Bank Transfer', 'Google Pay', 'Phonepe', 'Others'];
   String selectedPaymentMode = 'Select Payment Mode';
 
@@ -80,7 +79,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimaryDark,
                         ),
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -104,7 +103,6 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
-
                     child: TextFormField(
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(

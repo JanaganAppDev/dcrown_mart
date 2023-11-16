@@ -55,7 +55,7 @@ class _ViewallPageState extends State<ViewallPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: colorWhite,
-                          borderRadius: BorderRadius.circular(8.0),
+                           borderRadius: BorderRadius.circular(8.0),
                           boxShadow: [
                             BoxShadow(
                               color: colorGrey,
