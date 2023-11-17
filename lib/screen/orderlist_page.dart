@@ -27,9 +27,12 @@ class _OrderListPageState extends State<OrderListPage> {
               child: Text(''),
             ))
       ];
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorPrimary,
@@ -59,6 +62,7 @@ class _OrderListPageState extends State<OrderListPage> {
               margin: EdgeInsets.all(10.0),
               //padding: EdgeInsets.all(10.0),
               //height: 300.0,
+              width: screenWidth,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20.0),
@@ -357,7 +361,85 @@ class _OrderListPageState extends State<OrderListPage> {
                       ],
                     ),
                   ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      height: 25.0,
+                      width: 150.0,
+                      decoration: BoxDecoration(
+                        color: Colors.black, // Set background color to black
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          bottomLeft: Radius.circular(20.0),
+                        ),
+                        // Remove the border property to remove the border
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Direct Bank Transfer",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: Colors
+                                .white, // Set text color to white or your desired color
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Stepper(
+                    currentStep: _index,
+                    /*onStepCancel: () {
+                      if (_index > 0) {
+                        setState(() {
+                          _index -= 1;
+                        });
+                      }
+                    },
+                    onStepContinue: () {
+                      if (_index <= 0) {
+                        setState(() {
+                          _index += 1;
+                        });
+                      }
+                    },*/
+                    onStepTapped: (int index) {
+                      setState(() {
+                        _index = index;
+                      });
+                    },
+                    /*currentStep: _index,
+                    onStepCancel: () {
+                      if (_index > 0) {
+                        setState(() {
+                          _index -= 1;
+                        });
+                      }
+                    },
+                    onStepContinue: () {
+                      if (_index <= 0) {
+                        setState(() {
+                          _index += 1;
+                        });
+                      }
+                    },
+                    onStepTapped: (int index) {
+                      setState(() {
+                        _index = index;
+                      });
+                    },
+                    steps: <Step>[
+                      Step(
+                        title: const Text('Step 1 title'),
+                        content: Container(
+                          alignment: Alignment.centerLeft,
+                          child: const Text('Content for Step 1'),
+                        ),
+                      ),
+                      const Step(
+                        title: Text('Step 2 title'),
+                        content: Text('Content for Step 2'),
+                      ),
+                    ],*/
                     //type: StepperType.horizontal,
                     steps: stepList(),
                     controlsBuilder:
