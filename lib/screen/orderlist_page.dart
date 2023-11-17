@@ -11,17 +11,17 @@ class OrderListPage extends StatefulWidget {
 
 class _OrderListPageState extends State<OrderListPage> {
   List<Step> stepList() => [
-        const Step(
+        Step(
             title: Text('Pending'),
             content: Center(
               child: Text(''),
             )),
-        const Step(
+        Step(
             title: Text('Ready to ship'),
             content: Center(
               child: Text(''),
             )),
-        const Step(
+        Step(
             title: Text('Delivered'),
             content: Center(
               child: Text(''),
