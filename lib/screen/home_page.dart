@@ -3,6 +3,7 @@ import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
 import 'package:http/http.dart';
@@ -313,7 +314,12 @@ class _HomePageState extends State<HomePage> {
               title: Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProductPage()),
+                    );
+                  },
                   child: Text(
                     "About",
                     style: TextStyle(
