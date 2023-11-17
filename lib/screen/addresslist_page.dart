@@ -14,7 +14,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorPrimary, // Ensure colorPrimary is defined and imported
+        backgroundColor: colorPrimary,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -26,23 +26,37 @@ class _AddresslistPageState extends State<AddresslistPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: Row(
-                    children: [
-                      Text("50/12,sasthri street, chennai-689001")
-                    ],
-                  ),
-                );
-              },
+            Container(
+              height: 500.0,
+              child: ListView.builder(
+                //scrollDirection: Axis.horizontal,
+                itemCount: 1,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: colorWhite,
+                      borderRadius: BorderRadius.circular(8.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: colorGrey,
+                          blurRadius: 5.0,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Text("50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 20.0),)
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
             Container(
               //margin: EdgeInsets.only(top: 60.0),
-              width: 140.0,
-              height: 50.0,
+              width: 450.0,
+              height: 35.0,
               child: ElevatedButton(
                 onPressed: () {
                 },
