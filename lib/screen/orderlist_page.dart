@@ -11,17 +11,17 @@ class OrderListPage extends StatefulWidget {
 
 class _OrderListPageState extends State<OrderListPage> {
   List<Step> stepList() => [
-        const Step(
+        Step(
             title: Text('Pending'),
             content: Center(
               child: Text(''),
             )),
-        const Step(
+        Step(
             title: Text('Ready to ship'),
             content: Center(
               child: Text(''),
             )),
-        const Step(
+        Step(
             title: Text('Delivered'),
             content: Center(
               child: Text(''),
@@ -53,31 +53,30 @@ class _OrderListPageState extends State<OrderListPage> {
           },
         ),
       ),
-      body: Container(
-        //padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (BuildContext context, index) {
-            return Container(
-              margin: EdgeInsets.all(10.0),
-              //padding: EdgeInsets.all(10.0),
-              //height: 300.0,
-              width: screenWidth,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20.0),
-                  topLeft: Radius.circular(20.0),
-                ),
-                color: colorWhite,
-                boxShadow: [
-                  BoxShadow(
-                    color: colorGrey,
-                    blurRadius: 8,
-                    spreadRadius: -2.1,
-                    offset: Offset(-1, 2),
-                  ),
-                ],
+      body: ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, index) {
+          return Container(
+            margin: EdgeInsets.all(10.0),
+            //padding: EdgeInsets.all(10.0),
+            //height: 300.0,
+            //width: screenWidth,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20.0),
+                topLeft: Radius.circular(20.0),
               ),
+              color: colorWhite,
+              boxShadow: [
+                BoxShadow(
+                  color: colorGrey,
+                  blurRadius: 8,
+                  spreadRadius: -2.1,
+                  offset: Offset(-1, 2),
+                ),
+              ],
+            ),
+            child: Expanded(
               child: Column(
                 children: [
                   Align(
@@ -387,6 +386,7 @@ class _OrderListPageState extends State<OrderListPage> {
                     ),
                   ),
                   Stepper(
+                    //type: StepperType.horizontal,
                     currentStep: _index,
                     /*onStepCancel: () {
                       if (_index > 0) {
@@ -440,23 +440,10 @@ class _OrderListPageState extends State<OrderListPage> {
                         content: Text('Content for Step 2'),
                       ),
                     ],*/
-                    //type: StepperType.horizontal,
                     steps: stepList(),
                     controlsBuilder:
                         (BuildContext context, ControlsDetails details) {
                       return Container();
-                      /*return Row(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: details.onStepContinue,
-                            child: const Text('NEXT'),
-                          ),
-                          TextButton(
-                            onPressed: details.onStepCancel,
-                            child: const Text('CANCEL'),
-                          ),
-                        ],
-                      );*/
                     },
                   ),
                   Container(
@@ -541,10 +528,10 @@ class _OrderListPageState extends State<OrderListPage> {
                   ),
                 ],
               ),
-              //padding: EdgeInsets.all(10),
-            );
-          },
-        ),
+            ),
+            //padding: EdgeInsets.all(10),
+          );
+        },
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
+import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/screen/login_page.dart';
@@ -14,9 +15,6 @@ import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:http/http.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
-import 'package:dcrown_mart/screen/addresslist_page.dart';
-import 'package:dcrown_mart/screen/myaddress_page.dart';
-import 'package:dcrown_mart/screen/placedorder_page.dart';
 
 import 'const.dart';
 
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PlacedOrderPage(),
+      home: HomePage(),
     );
   }
 }
