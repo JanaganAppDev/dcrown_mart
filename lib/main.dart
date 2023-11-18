@@ -7,6 +7,7 @@ import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
+import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:http/http.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
-
+import '';
 import 'const.dart';
 
 void main() => runApp(MyApp());

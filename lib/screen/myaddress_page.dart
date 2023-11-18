@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/const.dart';
+import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:flutter/material.dart';
 
 class MyAddressPage extends StatefulWidget {
@@ -153,6 +154,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       child: Text(mode),
                     );
                   }).toList(),
+                 /* underline:SizedBox.shrink(),
+                  isExpanded: true,*/
                 ),
               ),
             ),
@@ -204,7 +207,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
               width: 140.0,
               height: 50.0,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddresslistPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorPrimary,
