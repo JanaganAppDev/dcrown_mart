@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/const.dart';
+import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -26,6 +27,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 10.0),
             Container(
               height: 500.0,
               child: ListView.builder(
@@ -33,6 +35,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                 itemCount: 1,
                 itemBuilder: (context, index) {
                   return Container(
+                    height: 40.0,
                     decoration: BoxDecoration(
                       color: colorWhite,
                       borderRadius: BorderRadius.circular(8.0),
@@ -46,7 +49,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                     ),
                     child: Row(
                       children: [
-                        Text("50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 20.0),)
+                        Text("50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 18.0),)
                       ],
                     ),
                   );
@@ -59,6 +62,8 @@ class _AddresslistPageState extends State<AddresslistPage> {
               height: 35.0,
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyAddressPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorPrimary,
