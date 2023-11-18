@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Product page UI" />
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Product page UI">
+      <change afterPath="$PROJECT_DIR$/assets/dishwash1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/mycart_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/mycart_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/orderlist_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/orderlist_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/product_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/product_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/viewall_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/viewall_page.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700021872569</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Kathiresh- Product page UI">
+      <created>1700281321955</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700281321955</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

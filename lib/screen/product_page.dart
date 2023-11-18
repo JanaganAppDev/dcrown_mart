@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/screen/home_page.dart';
+import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 
@@ -10,11 +11,15 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+  int itemCount = 0;
+  String selectedSize = '500ML';
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: colorWhite,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -37,9 +42,9 @@ class _ProductPageState extends State<ProductPage> {
                   padding: EdgeInsets.only(bottom: 80.0),
                   child: Center(
                     child: Image.asset(
-                      'dishwash.jpeg',
-                      height: 200.0,
-                      width: 200.0,
+                      'dishwash1.jpg',
+                      height: 250.0,
+                      width: 250.0,
                       alignment: Alignment.center,
                     ),
                   ),
@@ -50,7 +55,13 @@ class _ProductPageState extends State<ProductPage> {
                     children: <Widget>[
                       IconButton(
                         icon: Icon(Icons.shopping_cart),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyCartPage()),
+                          );
+                        },
                       ),
                       Positioned(
                         bottom: 6,
@@ -82,10 +93,10 @@ class _ProductPageState extends State<ProductPage> {
             ),
             Container(
               padding: EdgeInsets.all(10.0),
-              height: 400.0,
+              height: 500.0,
               width: screenWidth,
               decoration: BoxDecoration(
-                color: colorGrey,
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
@@ -243,6 +254,144 @@ class _ProductPageState extends State<ProductPage> {
                       style: TextStyle(
                         fontSize: 14.0,
                         color: colorBlack,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Rs 150.0",
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: colorPrimary,
+                        ),
+                      ),
+                      SizedBox(width: 5.0),
+                      Text(
+                        "Rs 200",
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Container(
+                          height: 25.0,
+                          width: 90.0,
+                          decoration: BoxDecoration(
+                            color: colorWhite,
+                            borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: DropdownButton<String>(
+                              value: selectedSize,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedSize = newValue!;
+                                });
+                              },
+                              items: <String>[
+                                '500ML',
+                                '1000ML',
+                                '2000ML'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                        fontSize: 13.0, color: colorGrey2),
+                                  ),
+                                );
+                              }).toList(),
+                              style:
+                                  TextStyle(fontSize: 13.0, color: colorGrey2),
+                              icon: Icon(Icons.arrow_drop_down),
+                              underline: SizedBox.shrink(),
+                              isExpanded: true,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              itemCount = (itemCount > 0) ? itemCount - 1 : 0;
+                            });
+                          },
+                          child: Container(
+                            height: 25.0,
+                            width: 70.0,
+                            decoration: BoxDecoration(
+                              color: colorWhite,
+                              borderRadius: BorderRadius.circular(20.0),
+                              border: Border.all(
+                                color: colorPrimary,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.remove, color: colorBlack, size: 16),
+                                Text(
+                                  itemCount.toString(),
+                                  style: TextStyle(
+                                    fontSize: 13.0,
+                                    color: colorBlack,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      itemCount++;
+                                    });
+                                  },
+                                  child: Icon(Icons.add,
+                                      color: colorBlack, size: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: 450.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colorPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
+                      child: Text(
+                        "Continue Shopping",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
                       ),
                     ),
                   ),

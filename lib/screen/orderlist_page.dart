@@ -14,17 +14,17 @@ class _OrderListPageState extends State<OrderListPage> {
         Step(
             title: Text('Pending'),
             content: Center(
-              child: Text(''),
+              child: Text('Will be shipped shortly'),
             )),
         Step(
             title: Text('Ready to ship'),
             content: Center(
-              child: Text(''),
+              child: Text('Will be shipped at 10.00 PM'),
             )),
         Step(
             title: Text('Delivered'),
             content: Center(
-              child: Text(''),
+              child: Text('Delivered at chennai - 10.00PM'),
             ))
       ];
   int _index = 0;
