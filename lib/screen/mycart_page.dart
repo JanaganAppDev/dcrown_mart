@@ -1,5 +1,6 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -292,7 +293,7 @@ class _MyCartPageState extends State<MyCartPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyOrderPage()));
+                                builder: (context) => PlacedOrderPage()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorWhite,

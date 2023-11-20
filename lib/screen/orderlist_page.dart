@@ -82,25 +82,22 @@ class _OrderListPageState extends State<OrderListPage> {
                   Align(
                     alignment: Alignment.topRight,
                     child: Container(
-                      //margin: EdgeInsets.only(top: 60.0),
                       width: 110.0,
                       height: 35.0,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: colorBlack,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0),
-                            ),
-                          ),
+                      decoration: BoxDecoration(
+                        color: colorBlack, // Set background color to black
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20.0),
+                          bottomLeft: Radius.circular(20.0),
                         ),
+                      ),
+                      child: Center(
                         child: Text(
                           "Pending",
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: colorWhite,
+                            color:
+                                colorWhite, // Set text color to white or your desired color
                             fontWeight: FontWeight.w600,
                           ),
                         ),

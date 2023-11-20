@@ -36,7 +36,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
             Container(
               margin: EdgeInsets.all(8),
               padding: EdgeInsets.all(16),
-              height: screenHeight,
+              height: 770.0,
               width: screenWidth,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -90,22 +90,24 @@ class _FeedBackPageState extends State<FeedBackPage> {
                       hintStyle: TextStyle(color: colorGrey),
                     ),
                   ),
-                  SizedBox(height: 100.0),
-                  Container(
-                    //margin: EdgeInsets.only(top: 60.0),
-                    width: 140.0,
-                    height: 50.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        print("Rating: $_selectedRating");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: colorPrimary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                  Padding(
+                    padding: EdgeInsets.only(top: 200.0),
+                    child: Container(
+                      //margin: EdgeInsets.only(top: 60.0),
+                      width: 140.0,
+                      height: 50.0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print("Rating: $_selectedRating");
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: colorPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                         ),
+                        child: Text("Submit"),
                       ),
-                      child: Text("Submit"),
                     ),
                   ),
                 ],

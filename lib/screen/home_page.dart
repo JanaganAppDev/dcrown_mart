@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    timer = Timer.periodic(Duration(seconds: 2), (Timer timer) {
+    timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
       if (scrollOffset < _scrollController.position.maxScrollExtent) {
         scrollOffset += 500.0;
         _scrollController.animateTo(scrollOffset,
@@ -81,10 +81,10 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
-              Navigator.push(
+              /*Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => PlacedOrderPage()),
-              );
+              );*/
             },
           ),
           Align(
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -269,7 +269,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyAddressPage()),
+                  MaterialPageRoute(builder: (context) => AddresslistPage()),
                 );
               },
             ),
@@ -299,8 +299,8 @@ class _HomePageState extends State<HomePage> {
               ),
               leading: Icon(Icons.chat_outlined, color: colorBlack),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyCartPage()));
+                /*Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyCartPage()));*/
               },
             ),
             ListTile(
@@ -314,10 +314,10 @@ class _HomePageState extends State<HomePage> {
               ),
               leading: Icon(Icons.share, color: colorBlack),
               onTap: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MyAddressPage()),
-                );
+                );*/
               },
             ),
             ListTile(
@@ -331,10 +331,10 @@ class _HomePageState extends State<HomePage> {
               ),
               leading: Icon(Icons.logout, color: colorBlack),
               onTap: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AddresslistPage()),
-                );
+                );*/
               },
             ),
             ListTile(
@@ -342,10 +342,10 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
+                    /*Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ProductPage()),
-                    );
+                    );*/
                   },
                   child: Text(
                     "About",
