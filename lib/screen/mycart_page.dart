@@ -11,7 +11,8 @@ class MyCartPage extends StatefulWidget {
 }
 
 class _MyCartPageState extends State<MyCartPage> {
-  int itemCount = 0;
+  int itemCount = 1;
+  String selectedSize = '500ML';
 
   @override
   Widget build(BuildContext context) {
@@ -111,22 +112,49 @@ class _MyCartPageState extends State<MyCartPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 25.0,
-                                  width: 70.0,
-                                  decoration: BoxDecoration(
-                                    color: colorWhite,
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    border: Border.all(
-                                      color: colorPrimary,
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: Container(
+                                    height: 25.0,
+                                    width: 90.0,
+                                    decoration: BoxDecoration(
+                                      color: colorWhite,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      border: Border.all(
+                                        color: colorPrimary,
+                                      ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "500ML",
-                                      style: TextStyle(
-                                        fontSize: 13.0,
-                                        color: colorGrey2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8.0),
+                                      child: DropdownButton<String>(
+                                        value: selectedSize,
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            selectedSize = newValue!;
+                                          });
+                                        },
+                                        items: <String>[
+                                          '500ML',
+                                          '1000ML',
+                                          '2000ML'
+                                        ].map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                  fontSize: 13.0,
+                                                  color: colorGrey2),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        style: TextStyle(
+                                            fontSize: 13.0, color: colorGrey2),
+                                        icon: Icon(Icons.arrow_drop_down),
+                                        underline: SizedBox.shrink(),
+                                        isExpanded: true,
                                       ),
                                     ),
                                   ),
@@ -136,9 +164,8 @@ class _MyCartPageState extends State<MyCartPage> {
                                   child: InkWell(
                                     onTap: () {
                                       setState(() {
-                                        if (itemCount > 0) {
-                                          itemCount--;
-                                        }
+                                        itemCount =
+                                            (itemCount > 0) ? itemCount - 1 : 0;
                                       });
                                     },
                                     child: Container(
@@ -165,8 +192,15 @@ class _MyCartPageState extends State<MyCartPage> {
                                               color: colorBlack,
                                             ),
                                           ),
-                                          Icon(Icons.add,
-                                              color: colorBlack, size: 16),
+                                          InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                itemCount++;
+                                              });
+                                            },
+                                            child: Icon(Icons.add,
+                                                color: colorBlack, size: 16),
+                                          ),
                                         ],
                                       ),
                                     ),
