@@ -1,6 +1,7 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorPrimary, // Ensure colorPrimary is defined and imported
@@ -32,19 +35,19 @@ class _MyAddressPageState extends State<MyAddressPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
                 decoration: InputDecoration(
                   hintText: 'Name',
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -53,19 +56,19 @@ class _MyAddressPageState extends State<MyAddressPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
                 decoration: InputDecoration(
                   hintText: 'Address Type',
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -75,7 +78,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
             ),
             // ... (rest of the code remains unchanged)
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
                 decoration: InputDecoration(
@@ -87,7 +90,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -96,7 +99,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
                 decoration: InputDecoration(
@@ -108,7 +111,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -117,7 +120,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 25.0,top: 15.0),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -130,9 +133,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                 ),
               ),
             ),
-
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
@@ -142,6 +144,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
                   value: selectedLocation,
                   onChanged: (newValue) {
                     setState(() {
@@ -154,13 +159,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       child: Text(mode),
                     );
                   }).toList(),
-                 /* underline:SizedBox.shrink(),
-                  isExpanded: true,*/
                 ),
               ),
             ),
+
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
                 decoration: InputDecoration(
@@ -172,7 +176,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -181,9 +185,13 @@ class _MyAddressPageState extends State<MyAddressPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
               child: TextFormField(
                 cursorColor: colorPrimary,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 decoration: InputDecoration(
                   hintText: 'Pin code',
                   focusedBorder: OutlineInputBorder(
@@ -193,7 +201,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(55.0),
                     borderSide: BorderSide(
                       color: Colors.yellow,
                     ),
@@ -202,21 +210,24 @@ class _MyAddressPageState extends State<MyAddressPage> {
               ),
             ),
             SizedBox(height: 20.0),
-            Container(
-              //margin: EdgeInsets.only(top: 60.0),
-              width: 140.0,
-              height: 50.0,
-              child: ElevatedButton(
-                onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddresslistPage()));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: colorPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+            Padding(
+              padding: EdgeInsets.only(left: 45.0,right: 45.0),
+              child: Container(
+                //margin: EdgeInsets.only(top: 60.0),
+                width: screenWidth,
+                height: 50.0,
+                child: ElevatedButton(
+                  onPressed: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddresslistPage()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colorPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                   ),
+                  child: Text("Save",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
                 ),
-                child: Text("Save"),
               ),
             ),
           ],

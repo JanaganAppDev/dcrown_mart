@@ -109,7 +109,7 @@ class _ViewallPageState extends State<ViewallPage> {
                                     Text(
                                       "Rs 150",
                                       style: TextStyle(
-                                        fontSize: 10.0,
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         color: colorPrimaryDark,
                                       ),
@@ -118,7 +118,7 @@ class _ViewallPageState extends State<ViewallPage> {
                                     Text(
                                       "Rs 200",
                                       style: TextStyle(
-                                        fontSize: 10.0,
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.lineThrough,
                                       ),

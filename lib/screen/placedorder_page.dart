@@ -92,22 +92,35 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 210.0),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0), // Adjusted left and right padding
               child: Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_circle_left,color:colorPrimary,),
-
+                    icon: Icon(Icons.arrow_circle_left, color: colorPrimary),
                     onPressed: () {},
                   ),
+                  Expanded(
+                    child: Container(
+                      // You can replace this Container with your calendar view widget
+                      // For example, if you are using a calendar package, you might use something like:
+                      // child: CalendarWidget(),
+                      // Adjust the properties of the Container to match your calendar widget
+                      color: Colors.grey[300], // Example background color
+                      child: Center(
+                        child: Text(
+                          'Calendar View',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
                   IconButton(
-                    icon: Icon(Icons.arrow_circle_right,color:colorPrimary,),
+                    icon: Icon(Icons.arrow_circle_right, color: colorPrimary),
                     onPressed: () {},
                   ),
                 ],
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(

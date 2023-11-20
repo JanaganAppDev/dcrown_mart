@@ -12,7 +12,10 @@ class AddresslistPage extends StatefulWidget {
 
 class _AddresslistPageState extends State<AddresslistPage> {
   @override
+  
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorPrimary,
@@ -27,30 +30,63 @@ class _AddresslistPageState extends State<AddresslistPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 15.0),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Address list",
+                          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: colorGrey1),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 275.0),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => MyAddressPage()),
+                                );
+                                print('Container tapped!');
+                              },
+                              child: Icon(Icons.edit_rounded,color: colorPrimary,)),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(height: 10.0),
             Container(
-              height: 500.0,
+              height: 600.0,
               child: ListView.builder(
                 //scrollDirection: Axis.horizontal,
                 itemCount: 1,
                 itemBuilder: (context, index) {
                   return Container(
-                    height: 40.0,
+                    margin: EdgeInsets.all(8.0),
+                    height: 50.0,
+                    width: screenWidth,
                     decoration: BoxDecoration(
                       color: colorWhite,
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(10.0),
                       boxShadow: [
                         BoxShadow(
                           color: colorGrey,
-                          blurRadius: 5.0,
+                          blurRadius: 0.0,
                           offset: Offset(0, 2),
                         ),
                       ],
                     ),
-                    child: Row(
-                      children: [
-                        Text("50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 18.0),)
-                      ],
+                    child: Padding(
+                      padding:  EdgeInsets.all(8.0),
+                      child: Text("1.50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 18.0),),
                     ),
                   );
                 },
@@ -58,8 +94,8 @@ class _AddresslistPageState extends State<AddresslistPage> {
             ),
             Container(
               //margin: EdgeInsets.only(top: 60.0),
-              width: 450.0,
-              height: 35.0,
+              width: 350.0,
+              height: 45.0,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
@@ -71,7 +107,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: Text("Add aother address"),
+                child: Text("Add aother address",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
               ),
             ),
           ],
