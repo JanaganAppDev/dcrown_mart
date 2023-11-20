@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/screen/NewPassword.dart';
+import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
@@ -16,7 +17,7 @@ import 'package:dcrown_mart/screen/signup_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:http/http.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
-import '';
+import 'package:dcrown_mart/screen/search_page.dart';
 import 'const.dart';
 
 void main() => runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:PlacedOrderPage(),
+      home:PaymentPage(),
     );
   }
 }

@@ -121,8 +121,8 @@ class _CategoryPageState extends State<CategoryPage> {
                             Center(
                               child: Image.asset(
                                 'dishwash.jpeg',
-                                height: 130.0,
-                                width: 130.0,
+                                height: 70.0,
+                                width: 65.0,
                                 alignment: Alignment.center,
                               ),
                             ),
@@ -138,65 +138,63 @@ class _CategoryPageState extends State<CategoryPage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 3.0),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
                                     "Rs 150",
                                     style: TextStyle(
-                                      fontSize: 10.0,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
                                       color: colorPrimaryDark,
                                     ),
                                   ),
-                                  SizedBox(width: 5.0),
-                                  Text(
-                                    "Rs 200",
-                                    style: TextStyle(
-                                      fontSize: 10.0,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
+                                ),
+                                Text(
+                                  "Rs 200",
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.lineThrough,
                                   ),
-                                  Container(
-                                      width: 40,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            addedToCart[index] = !addedToCart[index];
-                                          });
-                                        },
-                                        child: Center(
-                                          child: Icon(
-                                            addedToCart[index]
-                                                ? Icons.remove_circle
-                                                : Icons.add_circle,
-                                            color: colorWhite,
+                                ),
+                                Container(
+                                    width: 40,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          addedToCart[index] = !addedToCart[index];
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Icon(
+                                          addedToCart[index]
+                                              ? Icons.remove_circle
+                                              : Icons.add_circle,
+                                          color: colorWhite,
+                                        ),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.0),
+                                            bottomRight:
+                                                Radius.circular(10.0),
                                           ),
                                         ),
-                                        style: ElevatedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10.0),
-                                              bottomRight:
-                                                  Radius.circular(10.0),
-                                            ),
-                                          ),
-                                          textStyle: TextStyle(
-                                            fontSize: 18,
-                                          ),
-                                          padding: EdgeInsets.all(12.0),
-                                          backgroundColor: addedToCart[index]
-                                              ? colorRed
-                                              : colorPrimary,
+                                        textStyle: TextStyle(
+                                          fontSize: 18,
                                         ),
-                                      )),
-                                ],
-                              ),
+                                        padding: EdgeInsets.all(11.0),
+                                        backgroundColor: addedToCart[index]
+                                            ? colorRed
+                                            : colorPrimary,
+                                      ),
+                                    )),
+                              ],
                             ),
                           ],
                         ),
@@ -270,8 +268,7 @@ class _CategoryPageState extends State<CategoryPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 250.0,
-                //width: screenWidth,
+                height: 180.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
@@ -282,7 +279,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         Stack(
                           children: [
                             Container(
-                              width: 200.0,
+                              width: 160.0,
                               decoration: BoxDecoration(
                                 color: colorWhite,
                                 borderRadius: BorderRadius.circular(8.0),
@@ -314,15 +311,14 @@ class _CategoryPageState extends State<CategoryPage> {
                                     child: Text(
                                       "DISHWASH LIQUID",
                                       style: TextStyle(
-                                        fontSize: 12.0,
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         color: notificationTitle,
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 3.0),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -330,16 +326,15 @@ class _CategoryPageState extends State<CategoryPage> {
                                         Text(
                                           "Rs 150",
                                           style: TextStyle(
-                                            fontSize: 10.0,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
                                             color: colorPrimaryDark,
                                           ),
                                         ),
-                                        SizedBox(width: 5.0),
                                         Text(
                                           "Rs 200",
                                           style: TextStyle(
-                                            fontSize: 10.0,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
                                             decoration:
                                                 TextDecoration.lineThrough,
@@ -372,7 +367,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 textStyle: TextStyle(
                                                   fontSize: 18,
                                                 ),
-                                                padding: EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 backgroundColor: addedToCart2[index]
                                                     ? colorRed
                                                     : colorPrimary,
@@ -422,7 +417,7 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(10.0),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
@@ -456,7 +451,7 @@ class _CategoryPageState extends State<CategoryPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 250.0,
+                height: 180.0,
                 //width: screenWidth,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -468,7 +463,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         Stack(
                           children: [
                             Container(
-                              width: 200.0,
+                              width: 160.0,
                               decoration: BoxDecoration(
                                 color: colorWhite,
                                 borderRadius: BorderRadius.circular(8.0),
@@ -500,7 +495,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                     child: Text(
                                       "DISHWASH LIQUID",
                                       style: TextStyle(
-                                        fontSize: 12.0,
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         color: notificationTitle,
                                       ),
@@ -516,7 +511,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                         Text(
                                           "Rs 150",
                                           style: TextStyle(
-                                            fontSize: 10.0,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
                                             color: colorPrimaryDark,
                                           ),
@@ -558,7 +553,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 textStyle: TextStyle(
                                                   fontSize: 18,
                                                 ),
-                                                padding: EdgeInsets.all(12.0),
+                                                padding: EdgeInsets.all(10.0),
                                                 backgroundColor: addedToCart3[index]
                                                     ? colorRed
                                                     : colorPrimary,

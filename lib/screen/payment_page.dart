@@ -73,9 +73,8 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-
-                      child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(
@@ -96,11 +95,14 @@ class _PaymentPageState extends State<PaymentPage> {
                             child: Text(mode),
                           );
                         }).toList(),
+                        // Remove underline from DropdownButtonFormField
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                        ),
                       ),
-                    )
-
-
+                    ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: TextFormField(
