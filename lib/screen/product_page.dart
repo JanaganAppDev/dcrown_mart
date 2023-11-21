@@ -20,323 +20,279 @@ class _ProductPageState extends State<ProductPage> {
 
     return Scaffold(
       backgroundColor: colorWhite,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 350.0),
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 80.0),
-                  child: Center(
-                    child: Image.asset(
-                      'dishwash1.jpg',
-                      height: 250.0,
-                      width: 250.0,
-                      alignment: Alignment.center,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 350.0),
-                  child: Stack(
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.shopping_cart),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 170.0, left: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: colorPrimary,
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => MyCartPage()),
+                            MaterialPageRoute(builder: (context) => HomePage()),
                           );
                         },
                       ),
-                      Positioned(
-                        bottom: 6,
-                        right: 2,
-                        child: Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: colorBlack,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          constraints: BoxConstraints(
-                            minWidth: 16,
-                            minHeight: 16,
-                          ),
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              color: colorWhite,
-                              fontSize: 10,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              height: 500.0,
-              width: screenWidth,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                ),
-                // Remove the border property to remove the border
+                  Image.asset(
+                    'dishwash1.jpg',
+                    height: 250.0,
+                    width: 250.0,
+                    alignment: Alignment.center,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 170.0, right: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: colorPrimary,
+                      ),
+                      child: Stack(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.shopping_cart),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyCartPage()),
+                              );
+                            },
+                          ),
+                          Positioned(
+                            bottom: 6,
+                            right: 2,
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: colorBlack,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              constraints: BoxConstraints(
+                                minWidth: 16,
+                                minHeight: 16,
+                              ),
+                              child: Text(
+                                '1',
+                                style: TextStyle(
+                                  color: colorWhite,
+                                  fontSize: 10,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "DISHWASH LIQUID",
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: colorBlack,
-                      ),
-                    ),
+              Container(
+                padding: EdgeInsets.all(10.0),
+                height: 640.0,
+                width: screenWidth,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
                   ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "SRIMA GROUPS",
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Description",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Dishwash liquid with lemon fragrance and new 2x formula.",
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "USE:",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Icon(Icons.brightness_1, color: colorBlack, size: 8),
-                        SizedBox(width: 5),
-                        Text(
-                          "Take 1tsp (3.75ml) of Liquid,",
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: colorBlack,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Icon(Icons.brightness_1, color: colorBlack, size: 8),
-                        SizedBox(width: 5),
-                        Text(
-                          "Mix it in one bowl of water (40ml)",
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: colorBlack,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Icon(Icons.brightness_1, color: colorBlack, size: 8),
-                        SizedBox(width: 5),
-                        Text(
-                          "Dip the scrubber, squeeze to get powerful lather",
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: colorBlack,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Icon(Icons.brightness_1, color: colorBlack, size: 8),
-                        SizedBox(width: 5),
-                        Text(
-                          "Clean to get a sink full of sparkling vessels",
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: colorBlack,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "STORAGE",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "store under cool and dry condition",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      " CAUTION:",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      " Avoid getting in eyes, if this occurs, gentle rinse eyes with water.",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: colorBlack,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "Rs 150.0",
+                ),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "DISHWASH LIQUID",
                         style: TextStyle(
-                          fontSize: 10.0,
+                          fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: colorPrimary,
+                          color: colorBlack,
                         ),
                       ),
-                      SizedBox(width: 5.0),
-                      Text(
-                        "Rs 200",
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "SRIMA GROUPS",
                         style: TextStyle(
-                          fontSize: 10.0,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.lineThrough,
+                          fontSize: 12.0,
+                          color: colorBlack,
                         ),
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: Container(
-                          height: 25.0,
-                          width: 90.0,
-                          decoration: BoxDecoration(
-                            color: colorWhite,
-                            borderRadius: BorderRadius.circular(20.0),
-                            border: Border.all(
-                              color: colorPrimary,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Description",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Dishwash liquid with lemon fragrance and new 2x formula.",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "USE:",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      title: Row(
+                        children: [
+                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          SizedBox(width: 5),
+                          Text(
+                            "Take 1tsp (3.75ml) of Liquid,",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
                             ),
                           ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: DropdownButton<String>(
-                              value: selectedSize,
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  selectedSize = newValue!;
-                                });
-                              },
-                              items: <String>[
-                                '500ML',
-                                '1000ML',
-                                '2000ML'
-                              ].map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                        fontSize: 13.0, color: colorGrey2),
-                                  ),
-                                );
-                              }).toList(),
-                              style:
-                                  TextStyle(fontSize: 13.0, color: colorGrey2),
-                              icon: Icon(Icons.arrow_drop_down),
-                              underline: SizedBox.shrink(),
-                              isExpanded: true,
+                        ],
+                      ),
+                    ),
+                    ListTile(
+                      title: Row(
+                        children: [
+                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          SizedBox(width: 5),
+                          Text(
+                            "Mix it in one bowl of water (40ml)",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    ListTile(
+                      title: Row(
+                        children: [
+                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          SizedBox(width: 5),
+                          Text(
+                            "Dip the scrubber, squeeze to get powerful lather",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    ListTile(
+                      title: Row(
+                        children: [
+                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          SizedBox(width: 5),
+                          Text(
+                            "Clean to get a sink full of sparkling vessels",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: colorBlack,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "STORAGE:",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: colorBlack,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              itemCount = (itemCount > 0) ? itemCount - 1 : 0;
-                            });
-                          },
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "store under cool and dry condition",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        " CAUTION:",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        " Avoid getting in eyes, if this occurs, gentle rinse eyes with water.",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: colorBlack,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Rs 150.0",
+                          style: TextStyle(
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.bold,
+                            color: colorPrimary,
+                          ),
+                        ),
+                        SizedBox(width: 5.0),
+                        Text(
+                          "Rs 200",
+                          style: TextStyle(
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
                           child: Container(
                             height: 25.0,
-                            width: 70.0,
+                            width: 90.0,
                             decoration: BoxDecoration(
                               color: colorWhite,
                               borderRadius: BorderRadius.circular(20.0),
@@ -344,61 +300,119 @@ class _ProductPageState extends State<ProductPage> {
                                 color: colorPrimary,
                               ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.remove, color: colorBlack, size: 16),
-                                Text(
-                                  itemCount.toString(),
-                                  style: TextStyle(
-                                    fontSize: 13.0,
-                                    color: colorBlack,
-                                  ),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: DropdownButton<String>(
+                                value: selectedSize,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedSize = newValue!;
+                                  });
+                                },
+                                items: <String>[
+                                  '500ML',
+                                  '1000ML',
+                                  '2000ML'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          fontSize: 13.0, color: colorGrey2),
+                                    ),
+                                  );
+                                }).toList(),
+                                style: TextStyle(
+                                    fontSize: 13.0, color: colorGrey2),
+                                icon: Icon(Icons.arrow_drop_down),
+                                underline: SizedBox.shrink(),
+                                isExpanded: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                itemCount = (itemCount > 0) ? itemCount - 1 : 0;
+                              });
+                            },
+                            child: Container(
+                              height: 25.0,
+                              width: 70.0,
+                              decoration: BoxDecoration(
+                                color: colorWhite,
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(
+                                  color: colorPrimary,
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      itemCount++;
-                                    });
-                                  },
-                                  child: Icon(Icons.add,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(Icons.remove,
                                       color: colorBlack, size: 16),
-                                ),
-                              ],
+                                  Text(
+                                    itemCount.toString(),
+                                    style: TextStyle(
+                                      fontSize: 13.0,
+                                      color: colorBlack,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        itemCount++;
+                                      });
+                                    },
+                                    child: Icon(Icons.add,
+                                        color: colorBlack, size: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 50.0),
+                      child: Container(
+                        width: 450.0,
+                        height: 40.0,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorPrimary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
+                          child: Text(
+                            "Continue Shopping",
+                            style: TextStyle(
+                              fontSize: 20.0,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  Container(
-                    width: 450.0,
-                    height: 40.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: colorPrimary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                      ),
-                      child: Text(
-                        "Continue Shopping",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

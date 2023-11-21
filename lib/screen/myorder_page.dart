@@ -94,7 +94,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
                           child: Padding(
                             padding: EdgeInsets.only(left: 50.0),
                             child: Container(
