@@ -1,6 +1,7 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 
 class PaymentPage extends StatefulWidget {
@@ -60,13 +61,13 @@ class _PaymentPageState extends State<PaymentPage> {
                     decoration: InputDecoration(
                       hintText: '₹60',
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(55.0),
                         borderSide: BorderSide(
                           color: Colors.yellow,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(55.0),
                         borderSide: BorderSide(
                           color: Colors.yellow,
                         ),
@@ -78,7 +79,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(55.0),
                         border: Border.all(
                           color: _isButtonClicked ? colorRed : colorPrimaryDark,
                         ),
@@ -113,19 +114,19 @@ class _PaymentPageState extends State<PaymentPage> {
                         prefixIcon: Icon(Icons.account_balance,color: colorGrey2),
                         hintText: 'Transaction ID',
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: Colors.yellow,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: Colors.yellow,
                           ),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: _isButtonClicked ? Colors.red : Colors.yellow,
                           ),
@@ -138,22 +139,30 @@ class _PaymentPageState extends State<PaymentPage> {
                     child: TextFormField(
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.image,color: colorGrey2),
+                        prefixIcon: GestureDetector(
+                          onTap: () async {
+                            List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
+                            if (images != null) {
+                              // Handle the selected images as needed, e.g., update a list of images.
+                            }
+                          },
+                          child: Icon(Icons.image, color: colorGrey2),
+                        ),
                         hintText: 'ScreenShot',
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: Colors.yellow,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: Colors.yellow,
                           ),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color: _isButtonClicked ? Colors.red : Colors.yellow,
                           ),
@@ -161,6 +170,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
+
                   SizedBox(height: 20.0),
                   Container(
                     //margin: EdgeInsets.only(top: 60.0),
