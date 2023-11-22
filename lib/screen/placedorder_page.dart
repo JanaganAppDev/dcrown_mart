@@ -1,6 +1,5 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
-import 'package:calendar_view/calendar_view.dart';
 
 class PlacedOrderPage extends StatefulWidget {
   const PlacedOrderPage({super.key});
@@ -72,7 +71,6 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-
                   ),
                 ),
               ],
@@ -88,11 +86,11 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
               child: Image(
                   width: 50.0,
                   height: 50.0,
-                  image: AssetImage("order_image.png")
-              ),
+                  image: AssetImage("order_image.png")),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 10.0), // Adjusted left and right padding
+              padding: EdgeInsets.only(
+                  left: 10.0, right: 10.0), // Adjusted left and right padding
               child: Row(
                 children: [
                   IconButton(
@@ -124,53 +122,77 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                width: screenWidth,height: 100.0,
-                decoration:BoxDecoration(color: colorWhite,
+                width: screenWidth,
+                height: 100.0,
+                decoration: BoxDecoration(
+                    color: colorWhite,
                     borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [BoxShadow(color: colorGrey,blurRadius: 5.0,offset: Offset(0,2))]
-                ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: colorGrey,
+                          blurRadius: 5.0,
+                          offset: Offset(0, 2))
+                    ]),
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Column(
                     children: [
-                      Align(alignment: Alignment.topLeft,
-                        child: Text('Delivery by',style: TextStyle(
-                          color:colorGrey1,fontSize: 12.0,
-                        ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Delivery by',
+                          style: TextStyle(
+                            color: colorGrey1,
+                            fontSize: 12.0,
+                          ),
                         ),
                       ),
                       Row(
                         children: [
                           IconButton(
-                            icon: Icon(Icons.radio_button_checked,color:colorPrimary,),
+                            icon: Icon(
+                              Icons.radio_button_checked,
+                              color: colorPrimary,
+                            ),
                             onPressed: () {},
                           ),
-                          Text('6:00AM-9:00PM',style: TextStyle(color: colorBlack,fontSize: 15.0),)
+                          Text(
+                            '6:00AM-9:00PM',
+                            style: TextStyle(color: colorBlack, fontSize: 15.0),
+                          )
                         ],
                       ),
                     ],
                   ),
-
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                  width: screenWidth,height: 100.0,
-                  decoration:BoxDecoration(color: colorWhite,
+                  width: screenWidth,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                      color: colorWhite,
                       borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [BoxShadow(color: colorGrey,blurRadius: 5.0,offset: Offset(0,2))]
-                  ),
-
+                      boxShadow: [
+                        BoxShadow(
+                            color: colorGrey,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 2))
+                      ]),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
                       children: [
-                        Align(alignment: Alignment.topLeft,
-                          child: Text('Payment Method',style: TextStyle(
-                            color:colorGrey1,fontSize: 12.0,
-                          ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Payment Method',
+                            style: TextStyle(
+                              color: colorGrey1,
+                              fontSize: 12.0,
+                            ),
                           ),
                         ),
                         Row(
@@ -178,16 +200,17 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                             Image(
                                 width: 55.0,
                                 height: 55.0,
-                                image: AssetImage("bank_logo.png")
-                            ),
-                            Text('Direct Bank Tranfer',style: TextStyle(color: colorBlack,fontSize: 15.0),)
+                                image: AssetImage("bank_logo.png")),
+                            Text(
+                              'Direct Bank Tranfer',
+                              style:
+                                  TextStyle(color: colorBlack, fontSize: 15.0),
+                            )
                           ],
                         ),
-
                       ],
                     ),
-                  )
-              ),
+                  )),
             )
           ],
         ),
