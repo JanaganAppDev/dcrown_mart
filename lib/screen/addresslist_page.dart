@@ -45,7 +45,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: colorGrey1),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 275.0),
+                          padding: EdgeInsets.only(left: 265.0),
                           child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -67,7 +67,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
               height: 600.0,
               child: ListView.builder(
                 //scrollDirection: Axis.horizontal,
-                itemCount: 1,
+                itemCount: 3,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.all(8.0),

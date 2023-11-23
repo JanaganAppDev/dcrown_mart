@@ -18,10 +18,10 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
         backgroundColor: colorPrimary,
         title: Row(
           children: [
-            IconButton(
+           /* IconButton(
               icon: Icon(Icons.menu),
               onPressed: () {},
-            ),
+            ),*/
             CircleAvatar(
               backgroundImage: AssetImage("assets/crown_img.jpg"),
             ),
@@ -90,7 +90,7 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 10.0, right: 10.0), // Adjusted left and right padding
+                  left: 10.0, right: 10.0),
               child: Row(
                 children: [
                   IconButton(
@@ -99,11 +99,8 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                   ),
                   Expanded(
                     child: Container(
-                      // You can replace this Container with your calendar view widget
-                      // For example, if you are using a calendar package, you might use something like:
-                      // child: CalendarWidget(),
-                      // Adjust the properties of the Container to match your calendar widget
-                      color: Colors.grey[300], // Example background color
+
+                      color: colorWhite,
                       child: Center(
                         child: Text(
                           'Calendar View',

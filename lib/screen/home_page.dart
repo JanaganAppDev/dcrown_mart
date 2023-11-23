@@ -562,10 +562,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.all(8.0),
-              height: 250.0,
+              height: 185.0,
               child: GridView.builder(
                 itemCount: 2,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -608,7 +607,7 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 "DISHWASH LIQUID",
                                 style: TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                   color: notificationTitle,
                                 ),
@@ -618,7 +617,7 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding:  EdgeInsets.all(8.0),
                                   child: Text(
                                     "Rs 150",
                                     style: TextStyle(
@@ -745,13 +744,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0),
               child: Container(
-                height: 180.0,
+                height: 185.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  itemExtent: 230.0,
+                  itemExtent: 205.0,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
@@ -797,7 +796,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding:  EdgeInsets.all(8.0),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -936,14 +935,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0),
               child: Container(
-                height: 180.0,
+                height: 185.0,
                 //width: screenWidth,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  itemExtent: 230.0,
+                  itemExtent: 205.0,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [

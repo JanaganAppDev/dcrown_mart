@@ -3,6 +3,7 @@ import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
 import 'package:dcrown_mart/screen/home_page.dart';
+import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';

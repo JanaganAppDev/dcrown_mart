@@ -98,7 +98,6 @@ class _PaymentPageState extends State<PaymentPage> {
                             child: Text(mode),
                           );
                         }).toList(),
-                        // Remove underline from DropdownButtonFormField
                         decoration: InputDecoration(
                           border: InputBorder.none,
                         ),
@@ -136,40 +135,42 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: TextFormField(
-                      cursorColor: colorPrimary,
-                      decoration: InputDecoration(
-                        prefixIcon: GestureDetector(
-                          onTap: () async {
-                            List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(55.0),
+                        border: Border.all(
+                          color: _isButtonClicked ? colorRed : colorPrimaryDark,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: GestureDetector(
+                        onTap: () async {
+                          if (await Permission.photos.request().isGranted) {
+                            // User granted permission, open gallery
+                            List<XFile>? images =
+                            await ImagePicker().pickMultiImage(imageQuality: 50);
                             if (images != null) {
                               // Handle the selected images as needed, e.g., update a list of images.
                             }
-                          },
-                          child: Icon(Icons.image, color: colorGrey2),
-                        ),
-                        hintText: 'ScreenShot',
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color: Colors.yellow,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color: Colors.yellow,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          } else {
+                            // Permission denied
+                            // You can show a message to the user or request the permission again.
+                          }
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.image, color: colorGrey2),
+                              SizedBox(width: 10),
+                              Text('Screen shot'),
+                            ],
                           ),
                         ),
                       ),
                     ),
                   ),
+
 
                   SizedBox(height: 20.0),
                   Container(
