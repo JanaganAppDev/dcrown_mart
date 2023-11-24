@@ -1,3 +1,4 @@
+import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -80,11 +81,14 @@ class _ViewallPageState extends State<ViewallPage> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Center(
-                                child: Image.asset(
-                                  'dishwash.jpeg',
-                                  height: 130.0,
-                                  width: 130.0,
+                                child: Image(
+                                  height: 100.0,
+                                  width: 110.0,
                                   alignment: Alignment.center,
+                                  image:
+                                   AssetImage('assets/dishwash.jpeg',
+
+                                   ),
                                 ),
                               ),
                               SizedBox(height: 4.0),
@@ -128,9 +132,14 @@ class _ViewallPageState extends State<ViewallPage> {
                                         child: ElevatedButton(
                                           onPressed: () {
                                             setState(() {
-                                              addedToCart[index] =
-                                                  !addedToCart[index];
+                                              addedToCart[index] = !addedToCart[index];
                                             });
+                                            if (addedToCart[index]) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(builder: (context) => MyCartPage()),
+                                              );
+                                            }
                                           },
                                           child: Center(
                                             child: Icon(

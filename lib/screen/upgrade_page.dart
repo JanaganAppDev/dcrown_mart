@@ -37,6 +37,11 @@ class _UpgradePageState extends State<UpgradePage> {
           },
         ),
       ),
+      /*bottomNavigationBar:BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.payments),label:"payment",),
+        BottomNavigationBarItem(icon: Icon(Icons.payments),label:"pay",)
+      ],
+      ) ,*/
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -198,62 +203,62 @@ class _UpgradePageState extends State<UpgradePage> {
               Padding(
                 padding: EdgeInsets.only(top: 240.0),
                 child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Payment Amount",
-                            style: TextStyle(
-                              fontSize: 14.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Payment Amount",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: colorBlack,
+                          ),
+                        ),
+                        Text(
+                          "₹ 99",
+                          style: TextStyle(
+                              fontSize: 16.0,
                               color: colorBlack,
-                            ),
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Text(
+                          "Handle fee: ₹ 0.00",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: colorBlack,
                           ),
-                          Text(
-                            "₹ 99",
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                color: colorBlack,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            "Handle fee: ₹ 0.00",
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: colorBlack,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            width: 60.0,
-                            height: 35.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => PaymentPage()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: toolbar,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 60.0,
+                          height: 35.0,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PaymentPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: toolbar,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              child: Text("Pay"),
                             ),
+                            child: Text("Pay"),
                           ),
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
+              ),
               ),
             ],
           ),
