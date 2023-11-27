@@ -18,7 +18,8 @@ List<bool> addedToCart = [
   false,
   false,
   false,
-  false
+  false,
+
 ];
 
 class _ViewallPageState extends State<ViewallPage> {
@@ -53,7 +54,7 @@ class _ViewallPageState extends State<ViewallPage> {
                 padding: EdgeInsets.all(8.0),
                 height: screenHeigth,
                 child: GridView.builder(
-                  itemCount: 8,
+                  itemCount: 12,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 40,
                     mainAxisSpacing: 20,
