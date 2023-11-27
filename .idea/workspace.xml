@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Aravind- edit a all page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/placedorder_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/placedorder_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/viewall_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/viewall_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700800478520</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Aravind- edit a all page">
+      <created>1700830982991</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1700830982991</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
