@@ -1,7 +1,5 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -13,7 +11,13 @@ class PaymentPage extends StatefulWidget {
 bool _isButtonClicked = false;
 
 class _PaymentPageState extends State<PaymentPage> {
-  List<String> paymentModes = ['Select Payment Mode','Direct Bank Transfer', 'Google Pay', 'Phonepe', 'Others'];
+  List<String> paymentModes = [
+    'Select Payment Mode',
+    'Direct Bank Transfer',
+    'Google Pay',
+    'Phonepe',
+    'Others'
+  ];
   String selectedPaymentMode = 'Select Payment Mode';
 
   @override
@@ -71,7 +75,6 @@ class _PaymentPageState extends State<PaymentPage> {
                           color: Colors.yellow,
                         ),
                       ),
-
                     ),
                   ),
                   Padding(
@@ -104,13 +107,13 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: TextFormField(
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.account_balance,color: colorGrey2),
+                        prefixIcon:
+                            Icon(Icons.account_balance, color: colorGrey2),
                         hintText: 'Transaction ID',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
@@ -127,7 +130,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide(
-                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                            color:
+                                _isButtonClicked ? Colors.red : Colors.yellow,
                           ),
                         ),
                       ),
@@ -138,7 +142,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     child: TextFormField(
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.image,color: colorGrey2),
+                        prefixIcon: Icon(Icons.image, color: colorGrey2),
                         hintText: 'ScreenShot',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
@@ -155,7 +159,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide(
-                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                            color:
+                                _isButtonClicked ? Colors.red : Colors.yellow,
                           ),
                         ),
                       ),
@@ -167,8 +172,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     width: 140.0,
                     height: 50.0,
                     child: ElevatedButton(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorPrimary,
                         shape: RoundedRectangleBorder(
