@@ -11,8 +11,9 @@ class AddresslistPage extends StatefulWidget {
 }
 
 class _AddresslistPageState extends State<AddresslistPage> {
+  String? selectedAddressMethod;
+
   @override
-  
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -31,62 +32,68 @@ class _AddresslistPageState extends State<AddresslistPage> {
         child: Column(
           children: [
             SizedBox(height: 15.0),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Address list",
-                          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: colorGrey1),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 265.0),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => MyAddressPage()),
-                                );
-                                print('Container tapped!');
-                              },
-                              child: Icon(Icons.edit_rounded,color: colorPrimary,)),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+
             SizedBox(height: 10.0),
             Container(
               height: 600.0,
               child: ListView.builder(
                 //scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: 2,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.all(8.0),
-                    height: 50.0,
+                    margin: EdgeInsets.all(0.0),
+                    height: 88.0,
                     width: screenWidth,
-                    decoration: BoxDecoration(
-                      color: colorWhite,
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: colorGrey,
-                          blurRadius: 0.0,
-                          offset: Offset(0, 2),
+                    child: Column(
+                      children: [
+                        Container(
+
+                          child: RadioListTile(
+                            title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Address list",
+                                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,color: colorGrey1),
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => MyAddressPage()),
+                                    );
+                                    print('Container tapped!');
+                                  },
+                                  child: Icon(Icons.edit_rounded,color: colorPrimary,))
+                            ],
+                          ),
+                            value: "Method 1",
+                            groupValue: selectedAddressMethod,
+                            onChanged: (value){
+                              setState(() {
+                                selectedAddressMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
                         ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 30.0),
+                              child: Text("1.50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 18.0),),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          height: 5,
+                            thickness: 1,
+                          indent: 0,
+                          endIndent: 0,
+                          color: colorGrey,
+                        )
                       ],
-                    ),
-                    child: Padding(
-                      padding:  EdgeInsets.all(8.0),
-                      child: Text("1.50/12,sasthri street, chennai-689001",style:TextStyle(fontSize: 18.0),),
                     ),
                   );
                 },

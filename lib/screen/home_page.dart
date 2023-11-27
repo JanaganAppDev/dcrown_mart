@@ -28,6 +28,7 @@ List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
   @override
+  int itemCountInCart = 0;
   /*ScrollController _scrollController = ScrollController();
   double scrollOffset = 0.0;
   Timer? timer;*/
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                       minHeight: 16,
                     ),
                     child: Text(
-                      '0',
+                      '$itemCountInCart',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10,
@@ -642,13 +643,10 @@ class _HomePageState extends State<HomePage> {
                                     child: ElevatedButton(
                                         onPressed: () {
                                           setState(() {
+                                            itemCountInCart++;
                                             addedToCart[index] = !addedToCart[index];
                                           });
                                           if (addedToCart[index]) {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => MyCartPage()),
-                                            );
                                           }
                                         },
                                         child: Center(
@@ -833,13 +831,11 @@ class _HomePageState extends State<HomePage> {
                                           child: ElevatedButton(
                                             onPressed: () {
                                               setState(() {
+                                                itemCountInCart++;
                                                 addedToCart2[index] = !addedToCart2[index];
                                               });
                                               if (addedToCart2[index]) {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(builder: (context) => MyCartPage()),
-                                                );
+
                                               }
                                             },
                                             child: Center(
@@ -1033,13 +1029,9 @@ class _HomePageState extends State<HomePage> {
                                           child: ElevatedButton(
                                             onPressed: () {
                                               setState(() {
-                                                addedToCart3[index] = !addedToCart3[index];
-                                              });
+                                                itemCountInCart++;
+                                                addedToCart3[index] = !addedToCart3[index];                                              });
                                               if (addedToCart3[index]) {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(builder: (context) => MyCartPage()),
-                                                );
                                               }
                                             },
                                             child: Center(
