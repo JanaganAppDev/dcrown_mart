@@ -9,14 +9,19 @@ class MyAddressPage extends StatefulWidget {
   @override
   State<MyAddressPage> createState() => _MyAddressPageState();
 }
+
 bool _isButtonClicked = false;
 
-
 class _MyAddressPageState extends State<MyAddressPage> {
-  List<String> location = ['Location', 'Madurai', 'Chennai', 'Bangalore', 'Others'];
+  List<String> location = [
+    'Location',
+    'Madurai',
+    'Chennai',
+    'Bangalore',
+    'Others'
+  ];
   String selectedLocation = 'Location';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
 
   TextEditingController nameControler = TextEditingController();
   TextEditingController addresstypeControler = TextEditingController();
@@ -77,6 +82,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
     return null;
   }
+
 /*
   String? validateArea(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -103,6 +109,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
     return null;
   }
+
   String? validatepincode(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Please enter your pincode';
@@ -116,11 +123,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-
-
-  void login(String name,addresstype,flatno,address,lankmark,pincode) {} //api
-
-
+  void login(
+      String name, addresstype, flatno, address, lankmark, pincode) {} //api
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +132,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorPrimary, // Ensure colorPrimary is defined and imported
+        backgroundColor:
+            colorPrimary, // Ensure colorPrimary is defined and imported
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -145,10 +150,10 @@ class _MyAddressPageState extends State<MyAddressPage> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
                         controller: nameControler,
                         cursorColor: colorPrimary,
@@ -169,7 +174,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
@@ -178,31 +183,31 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
-                        controller:addresstypeControler,
+                        controller: addresstypeControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'Address Type',
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
@@ -211,10 +216,10 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
                         controller: flatnoControler,
                         cursorColor: colorPrimary,
@@ -223,61 +228,61 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
-                        validator:validateFlatno,
+                        validator: validateFlatno,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
-                        controller:addressControler,
+                        controller: addressControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'Address',
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
-                        validator:validateAddress,
+                        validator: validateAddress,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 55.0,top: 15.0),
+                    padding: const EdgeInsets.only(left: 55.0, top: 15.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -291,14 +296,14 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(55.0),
                         border: Border.all(
-                          color: _isButtonClicked ? Colors.red : Colors.yellow,
+                          color: _isButtonClicked ? colorRed : colorPrimary,
                         ),
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -322,45 +327,45 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
-                        controller:landmarkControler,
+                        controller: landmarkControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'Land Mark',
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
-                        validator:validateLandmark,
+                        validator: validateLandmark,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0,right: 25.0,top: 25.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Container(
-                      width: 295.0,
-                      height: 55,
+                      width: 350.0,
+                      height: 45,
                       child: TextFormField(
-                        controller:pincodeControler,
+                        controller: pincodeControler,
                         cursorColor: colorPrimary,
                         keyboardType: TextInputType.number,
                         inputFormatters: <TextInputFormatter>[
@@ -371,19 +376,19 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: Colors.yellow,
+                              color: colorPrimary,
                             ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(55.0),
                             borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed :colorPrimary,
+                              color: _isButtonClicked ? colorRed : colorPrimary,
                             ),
                           ),
                         ),
@@ -393,9 +398,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
                   ),
                   SizedBox(height: 20.0),
                   Padding(
-                    padding: EdgeInsets.only(left: 45.0,right: 45.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Container(
-                      width: 250.0,
+                      width: 330.0,
                       height: 50.0,
                       child: ElevatedButton(
                         onPressed: () {
@@ -404,24 +409,33 @@ class _MyAddressPageState extends State<MyAddressPage> {
                               _isButtonClicked = true;
                             });
                             print("test");
-                            login(nameControler.text.toString(),
-                                addresstypeControler.text.toString(),
-                                flatnoControler.text.toString(),
-                                addressControler.text.toString(),
-                                landmarkControler.text.toString(),
-                                pincodeControler.text.toString(),);
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> AddresslistPage()));
-                          }else{
+                            login(
+                              nameControler.text.toString(),
+                              addresstypeControler.text.toString(),
+                              flatnoControler.text.toString(),
+                              addressControler.text.toString(),
+                              landmarkControler.text.toString(),
+                              pincodeControler.text.toString(),
+                            );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddresslistPage()));
+                          } else {
                             print("test1");
                           }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorPrimary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(55.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                         ),
-                        child: Text("Save",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
+                        child: Text(
+                          "Save",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 25.0),
+                        ),
                       ),
                     ),
                   ),
@@ -433,6 +447,4 @@ class _MyAddressPageState extends State<MyAddressPage> {
       ),
     );
   }
-
-
 }
