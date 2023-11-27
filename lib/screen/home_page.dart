@@ -562,10 +562,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.all(8.0),
-              height: 250.0,
+              height: 185.0,
               child: GridView.builder(
                 itemCount: 2,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -595,11 +594,13 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Center(
-                              child: Image.asset(
-                                'dishwash.jpeg',
-                                height: 70.0,
-                                width: 65.0,
+                              child: Image(
+                                height: 100.0,
+                                width: 110.0,
                                 alignment: Alignment.center,
+                                image:
+                                AssetImage('assets/dishwash.jpeg',
+                                ),
                               ),
                             ),
                             SizedBox(height: 4.0),
@@ -608,7 +609,7 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 "DISHWASH LIQUID",
                                 style: TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                   color: notificationTitle,
                                 ),
@@ -618,7 +619,7 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding:  EdgeInsets.all(8.0),
                                   child: Text(
                                     "Rs 150",
                                     style: TextStyle(
@@ -639,13 +640,18 @@ class _HomePageState extends State<HomePage> {
                                 Container(
                                     width: 40,
                                     child: ElevatedButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          addedToCart[index] =
-                                              !addedToCart[index];
-                                        });
-                                      },
-                                      child: Center(
+                                        onPressed: () {
+                                          setState(() {
+                                            addedToCart[index] = !addedToCart[index];
+                                          });
+                                          if (addedToCart[index]) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => MyCartPage()),
+                                            );
+                                          }
+                                        },
+                                        child: Center(
                                         child: Icon(
                                           addedToCart[index]
                                               ? Icons.remove_circle
@@ -667,7 +673,7 @@ class _HomePageState extends State<HomePage> {
                                         backgroundColor: addedToCart[index]
                                             ? colorRed
                                             : colorPrimary,
-                                      ),
+                                      )
                                     )),
                               ],
                             ),
@@ -745,13 +751,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0),
               child: Container(
-                height: 180.0,
+                height: 190.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  itemExtent: 230.0,
+                  itemExtent: 205.0,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
@@ -777,11 +783,13 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Center(
-                                    child: Image.asset(
-                                      'dishwash.jpeg',
-                                      height: 130.0,
-                                      width: 130.0,
+                                    child: Image(
+                                      height: 120.0,
+                                      width: 110.0,
                                       alignment: Alignment.center,
+                                      image:
+                                      AssetImage('assets/dishwash.jpeg',
+                                      ),
                                     ),
                                   ),
                                   SizedBox(height: 4.0),
@@ -796,13 +804,13 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding:  EdgeInsets.all(8.0),
+                                        child: Text(
                                           "Rs 150",
                                           style: TextStyle(
                                             fontSize: 15.0,
@@ -810,54 +818,59 @@ class _HomePageState extends State<HomePage> {
                                             color: colorPrimaryDark,
                                           ),
                                         ),
-                                        Text(
-                                          "Rs 200",
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
+                                      ),
+                                      Text(
+                                        "Rs 200",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          decoration:
+                                              TextDecoration.lineThrough,
                                         ),
-                                        Container(
-                                            width: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  addedToCart2[index] =
-                                                      !addedToCart2[index];
-                                                });
-                                              },
-                                              child: Center(
-                                                child: Icon(
+                                      ),
+                                      Container(
+                                          width: 40,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                addedToCart2[index] = !addedToCart2[index];
+                                              });
+                                              if (addedToCart2[index]) {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => MyCartPage()),
+                                                );
+                                              }
+                                            },
+                                            child: Center(
+                                              child: Icon(
+                                                addedToCart2[index]
+                                                    ? Icons.remove_circle
+                                                    : Icons.add_circle,
+                                                color: colorWhite,
+                                              ),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(10.0),
+                                                  bottomRight:
+                                                      Radius.circular(10.0),
+                                                ),
+                                              ),
+                                              textStyle: TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              backgroundColor:
                                                   addedToCart2[index]
-                                                      ? Icons.remove_circle
-                                                      : Icons.add_circle,
-                                                  color: colorWhite,
-                                                ),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                                textStyle: TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                                padding: EdgeInsets.all(10.0),
-                                                backgroundColor:
-                                                    addedToCart2[index]
-                                                        ? colorRed
-                                                        : colorPrimary,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
+                                                      ? colorRed
+                                                      : colorPrimary,
+                                            ),
+                                          )),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -899,51 +912,51 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Text(
                       "New products",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ViewallPage()));
-                      },
-                      child: Row(
-                        children: [
-                          Text(
-                            "view all",
-                            style: TextStyle(
-                              color: colorGrey1,
-                            ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewallPage()));
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "view all",
+                          style: TextStyle(
+                            color: colorGrey1,
                           ),
-                          Icon(Icons.arrow_forward_ios,
-                              color: colorGrey1, size: 12.0),
-                        ],
-                      ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: colorGrey1, size: 12.0),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0),
               child: Container(
-                height: 180.0,
+                height: 190.0,
                 //width: screenWidth,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  itemExtent: 230.0,
+                  itemExtent: 205.0,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
@@ -969,14 +982,16 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Center(
-                                    child: Image.asset(
-                                      'dishwash.jpeg',
-                                      height: 130.0,
-                                      width: 130.0,
+                                    child: Image(
+                                      height: 120.0,
+                                      width: 110.0,
                                       alignment: Alignment.center,
+                                      image:
+                                      AssetImage('assets/dishwash.jpeg',
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(height: 4.0),
+                                  SizedBox(height: 3.0),
                                   Padding(
                                     padding: EdgeInsets.only(left: 10.0),
                                     child: Text(
@@ -989,13 +1004,13 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   SizedBox(height: 3.0),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 10.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding:  EdgeInsets.all(8.0),
+                                        child: Text(
                                           "Rs 150",
                                           style: TextStyle(
                                             fontSize: 15.0,
@@ -1003,55 +1018,59 @@ class _HomePageState extends State<HomePage> {
                                             color: colorPrimaryDark,
                                           ),
                                         ),
-                                        SizedBox(width: 5.0),
-                                        Text(
-                                          "Rs 200",
-                                          style: TextStyle(
-                                            fontSize: 10.0,
-                                            fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
+                                      ),
+                                      Text(
+                                        "Rs 200",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          decoration:
+                                              TextDecoration.lineThrough,
                                         ),
-                                        Container(
-                                            width: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  addedToCart3[index] =
-                                                      !addedToCart3[index];
-                                                });
-                                              },
-                                              child: Center(
-                                                child: Icon(
+                                      ),
+                                      Container(
+                                          width: 40,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                addedToCart3[index] = !addedToCart3[index];
+                                              });
+                                              if (addedToCart3[index]) {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => MyCartPage()),
+                                                );
+                                              }
+                                            },
+                                            child: Center(
+                                              child: Icon(
+                                                addedToCart3[index]
+                                                    ? Icons.remove_circle
+                                                    : Icons.add_circle,
+                                                color: colorWhite,
+                                              ),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(10.0),
+                                                  bottomRight:
+                                                      Radius.circular(10.0),
+                                                ),
+                                              ),
+                                              textStyle: TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              backgroundColor:
                                                   addedToCart3[index]
-                                                      ? Icons.remove_circle
-                                                      : Icons.add_circle,
-                                                  color: colorWhite,
-                                                ),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                                textStyle: TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                                padding: EdgeInsets.all(10.0),
-                                                backgroundColor:
-                                                    addedToCart3[index]
-                                                        ? colorRed
-                                                        : colorPrimary,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
+                                                      ? colorRed
+                                                      : colorPrimary,
+                                            ),
+                                          )),
+                                    ],
                                   ),
                                 ],
                               ),

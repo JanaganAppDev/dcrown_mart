@@ -317,13 +317,13 @@ class _CategoryPageState extends State<CategoryPage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
                                           "Rs 150",
                                           style: TextStyle(
                                             fontSize: 15.0,
@@ -331,50 +331,50 @@ class _CategoryPageState extends State<CategoryPage> {
                                             color: colorPrimaryDark,
                                           ),
                                         ),
-                                        Text(
-                                          "Rs 200",
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
+                                      ),
+                                      Text(
+                                        "Rs 200",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          decoration:
+                                              TextDecoration.lineThrough,
                                         ),
-                                        Container(
-                                            width: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  addedToCart2[index] = !addedToCart2[index];
-                                                });
-                                              },
-                                              child: Center(
-                                                child: Icon(
-                                                  addedToCart2[index]
-                                                      ? Icons.remove_circle
-                                                      : Icons.add_circle,
-                                                  color: colorWhite,
+                                      ),
+                                      Container(
+                                          width: 40,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                addedToCart2[index] = !addedToCart2[index];
+                                              });
+                                            },
+                                            child: Center(
+                                              child: Icon(
+                                                addedToCart2[index]
+                                                    ? Icons.remove_circle
+                                                    : Icons.add_circle,
+                                                color: colorWhite,
+                                              ),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(10.0),
+                                                  bottomRight:
+                                                  Radius.circular(10.0),
                                                 ),
                                               ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.only(
-                                                    topLeft: Radius.circular(10.0),
-                                                    bottomRight:
-                                                    Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                                textStyle: TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                                padding: EdgeInsets.all(10.0),
-                                                backgroundColor: addedToCart2[index]
-                                                    ? colorRed
-                                                    : colorPrimary,
+                                              textStyle: TextStyle(
+                                                fontSize: 18,
                                               ),
-                                            )),
-                                      ],
-                                    ),
+                                              padding: EdgeInsets.all(10.0),
+                                              backgroundColor: addedToCart2[index]
+                                                  ? colorRed
+                                                  : colorPrimary,
+                                            ),
+                                          )),
+                                    ],
                                   ),
                                 ],
                               ),

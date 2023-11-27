@@ -18,13 +18,13 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
         backgroundColor: colorPrimary,
         title: Row(
           children: [
-            IconButton(
+           /* IconButton(
               icon: Icon(Icons.menu),
               onPressed: () {},
-            ),
-            CircleAvatar(
+            ),*/
+            /*CircleAvatar(
               backgroundImage: AssetImage("assets/crown_img.jpg"),
-            ),
+            ),*/
             SizedBox(width: 8),
             Text(
               "Placed Order",
@@ -34,14 +34,14 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
         ),
         centerTitle: false,
         actions: <Widget>[
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {},
-          ),
+          ),*/
           Align(
             alignment: Alignment.center,
             child: Stack(
@@ -84,13 +84,17 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
             SizedBox(height: 50.0),
             Center(
               child: Image(
-                  width: 50.0,
-                  height: 50.0,
-                  image: AssetImage("order_image.png")),
+                height: 100.0,
+                width: 110.0,
+                alignment: Alignment.center,
+                image:
+                AssetImage('assets/order_image.png',
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 10.0, right: 10.0), // Adjusted left and right padding
+                  left: 10.0, right: 10.0),
               child: Row(
                 children: [
                   IconButton(
@@ -99,11 +103,8 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                   ),
                   Expanded(
                     child: Container(
-                      // You can replace this Container with your calendar view widget
-                      // For example, if you are using a calendar package, you might use something like:
-                      // child: CalendarWidget(),
-                      // Adjust the properties of the Container to match your calendar widget
-                      color: Colors.grey[300], // Example background color
+
+                      color: colorWhite,
                       child: Center(
                         child: Text(
                           'Calendar View',
@@ -198,9 +199,13 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                         Row(
                           children: [
                             Image(
-                                width: 55.0,
-                                height: 55.0,
-                                image: AssetImage("bank_logo.png")),
+                              height: 50.0,
+                              width: 45.0,
+                              alignment: Alignment.center,
+                              image:
+                              AssetImage('assets/bank_logo.png',
+                              ),
+                            ),
                             Text(
                               'Direct Bank Tranfer',
                               style:
