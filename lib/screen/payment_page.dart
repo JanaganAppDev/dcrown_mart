@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
 
@@ -14,7 +13,13 @@ class PaymentPage extends StatefulWidget {
 bool _isButtonClicked = false;
 
 class _PaymentPageState extends State<PaymentPage> {
-  List<String> paymentModes = ['Select Payment Mode','Direct Bank Transfer', 'Google Pay', 'Phonepe', 'Others'];
+  List<String> paymentModes = [
+    'Select Payment Mode',
+    'Direct Bank Transfer',
+    'Google Pay',
+    'Phonepe',
+    'Others'
+  ];
   String selectedPaymentMode = 'Select Payment Mode';
 
   @override
@@ -72,7 +77,6 @@ class _PaymentPageState extends State<PaymentPage> {
                           color: Colors.yellow,
                         ),
                       ),
-
                     ),
                   ),
                   Padding(
@@ -104,13 +108,13 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: TextFormField(
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.account_balance,color: colorGrey2),
+                        prefixIcon:
+                            Icon(Icons.account_balance, color: colorGrey2),
                         hintText: 'Transaction ID',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
@@ -127,7 +131,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
-                            color: _isButtonClicked ? Colors.red : Colors.yellow,
+                            color:
+                                _isButtonClicked ? Colors.red : Colors.yellow,
                           ),
                         ),
                       ),
@@ -147,8 +152,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         onTap: () async {
                           if (await Permission.photos.request().isGranted) {
                             // User granted permission, open gallery
-                            List<XFile>? images =
-                            await ImagePicker().pickMultiImage(imageQuality: 50);
+                            List<XFile>? images = await ImagePicker()
+                                .pickMultiImage(imageQuality: 50);
                             if (images != null) {
                               // Handle the selected images as needed, e.g., update a list of images.
                             }
@@ -170,16 +175,13 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
-
-
                   SizedBox(height: 20.0),
                   Container(
                     //margin: EdgeInsets.only(top: 60.0),
                     width: 140.0,
                     height: 50.0,
                     child: ElevatedButton(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorPrimary,
                         shape: RoundedRectangleBorder(

@@ -45,12 +45,20 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                   ),
-                  Image.asset(
-                    'dishwash1.jpg',
+                  Image(
                     height: 250.0,
                     width: 250.0,
                     alignment: Alignment.center,
+                    image: AssetImage(
+                      'assets/dishwash1.jpg',
+                    ),
                   ),
+                  /*Image(
+                    height: 250.0,
+                    width: 250.0,
+                    alignment: Alignment.center,
+                    image: AssetImage('dishwash1.jpg'),
+                  ),*/
                   Padding(
                     padding: EdgeInsets.only(bottom: 170.0, right: 10.0),
                     child: Container(
