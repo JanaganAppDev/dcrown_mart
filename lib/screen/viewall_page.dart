@@ -55,7 +55,7 @@ class _ViewallPageState extends State<ViewallPage> {
                 padding: EdgeInsets.all(8.0),
                 height: screenHeigth,
                 child: GridView.builder(
-                  itemCount: 12,
+                  itemCount: 8,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 40,
                     mainAxisSpacing: 20,

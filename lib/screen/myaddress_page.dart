@@ -1,5 +1,6 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/addresslist_page.dart';
+import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -135,9 +136,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
         backgroundColor:
             colorPrimary, // Ensure colorPrimary is defined and imported
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
         title: const Text('My Address'),
@@ -151,134 +155,122 @@ class _MyAddressPageState extends State<MyAddressPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: nameControler,
-                        cursorColor: colorPrimary,
-                        decoration: InputDecoration(
-                          hintText: 'Name',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: nameControler,
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        hintText: '     Name',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validateName,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validateName,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: addresstypeControler,
-                        cursorColor: colorPrimary,
-                        decoration: InputDecoration(
-                          hintText: 'Address Type',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: addresstypeControler,
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        hintText: '      Address Type',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validateAddresstype,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validateAddresstype,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: flatnoControler,
-                        cursorColor: colorPrimary,
-                        decoration: InputDecoration(
-                          hintText: 'House/Flat no',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: flatnoControler,
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        hintText: '      House/Flat no',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validateFlatno,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validateFlatno,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: addressControler,
-                        cursorColor: colorPrimary,
-                        decoration: InputDecoration(
-                          hintText: 'Address',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: addressControler,
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        hintText: '      Address',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validateAddress,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validateAddress,
                     ),
                   ),
                   Padding(
@@ -286,7 +278,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Area',
+                        '      Area',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -297,103 +289,86 @@ class _MyAddressPageState extends State<MyAddressPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(55.0),
-                        border: Border.all(
-                          color: _isButtonClicked ? colorRed : colorPrimary,
-                        ),
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: DropdownButtonFormField<String>(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                        ),
-                        value: selectedLocation,
-                        onChanged: (newValue) {
-                          setState(() {
-                            selectedLocation = newValue!;
-                          });
-                        },
-                        items: location.map((mode) {
-                          return DropdownMenuItem<String>(
-                            value: mode,
-                            child: Text(mode),
-                          );
-                        }).toList(),
-                      ),
+                      value: selectedLocation,
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedLocation = newValue!;
+                        });
+                      },
+                      items: location.map((mode) {
+                        return DropdownMenuItem<String>(
+                          value: mode,
+                          child: Text(mode),
+                        );
+                      }).toList(),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: landmarkControler,
-                        cursorColor: colorPrimary,
-                        decoration: InputDecoration(
-                          hintText: 'Land Mark',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: landmarkControler,
+                      cursorColor: colorPrimary,
+                      decoration: InputDecoration(
+                        hintText: '      Land Mark',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validateLandmark,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validateLandmark,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 350.0,
-                      height: 45,
-                      child: TextFormField(
-                        controller: pincodeControler,
-                        cursorColor: colorPrimary,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        decoration: InputDecoration(
-                          hintText: 'Pin code',
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: colorPrimary,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(55.0),
-                            borderSide: BorderSide(
-                              color: _isButtonClicked ? colorRed : colorPrimary,
-                            ),
+                    child: TextFormField(
+                      controller: pincodeControler,
+                      cursorColor: colorPrimary,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      decoration: InputDecoration(
+                        hintText: '      Pin code',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
                           ),
                         ),
-                        validator: validatepincode,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
+                      validator: validatepincode,
                     ),
                   ),
                   SizedBox(height: 20.0),
