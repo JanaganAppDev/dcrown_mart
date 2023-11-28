@@ -1,4 +1,5 @@
 import 'package:dcrown_mart/const.dart';
+import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:flutter/material.dart';
 
@@ -21,9 +22,12 @@ class _AddresslistPageState extends State<AddresslistPage> {
       appBar: AppBar(
         backgroundColor: colorPrimary,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
         title: const Text('Address List'),
@@ -47,7 +51,6 @@ class _AddresslistPageState extends State<AddresslistPage> {
                     child: Column(
                       children: [
                         Container(
-
                           child: RadioListTile(
                             title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +117,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: Text("Add aother address",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
+                child: Text("Add another address",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
               ),
             ),
           ],

@@ -685,7 +685,7 @@ class _HomePageState extends State<HomePage> {
                                       child: ElevatedButton(
                                           onPressed: () {
                                             setState(() {
-                                              itemCountInCart++;
+                                              itemCountInCart = itemCountInCart == 0 ? 1 : 0;
                                               addedToCart[index] =
                                                   !addedToCart[index];
                                             });
