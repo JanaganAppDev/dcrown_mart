@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:dcrown_mart/screen/category_page.dart';
 import 'package:dcrown_mart/screen/feedback_page.dart';
@@ -65,6 +66,7 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 0;
   int itemCountInCart = 0;
+
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -405,6 +407,14 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 200,
               child: CarouselSlider.builder(
+                enableAutoSlider: true,
+                autoSliderTransitionTime: Duration(seconds: 2),
+                autoSliderDelay: Duration(seconds: 3),
+                /*options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 4),
+                  enableInfiniteScroll: true,
+                ),*/
                 slideBuilder: (index) {
                   return Container(
                     width: MediaQuery.of(context).size.width,
@@ -685,7 +695,8 @@ class _HomePageState extends State<HomePage> {
                                       child: ElevatedButton(
                                           onPressed: () {
                                             setState(() {
-                                              itemCountInCart++;
+                                              itemCountInCart =
+                                                  itemCountInCart == 0 ? 1 : 0;
                                               addedToCart[index] =
                                                   !addedToCart[index];
                                             });
@@ -889,7 +900,10 @@ class _HomePageState extends State<HomePage> {
                                             child: ElevatedButton(
                                               onPressed: () {
                                                 setState(() {
-                                                  itemCountInCart++;
+                                                  itemCountInCart =
+                                                      itemCountInCart == 0
+                                                          ? 1
+                                                          : 0;
                                                   addedToCart2[index] =
                                                       !addedToCart2[index];
                                                 });
@@ -1102,7 +1116,10 @@ class _HomePageState extends State<HomePage> {
                                             child: ElevatedButton(
                                               onPressed: () {
                                                 setState(() {
-                                                  itemCountInCart++;
+                                                  itemCountInCart =
+                                                      itemCountInCart == 0
+                                                          ? 1
+                                                          : 0;
                                                   addedToCart3[index] =
                                                       !addedToCart3[index];
                                                 });
