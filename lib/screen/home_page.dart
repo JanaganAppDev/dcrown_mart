@@ -31,33 +31,6 @@ List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
   @override
-  /*ScrollController _scrollController = ScrollController();
-  double scrollOffset = 0.0;
-  Timer? timer;*/
-
-  /*@override
-  void initState() {
-    super.initState();
-
-    timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      if (scrollOffset < _scrollController.position.maxScrollExtent) {
-        scrollOffset += 500.0;
-        _scrollController.animateTo(scrollOffset,
-            duration: Duration(seconds: 1), curve: Curves.ease);
-      } else {
-        scrollOffset = 0.0;
-        _scrollController.animateTo(scrollOffset,
-            duration: Duration(seconds: 1), curve: Curves.ease);
-      }
-    });
-  }*/
-
-  /*@override
-  void dispose() {
-    timer?.cancel();
-    super.dispose();
-  }*/
-
   List<String> images = [
     "assets/fruits2.jpg",
     "assets/fruits3.jpg",
@@ -145,21 +118,31 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: colorWhite,
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 color: colorPrimary,
               ),
-              accountName: Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Row(
-                  children: [
-                    CircleAvatar(
+              child: Row(
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
                       radius: 40,
                       backgroundImage: AssetImage("assets/profile.png"),
                     ),
-                    //SizedBox(width: 10.0),
-                    Column(
+                  ),
+                  SizedBox(width: 8.0),
+                  Container(
+                    // alignment: Alignment.bottomLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 25,
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(right: 70),
                           child: Row(
@@ -175,69 +158,62 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                        Flexible(
-                          child: Row(
-                            children: [
-                              Text("Free Member"),
-                              SizedBox(width: 5.0),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UpgradePage(),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
+                        SizedBox(height: 2.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              child: Text(
+                                "Free Member".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 5.0),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UpgradePage(),
+                                  ),
+                                );
+                              },
+                              /*style: ElevatedButton.styleFrom(
                                   backgroundColor: toolbar, // Background color
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
+                                  padding: EdgeInsets.all(0)),*/
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.lightGreen.shade700,
                                 ),
-                                child: Container(
-                                  width: 70.0,
-                                  height: 20,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 3, horizontal: 8),
                                   child: Center(
                                     child: Text(
                                       "Upgrade",
                                       style: TextStyle(
-                                        fontSize: 13.0,
+                                        fontSize: 12.0,
                                         color: colorWhite,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    /*Container(
-                        width: 80.0,
-                        height: 20.0,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: toolbar,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                          child: Text(
-                            "Upgrade",
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              color: colorWhite,
-                            ),
-                          ),
-                        ),
-                      ),*/
-                  ],
-                ),
+                  ),
+                ],
               ),
-              accountEmail: Text(""),
             ),
             ListTile(
               title: Text(
@@ -410,6 +386,8 @@ class _HomePageState extends State<HomePage> {
                 enableAutoSlider: true,
                 autoSliderTransitionTime: Duration(seconds: 2),
                 autoSliderDelay: Duration(seconds: 3),
+                //autoSliderTransitionCurve: true,
+                //enableInfiniteScroll: true,
                 /*options: CarouselOptions(
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 4),
