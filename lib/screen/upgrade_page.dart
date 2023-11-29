@@ -37,65 +37,69 @@ class _UpgradePageState extends State<UpgradePage> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Payment Amount",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: colorBlack,
-                  ),
-                ),
-                Text(
-                  "₹ 99",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: colorBlack,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Text(
-                  "Handle fee: ₹ 0.00",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: colorBlack,
-                  ),
-                ),
-              ],
-            ),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                Container(
-                  width: 60.0,
-                  height: 35.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PaymentPage()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: toolbar,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+      bottomNavigationBar: Container(
+        height: 74.0,
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Payment Amount",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: colorBlack,
                     ),
-                    child: Text("Pay"),
                   ),
-                ),
-              ],
+                  Text(
+                    "₹ 99",
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: colorBlack,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    "Handle fee: ₹ 0.00",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: colorBlack,
+                    ),
+                  ),
+                ],
+              ),
+              label: "",
             ),
-            label: "",
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Column(
+                children: [
+                  Container(
+                    width: 60.0,
+                    height: 30.0,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: toolbar,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Text("Pay"),
+                    ),
+                  ),
+                ],
+              ),
+              label: "",
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -147,112 +151,6 @@ class _UpgradePageState extends State<UpgradePage> {
                       ),
                     ),
                   ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.0),
-                margin: EdgeInsets.all(10.0),
-                height: 281.0,
-                width: screenWidth,
-                decoration: BoxDecoration(
-                  color: colorWhite,
-                  boxShadow: [
-                    BoxShadow(
-                      color: colorGrey1,
-                      blurRadius: 8,
-                      spreadRadius: -2.1,
-                      offset: Offset(-1, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Payment Method ₹ 99",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: colorBlack,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Payment Gateway"),
-                        value: "Method 1",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Paytm"),
-                        value: "Method 2",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Google Pay"),
-                        value: "Method 3",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("PhonePe"),
-                        value: "Method 4",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Direct Bank Transfer"),
-                        value: "Method 5",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                  ],
                 ),
               ),
               Container(

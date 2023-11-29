@@ -19,10 +19,11 @@ List<bool> addedToCart = [
   false,
   false,
   false,
-
 ];
 
 class _ViewallPageState extends State<ViewallPage> {
+  int itemCountInCart = 0;
+
   @override
   Widget build(BuildContext context) {
     double screenHeigth = MediaQuery.of(context).size.height;
@@ -86,10 +87,9 @@ class _ViewallPageState extends State<ViewallPage> {
                                   height: 100.0,
                                   width: 110.0,
                                   alignment: Alignment.center,
-                                  image:
-                                   AssetImage('assets/dishwash.jpeg',
-
-                                   ),
+                                  image: AssetImage(
+                                    'assets/dishwash.jpeg',
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 4.0),
@@ -133,14 +133,12 @@ class _ViewallPageState extends State<ViewallPage> {
                                         child: ElevatedButton(
                                           onPressed: () {
                                             setState(() {
-                                              addedToCart[index] = !addedToCart[index];
+                                              itemCountInCart =
+                                                  itemCountInCart == 0 ? 1 : 0;
+                                              addedToCart[index] =
+                                                  !addedToCart[index];
                                             });
-                                            if (addedToCart[index]) {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(builder: (context) => MyCartPage()),
-                                              );
-                                            }
+                                            if (addedToCart[index]) {}
                                           },
                                           child: Center(
                                             child: Icon(
