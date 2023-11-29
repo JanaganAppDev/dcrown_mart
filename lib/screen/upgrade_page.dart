@@ -38,24 +38,26 @@ class _UpgradePageState extends State<UpgradePage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 74.0,
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Column(
+        height: 52.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Payment Amount",
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 13.0,
                       color: colorBlack,
                     ),
                   ),
                   Text(
                     "₹ 99",
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 15.0,
                       color: colorBlack,
                       fontWeight: FontWeight.w600,
                     ),
@@ -63,42 +65,99 @@ class _UpgradePageState extends State<UpgradePage> {
                   Text(
                     "Handle fee: ₹ 0.00",
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 13.0,
                       color: colorBlack,
                     ),
                   ),
                 ],
               ),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Column(
-                children: [
-                  Container(
-                    width: 60.0,
-                    height: 30.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PaymentPage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: toolbar,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      child: Text("Pay"),
+              Container(
+                width: 65.0,
+                height: 35.0,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PaymentPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.lightGreen.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                ],
+                  child: Text(
+                    "Pay",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ),
               ),
-              label: "",
-            ),
-          ],
+              /*  BottomNavigationBar(
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Payment Amount",
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: colorBlack,
+                          ),
+                        ),
+                        Text(
+                          "₹ 99",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: colorBlack,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "Handle fee: ₹ 0.00",
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: colorBlack,
+                          ),
+                        ),
+                      ],
+                    ),
+                    label: "",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Column(
+                      children: [
+                        Container(
+                          width: 60.0,
+                          height: 30.0,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PaymentPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: toolbar,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                            child: Text("Pay"),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  ),
+                ],
+              ),*/
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -136,6 +195,7 @@ class _UpgradePageState extends State<UpgradePage> {
                   cursorColor: colorPrimary,
                   decoration: InputDecoration(
                     hintText: "Referral ID",
+                    contentPadding: EdgeInsets.symmetric(vertical: 12.0),
                     filled: true,
                     fillColor: colorWhite,
                     prefixIcon: Icon(Icons.person, color: colorGrey),
@@ -185,6 +245,14 @@ class _UpgradePageState extends State<UpgradePage> {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(height: 4.0),
+                    Divider(
+                      height: 5,
+                      thickness: 1,
+                      indent: 0,
+                      endIndent: 0,
+                      color: colorGrey1,
                     ),
                     Container(
                       child: RadioListTile(
