@@ -3,6 +3,8 @@ import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 
+import 'home_page.dart';
+
 class ViewallPage extends StatefulWidget {
   const ViewallPage({super.key});
 
@@ -34,7 +36,10 @@ class _ViewallPageState extends State<ViewallPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
         title: Text('Popular Product'),
@@ -55,7 +60,7 @@ class _ViewallPageState extends State<ViewallPage> {
                 padding: EdgeInsets.all(8.0),
                 height: screenHeigth,
                 child: GridView.builder(
-                  itemCount: 8,
+                  itemCount: 12,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 40,
                     mainAxisSpacing: 20,

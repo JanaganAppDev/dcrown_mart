@@ -808,123 +808,127 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Stack(
                             children: [
-                              Container(
-                                width: 160.0,
-                                decoration: BoxDecoration(
-                                  color: colorWhite,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorGrey,
-                                      blurRadius: 5.0,
-                                      offset: Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                // height: 185.0,
-                                // width: 140.0,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Center(
-                                      child: Image(
-                                        height: 120.0,
-                                        width: 110.0,
-                                        alignment: Alignment.center,
-                                        image: AssetImage(
-                                          'assets/dishwash.jpeg',
-                                        ),
+                              Padding(
+                                padding:  EdgeInsets.only(bottom: 3.0),
+                                child: Container(
+                                  //height: 190.0,
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorGrey,
+                                        blurRadius: 5.0,
+                                        offset: Offset(0, 2),
                                       ),
-                                    ),
-                                    SizedBox(height: 4.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        "DISHWASH LIQUID",
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: notificationTitle,
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Rs 150",
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: colorPrimaryDark,
-                                            ),
+                                    ],
+                                  ),
+                                  // height: 185.0,
+                                  // width: 140.0,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
-                                        Text(
-                                          "Rs 200",
+                                      ),
+                                      SizedBox(height: 4.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          "DISHWASH LIQUID",
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.lineThrough,
+                                            color: notificationTitle,
                                           ),
                                         ),
-                                        Container(
-                                            width: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  itemCountInCart =
-                                                      itemCountInCart == 0
-                                                          ? 1
-                                                          : 0;
-                                                  addedToCart2[index] =
-                                                      !addedToCart2[index];
-                                                });
-                                                if (addedToCart2[index]) {
-                                                  /*Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            MyCartPage()),
-                                                  );*/
-                                                }
-                                              },
-                                              child: Center(
-                                                child: Icon(
-                                                  addedToCart2[index]
-                                                      ? Icons.remove_circle
-                                                      : Icons.add_circle,
-                                                  color: colorWhite,
-                                                ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Rs 150",
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: colorPrimaryDark,
                                               ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rs 200",
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                          Container(
+                                              width: 40,
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    itemCountInCart =
+                                                        itemCountInCart == 0
+                                                            ? 1
+                                                            : 0;
+                                                    addedToCart2[index] =
+                                                        !addedToCart2[index];
+                                                  });
+                                                  if (addedToCart2[index]) {
+                                                    /*Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              MyCartPage()),
+                                                    );*/
+                                                  }
+                                                },
+                                                child: Center(
+                                                  child: Icon(
+                                                    addedToCart2[index]
+                                                        ? Icons.remove_circle
+                                                        : Icons.add_circle,
+                                                    color: colorWhite,
                                                   ),
                                                 ),
-                                                textStyle: TextStyle(
-                                                  fontSize: 18,
+                                                style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10.0),
+                                                      bottomRight:
+                                                          Radius.circular(10.0),
+                                                    ),
+                                                  ),
+                                                  textStyle: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                  padding: EdgeInsets.all(12.0),
+                                                  backgroundColor:
+                                                      addedToCart2[index]
+                                                          ? colorRed
+                                                          : colorPrimary,
                                                 ),
-                                                padding: EdgeInsets.all(10.0),
-                                                backgroundColor:
-                                                    addedToCart2[index]
-                                                        ? colorRed
-                                                        : colorPrimary,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
-                                  ],
+                                              )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Positioned(
@@ -1023,124 +1027,127 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Stack(
                             children: [
-                              Container(
-                                width: 160.0,
-                                decoration: BoxDecoration(
-                                  color: colorWhite,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorGrey,
-                                      blurRadius: 5.0,
-                                      offset: Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                // height: 185.0,
-                                // width: 140.0,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Center(
-                                      child: Image(
-                                        height: 120.0,
-                                        width: 110.0,
-                                        alignment: Alignment.center,
-                                        image: AssetImage(
-                                          'assets/dishwash.jpeg',
-                                        ),
+                              Padding(
+                                padding:  EdgeInsets.only(bottom: 4.0),
+                                child: Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorGrey,
+                                        blurRadius: 5.0,
+                                        offset: Offset(0, 2),
                                       ),
-                                    ),
-                                    SizedBox(height: 3.0),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        "DISHWASH LIQUID",
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: notificationTitle,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 3.0),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Rs 150",
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: colorPrimaryDark,
-                                            ),
+                                    ],
+                                  ),
+                                  // height: 185.0,
+                                  // width: 140.0,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
-                                        Text(
-                                          "Rs 200",
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          "DISHWASH LIQUID",
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.lineThrough,
+                                            color: notificationTitle,
                                           ),
                                         ),
-                                        Container(
-                                            width: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  itemCountInCart =
-                                                      itemCountInCart == 0
-                                                          ? 1
-                                                          : 0;
-                                                  addedToCart3[index] =
-                                                      !addedToCart3[index];
-                                                });
-                                                if (addedToCart3[index]) {
-                                                  /*Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            MyCartPage()),
-                                                  );*/
-                                                }
-                                              },
-                                              child: Center(
-                                                child: Icon(
-                                                  addedToCart3[index]
-                                                      ? Icons.remove_circle
-                                                      : Icons.add_circle,
-                                                  color: colorWhite,
-                                                ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Rs 150",
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: colorPrimaryDark,
                                               ),
-                                              style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rs 200",
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                          Container(
+                                              width: 40,
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    itemCountInCart =
+                                                        itemCountInCart == 0
+                                                            ? 1
+                                                            : 0;
+                                                    addedToCart3[index] =
+                                                        !addedToCart3[index];
+                                                  });
+                                                  if (addedToCart3[index]) {
+                                                    /*Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              MyCartPage()),
+                                                    );*/
+                                                  }
+                                                },
+                                                child: Center(
+                                                  child: Icon(
+                                                    addedToCart3[index]
+                                                        ? Icons.remove_circle
+                                                        : Icons.add_circle,
+                                                    color: colorWhite,
                                                   ),
                                                 ),
-                                                textStyle: TextStyle(
-                                                  fontSize: 18,
+                                                style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10.0),
+                                                      bottomRight:
+                                                          Radius.circular(10.0),
+                                                    ),
+                                                  ),
+                                                  textStyle: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                  padding: EdgeInsets.all(12.0),
+                                                  backgroundColor:
+                                                      addedToCart3[index]
+                                                          ? colorRed
+                                                          : colorPrimary,
                                                 ),
-                                                padding: EdgeInsets.all(10.0),
-                                                backgroundColor:
-                                                    addedToCart3[index]
-                                                        ? colorRed
-                                                        : colorPrimary,
-                                              ),
-                                            )),
-                                      ],
-                                    ),
-                                  ],
+                                              )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Positioned(

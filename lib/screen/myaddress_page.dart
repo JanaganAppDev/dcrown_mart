@@ -159,7 +159,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: nameControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '     Name',
+                        hintText: '      Name',
                         contentPadding: EdgeInsets.symmetric(vertical: 12.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),

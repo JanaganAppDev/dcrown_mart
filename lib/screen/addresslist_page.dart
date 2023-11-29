@@ -12,7 +12,10 @@ class AddresslistPage extends StatefulWidget {
 }
 
 class _AddresslistPageState extends State<AddresslistPage> {
-  String? selectedAddressMethod;
+  String groupValue = "Method $index";
+
+  static get index => null;
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +73,11 @@ class _AddresslistPageState extends State<AddresslistPage> {
                                   child: Icon(Icons.edit_rounded,color: colorPrimary,))
                             ],
                           ),
-                            value: "Method 1",
-                            groupValue: selectedAddressMethod,
-                            onChanged: (value){
+                            value: "Method $index",
+                            groupValue: groupValue,
+                            onChanged: (value) {
                               setState(() {
-                                selectedAddressMethod = value as String;
+                                groupValue = value as String;
                               });
                             },
                             activeColor: colorPrimary,
