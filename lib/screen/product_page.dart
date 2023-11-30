@@ -53,12 +53,6 @@ class _ProductPageState extends State<ProductPage> {
                       'assets/dishwash1.jpg',
                     ),
                   ),
-                  /*Image(
-                    height: 250.0,
-                    width: 250.0,
-                    alignment: Alignment.center,
-                    image: AssetImage('dishwash1.jpg'),
-                  ),*/
                   Padding(
                     padding: EdgeInsets.only(bottom: 170.0, right: 10.0),
                     child: Container(
@@ -79,8 +73,8 @@ class _ProductPageState extends State<ProductPage> {
                             },
                           ),
                           Positioned(
-                            bottom: 6,
-                            right: 2,
+                            bottom: 12,
+                            right: 8,
                             child: Container(
                               padding: EdgeInsets.all(2),
                               decoration: BoxDecoration(
@@ -109,8 +103,8 @@ class _ProductPageState extends State<ProductPage> {
               ),
               Container(
                 padding: EdgeInsets.all(10.0),
-                height: 640.0,
-                width: screenWidth,
+                //height: 640.0,
+                //width: screenWidth,
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.only(
@@ -120,67 +114,83 @@ class _ProductPageState extends State<ProductPage> {
                 ),
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "DISHWASH LIQUID",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: colorBlack,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "DISHWASH LIQUID",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            color: colorBlack,
+                          ),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "SRIMA GROUPS",
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: colorBlack,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "SRIMA GROUPS",
+                          style: TextStyle(
+                            fontSize: 11.0,
+                            color: colorBlack,
+                          ),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Description",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: colorBlack,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Description",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                            color: colorBlack,
+                          ),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Dishwash liquid with lemon fragrance and new 2x formula.",
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: colorBlack,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Dishwash liquid with lemon fragrance and new 2x formula.",
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: colorBlack,
+                          ),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "USE:",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: colorBlack,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "USE:",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
+                          ),
                         ),
                       ),
                     ),
                     ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       title: Row(
                         children: [
-                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          Icon(Icons.star, color: colorBlack, size: 10),
                           SizedBox(width: 5),
                           Text(
                             "Take 1tsp (3.75ml) of Liquid,",
                             style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: colorBlack,
                             ),
                           ),
@@ -188,14 +198,15 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       title: Row(
                         children: [
-                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          Icon(Icons.star, color: colorBlack, size: 10),
                           SizedBox(width: 5),
                           Text(
                             "Mix it in one bowl of water (40ml)",
                             style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: colorBlack,
                             ),
                           ),
@@ -203,14 +214,15 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       title: Row(
                         children: [
-                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          Icon(Icons.star, color: colorBlack, size: 10),
                           SizedBox(width: 5),
                           Text(
                             "Dip the scrubber, squeeze to get powerful lather",
                             style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: colorBlack,
                             ),
                           ),
@@ -218,140 +230,107 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       title: Row(
                         children: [
-                          Icon(Icons.brightness_1, color: colorBlack, size: 8),
+                          Icon(Icons.star, color: colorBlack, size: 10),
                           SizedBox(width: 5),
                           Text(
                             "Clean to get a sink full of sparkling vessels",
                             style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: colorBlack,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "STORAGE:",
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: colorBlack,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "store under cool and dry condition",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: colorBlack,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        " CAUTION:",
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: colorBlack,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        " Avoid getting in eyes, if this occurs, gentle rinse eyes with water.",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: colorBlack,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Rs 150.0",
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "STORAGE:",
                           style: TextStyle(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: colorPrimary,
+                            fontSize: 14.0,
+                            color: colorBlack,
                           ),
                         ),
-                        SizedBox(width: 5.0),
-                        Text(
-                          "Rs 200",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "store under cool and dry condition",
                           style: TextStyle(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.lineThrough,
+                            fontSize: 13.0,
+                            color: colorBlack,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            height: 25.0,
-                            width: 90.0,
-                            decoration: BoxDecoration(
-                              color: colorWhite,
-                              borderRadius: BorderRadius.circular(20.0),
-                              border: Border.all(
-                                color: colorPrimary,
-                              ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: DropdownButton<String>(
-                                value: selectedSize,
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    selectedSize = newValue!;
-                                  });
-                                },
-                                items: <String>[
-                                  '500ML',
-                                  '1000ML',
-                                  '2000ML'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: TextStyle(
-                                          fontSize: 13.0, color: colorGrey2),
-                                    ),
-                                  );
-                                }).toList(),
-                                style: TextStyle(
-                                    fontSize: 13.0, color: colorGrey2),
-                                icon: Icon(Icons.arrow_drop_down),
-                                underline: SizedBox.shrink(),
-                                isExpanded: true,
-                              ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          " CAUTION:",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: colorBlack,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          " Avoid getting in eyes, if this occurs, gentle rinse eyes with water.",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Rs 150.0",
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                              color: colorPrimary,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                itemCount = (itemCount > 0) ? itemCount - 1 : 0;
-                              });
-                            },
+                          SizedBox(width: 5.0),
+                          Text(
+                            "Rs 200",
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
                             child: Container(
                               height: 25.0,
-                              width: 70.0,
+                              width: 90.0,
                               decoration: BoxDecoration(
                                 color: colorWhite,
                                 borderRadius: BorderRadius.circular(20.0),
@@ -359,40 +338,91 @@ class _ProductPageState extends State<ProductPage> {
                                   color: colorPrimary,
                                 ),
                               ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.remove,
-                                      color: colorBlack, size: 16),
-                                  Text(
-                                    itemCount.toString(),
-                                    style: TextStyle(
-                                      fontSize: 13.0,
-                                      color: colorBlack,
-                                    ),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        itemCount++;
-                                      });
-                                    },
-                                    child: Icon(Icons.add,
-                                        color: colorBlack, size: 16),
-                                  ),
-                                ],
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: DropdownButton<String>(
+                                  value: selectedSize,
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      selectedSize = newValue!;
+                                    });
+                                  },
+                                  items: <String>['500ML', '1000ML', '2000ML']
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(
+                                            fontSize: 13.0, color: colorGrey2),
+                                      ),
+                                    );
+                                  }).toList(),
+                                  style: TextStyle(
+                                      fontSize: 13.0, color: colorGrey2),
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  underline: SizedBox.shrink(),
+                                  isExpanded: true,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  itemCount =
+                                      (itemCount > 0) ? itemCount - 1 : 0;
+                                });
+                              },
+                              child: Container(
+                                height: 25.0,
+                                width: 70.0,
+                                decoration: BoxDecoration(
+                                  color: colorWhite,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  border: Border.all(
+                                    color: colorPrimary,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.remove,
+                                        color: colorBlack, size: 16),
+                                    Text(
+                                      itemCount.toString(),
+                                      style: TextStyle(
+                                        fontSize: 13.0,
+                                        color: colorBlack,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          itemCount++;
+                                        });
+                                      },
+                                      child: Icon(Icons.add,
+                                          color: colorBlack, size: 16),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 50.0),
+                      padding: EdgeInsets.all(20.0),
                       child: Container(
-                        width: 450.0,
-                        height: 40.0,
+                        width: screenWidth,
+                        height: 45.0,
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
