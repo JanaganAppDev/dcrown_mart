@@ -10,6 +10,7 @@ import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -386,6 +387,9 @@ class _HomePageState extends State<HomePage> {
                 enableAutoSlider: true,
                 autoSliderTransitionTime: Duration(seconds: 2),
                 autoSliderDelay: Duration(seconds: 3),
+                autoSliderTransitionCurve: Curves.fastOutSlowIn,
+                viewportFraction: 1.05,
+                unlimitedMode: true,
                 //autoSliderTransitionCurve: true,
                 //enableInfiniteScroll: true,
                 /*options: CarouselOptions(
@@ -809,7 +813,7 @@ class _HomePageState extends State<HomePage> {
                           Stack(
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(bottom: 3.0),
+                                padding: EdgeInsets.only(bottom: 3.0),
                                 child: Container(
                                   //height: 190.0,
                                   width: 160.0,
@@ -827,7 +831,8 @@ class _HomePageState extends State<HomePage> {
                                   // height: 185.0,
                                   // width: 140.0,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
@@ -1028,7 +1033,7 @@ class _HomePageState extends State<HomePage> {
                           Stack(
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(bottom: 4.0),
+                                padding: EdgeInsets.only(bottom: 4.0),
                                 child: Container(
                                   width: 160.0,
                                   decoration: BoxDecoration(
@@ -1045,7 +1050,8 @@ class _HomePageState extends State<HomePage> {
                                   // height: 185.0,
                                   // width: 140.0,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
