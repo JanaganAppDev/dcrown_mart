@@ -58,6 +58,16 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
+  String? validateLocation(String? value) {
+    if (value == null || value.trim().isEmpty || value == 'Location') {
+      return 'Please select a valid location';
+    }
+
+    return null;
+  }
+
+
+
   String? validateFlatno(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Please enter your house/flat no';
@@ -159,8 +169,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: nameControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '      Name',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        hintText: 'Name',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -174,7 +184,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           ),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
+                          borderRadius: BorderRadius.circular(25.0),
                           borderSide: BorderSide(
                             color: _isButtonClicked ? colorRed : colorPrimary,
                           ),
@@ -189,8 +199,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: addresstypeControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '      Address Type',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        hintText: 'Address Type',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -219,8 +229,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: flatnoControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '      House/Flat no',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        hintText: 'House/Flat no',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -249,8 +259,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: addressControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '      Address',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        hintText: 'Address',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -291,7 +301,25 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     padding: EdgeInsets.all(10.0),
                     child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
-                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(55.0),
+                          borderSide: BorderSide(
+                            color: _isButtonClicked ? colorRed : colorPrimary,
+                          ),
+                        ),
                       ),
                       value: selectedLocation,
                       onChanged: (newValue) {
@@ -305,6 +333,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           child: Text(mode),
                         );
                       }).toList(),
+                      validator: validateLocation,
                     ),
                   ),
                   Padding(
@@ -313,8 +342,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       controller: landmarkControler,
                       cursorColor: colorPrimary,
                       decoration: InputDecoration(
-                        hintText: '      Land Mark',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        hintText: 'Land Mark',
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -348,7 +377,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       ],
                       decoration: InputDecoration(
                         hintText: '      Pin code',
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                        contentPadding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 15.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
@@ -403,7 +432,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorPrimary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                            borderRadius: BorderRadius.circular(25.0),
                           ),
                         ),
                         child: Text(
