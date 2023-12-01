@@ -1,6 +1,8 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class PlacedOrderPage extends StatefulWidget {
   const PlacedOrderPage({super.key});
 
@@ -9,6 +11,33 @@ class PlacedOrderPage extends StatefulWidget {
 }
 
 class _PlacedOrderPageState extends State<PlacedOrderPage> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+  void _decrementDate() {
+    setState(() {
+      selectedDate = selectedDate.subtract(Duration(days: 1));
+    });
+  }
+  void _incrementDate() {
+    setState(() {
+      selectedDate = selectedDate.add(Duration(days: 1));
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -18,10 +47,15 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
         backgroundColor: colorPrimary,
         title: Row(
           children: [
-           /* IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {},
-            ),*/
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+            ),
             /*CircleAvatar(
               backgroundImage: AssetImage("assets/crown_img.jpg"),
             ),*/
@@ -87,39 +121,38 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                 height: 100.0,
                 width: 110.0,
                 alignment: Alignment.center,
-                image:
-                AssetImage('assets/order_image.png',
+                image: AssetImage(
+                  'assets/dishwash.jpeg',
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: 10.0, right: 10.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_circle_left, color: colorPrimary),
-                    onPressed: () {},
-                  ),
-                  Expanded(
-                    child: Container(
-
-                      color: colorWhite,
-                      child: Center(
-                        child: Text(
-                          'Calendar View',
-                          style: TextStyle(color: Colors.black),
-                        ),
+          Padding(
+            padding: EdgeInsets.only(left: 115.0, right: 10.0),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_circle_left, color: colorPrimary),
+                    onPressed: _decrementDate,
+                ),
+                InkWell(
+                  onTap: () => _selectDate(context),
+                  child: Container(
+                    color: colorWhite,
+                    child: Center(
+                      child: Text(
+                        '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                        style: TextStyle(color: colorBlack),
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.arrow_circle_right, color: colorPrimary),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.arrow_circle_right, color: colorPrimary),
+                    onPressed: _incrementDate,
+                ),
+              ],
             ),
+          ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
