@@ -192,6 +192,14 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   color: Colors.lightGreen.shade700,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: colorGrey2,
+                                      blurRadius: 1,
+                                      spreadRadius: 0,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ],
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -390,13 +398,6 @@ class _HomePageState extends State<HomePage> {
                 autoSliderTransitionCurve: Curves.fastOutSlowIn,
                 viewportFraction: 1.05,
                 unlimitedMode: true,
-                //autoSliderTransitionCurve: true,
-                //enableInfiniteScroll: true,
-                /*options: CarouselOptions(
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 4),
-                  enableInfiniteScroll: true,
-                ),*/
                 slideBuilder: (index) {
                   return Container(
                     width: MediaQuery.of(context).size.width,

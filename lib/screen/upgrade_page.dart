@@ -38,9 +38,11 @@ class _UpgradePageState extends State<UpgradePage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 52.0,
+        height: 58.0,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+          padding:
+              EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0, top: 0.0),
+          //padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -216,7 +218,7 @@ class _UpgradePageState extends State<UpgradePage> {
               Container(
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
-                height: 281.0,
+                height: 290.0,
                 width: screenWidth,
                 decoration: BoxDecoration(
                   color: colorWhite,
