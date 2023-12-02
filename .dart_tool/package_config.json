@@ -194,12 +194,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "intl",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "js",
       "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -344,12 +338,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "simple_gesture_detector",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/simple_gesture_detector-0.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -378,12 +366,6 @@
       "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
-    },
-    {
-      "name": "table_calendar",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/table_calendar-3.0.9",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "term_glyph",
@@ -417,7 +399,7 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.1",
+      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
@@ -434,7 +416,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-12-02T04:20:02.359446Z",
+  "generated": "2023-11-29T18:16:12.328568Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

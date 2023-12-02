@@ -47,7 +47,7 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
         backgroundColor: colorPrimary,
         title: Row(
           children: [
-            IconButton(
+            /*IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
@@ -55,7 +55,7 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
-            ),
+            ),*/
             /*CircleAvatar(
               backgroundImage: AssetImage("assets/crown_img.jpg"),
             ),*/

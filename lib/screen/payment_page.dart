@@ -3,12 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+Future<void> requestMediaPermission() async {
+  var status = await Permission.photos.request();
+  if (status.isGranted) {
+    pickImages();
+  } else {
+
+  }
+}
+
+Future<void> pickImages() async {
+  List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
+  if (images != true) {
+  }
+}
+
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
+
 }
+
 
 bool _isButtonClicked = false;
 
@@ -152,9 +169,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         onTap: () async {
                           if (await Permission.photos.request().isGranted) {
                             // User granted permission, open gallery
-                            List<XFile>? images = await ImagePicker()
-                                .pickMultiImage(imageQuality: 50);
-                            if (images != null) {
+                            List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
+                            if (images != true) {
                               // Handle the selected images as needed, e.g., update a list of images.
                             }
                           } else {
@@ -162,6 +178,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             // You can show a message to the user or request the permission again.
                           }
                         },
+
                         child: Container(
                           padding: EdgeInsets.all(10.0),
                           child: Row(
