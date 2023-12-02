@@ -10,7 +10,7 @@ class OrderListPage extends StatefulWidget {
 }
 
 class _OrderListPageState extends State<OrderListPage> {
-  List<Step> stepList() => [
+  /*List<Step> stepList() => [
         Step(
             title: Text('Pending'),
             content: Center(
@@ -26,7 +26,7 @@ class _OrderListPageState extends State<OrderListPage> {
             content: Center(
               child: Text('Delivered at chennai - 10.00PM'),
             ))
-      ];
+      ];*/
   int _index = 0;
 
   @override
@@ -76,7 +76,8 @@ class _OrderListPageState extends State<OrderListPage> {
                 ),
               ],
             ),
-            child: Expanded(
+            child: Flexible(
+              flex: 1,
               child: Column(
                 children: [
                   Align(
@@ -383,66 +384,104 @@ class _OrderListPageState extends State<OrderListPage> {
                     ),
                   ),
                   Stepper(
-                    //type: StepperType.horizontal,
-                    currentStep: _index,
-                    /*onStepCancel: () {
-                      if (_index > 0) {
-                        setState(() {
-                          _index -= 1;
-                        });
-                      }
-                    },
-                    onStepContinue: () {
-                      if (_index <= 0) {
-                        setState(() {
-                          _index += 1;
-                        });
-                      }
-                    },*/
+                    //type: StepperType.horizontal, // Stepper orientation is horizontal
+                    currentStep:
+                        _index, // The current step is determined by the _index variable
                     onStepTapped: (int index) {
+                      // Callback when a step is tapped
                       setState(() {
-                        _index = index;
+                        _index = index; // Update the current step index
                       });
                     },
-                    /*currentStep: _index,
-                    onStepCancel: () {
-                      if (_index > 0) {
-                        setState(() {
-                          _index -= 1;
-                        });
-                      }
-                    },
-                    onStepContinue: () {
-                      if (_index <= 0) {
-                        setState(() {
-                          _index += 1;
-                        });
-                      }
-                    },
-                    onStepTapped: (int index) {
-                      setState(() {
-                        _index = index;
-                      });
-                    },
-                    steps: <Step>[
+                    steps: [
                       Step(
-                        title: const Text('Step 1 title'),
+                        title: Text('Pending'), // Title of the first step
                         content: Container(
-                          alignment: Alignment.centerLeft,
-                          child: const Text('Content for Step 1'),
+                          height: 20, // Specify the height of the content area
+                          child: Column(
+                            children: [
+                              Flexible(
+                                child: Center(
+                                  child: Text(
+                                      'Will be shipped shortly'), // Content of the first step
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      const Step(
-                        title: Text('Step 2 title'),
-                        content: Text('Content for Step 2'),
+                      Step(
+                        title:
+                            Text('Ready to ship'), // Title of the second step
+                        content: Container(
+                          height: 20, // Specify the height of the content area
+                          child: Column(
+                            children: [
+                              Flexible(
+                                child: Center(
+                                  child: Text(
+                                      'Will be shipped at 10.00 PM'), // Content of the second step
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ],*/
-                    steps: stepList(),
+                      Step(
+                        title: Text('Delivered'), // Title of the third step
+                        content: Container(
+                          height: 20, // Specify the height of the content area
+                          child: Column(
+                            children: [
+                              Flexible(
+                                child: Center(
+                                  child: Text(
+                                      'Delivered at chennai - 10.00 PM'), // Content of the third step
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                    controlsBuilder:
+                        (BuildContext context, ControlsDetails details) {
+                      return Container(); // Custom controls builder, returning an empty container in this case
+                    },
+                  ),
+                  /*Stepper(
+                    type: StepperType.horizontal,
+                    currentStep: _index,
+                    onStepTapped: (int index) {
+                      setState(() {
+                        _index = index;
+                      });
+                    },
+                    steps: [
+                      Step(
+                        title: Text('Pending'),
+                        content: Center(
+                          child: Text('Will be shipped shortly'),
+                        ),
+                      ),
+                      Step(
+                        title: Text('Ready to ship'),
+                        content: Center(
+                          child: Text('Will be shipped at 10.00 PM'),
+                        ),
+                      ),
+                      Step(
+                        title: Text('Delivered'),
+                        content: Center(
+                          child: Text('Delivered at chennai - 10.00PM'),
+                        ),
+                      ),
+                    ],
                     controlsBuilder:
                         (BuildContext context, ControlsDetails details) {
                       return Container();
                     },
-                  ),
+                  ),*/
                   Container(
                     margin: EdgeInsets.all(8),
                     padding: EdgeInsets.all(10.0),
@@ -470,55 +509,52 @@ class _OrderListPageState extends State<OrderListPage> {
                               width: 50.0, height: 50.0),
                         ),
                         SizedBox(width: 10.0),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "DISHWASH LIQUID",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: colorBlack,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  "QTY:1",
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: colorGrey2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4.0),
+                            Container(
+                              child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "DISHWASH LIQUID",
+                                    "500ML",
                                     style: TextStyle(
-                                      fontSize: 16.0,
                                       color: colorBlack,
-                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                   Text(
-                                    "QTY:1",
+                                    "Rs.150.0",
                                     style: TextStyle(
-                                      fontSize: 14.0,
-                                      color: colorGrey2,
+                                      color: colorPrimary,
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 4.0),
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "500ML",
-                                      style: TextStyle(
-                                        color: colorBlack,
-                                      ),
-                                    ),
-                                    Text(
-                                      "Rs.150.0",
-                                      style: TextStyle(
-                                        color: colorPrimary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

@@ -413,6 +413,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 slideIndicator: CircularSlideIndicator(
                   currentIndicatorColor: colorPrimary,
+                  indicatorRadius: 4.0,
                   padding: EdgeInsets.only(bottom: 10),
                 ),
                 itemCount: images.length,

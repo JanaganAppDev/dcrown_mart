@@ -28,7 +28,7 @@ class _ProductPageState extends State<ProductPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(bottom: 170.0, left: 10.0),
+                    padding: EdgeInsets.only(bottom: 240.0, left: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -46,7 +46,7 @@ class _ProductPageState extends State<ProductPage> {
                     ),
                   ),
                   Image(
-                    height: 250.0,
+                    height: 330.0,
                     width: 250.0,
                     alignment: Alignment.center,
                     image: AssetImage(
@@ -54,7 +54,7 @@ class _ProductPageState extends State<ProductPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 170.0, right: 10.0),
+                    padding: EdgeInsets.only(bottom: 240.0, right: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -181,72 +181,57 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                       ),
                     ),
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      title: Row(
-                        children: [
-                          Icon(Icons.star, color: colorBlack, size: 10),
-                          SizedBox(width: 5),
-                          Text(
-                            "Take 1tsp (3.75ml) of Liquid,",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              color: colorBlack,
-                            ),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: colorBlack, size: 10),
+                        Text(
+                          "Take 1tsp (3.75ml) of Liquid,",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      title: Row(
-                        children: [
-                          Icon(Icons.star, color: colorBlack, size: 10),
-                          SizedBox(width: 5),
-                          Text(
-                            "Mix it in one bowl of water (40ml)",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              color: colorBlack,
-                            ),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: colorBlack, size: 10),
+                        Text(
+                          "Mix it in one bowl of water (40ml)",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      title: Row(
-                        children: [
-                          Icon(Icons.star, color: colorBlack, size: 10),
-                          SizedBox(width: 5),
-                          Text(
-                            "Dip the scrubber, squeeze to get powerful lather",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              color: colorBlack,
-                            ),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: colorBlack, size: 10),
+                        Text(
+                          "Dip the scrubber, squeeze to get powerful lather",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      title: Row(
-                        children: [
-                          Icon(Icons.star, color: colorBlack, size: 10),
-                          SizedBox(width: 5),
-                          Text(
-                            "Clean to get a sink full of sparkling vessels",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              color: colorBlack,
-                            ),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: colorBlack, size: 10),
+                        Text(
+                          "Clean to get a sink full of sparkling vessels",
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            color: colorBlack,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.only(
+                          left: 4.0, right: 4.0, bottom: 4.0, top: 10.0),
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -419,7 +404,8 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 50.0),
                       child: Container(
                         width: screenWidth,
                         height: 45.0,
