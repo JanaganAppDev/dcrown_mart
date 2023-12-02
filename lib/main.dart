@@ -6,6 +6,7 @@ import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/orderSummary_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: OrderSummaryPage(),
     );
   }
 }
