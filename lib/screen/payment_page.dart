@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+/*
 Future<void> requestMediaPermission() async {
   var status = await Permission.photos.request();
   if (status.isGranted) {
@@ -17,6 +18,7 @@ Future<void> pickImages() async {
   if (images != true) {
   }
 }
+*/
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -57,7 +59,7 @@ class _PaymentPageState extends State<PaymentPage> {
           child: Column(
             children: <Widget>[
               Text(
-                'Note: Pay to 7553879835 and click pay\nOR',
+                'Note: Pay to 7553879835 and click pay\n                       OR',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -167,17 +169,17 @@ class _PaymentPageState extends State<PaymentPage> {
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: GestureDetector(
                         onTap: () async {
-                          if (await Permission.photos.request().isGranted) {
-                            // User granted permission, open gallery
+                          var status = await Permission.photos.request();
+                          if (status.isGranted) {
                             List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
-                            if (images != true) {
-                              // Handle the selected images as needed, e.g., update a list of images.
+
+                            if (images != null) {
                             }
                           } else {
-                            // Permission denied
-                            // You can show a message to the user or request the permission again.
                           }
                         },
+
+
 
                         child: Container(
                           padding: EdgeInsets.all(10.0),
@@ -192,6 +194,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
+
                   SizedBox(height: 20.0),
                   Container(
                     //margin: EdgeInsets.only(top: 60.0),

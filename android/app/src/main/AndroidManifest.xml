@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.duskcoder.dcrown_mart">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:label="dcrown_mart"
         android:name="${applicationName}"
@@ -32,4 +31,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 </manifest>
