@@ -383,27 +383,26 @@ class _OrderListPageState extends State<OrderListPage> {
                       ),
                     ),
                   ),
-                  Stepper(
-                    //type: StepperType.horizontal, // Stepper orientation is horizontal
+                  /*Stepper(
+                    //type: StepperType.horizontal,
                     currentStep:
-                        _index, // The current step is determined by the _index variable
+                        _index,
                     onStepTapped: (int index) {
-                      // Callback when a step is tapped
                       setState(() {
-                        _index = index; // Update the current step index
+                        _index = index;
                       });
                     },
                     steps: [
                       Step(
-                        title: Text('Pending'), // Title of the first step
+                        title: Text('Pending'),
                         content: Container(
-                          height: 20, // Specify the height of the content area
+                          height: 20,
                           child: Column(
                             children: [
                               Flexible(
                                 child: Center(
                                   child: Text(
-                                      'Will be shipped shortly'), // Content of the first step
+                                      'Will be shipped shortly'),
                                 ),
                               ),
                             ],
@@ -412,15 +411,15 @@ class _OrderListPageState extends State<OrderListPage> {
                       ),
                       Step(
                         title:
-                            Text('Ready to ship'), // Title of the second step
+                            Text('Ready to ship'),
                         content: Container(
-                          height: 20, // Specify the height of the content area
+                          height: 20,
                           child: Column(
                             children: [
                               Flexible(
                                 child: Center(
                                   child: Text(
-                                      'Will be shipped at 10.00 PM'), // Content of the second step
+                                      'Will be shipped at 10.00 PM'),
                                 ),
                               ),
                             ],
@@ -428,15 +427,15 @@ class _OrderListPageState extends State<OrderListPage> {
                         ),
                       ),
                       Step(
-                        title: Text('Delivered'), // Title of the third step
+                        title: Text('Delivered'),
                         content: Container(
-                          height: 20, // Specify the height of the content area
+                          height: 20,
                           child: Column(
                             children: [
                               Flexible(
                                 child: Center(
                                   child: Text(
-                                      'Delivered at chennai - 10.00 PM'), // Content of the third step
+                                      'Delivered at chennai - 10.00 PM'),
                                 ),
                               ),
                             ],
@@ -446,11 +445,11 @@ class _OrderListPageState extends State<OrderListPage> {
                     ],
                     controlsBuilder:
                         (BuildContext context, ControlsDetails details) {
-                      return Container(); // Custom controls builder, returning an empty container in this case
+                      return Container();
                     },
-                  ),
-                  /*Stepper(
-                    type: StepperType.horizontal,
+                  ),*/
+                  Stepper(
+                    //type: StepperType.horizontal,
                     currentStep: _index,
                     onStepTapped: (int index) {
                       setState(() {
@@ -481,7 +480,7 @@ class _OrderListPageState extends State<OrderListPage> {
                         (BuildContext context, ControlsDetails details) {
                       return Container();
                     },
-                  ),*/
+                  ),
                   Container(
                     margin: EdgeInsets.all(8),
                     padding: EdgeInsets.all(10.0),

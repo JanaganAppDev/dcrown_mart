@@ -164,9 +164,9 @@ class _MyCartPageState extends State<MyCartPage> {
                                   padding: const EdgeInsets.only(right: 20),
                                   child: InkWell(
                                     onTap: () {
-                                      setState((){
+                                      setState(() {
                                         itemCount =
-                                            (itemCount > 0)? itemCount - 1 : 0;
+                                            (itemCount > 0) ? itemCount - 1 : 0;
                                       });
                                     },
                                     child: Container(
@@ -213,7 +213,6 @@ class _MyCartPageState extends State<MyCartPage> {
                         ],
                       ),
                     ),
-
                     //SizedBox(width: 50.0),
                     /*Column(
                       children: [

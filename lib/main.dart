@@ -6,6 +6,7 @@ import 'package:dcrown_mart/screen/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
+import 'package:dcrown_mart/screen/orderSummary_page.dart';
 import 'package:dcrown_mart/screen/orderlist_page.dart';
 import 'package:dcrown_mart/screen/otp_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
@@ -20,7 +21,6 @@ import 'package:http/http.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
 import 'package:dcrown_mart/screen/search_page.dart';
 import 'const.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: OrderSummaryPage(),
     );
   }
 }
