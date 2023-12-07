@@ -1,5 +1,9 @@
+
+import 'dart:io';
+
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -20,12 +24,12 @@ Future<void> pickImages() async {
 }
 */
 
+
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
-
 }
 
 
@@ -41,8 +45,22 @@ class _PaymentPageState extends State<PaymentPage> {
   ];
   String selectedPaymentMode = 'Select Payment Mode';
 
+  File? _image;
+  final picker = ImagePicker();
+
+
+  Future getImageFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorPrimary,
@@ -157,7 +175,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),
-                  Padding(
+                 /* Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
@@ -193,7 +211,33 @@ class _PaymentPageState extends State<PaymentPage> {
                         ),
                       ),
                     ),
+                  ),*/
+                  MaterialButton(
+                      child:  Container(
+                        height: 55.0,
+                        width: screenWidth,
+                        padding: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: colorWhite,
+                          borderRadius: BorderRadius.circular(30.0),
+                          border: Border.all(
+                            color: colorPrimary,
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.image, color: colorGrey2),
+                            SizedBox(width: 10),
+                            _image == null ? Text('Screen Shot') : Text(_image!.path.split('/').last),
+                          ],
+                        ),
+                      ),
+                      onPressed: () {
+                        getImageFromGallery();
+                      }
                   ),
+
+
 
                   SizedBox(height: 20.0),
                   Container(
