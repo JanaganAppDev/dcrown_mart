@@ -53,31 +53,30 @@ class _OrderListPageState extends State<OrderListPage> {
           },
         ),
       ),
-      body: ListView.builder(
-        itemCount: 1,
-        itemBuilder: (BuildContext context, index) {
-          return Container(
-            margin: EdgeInsets.all(10.0),
-            //padding: EdgeInsets.all(10.0),
-            //height: 300.0,
-            //width: screenWidth,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20.0),
-                topLeft: Radius.circular(20.0),
-              ),
-              color: colorWhite,
-              boxShadow: [
-                BoxShadow(
-                  color: colorGrey,
-                  blurRadius: 8,
-                  spreadRadius: -2.1,
-                  offset: Offset(-1, 2),
+      body: Container(
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, index) {
+            return Container(
+              margin: EdgeInsets.all(10.0),
+              //padding: EdgeInsets.all(10.0),
+              //height: 300.0,
+              //width: screenWidth,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(20.0),
                 ),
-              ],
-            ),
-            child: Flexible(
-              flex: 1,
+                color: colorWhite,
+                boxShadow: [
+                  BoxShadow(
+                    color: colorGrey,
+                    blurRadius: 8,
+                    spreadRadius: -2.1,
+                    offset: Offset(-1, 2),
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
                   Align(
@@ -86,7 +85,7 @@ class _OrderListPageState extends State<OrderListPage> {
                       width: 110.0,
                       height: 35.0,
                       decoration: BoxDecoration(
-                        color: colorBlack, // Set background color to black
+                        color: colorBlack,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(20.0),
                           bottomLeft: Radius.circular(20.0),
@@ -449,7 +448,7 @@ class _OrderListPageState extends State<OrderListPage> {
                     },
                   ),*/
                   Stepper(
-                    //type: StepperType.horizontal,
+                    type: StepperType.horizontal,
                     currentStep: _index,
                     onStepTapped: (int index) {
                       setState(() {
@@ -560,10 +559,10 @@ class _OrderListPageState extends State<OrderListPage> {
                   ),
                 ],
               ),
-            ),
-            //padding: EdgeInsets.all(10),
-          );
-        },
+              //padding: EdgeInsets.all(10),
+            );
+          },
+        ),
       ),
     );
   }
