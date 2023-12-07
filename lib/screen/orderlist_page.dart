@@ -448,7 +448,7 @@ class _OrderListPageState extends State<OrderListPage> {
                     },
                   ),*/
                   Stepper(
-                    type: StepperType.horizontal,
+                    //type: StepperType.horizontal,
                     currentStep: _index,
                     onStepTapped: (int index) {
                       setState(() {
