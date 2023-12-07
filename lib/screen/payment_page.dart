@@ -228,7 +228,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           children: [
                             Icon(Icons.image, color: colorGrey2),
                             SizedBox(width: 10),
-                            _image == null ? Text('No Image selected') : Text(_image!.path.split('/').last),
+                            _image == null ? Text('Screen Shot') : Text(_image!.path.split('/').last),
                           ],
                         ),
                       ),
