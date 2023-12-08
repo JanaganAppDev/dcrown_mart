@@ -32,6 +32,7 @@ class _OrderListPageState extends State<OrderListPage> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +61,7 @@ class _OrderListPageState extends State<OrderListPage> {
             return Container(
               margin: EdgeInsets.all(10.0),
               //padding: EdgeInsets.all(10.0),
-              //height: 300.0,
+              height: screenHeight,
               //width: screenWidth,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -382,103 +383,54 @@ class _OrderListPageState extends State<OrderListPage> {
                       ),
                     ),
                   ),
-                  /*Stepper(
-                    //type: StepperType.horizontal,
-                    currentStep:
-                        _index,
-                    onStepTapped: (int index) {
-                      setState(() {
-                        _index = index;
-                      });
-                    },
-                    steps: [
-                      Step(
-                        title: Text('Pending'),
-                        content: Container(
-                          height: 20,
-                          child: Column(
-                            children: [
-                              Flexible(
-                                child: Center(
-                                  child: Text(
-                                      'Will be shipped shortly'),
-                                ),
-                              ),
-                            ],
+                  Divider(
+                    height: 0,
+                    thickness: 1,
+                    indent: 5,
+                    endIndent: 0,
+                    color: colorGrey,
+                  ),
+                  Container(
+                    height: 150,
+                    child: Stepper(
+                      elevation: 0,
+                      connectorThickness: 4,
+                      type: StepperType.horizontal,
+                      currentStep: _index,
+                      onStepTapped: (int index) {
+                        setState(() {
+                          _index = index;
+                        });
+                      },
+                      steps: [
+                        Step(
+                          title: Text('Pending', selectionColor: toolbar),
+                          isActive: true,
+                          //subtitle: Text('Will be shipped shortly'),
+                          content: Center(
+                            child: Text('Will be shipped shortly'),
                           ),
                         ),
-                      ),
-                      Step(
-                        title:
-                            Text('Ready to ship'),
-                        content: Container(
-                          height: 20,
-                          child: Column(
-                            children: [
-                              Flexible(
-                                child: Center(
-                                  child: Text(
-                                      'Will be shipped at 10.00 PM'),
-                                ),
-                              ),
-                            ],
+                        Step(
+                          title: Text('Ready to ship', selectionColor: toolbar),
+                          isActive: false,
+                          content: Center(
+                            child: Text('Will be shipped at 10.00 PM'),
                           ),
                         ),
-                      ),
-                      Step(
-                        title: Text('Delivered'),
-                        content: Container(
-                          height: 20,
-                          child: Column(
-                            children: [
-                              Flexible(
-                                child: Center(
-                                  child: Text(
-                                      'Delivered at chennai - 10.00 PM'),
-                                ),
-                              ),
-                            ],
+                        Step(
+                          title: Text('Delivered', selectionColor: toolbar),
+                          isActive: false,
+                          content: Center(
+                            child: Text('Delivered at chennai - 10.00PM'),
                           ),
                         ),
-                      ),
-                    ],
-                    controlsBuilder:
-                        (BuildContext context, ControlsDetails details) {
-                      return Container();
-                    },
-                  ),*/
-                  Stepper(
-                    type: StepperType.horizontal,
-                    currentStep: _index,
-                    onStepTapped: (int index) {
-                      setState(() {
-                        _index = index;
-                      });
-                    },
-                    steps: [
-                      Step(
-                        title: Text('Pending'),
-                        content: Center(
-                          child: Text('Will be shipped shortly'),
-                        ),
-                      ),
-                      Step(
-                        title: Text('Ready to ship'),
-                        content: Center(
-                          child: Text('Will be shipped at 10.00 PM'),
-                        ),
-                      ),
-                      Step(
-                        title: Text('Delivered'),
-                        content: Center(
-                          child: Text('Delivered at chennai - 10.00PM'),
-                        ),
-                      ),
-                    ],
-                    controlsBuilder:
-                        (BuildContext context, ControlsDetails details) {
-                      return Container();
-                    },
+                      ],
+                      controlsBuilder:
+                          (BuildContext context, ControlsDetails details) {
+                        return Container();
+                      },
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.all(8),

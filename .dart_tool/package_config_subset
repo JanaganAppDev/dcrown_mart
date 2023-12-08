@@ -87,9 +87,9 @@ http_parser
 file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/
 file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/lib/
 image_picker
-2.19
-file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker-1.0.4/
-file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker-1.0.4/lib/
+2.18
+file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker-0.8.9/
+file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker-0.8.9/lib/
 image_picker_android
 2.19
 file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_android-0.8.8+2/
@@ -264,8 +264,8 @@ file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.1.4-beta/
 file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.1.4-beta/lib/
 win32
 3.1
-file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.1/
-file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.1/lib/
+file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.0/
+file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.1.0/lib/
 xdg_directories
 2.19
 file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-1.0.3/
