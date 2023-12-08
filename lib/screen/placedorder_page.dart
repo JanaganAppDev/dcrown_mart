@@ -27,10 +27,15 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
     }
   }
   void _decrementDate() {
+    DateTime currentDate = DateTime.now();
+
     setState(() {
-      selectedDate = selectedDate.subtract(Duration(days: 1));
+      if (selectedDate.isAfter(currentDate) || selectedDate.isAtSameMomentAs(currentDate)) {
+        selectedDate = selectedDate.subtract(Duration(days: 1));
+      }
     });
   }
+
   void _incrementDate() {
     setState(() {
       selectedDate = selectedDate.add(Duration(days: 1));
@@ -122,7 +127,7 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                 width: 110.0,
                 alignment: Alignment.center,
                 image: AssetImage(
-                  'assets/dishwash.jpeg',
+                  'assets/place order .jpeg',
                 ),
               ),
             ),
@@ -137,7 +142,6 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                 InkWell(
                   onTap: () => _selectDate(context),
                   child: Container(
-                    color: colorWhite,
                     child: Center(
                       child: Text(
                         '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',

@@ -59,7 +59,7 @@ class _ViewallPageState extends State<ViewallPage> {
               child: Container(
                 padding: EdgeInsets.all(8.0),
                 height: screenHeigth,
-                child: ListView.builder(
+                child: /*ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: 5,
                   itemExtent: 205.0,
@@ -150,12 +150,12 @@ class _ViewallPageState extends State<ViewallPage> {
                                                   !addedToCart2[index];
                                                 });
                                                 if (addedToCart2[index]) {
-                                                  /*Navigator.push(
+                                                  *//*Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               MyCartPage()),
-                                                    );*/
+                                                    );*//*
                                                 }
                                               },
                                               child: Center(
@@ -226,8 +226,8 @@ class _ViewallPageState extends State<ViewallPage> {
                       ],
                     );
                   },
-                ),
-                /*GridView.builder(
+                ),*/
+                GridView.builder(
                   itemCount: 8,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 40,
@@ -376,7 +376,7 @@ class _ViewallPageState extends State<ViewallPage> {
                       ],
                     );
                   },
-                ),*/
+                ),
               ),
             )
           ],

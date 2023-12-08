@@ -7,22 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-/*
-Future<void> requestMediaPermission() async {
-  var status = await Permission.photos.request();
-  if (status.isGranted) {
-    pickImages();
-  } else {
 
-  }
-}
-
-Future<void> pickImages() async {
-  List<XFile>? images = await ImagePicker().pickMultiImage(imageQuality: 50);
-  if (images != true) {
-  }
-}
-*/
 
 
 class PaymentPage extends StatefulWidget {
@@ -105,19 +90,19 @@ class _PaymentPageState extends State<PaymentPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(55.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(55.0),
                         borderSide: BorderSide(
-                          color: Colors.yellow,
+                          color: colorPrimary,
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(55.0),
@@ -156,20 +141,20 @@ class _PaymentPageState extends State<PaymentPage> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
-                            color: Colors.yellow,
+                            color: colorPrimary,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
-                            color: Colors.yellow,
+                            color: colorPrimary,
                           ),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(55.0),
                           borderSide: BorderSide(
                             color:
-                                _isButtonClicked ? Colors.red : Colors.yellow,
+                                _isButtonClicked ? colorRed : colorPrimary,
                           ),
                         ),
                       ),
@@ -212,10 +197,10 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                   ),*/
-                  MaterialButton(
+                  GestureDetector(
                       child:  Container(
                         height: 55.0,
-                        width: screenWidth,
+                        width: 500.0,
                         padding: EdgeInsets.all(15.0),
                         decoration: BoxDecoration(
                           color: colorWhite,
@@ -232,7 +217,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           ],
                         ),
                       ),
-                      onPressed: () {
+                      onTap: () {
                         getImageFromGallery();
                       }
                   ),
