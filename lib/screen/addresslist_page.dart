@@ -79,9 +79,9 @@ class _AddresslistPageState extends State<AddresslistPage> {
                                         width: 01.0,
                                       ),
                                     ),
-                                    child: Icon(Icons.edit_rounded, color: colorPrimary),
-                                  width: 40.0,   // Specify the width of the container
-                                  height: 40.0,
+                                    child: Icon(Icons.edit_rounded, color: colorPrimary,size: 22.0),
+                                  width: 30.0,
+                                  height: 30.0,
                                 ),
                               ),
                             ],
@@ -90,7 +90,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(left: 2.0),
-                                child: Text("1.50/12, Sasthri street, Chennai-689001", style: TextStyle(fontSize: 18.0)),
+                                child: Text("1.50/12, Sasthri street, Chennai-689001", style: TextStyle(fontSize: 13.0)),
                               ),
                             ],
                           ),
@@ -133,7 +133,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: Text("Add another address",style: TextStyle(fontWeight:FontWeight.w600,fontSize:25.0),),
+                child: Text("Add another address",style: TextStyle(fontWeight:FontWeight.w600,fontSize:22.0),),
               ),
             ),
           ],
