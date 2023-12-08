@@ -75,7 +75,7 @@ class _UpgradePageState extends State<UpgradePage> {
               ),
               Container(
                 width: 65.0,
-                height: 35.0,
+                height: 40.0,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -92,7 +92,7 @@ class _UpgradePageState extends State<UpgradePage> {
                   child: Text(
                     "Pay",
                     style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
