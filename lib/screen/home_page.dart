@@ -600,7 +600,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: Container(
                 padding: EdgeInsets.all(8.0),
-                height: 185.0,
+                height: 187.0,
                 child: GridView.builder(
                   itemCount: 2,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -674,49 +674,55 @@ class _HomePageState extends State<HomePage> {
                                       decoration: TextDecoration.lineThrough,
                                     ),
                                   ),
-                                  Container(
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Container(
                                       width: 40,
+                                      height: 40,
                                       child: ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              itemCountInCart =
-                                                  itemCountInCart == 0 ? 1 : 0;
-                                              addedToCart[index] =
-                                                  !addedToCart[index];
-                                            });
-                                            if (addedToCart[index]) {
-                                              /*Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MyCartPage()),
-                                              );*/
-                                            }
-                                          },
-                                          child: Center(
-                                            child: Icon(
-                                              addedToCart[index]
-                                                  ? Icons.remove_circle
-                                                  : Icons.add_circle,
-                                              color: colorWhite,
+                                        onPressed: () {
+                                          setState(() {
+                                            itemCountInCart =
+                                                itemCountInCart == 0 ? 1 : 0;
+                                            addedToCart[index] =
+                                                !addedToCart[index];
+                                          });
+                                          if (addedToCart[index]) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      MyCartPage()),
+                                            );
+                                          }
+                                        },
+                                        child: Center(
+                                          child: Icon(
+                                            addedToCart[index]
+                                                ? Icons.remove_circle
+                                                : Icons.add_circle,
+                                            color: colorWhite,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10.0),
+                                              bottomRight:
+                                                  Radius.circular(10.0),
                                             ),
                                           ),
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(10.0),
-                                                bottomRight:
-                                                    Radius.circular(10.0),
-                                              ),
-                                            ),
-                                            textStyle: TextStyle(
-                                              fontSize: 18,
-                                            ),
-                                            padding: EdgeInsets.all(11.0),
-                                            backgroundColor: addedToCart[index]
-                                                ? colorRed
-                                                : colorPrimary,
-                                          ))),
+                                          textStyle: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                          padding: EdgeInsets.only(right: 1.0),
+                                          backgroundColor: addedToCart[index]
+                                              ? colorRed
+                                              : colorPrimary,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -883,55 +889,64 @@ class _HomePageState extends State<HomePage> {
                                                   TextDecoration.lineThrough,
                                             ),
                                           ),
-                                          Container(
-                                              width: 40,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    itemCountInCart =
-                                                        itemCountInCart == 0
-                                                            ? 1
-                                                            : 0;
-                                                    addedToCart2[index] =
-                                                        !addedToCart2[index];
-                                                  });
-                                                  if (addedToCart2[index]) {
-                                                    /*Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MyCartPage()),
-                                                    );*/
-                                                  }
-                                                },
-                                                child: Center(
-                                                  child: Icon(
-                                                    addedToCart2[index]
-                                                        ? Icons.remove_circle
-                                                        : Icons.add_circle,
-                                                    color: colorWhite,
-                                                  ),
-                                                ),
-                                                style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10.0),
-                                                      bottomRight:
-                                                          Radius.circular(10.0),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      itemCountInCart =
+                                                          itemCountInCart == 0
+                                                              ? 1
+                                                              : 0;
+                                                      addedToCart2[index] =
+                                                          !addedToCart2[index];
+                                                    });
+                                                    if (addedToCart2[index]) {
+                                                      /*Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyCartPage()),
+                                                      );*/
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                    child: Icon(
+                                                      addedToCart2[index]
+                                                          ? Icons.remove_circle
+                                                          : Icons.add_circle,
+                                                      color: colorWhite,
                                                     ),
                                                   ),
-                                                  textStyle: TextStyle(
-                                                    fontSize: 18,
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                      ),
+                                                    ),
+                                                    textStyle: TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.0),
+                                                    backgroundColor:
+                                                        addedToCart2[index]
+                                                            ? colorRed
+                                                            : colorPrimary,
                                                   ),
-                                                  padding: EdgeInsets.all(12.0),
-                                                  backgroundColor:
-                                                      addedToCart2[index]
-                                                          ? colorRed
-                                                          : colorPrimary,
-                                                ),
-                                              )),
+                                                )),
+                                          ),
                                         ],
                                       ),
                                     ],
@@ -1103,55 +1118,64 @@ class _HomePageState extends State<HomePage> {
                                                   TextDecoration.lineThrough,
                                             ),
                                           ),
-                                          Container(
-                                              width: 40,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    itemCountInCart =
-                                                        itemCountInCart == 0
-                                                            ? 1
-                                                            : 0;
-                                                    addedToCart3[index] =
-                                                        !addedToCart3[index];
-                                                  });
-                                                  if (addedToCart3[index]) {
-                                                    /*Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MyCartPage()),
-                                                    );*/
-                                                  }
-                                                },
-                                                child: Center(
-                                                  child: Icon(
-                                                    addedToCart3[index]
-                                                        ? Icons.remove_circle
-                                                        : Icons.add_circle,
-                                                    color: colorWhite,
-                                                  ),
-                                                ),
-                                                style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10.0),
-                                                      bottomRight:
-                                                          Radius.circular(10.0),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      itemCountInCart =
+                                                          itemCountInCart == 0
+                                                              ? 1
+                                                              : 0;
+                                                      addedToCart3[index] =
+                                                          !addedToCart3[index];
+                                                    });
+                                                    if (addedToCart3[index]) {
+                                                      /*Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyCartPage()),
+                                                      );*/
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                    child: Icon(
+                                                      addedToCart3[index]
+                                                          ? Icons.remove_circle
+                                                          : Icons.add_circle,
+                                                      color: colorWhite,
                                                     ),
                                                   ),
-                                                  textStyle: TextStyle(
-                                                    fontSize: 18,
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                      ),
+                                                    ),
+                                                    textStyle: TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.0),
+                                                    backgroundColor:
+                                                        addedToCart3[index]
+                                                            ? colorRed
+                                                            : colorPrimary,
                                                   ),
-                                                  padding: EdgeInsets.all(12.0),
-                                                  backgroundColor:
-                                                      addedToCart3[index]
-                                                          ? colorRed
-                                                          : colorPrimary,
-                                                ),
-                                              )),
+                                                )),
+                                          ),
                                         ],
                                       ),
                                     ],
