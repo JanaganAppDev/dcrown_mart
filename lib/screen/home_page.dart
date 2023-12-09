@@ -674,49 +674,53 @@ class _HomePageState extends State<HomePage> {
                                       decoration: TextDecoration.lineThrough,
                                     ),
                                   ),
-                                  Container(
-                                      width: 40,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              itemCountInCart =
-                                                  itemCountInCart == 0 ? 1 : 0;
-                                              addedToCart[index] =
-                                                  !addedToCart[index];
-                                            });
-                                            if (addedToCart[index]) {
-                                              /*Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MyCartPage()),
-                                              );*/
-                                            }
-                                          },
-                                          child: Center(
-                                            child: Icon(
-                                              addedToCart[index]
-                                                  ? Icons.remove_circle
-                                                  : Icons.add_circle,
-                                              color: colorWhite,
-                                            ),
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(10.0),
-                                                bottomRight:
-                                                    Radius.circular(10.0),
+                                  Align(
+                                    alignment:Alignment.bottomRight,
+                                    child: Container(
+                                        width: 40,
+                                        height:40,
+                                        child: ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                itemCountInCart =
+                                                    itemCountInCart == 0 ? 1 : 0;
+                                                addedToCart[index] =
+                                                    !addedToCart[index];
+                                              });
+                                              if (addedToCart[index]) {
+                                                /*Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MyCartPage()),
+                                                );*/
+                                              }
+                                            },
+                                            child: Center(
+                                              child: Icon(
+                                                addedToCart[index]
+                                                    ? Icons.remove_circle
+                                                    : Icons.add_circle,
+                                                color: colorWhite,
                                               ),
                                             ),
-                                            textStyle: TextStyle(
-                                              fontSize: 18,
-                                            ),
-                                            padding: EdgeInsets.all(11.0),
-                                            backgroundColor: addedToCart[index]
-                                                ? colorRed
-                                                : colorPrimary,
-                                          ))),
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(10.0),
+                                                  bottomRight:
+                                                      Radius.circular(10.0),
+                                                ),
+                                              ),
+                                              textStyle: TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                              padding: EdgeInsets.all(11.0),
+                                              backgroundColor: addedToCart[index]
+                                                  ? colorRed
+                                                  : colorPrimary,
+                                            ))),
+                                  ),
                                 ],
                               ),
                             ],
