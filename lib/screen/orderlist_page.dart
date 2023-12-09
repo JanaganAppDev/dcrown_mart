@@ -109,7 +109,263 @@ class _OrderListPageState extends State<OrderListPage> {
                     padding: EdgeInsets.only(left: 10.0, right: 10.0),
                     child: Column(
                       children: [
-                        ListTile(
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 0.0),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 50.0, bottom: 5.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.brightness_1,
+                                            color: colorPrimary, size: 10),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          "Order ID:",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorGrey1,
+                                            //fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Text(
+                                          "8",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorBlack,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 5.0, bottom: 5.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.brightness_1,
+                                            color: colorPrimary, size: 10),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          "Date:",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorGrey1,
+                                            //fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Text(
+                                          "2023-11-04",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorBlack,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 80.0, bottom: 5.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.brightness_1,
+                                            color: colorPrimary, size: 10),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          "QTY:",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorGrey1,
+                                            //fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Text(
+                                          "1",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorBlack,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 5.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.brightness_1,
+                                            color: colorPrimary, size: 10),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          "TimeSlot:",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorGrey1,
+                                            //fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Text(
+                                          "6.00AM-\n9.30PM",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: colorBlack,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 50.0, bottom: 5.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.brightness_1,
+                                          color: colorPrimary, size: 10),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Subtotal:",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorGrey1,
+                                          //fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Rs 150",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorBlack,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 40.0, bottom: 5.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.brightness_1,
+                                          color: colorPrimary, size: 10),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Delivery:",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorGrey1,
+                                          //fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Rs 40",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorBlack,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 40.0, bottom: 5.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.brightness_1,
+                                          color: colorPrimary, size: 10),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Tax(0.0%):",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorGrey1,
+                                          //fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Rs0",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorBlack,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 26.0, bottom: 25.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.brightness_1,
+                                          color: colorPrimary, size: 10),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Total:",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorGrey1,
+                                          //fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Rs190",
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: colorBlack,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 5.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.brightness_1,
+                                  color: colorPrimary, size: 10),
+                              SizedBox(width: 5),
+                              Text(
+                                "Address:",
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: colorGrey1,
+                                  //fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "01,sample address,chennai-600026",
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: colorBlack,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        /*ListTile(
                           contentPadding: EdgeInsets.all(0),
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -354,7 +610,7 @@ class _OrderListPageState extends State<OrderListPage> {
                               ),
                             ],
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -376,8 +632,7 @@ class _OrderListPageState extends State<OrderListPage> {
                           "Direct Bank Transfer",
                           style: TextStyle(
                             fontSize: 13.0,
-                            color: Colors
-                                .white, // Set text color to white or your desired color
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -404,12 +659,14 @@ class _OrderListPageState extends State<OrderListPage> {
                       },
                       steps: [
                         Step(
-                          title: Text('Pending', selectionColor: toolbar),
+                          title: Text('Pending',
+                              style: TextStyle(color: toolbar, fontSize: 14)),
                           isActive: true,
-                          //subtitle: Text('Will be shipped shortly'),
                           content: Center(
                             child: Text('Will be shipped shortly'),
                           ),
+                          state: StepState
+                              .indexed, // Set the state to indexed for active steps
                         ),
                         Step(
                           title: Text('Ready to ship', selectionColor: toolbar),
