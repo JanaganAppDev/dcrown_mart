@@ -649,6 +649,11 @@ class _OrderListPageState extends State<OrderListPage> {
                     height: 150,
                     child: Stepper(
                       elevation: 0,
+                      connectorColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          return Colors.green;
+                        },
+                      ),
                       connectorThickness: 4,
                       type: StepperType.horizontal,
                       currentStep: _index,
@@ -659,28 +664,33 @@ class _OrderListPageState extends State<OrderListPage> {
                       },
                       steps: [
                         Step(
-                          title: Text('Pending',
+                          title: Text('', //Pending
                               style: TextStyle(color: toolbar, fontSize: 14)),
                           isActive: true,
                           content: Center(
                             child: Text('Will be shipped shortly'),
                           ),
-                          state: StepState
-                              .indexed, // Set the state to indexed for active steps
+                          state: StepState.indexed,
+                          //subtitle: Text("Pending"),
                         ),
                         Step(
-                          title: Text('Ready to ship', selectionColor: toolbar),
+                          title:
+                              Text('', selectionColor: toolbar), //Ready to ship
                           isActive: false,
                           content: Center(
                             child: Text('Will be shipped at 10.00 PM'),
                           ),
+                          state: StepState.indexed,
+                          //subtitle: Text("Ready to ship"),
                         ),
                         Step(
-                          title: Text('Delivered', selectionColor: toolbar),
+                          title: Text('', selectionColor: toolbar), //Delivered
                           isActive: false,
                           content: Center(
                             child: Text('Delivered at chennai - 10.00PM'),
                           ),
+                          state: StepState.indexed,
+                          //subtitle: Text("Delivered"),
                         ),
                       ],
                       controlsBuilder:
