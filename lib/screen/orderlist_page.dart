@@ -651,7 +651,7 @@ class _OrderListPageState extends State<OrderListPage> {
                       elevation: 0,
                       connectorColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
-                          return Colors.green;
+                          return toolbar;
                         },
                       ),
                       connectorThickness: 4,

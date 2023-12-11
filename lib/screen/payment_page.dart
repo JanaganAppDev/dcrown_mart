@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:dcrown_mart/const.dart';
@@ -7,16 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
-
-
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
 }
-
 
 bool _isButtonClicked = false;
 
@@ -32,7 +27,6 @@ class _PaymentPageState extends State<PaymentPage> {
 
   File? _image;
   final picker = ImagePicker();
-
 
   Future getImageFromGallery() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -83,27 +77,34 @@ class _PaymentPageState extends State<PaymentPage> {
               SizedBox(height: 10.0),
               Column(
                 children: [
-                  TextFormField(
-                    cursorColor: colorPrimary,
-                    decoration: InputDecoration(
-                      hintText: '₹60',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(55.0),
-                        borderSide: BorderSide(
-                          color: colorPrimary,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(55.0),
-                        borderSide: BorderSide(
-                          color: colorPrimary,
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4.0),
+                    child: Container(
+                      height: 53.0,
+                      child: TextFormField(
+                        cursorColor: colorPrimary,
+                        decoration: InputDecoration(
+                          hintText: '₹60',
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    padding: EdgeInsets.symmetric(vertical: 4.0),
                     child: Container(
+                      height: 53,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(55.0),
                         border: Border.all(
@@ -131,36 +132,38 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: TextFormField(
-                      cursorColor: colorPrimary,
-                      decoration: InputDecoration(
-                        prefixIcon:
-                            Icon(Icons.account_balance, color: colorGrey2),
-                        hintText: 'Transaction ID',
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color: colorPrimary,
+                    padding: EdgeInsets.symmetric(vertical: 4.0),
+                    child: Container(
+                      height: 53,
+                      child: TextFormField(
+                        cursorColor: colorPrimary,
+                        decoration: InputDecoration(
+                          prefixIcon:
+                              Icon(Icons.account_balance, color: colorGrey2),
+                          hintText: 'Transaction ID',
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
                           ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color: colorPrimary,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(55.0),
-                          borderSide: BorderSide(
-                            color:
-                                _isButtonClicked ? colorRed : colorPrimary,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: _isButtonClicked ? colorRed : colorPrimary,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                 /* Padding(
+                  /* Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Container(
                       decoration: BoxDecoration(
@@ -198,32 +201,33 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                   ),*/
                   GestureDetector(
-                      child:  Container(
-                        height: 55.0,
-                        width: 500.0,
-                        padding: EdgeInsets.all(15.0),
-                        decoration: BoxDecoration(
-                          color: colorWhite,
-                          borderRadius: BorderRadius.circular(30.0),
-                          border: Border.all(
-                            color: colorPrimary,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 4.0),
+                        child: Container(
+                          height: 53,
+                          width: screenWidth,
+                          padding: EdgeInsets.all(15.0),
+                          decoration: BoxDecoration(
+                            color: colorWhite,
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                              color: colorPrimary,
+                            ),
                           ),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.image, color: colorGrey2),
-                            SizedBox(width: 10),
-                            _image == null ? Text('Screen Shot') : Text(_image!.path.split('/').last),
-                          ],
+                          child: Row(
+                            children: [
+                              Icon(Icons.image, color: colorGrey2),
+                              SizedBox(width: 10),
+                              _image == null
+                                  ? Text('Screen Shot')
+                                  : Text(_image!.path.split('/').last),
+                            ],
+                          ),
                         ),
                       ),
                       onTap: () {
                         getImageFromGallery();
-                      }
-                  ),
-
-
-
+                      }),
                   SizedBox(height: 20.0),
                   Container(
                     //margin: EdgeInsets.only(top: 60.0),
