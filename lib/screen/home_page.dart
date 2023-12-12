@@ -688,12 +688,12 @@ class _HomePageState extends State<HomePage> {
                                                 !addedToCart[index];
                                           });
                                           if (addedToCart[index]) {
-                                            Navigator.push(
+                                            /*Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       MyCartPage()),
-                                            );
+                                            );*/
                                           }
                                         },
                                         child: Center(
