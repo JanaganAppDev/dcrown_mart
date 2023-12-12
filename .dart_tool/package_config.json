@@ -200,6 +200,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "item_count_number_button",
+      "rootUri": "file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/item_count_number_button-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/welcome/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -434,7 +440,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-12-11T04:37:03.501193Z",
+  "generated": "2023-12-12T05:51:18.029900Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }
