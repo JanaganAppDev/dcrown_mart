@@ -19,6 +19,7 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
@@ -32,6 +33,42 @@ List<bool> addedToCart2 = [false, false, false, false, false];
 List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
+  String globalVariable = "";
+
+  void homepage(String id, name, categories, price, description, image,
+      created_at, updatedAt) async {
+    try {
+      final url = Uri.parse(
+          "http://localhost:5000/api/product/getProduct?category=oil");
+
+      final response = await http.post(url, body: {
+        'id': id,
+        'name': name,
+        'categories': categories,
+        'price': price,
+        'description': description,
+        'image': image,
+        'created_at': created_at,
+        'created_at': created_at,
+      });
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body.toString());
+
+        print(response.body);
+        setState(() {
+          globalVariable = data["token"];
+          print(globalVariable);
+          print("Registration successful!");
+        });
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   List<String> images = [
     "assets/fruits2.jpg",

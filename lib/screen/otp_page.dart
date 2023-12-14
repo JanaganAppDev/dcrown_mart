@@ -94,7 +94,8 @@ class _OtpPageState extends State<OtpPage> {
           context,
           MaterialPageRoute(builder: (context) => NewPassword()),
         ); /*
-        }*/ /*else {
+        }*/
+        /*else {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(response.body),
             backgroundColor: Colors.redAccent,
