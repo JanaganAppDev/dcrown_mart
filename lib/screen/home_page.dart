@@ -34,39 +34,29 @@ List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
   String globalVariable = "";
+  List drink = [];
 
-  void homepage(String id, name, categories, price, description, image,
-      created_at, updatedAt) async {
-    try {
-      final url = Uri.parse(
-          "http://localhost:5000/api/product/getProduct?category=oil");
-
-      final response = await http.post(url, body: {
-        'id': id,
-        'name': name,
-        'categories': categories,
-        'price': price,
-        'description': description,
-        'image': image,
-        'created_at': created_at,
-        'created_at': created_at,
-      });
-
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var data = jsonDecode(response.body.toString());
-
-        print(response.body);
-        setState(() {
-          globalVariable = data["token"];
-          print(globalVariable);
-          print("Registration successful!");
-        });
-      } else {
-        print('failed');
+  Future<void> fetchData() async {
+    final url =
+        Uri.parse('http://localhost:5000/api/product/getProduct?category=oil');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      for (int i = 0; i < jsonResponse.length; i++) {
+        if (jsonResponse[i]['categories'] == "Cold Drinks & juices") {
+          drink.add(jsonResponse[i]);
+        } else {
+          print("not match");
+        }
       }
-    } catch (e) {
-      print(e.toString());
-    }
+      // data = jsonResponse[index]['categoriescategories'];
+    } else {}
+  }
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
   }
 
   @override
@@ -681,7 +671,7 @@ class _HomePageState extends State<HomePage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 10.0),
                                 child: Text(
-                                  "DISHWASH LIQUID",
+                                  drink[index]['name'].toString(),
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
@@ -851,7 +841,7 @@ class _HomePageState extends State<HomePage> {
                   height: 190.0,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: drink.length,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -886,16 +876,15 @@ class _HomePageState extends State<HomePage> {
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
+                                          image:
+                                              AssetImage(drink[index]['image']),
                                         ),
                                       ),
                                       SizedBox(height: 4.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          "DISHWASH LIQUID",
+                                          drink[index]['name'].toString(),
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
@@ -910,7 +899,7 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Rs 150",
+                                              drink[index]['price'].toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1080,7 +1069,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: 10,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1115,7 +1104,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
+                                            drink[index]['image'],
                                           ),
                                         ),
                                       ),
@@ -1123,7 +1112,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          "DISHWASH LIQUID",
+                                          drink[index]['name'].toString(),
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
@@ -1139,7 +1128,7 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Rs 150",
+                                              drink[index]['price'].toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
