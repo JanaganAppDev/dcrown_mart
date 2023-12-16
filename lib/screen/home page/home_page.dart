@@ -29,12 +29,21 @@ class HomePage extends StatefulWidget {
 }
 
 List<bool> addedToCart = [false, false, false];
-List<bool> addedToCart2 = [false, false, false, false, false];
-List<bool> addedToCart3 = [false, false, false, false, false];
+int limit2 = 10;
+List<bool> addedToCart2 = List.generate(limit2, (index) => false);
+//List<bool> addedToCart2 = [false, false, false, false, false, false];
+int limit3 = 10;
+List<bool> addedToCart3 = List.generate(limit3, (index) => false);
+//List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
   String globalVariable = "";
   List drink = [];
+  List fruit = [];
+  List masala = [];
+  List snacks = [];
+  List bakery = [];
+  List tea = [];
 
   Future<void> fetchData() async {
     final url =
@@ -45,12 +54,25 @@ class _HomePageState extends State<HomePage> {
       for (int i = 0; i < jsonResponse.length; i++) {
         if (jsonResponse[i]['categories'] == "Cold Drinks & juices") {
           drink.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Fruit & vegitables") {
+          fruit.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Masala,oil & More") {
+          masala.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Snacks & Munchies") {
+          snacks.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Bakery & Biscutes") {
+          bakery.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] ==
+            "Tea,Coffee &Health drink") {
+          tea.add(jsonResponse[i]);
         } else {
           print("not match");
         }
       }
       // data = jsonResponse[index]['categoriescategories'];
-    } else {}
+    } else {
+      print("not match");
+    }
   }
 
   @override
@@ -83,18 +105,18 @@ class _HomePageState extends State<HomePage> {
             SizedBox(width: 8),
             Text(
               "Dcrown Mart",
-              style: TextStyle(fontSize: 19),
+              style: TextStyle(fontSize: 19, color: colorBlack),
             ),
           ],
         ),
         centerTitle: false,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search, color: colorBlack),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications, color: colorBlack),
             onPressed: () {
               /*Navigator.push(
                 context,
@@ -107,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             child: Stack(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.shopping_cart),
+                  icon: Icon(Icons.shopping_cart, color: colorBlack),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -121,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     padding: EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: colorBlack,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     constraints: BoxConstraints(
@@ -799,7 +821,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular products",
+                      "Cold Drinks & juices",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -1026,7 +1048,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "New products",
+                      "Fruit & vegitables",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -1104,7 +1126,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            drink[index]['image'],
+                                            fruit[index]['image'],
                                           ),
                                         ),
                                       ),
@@ -1112,7 +1134,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          drink[index]['name'].toString(),
+                                          fruit[index]['name'].toString(),
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
@@ -1128,7 +1150,7 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              drink[index]['price'].toString(),
+                                              fruit[index]['price'].toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,

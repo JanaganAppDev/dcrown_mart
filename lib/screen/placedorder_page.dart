@@ -1,7 +1,7 @@
 import 'package:dcrown_mart/const.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'home page/home_page.dart';
 
 class PlacedOrderPage extends StatefulWidget {
   const PlacedOrderPage({super.key});
@@ -26,11 +26,13 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
       });
     }
   }
+
   void _decrementDate() {
     DateTime currentDate = DateTime.now();
 
     setState(() {
-      if (selectedDate.isAfter(currentDate) || selectedDate.isAtSameMomentAs(currentDate)) {
+      if (selectedDate.isAfter(currentDate) ||
+          selectedDate.isAtSameMomentAs(currentDate)) {
         selectedDate = selectedDate.subtract(Duration(days: 1));
       }
     });
@@ -41,7 +43,6 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
       selectedDate = selectedDate.add(Duration(days: 1));
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -131,32 +132,32 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                 ),
               ),
             ),
-          Padding(
-            padding: EdgeInsets.only(left: 115.0, right: 10.0),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_circle_left, color: colorPrimary),
+            Padding(
+              padding: EdgeInsets.only(left: 115.0, right: 10.0),
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_circle_left, color: colorPrimary),
                     onPressed: _decrementDate,
-                ),
-                InkWell(
-                  onTap: () => _selectDate(context),
-                  child: Container(
-                    child: Center(
-                      child: Text(
-                        '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
-                        style: TextStyle(color: colorBlack),
+                  ),
+                  InkWell(
+                    onTap: () => _selectDate(context),
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                          style: TextStyle(color: colorBlack),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_circle_right, color: colorPrimary),
+                  IconButton(
+                    icon: Icon(Icons.arrow_circle_right, color: colorPrimary),
                     onPressed: _incrementDate,
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -239,8 +240,8 @@ class _PlacedOrderPageState extends State<PlacedOrderPage> {
                               height: 50.0,
                               width: 45.0,
                               alignment: Alignment.center,
-                              image:
-                              AssetImage('assets/bank_logo.png',
+                              image: AssetImage(
+                                'assets/bank_logo.png',
                               ),
                             ),
                             Text(

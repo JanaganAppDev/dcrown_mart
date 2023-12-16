@@ -5,12 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Home page api">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/ForgotPassword_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/ForgotPassword_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/NewPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/NewPassword.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/addresslist_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/addresslist_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/api_forgotpassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/forgotpassword_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/api_request.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/login_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/feedback_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/feedback_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home page/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/homepage_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/home page/homepage_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/myaddress_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/myaddress_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/mycart_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/mycart_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/myorder_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/myorder_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/orderSummary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/orderSummary_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/otp_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/otp_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/otppage_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/otppage_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/placedorder_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/placedorder_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/product_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/product_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/signup_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup page/signup_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup page/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/viewall_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/viewall_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,13 +77,18 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\welcome\AndroidStudioProjects\dcrown_mart\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\flutter\dcrown_mart\lib\screen\home page" />
+      <recent name="D:\flutter\dcrown_mart\lib\screen\signup page" />
+      <recent name="D:\flutter\dcrown_mart\lib\screen\login page" />
     </key>
   </component>
   <component name="RunManager">
@@ -212,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702358565622</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Kathiresh- Home page api">
+      <option name="closed" value="true" />
+      <created>1702700387590</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1702700387590</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -238,6 +274,7 @@
     <MESSAGE value="Aravind- change the colour" />
     <MESSAGE value="Aravind- edit a all page" />
     <MESSAGE value="Kathiresh- Order Summary page UI and view all page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- Order Summary page UI and view all page" />
+    <MESSAGE value="Kathiresh- Home page api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kathiresh- Home page api" />
   </component>
 </project>

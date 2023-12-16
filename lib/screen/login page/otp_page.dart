@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dcrown_mart/const.dart';
-import 'package:dcrown_mart/screen/NewPassword.dart';
-import 'package:dcrown_mart/screen/ForgotPassword_page.dart';
+import 'package:dcrown_mart/screen/login%20page/NewPassword.dart';
+import 'package:dcrown_mart/screen/login%20page/ForgotPassword_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
