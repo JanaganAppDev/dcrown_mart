@@ -12,6 +12,7 @@ import 'package:dcrown_mart/screen/login%20page/otp_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
 import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
+import 'package:dcrown_mart/screen/referral_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/screen/login%20page/login_page.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ReferralPage(),
     );
   }
 }
