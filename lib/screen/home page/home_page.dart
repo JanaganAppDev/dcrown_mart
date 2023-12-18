@@ -29,44 +29,56 @@ class HomePage extends StatefulWidget {
 }
 
 List<bool> addedToCart = [false, false, false];
-List<bool> addedToCart2 = [false, false, false, false, false];
-List<bool> addedToCart3 = [false, false, false, false, false];
+int limit2 = 10;
+List<bool> addedToCart2 = List.generate(limit2, (index) => false);
+//List<bool> addedToCart2 = [false, false, false, false, false, false];
+int limit3 = 10;
+List<bool> addedToCart3 = List.generate(limit3, (index) => false);
+//List<bool> addedToCart3 = [false, false, false, false, false];
 
 class _HomePageState extends State<HomePage> {
   String globalVariable = "";
+  List drink = [];
+  List fruit = [];
+  List masala = [];
+  List snacks = [];
+  List bakery = [];
+  List tea = [];
 
-  void homepage(String id, name, categories, price, description, image,
-      created_at, updatedAt) async {
-    try {
-      final url = Uri.parse(
-          "http://localhost:5000/api/product/getProduct?category=oil");
-
-      final response = await http.post(url, body: {
-        'id': id,
-        'name': name,
-        'categories': categories,
-        'price': price,
-        'description': description,
-        'image': image,
-        'created_at': created_at,
-        'created_at': created_at,
-      });
-
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var data = jsonDecode(response.body.toString());
-
-        print(response.body);
-        setState(() {
-          globalVariable = data["token"];
-          print(globalVariable);
-          print("Registration successful!");
-        });
-      } else {
-        print('failed');
+  Future<void> fetchData() async {
+    final url =
+        Uri.parse('http://localhost:5000/api/product/getProduct?category=oil');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      for (int i = 0; i < jsonResponse.length; i++) {
+        if (jsonResponse[i]['categories'] == "Cold Drinks & juices") {
+          drink.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Fruit & vegitables") {
+          fruit.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Masala,oil & More") {
+          masala.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Snacks & Munchies") {
+          snacks.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] == "Bakery & Biscutes") {
+          bakery.add(jsonResponse[i]);
+        } else if (jsonResponse[i]['categories'] ==
+            "Tea,Coffee &Health drink") {
+          tea.add(jsonResponse[i]);
+        } else {
+          print("not match");
+        }
       }
-    } catch (e) {
-      print(e.toString());
+      // data = jsonResponse[index]['categoriescategories'];
+    } else {
+      print("not match");
     }
+  }
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
   }
 
   @override
@@ -93,18 +105,18 @@ class _HomePageState extends State<HomePage> {
             SizedBox(width: 8),
             Text(
               "Dcrown Mart",
-              style: TextStyle(fontSize: 19),
+              style: TextStyle(fontSize: 19, color: colorBlack),
             ),
           ],
         ),
         centerTitle: false,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search, color: colorBlack),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications, color: colorBlack),
             onPressed: () {
               /*Navigator.push(
                 context,
@@ -117,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             child: Stack(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.shopping_cart),
+                  icon: Icon(Icons.shopping_cart, color: colorBlack),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -131,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     padding: EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: colorBlack,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     constraints: BoxConstraints(
@@ -681,7 +693,7 @@ class _HomePageState extends State<HomePage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 10.0),
                                 child: Text(
-                                  "DISHWASH LIQUID",
+                                  drink[index]['name'].toString(),
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
@@ -809,7 +821,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular products",
+                      "Cold Drinks & juices",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -851,7 +863,7 @@ class _HomePageState extends State<HomePage> {
                   height: 190.0,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: drink.length,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -886,16 +898,15 @@ class _HomePageState extends State<HomePage> {
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
+                                          image:
+                                              AssetImage(drink[index]['image']),
                                         ),
                                       ),
                                       SizedBox(height: 4.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          "DISHWASH LIQUID",
+                                          drink[index]['name'].toString(),
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
@@ -910,7 +921,7 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Rs 150",
+                                              drink[index]['price'].toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1037,7 +1048,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "New products",
+                      "Fruit & vegitables",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -1080,7 +1091,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: 10,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1115,7 +1126,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
+                                            fruit[index]['image'],
                                           ),
                                         ),
                                       ),
@@ -1123,7 +1134,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          "DISHWASH LIQUID",
+                                          fruit[index]['name'].toString(),
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
@@ -1139,7 +1150,7 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Rs 150",
+                                              fruit[index]['price'].toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:dcrown_mart/screen/otp_page.dart';
+import 'package:dcrown_mart/screen/login%20page/otp_page.dart';
 import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../service/api_response.dart';
+import '../../service/api_response.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -98,7 +98,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(message),
-            backgroundColor: Colors .red,
+            backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)),
