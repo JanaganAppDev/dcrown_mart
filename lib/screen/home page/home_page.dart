@@ -28,13 +28,21 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-List<bool> addedToCart = [false, false, false];
-int limit2 = 10;
+int limit1 = 12;
+List<bool> addedToCart1 = List.generate(limit1, (index) => false);
+//List<bool> addedToCart = [false, false, false];
+int limit2 = 12;
 List<bool> addedToCart2 = List.generate(limit2, (index) => false);
 //List<bool> addedToCart2 = [false, false, false, false, false, false];
-int limit3 = 10;
+int limit3 = 12;
 List<bool> addedToCart3 = List.generate(limit3, (index) => false);
 //List<bool> addedToCart3 = [false, false, false, false, false];
+int limit4 = 12;
+List<bool> addedToCart4 = List.generate(limit3, (index) => false);
+int limit5 = 12;
+List<bool> addedToCart5 = List.generate(limit3, (index) => false);
+int limit6 = 12;
+List<bool> addedToCart6 = List.generate(limit3, (index) => false);
 
 class _HomePageState extends State<HomePage> {
   String globalVariable = "";
@@ -734,10 +742,10 @@ class _HomePageState extends State<HomePage> {
                                           setState(() {
                                             itemCountInCart =
                                                 itemCountInCart == 0 ? 1 : 0;
-                                            addedToCart[index] =
-                                                !addedToCart[index];
+                                            addedToCart1[index] =
+                                                !addedToCart1[index];
                                           });
-                                          if (addedToCart[index]) {
+                                          if (addedToCart1[index]) {
                                             /*Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -748,7 +756,7 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         child: Center(
                                           child: Icon(
-                                            addedToCart[index]
+                                            addedToCart1[index]
                                                 ? Icons.remove_circle
                                                 : Icons.add_circle,
                                             color: colorWhite,
@@ -766,7 +774,7 @@ class _HomePageState extends State<HomePage> {
                                             fontSize: 18,
                                           ),
                                           padding: EdgeInsets.only(right: 1.0),
-                                          backgroundColor: addedToCart[index]
+                                          backgroundColor: addedToCart1[index]
                                               ? colorRed
                                               : colorPrimary,
                                         ),
@@ -1091,7 +1099,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: fruit.length,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1220,6 +1228,693 @@ class _HomePageState extends State<HomePage> {
                                                         right: 1.0),
                                                     backgroundColor:
                                                         addedToCart3[index]
+                                                            ? colorRed
+                                                            : colorPrimary,
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                bottom: 0,
+                                right: 0,
+                                left: 0,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 35,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: toolbar,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "25%",
+                                          style: TextStyle(
+                                            color: colorWhite,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Masala,oil & More",
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewallPage()));
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "view all",
+                          style: TextStyle(
+                            color: colorGrey1,
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: colorGrey1, size: 12.0),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductPage()),
+                );
+                print('Container tapped!');
+              },
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  height: 194.0,
+                  //width: screenWidth,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: masala.length,
+                    itemExtent: 205.0,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 4.0),
+                                child: Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorGrey,
+                                        blurRadius: 5.0,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  // height: 185.0,
+                                  // width: 140.0,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            masala[index]['image'],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          masala[index]['name'].toString(),
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: notificationTitle,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              masala[index]['price'].toString(),
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: colorPrimaryDark,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rs 200",
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      itemCountInCart =
+                                                          itemCountInCart == 0
+                                                              ? 1
+                                                              : 0;
+                                                      addedToCart4[index] =
+                                                          !addedToCart4[index];
+                                                    });
+                                                    if (addedToCart4[index]) {
+                                                      /*Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyCartPage()),
+                                                      );*/
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                    child: Icon(
+                                                      addedToCart4[index]
+                                                          ? Icons.remove_circle
+                                                          : Icons.add_circle,
+                                                      color: colorWhite,
+                                                    ),
+                                                  ),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                      ),
+                                                    ),
+                                                    textStyle: TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.0),
+                                                    backgroundColor:
+                                                        addedToCart4[index]
+                                                            ? colorRed
+                                                            : colorPrimary,
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                bottom: 0,
+                                right: 0,
+                                left: 0,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 35,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: toolbar,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "25%",
+                                          style: TextStyle(
+                                            color: colorWhite,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Snacks & Munchies",
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewallPage()));
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "view all",
+                          style: TextStyle(
+                            color: colorGrey1,
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: colorGrey1, size: 12.0),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductPage()),
+                );
+                print('Container tapped!');
+              },
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  height: 194.0,
+                  //width: screenWidth,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snacks.length,
+                    itemExtent: 205.0,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 4.0),
+                                child: Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorGrey,
+                                        blurRadius: 5.0,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  // height: 185.0,
+                                  // width: 140.0,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            snacks[index]['image'],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          snacks[index]['name'].toString(),
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: notificationTitle,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              snacks[index]['price'].toString(),
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: colorPrimaryDark,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rs 200",
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      itemCountInCart =
+                                                          itemCountInCart == 0
+                                                              ? 1
+                                                              : 0;
+                                                      addedToCart5[index] =
+                                                          !addedToCart5[index];
+                                                    });
+                                                    if (addedToCart5[index]) {
+                                                      /*Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyCartPage()),
+                                                      );*/
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                    child: Icon(
+                                                      addedToCart5[index]
+                                                          ? Icons.remove_circle
+                                                          : Icons.add_circle,
+                                                      color: colorWhite,
+                                                    ),
+                                                  ),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                      ),
+                                                    ),
+                                                    textStyle: TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.0),
+                                                    backgroundColor:
+                                                        addedToCart5[index]
+                                                            ? colorRed
+                                                            : colorPrimary,
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                bottom: 0,
+                                right: 0,
+                                left: 0,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 35,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: toolbar,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "25%",
+                                          style: TextStyle(
+                                            color: colorWhite,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Bakery & Biscutes",
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewallPage()));
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "view all",
+                          style: TextStyle(
+                            color: colorGrey1,
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            color: colorGrey1, size: 12.0),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductPage()),
+                );
+                print('Container tapped!');
+              },
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  height: 194.0,
+                  //width: screenWidth,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: bakery.length,
+                    itemExtent: 205.0,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 4.0),
+                                child: Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                    color: colorWhite,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorGrey,
+                                        blurRadius: 5.0,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  // height: 185.0,
+                                  // width: 140.0,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            bakery[index]['image'],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          bakery[index]['name'].toString(),
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: notificationTitle,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3.0),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              bakery[index]['price'].toString(),
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: colorPrimaryDark,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rs 200",
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      itemCountInCart =
+                                                          itemCountInCart == 0
+                                                              ? 1
+                                                              : 0;
+                                                      addedToCart6[index] =
+                                                          !addedToCart6[index];
+                                                    });
+                                                    if (addedToCart6[index]) {
+                                                      /*Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyCartPage()),
+                                                      );*/
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                    child: Icon(
+                                                      addedToCart6[index]
+                                                          ? Icons.remove_circle
+                                                          : Icons.add_circle,
+                                                      color: colorWhite,
+                                                    ),
+                                                  ),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                      ),
+                                                    ),
+                                                    textStyle: TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        right: 1.0),
+                                                    backgroundColor:
+                                                        addedToCart6[index]
                                                             ? colorRed
                                                             : colorPrimary,
                                                   ),
