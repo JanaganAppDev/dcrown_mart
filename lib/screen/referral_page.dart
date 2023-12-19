@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
-
 import 'home page/home_page.dart';
 
 
@@ -16,7 +15,7 @@ class _ReferralPageState extends State<ReferralPage> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor:
         colorPrimary,
@@ -45,7 +44,7 @@ class _ReferralPageState extends State<ReferralPage> {
                     padding: EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Container(
                       height: 45.0,
-                      width: 250.0,
+                      width: 150.0,
                       decoration: BoxDecoration(
                         color: colorWhite,
                         borderRadius: BorderRadius.circular(30.0),
@@ -58,8 +57,8 @@ class _ReferralPageState extends State<ReferralPage> {
                         child: Text(
                           '454664',
                           style: TextStyle(
-                            color: Colors.black, // You can change the text color
-                            fontSize: 16.0, // You can change the font size
+                            color: colorBlack,
+                            fontSize: 16.0,
                           ),
                         ),
                       ),
@@ -124,23 +123,34 @@ class _ReferralPageState extends State<ReferralPage> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: 10, // Replace with the actual item count
+                        itemCount: 30,
                         itemBuilder: (context, index) {
                           return ListTile(
                             leading: CircleAvatar(
                               radius: 20.0,
-                              backgroundColor: colorGrey,
+                              backgroundColor: Colors.grey,
                               child: Icon(
                                 Icons.person,
-                                color: Colors.white, // Adjust the color as needed
-                                size: 20.0,           // Adjust the size as needed
+                                color: colorWhite,
+                                size: 20.0,
                               ),
                             ),
-                            title: Text('Name'),
-                            // Add other list item properties as needed
+                            title: Row(
+                              children: [
+                                Text('Name'),
+                                SizedBox(width: 150),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    print('Button pressed for item $index');
+                                  },
+                                  child: Text('invite'),
+                                ),
+                              ],
+                            ),
                           );
                         },
                       ),
+
                     ),
                   ],
                 ),
