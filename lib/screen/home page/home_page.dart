@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
 }
 
 String globalVariable = "";
+List data = [];
 List drink = [];
 List fruit = [];
 List masala = [];
@@ -61,6 +62,7 @@ class _HomePageState extends State<HomePage> {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
       for (int i = 0; i < jsonResponse.length; i++) {
         if (jsonResponse[i]['categories'] == "Cold Drinks & juices") {
           drink.add(jsonResponse[i]);
@@ -908,10 +910,21 @@ class _HomePageState extends State<HomePage> {
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image:
-                                              AssetImage(drink[index]['image']),
+                                          image: AssetImage(
+                                            'assets/dishwash.jpeg',
+                                          ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image.network(
+                                          data[index]['image'] != null
+                                              ? data[index]['image']
+                                              : 'assets/dishwash.jpeg',
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),*/
                                       SizedBox(height: 4.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1136,7 +1149,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            fruit[index]['image'],
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
                                       ),
@@ -1365,10 +1378,20 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            masala[index]['image'],
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            masala[index]['image'],
+                                          ),
+                                        ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1594,10 +1617,20 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            snacks[index]['image'],
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            snacks[index]['image'],
+                                          ),
+                                        ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1823,10 +1856,20 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            bakery[index]['image'],
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            bakery[index]['image'],
+                                          ),
+                                        ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -2052,10 +2095,20 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            tea[index]['image'],
+                                            'assets/dishwash.jpeg',
                                           ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image(
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            tea[index]['image'],
+                                          ),
+                                        ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
