@@ -143,7 +143,7 @@ class _ReferralPageState extends State<ReferralPage> {
                                   onPressed: () {
                                     print('Button pressed for item $index');
                                   },
-                                  child: Text('invite'),
+                                  child: Text('share'),
                                 ),
                               ],
                             ),
@@ -156,10 +156,6 @@ class _ReferralPageState extends State<ReferralPage> {
                 ),
               ),
             ),
-
-
-
-
           ],
         ),
       ),
