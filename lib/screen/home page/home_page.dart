@@ -906,16 +906,6 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
-                                        child: Image(
-                                          height: 120.0,
-                                          width: 110.0,
-                                          alignment: Alignment.center,
-                                          image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
-                                        ),
-                                      ),
-                                      /*Center(
                                         child: Image.network(
                                           data[index]['image'] != null
                                               ? data[index]['image']
@@ -924,7 +914,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                         ),
-                                      ),*/
+                                      ),
                                       SizedBox(height: 4.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1378,20 +1368,10 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
-                                        ),
-                                      ),
-                                      /*Center(
-                                        child: Image(
-                                          height: 120.0,
-                                          width: 110.0,
-                                          alignment: Alignment.center,
-                                          image: AssetImage(
                                             masala[index]['image'],
                                           ),
                                         ),
-                                      ),*/
+                                      ),
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1617,20 +1597,10 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
-                                        ),
-                                      ),
-                                      /*Center(
-                                        child: Image(
-                                          height: 120.0,
-                                          width: 110.0,
-                                          alignment: Alignment.center,
-                                          image: AssetImage(
                                             snacks[index]['image'],
                                           ),
                                         ),
-                                      ),*/
+                                      ),
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1856,20 +1826,10 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
-                                        ),
-                                      ),
-                                      /*Center(
-                                        child: Image(
-                                          height: 120.0,
-                                          width: 110.0,
-                                          alignment: Alignment.center,
-                                          image: AssetImage(
                                             bakery[index]['image'],
                                           ),
                                         ),
-                                      ),*/
+                                      ),
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -2095,20 +2055,10 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                           image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
-                                        ),
-                                      ),
-                                      /*Center(
-                                        child: Image(
-                                          height: 120.0,
-                                          width: 110.0,
-                                          alignment: Alignment.center,
-                                          image: AssetImage(
                                             tea[index]['image'],
                                           ),
                                         ),
-                                      ),*/
+                                      ),
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
