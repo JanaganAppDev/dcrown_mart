@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'home page/home_page.dart';
+import 'package:share_plus/share_plus.dart';
 
 
 class ReferralPage extends StatefulWidget {
@@ -10,7 +11,19 @@ class ReferralPage extends StatefulWidget {
   State<ReferralPage> createState() => _ReferralPageState();
 }
 
+void _onShare(context) async {
+  print("testing");
+  final box = context.findRenderObject() as RenderBox?;
+  String text = 'fazil';
+  String link = 'link';
+  await Share.share(text,
+      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+}
+
+
+
 class _ReferralPageState extends State<ReferralPage> {
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -70,14 +83,8 @@ class _ReferralPageState extends State<ReferralPage> {
                       width: 120.0,
                       height: 45.0,
                       child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: colorPrimary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                        child: Text('Share'),
+                        onPressed: () => _onShare(context),
+                        child: const Text('Share'),
                       ),
                     ),
                   ),
@@ -94,7 +101,7 @@ class _ReferralPageState extends State<ReferralPage> {
                     topRight: Radius.circular(30.0),
                     topLeft: Radius.circular(30.0),
                   ),
-                  color: colorPrimary,
+                  color: colorWhite,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,3 +169,4 @@ class _ReferralPageState extends State<ReferralPage> {
     );
   }
 }
+
