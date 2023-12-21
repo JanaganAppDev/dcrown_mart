@@ -58,7 +58,7 @@ List<bool> addedToCart7 = List.generate(limit3, (index) => false);
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
     final url =
-        Uri.parse('http://localhost:5000/api/product/getProduct?category=oil');
+        Uri.parse('http://localhost:3000/api/product/getProduct?category=oil');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
@@ -692,13 +692,11 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Center(
-                                child: Image(
-                                  height: 100.0,
+                                child: Image.network(
+                                  'assets/crown_loading2.png',
+                                  height: 120.0,
                                   width: 110.0,
                                   alignment: Alignment.center,
-                                  image: AssetImage(
-                                    'assets/dishwash.jpeg',
-                                  ),
                                 ),
                               ),
                               SizedBox(height: 4.0),
@@ -907,6 +905,14 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Center(
                                         child: Image.network(
+                                          'assets/crown_loading2.png',
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                      /*Center(
+                                        child: Image.network(
                                           data[index]['image'] != null
                                               ? data[index]['image']
                                               : 'assets/dishwash.jpeg',
@@ -914,7 +920,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 110.0,
                                           alignment: Alignment.center,
                                         ),
-                                      ),
+                                      ),*/
                                       SizedBox(height: 4.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1134,15 +1140,23 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
-                                        child: Image(
+                                        child: Image.network(
+                                          'assets/crown_loading2.png',
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image: AssetImage(
-                                            'assets/dishwash.jpeg',
-                                          ),
                                         ),
                                       ),
+                                      /*Center(
+                                        child: Image(
+                                          height: 100.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                          image: AssetImage(
+                                            'assets/crown_loading2.png',
+                                          ),
+                                        ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1363,6 +1377,14 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
+                                        child: Image.network(
+                                          'assets/crown_loading2.png',
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                      /*Center(
                                         child: Image(
                                           height: 120.0,
                                           width: 110.0,
@@ -1371,7 +1393,7 @@ class _HomePageState extends State<HomePage> {
                                             masala[index]['image'],
                                           ),
                                         ),
-                                      ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1592,6 +1614,14 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
+                                        child: Image.network(
+                                          'assets/crown_loading2.png',
+                                          height: 120.0,
+                                          width: 110.0,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                      /*Center(
                                         child: Image(
                                           height: 120.0,
                                           width: 110.0,
@@ -1600,7 +1630,7 @@ class _HomePageState extends State<HomePage> {
                                             snacks[index]['image'],
                                           ),
                                         ),
-                                      ),
+                                      ),*/
                                       SizedBox(height: 3.0),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
@@ -1821,13 +1851,11 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
-                                        child: Image(
+                                        child: Image.network(
+                                          'assets/crown_loading2.png',
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image: AssetImage(
-                                            bakery[index]['image'],
-                                          ),
                                         ),
                                       ),
                                       SizedBox(height: 3.0),
@@ -2050,13 +2078,11 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Center(
-                                        child: Image(
+                                        child: Image.network(
+                                          'assets/crown_loading2.png',
                                           height: 120.0,
                                           width: 110.0,
                                           alignment: Alignment.center,
-                                          image: AssetImage(
-                                            tea[index]['image'],
-                                          ),
                                         ),
                                       ),
                                       SizedBox(height: 3.0),
