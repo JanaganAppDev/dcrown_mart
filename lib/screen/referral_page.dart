@@ -20,8 +20,6 @@ void _onShare(context) async {
       sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
 }
 
-
-
 class _ReferralPageState extends State<ReferralPage> {
 
   @override
