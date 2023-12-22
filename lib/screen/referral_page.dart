@@ -3,6 +3,7 @@ import 'package:dcrown_mart/const.dart';
 import 'home page/home_page.dart';
 import 'package:share_plus/share_plus.dart';
 
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class ReferralPage extends StatefulWidget {
   const ReferralPage({super.key});
@@ -10,6 +11,8 @@ class ReferralPage extends StatefulWidget {
   @override
   State<ReferralPage> createState() => _ReferralPageState();
 }
+
+TextEditingController referralidController = TextEditingController();
 
 void _onShare(context) async {
   print("testing");
@@ -53,7 +56,7 @@ class _ReferralPageState extends State<ReferralPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                    child: Container(
+                    child:Container(
                       height: 45.0,
                       width: 150.0,
                       decoration: BoxDecoration(
@@ -65,15 +68,24 @@ class _ReferralPageState extends State<ReferralPage> {
                         ),
                       ),
                       child: Center(
-                        child: Text(
-                          '454664',
-                          style: TextStyle(
-                            color: colorBlack,
-                            fontSize: 16.0,
+                        child: Form(
+                          key: _formKey,
+                          child: TextFormField(
+                            controller: referralidController,
+                            cursorColor: colorPrimary,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.all(10.0),
+                            ),
+                            style: TextStyle(
+                              color: colorBlack,
+                              fontSize: 16.0,
+                            ),
                           ),
                         ),
                       ),
                     ),
+
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 20.0,right: 20.0),
