@@ -7,7 +7,7 @@ class ApiService {
 
   Future<void> fetchData() async {
     final url =
-        Uri.parse("http://localhost:5000/api/product/getProduct?category=oil");
+        Uri.parse("http://localhost:3000/api/product/getProduct?category=oil");
     final response = await client.get(url);
 
     if (response.statusCode == 200) {
