@@ -47,13 +47,13 @@ int limit3 = fruit.length;
 List<bool> addedToCart3 = List.generate(limit3, (index) => false);
 //List<bool> addedToCart3 = [false, false, false, false, false];
 int limit4 = masala.length;
-List<bool> addedToCart4 = List.generate(limit3, (index) => false);
+List<bool> addedToCart4 = List.generate(limit4, (index) => false);
 int limit5 = snacks.length;
-List<bool> addedToCart5 = List.generate(limit3, (index) => false);
+List<bool> addedToCart5 = List.generate(limit5, (index) => false);
 int limit6 = bakery.length;
-List<bool> addedToCart6 = List.generate(limit3, (index) => false);
+List<bool> addedToCart6 = List.generate(limit6, (index) => false);
 int limit7 = tea.length;
-List<bool> addedToCart7 = List.generate(limit3, (index) => false);
+List<bool> addedToCart7 = List.generate(limit7, (index) => false);
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
@@ -873,7 +873,7 @@ class _HomePageState extends State<HomePage> {
                   height: 190.0,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: drink.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1110,7 +1110,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: fruit.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1347,7 +1347,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: masala.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1584,7 +1584,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: snacks.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -1821,7 +1821,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: bakery.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
@@ -2048,7 +2048,7 @@ class _HomePageState extends State<HomePage> {
                   //width: screenWidth,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: tea.length,
+                    itemCount: 6,
                     itemExtent: 205.0,
                     itemBuilder: (context, index) {
                       return Row(
