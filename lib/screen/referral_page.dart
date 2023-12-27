@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+
 class ReferralPage extends StatefulWidget {
   const ReferralPage({super.key});
 
@@ -12,18 +13,19 @@ class ReferralPage extends StatefulWidget {
   State<ReferralPage> createState() => _ReferralPageState();
 }
 
-TextEditingController referralidController = TextEditingController();
-
 void _onShare(context) async {
   print("testing");
   final box = context.findRenderObject() as RenderBox?;
-  String text = 'fazil';
-  String link = 'link';
+  var referralidController;
+  String text =  referralidController.text;
+  //String link = 'link';
   await Share.share(text,
       sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
 }
 
 class _ReferralPageState extends State<ReferralPage> {
+
+  TextEditingController referralidController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,9 @@ class _ReferralPageState extends State<ReferralPage> {
                       width: 120.0,
                       height: 45.0,
                       child: ElevatedButton(
-                        onPressed: () => _onShare(context),
+                        onPressed: () {
+                          Share.share( referralidController.text);
+                        },
                         child: const Text('Share'),
                       ),
                     ),
