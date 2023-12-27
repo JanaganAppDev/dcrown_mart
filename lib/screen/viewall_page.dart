@@ -2,6 +2,7 @@ import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
+import 'package:dcrown_mart/screen/home page/home_page.dart';
 
 import 'home page/home_page.dart';
 
@@ -12,7 +13,7 @@ class ViewallPage extends StatefulWidget {
   State<ViewallPage> createState() => _ViewallPageState();
 }
 
-int limit = 12;
+int limit = drink.length;
 List<bool> addedToCart = List.generate(limit, (index) => false);
 /*List<bool> addedToCart = [
   false,
@@ -55,7 +56,7 @@ class _ViewallPageState extends State<ViewallPage> {
           print('Container tapped!');
         },
         child: GridView.builder(
-          itemCount: 12,
+          itemCount: drink.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 40,
             mainAxisSpacing: 20,
@@ -83,20 +84,18 @@ class _ViewallPageState extends State<ViewallPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Center(
-                        child: Image(
-                          height: 100.0,
+                        child: Image.network(
+                          'assets/crown_loading2.png',
+                          height: 120.0,
                           width: 110.0,
                           alignment: Alignment.center,
-                          image: AssetImage(
-                            'assets/dishwash.jpeg',
-                          ),
                         ),
                       ),
                       SizedBox(height: 4.0),
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
                         child: Text(
-                          "Dishwasher",
+                          drink[index]['name'].toString(),
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
@@ -110,7 +109,7 @@ class _ViewallPageState extends State<ViewallPage> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              "Rs 150",
+                              drink[index]['price'].toString(),
                               style: TextStyle(
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
