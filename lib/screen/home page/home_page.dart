@@ -36,6 +36,7 @@ List masala = [];
 List snacks = [];
 List bakery = [];
 List tea = [];
+String name = "asdfghj";
 
 int limit1 = drink.length;
 List<bool> addedToCart1 = List.generate(limit1, (index) => false);
@@ -54,6 +55,11 @@ int limit6 = bakery.length;
 List<bool> addedToCart6 = List.generate(limit6, (index) => false);
 int limit7 = tea.length;
 List<bool> addedToCart7 = List.generate(limit7, (index) => false);
+
+print(name) {
+  // TODO: implement print
+  throw UnimplementedError();
+}
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
