@@ -57,8 +57,7 @@ List<bool> addedToCart7 = List.generate(limit7, (index) => false);
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
-    final url =
-        Uri.parse('http://localhost:3000/api/product/getProduct?category=oil');
+    final url = Uri.parse('http://localhost:5000/product/getproduct');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
