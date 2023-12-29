@@ -13,7 +13,7 @@ class ViewallPage extends StatefulWidget {
   State<ViewallPage> createState() => _ViewallPageState();
 }
 
-int limit = drink.length;
+int limit = fruit.length;
 List<bool> addedToCart = List.generate(limit, (index) => false);
 /*List<bool> addedToCart = [
   false,
@@ -28,6 +28,11 @@ List<bool> addedToCart = List.generate(limit, (index) => false);
 
 class _ViewallPageState extends State<ViewallPage> {
   int itemCountInCart = 0;
+
+  /*print(name) {
+    // TODO: implement print
+    throw UnimplementedError();
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +61,7 @@ class _ViewallPageState extends State<ViewallPage> {
           print('Container tapped!');
         },
         child: GridView.builder(
-          itemCount: drink.length,
+          itemCount: fruit.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 40,
             mainAxisSpacing: 20,
@@ -95,7 +100,7 @@ class _ViewallPageState extends State<ViewallPage> {
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
                         child: Text(
-                          drink[index]['name'].toString(),
+                          fruit[index]['name'].toString(),
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
@@ -109,7 +114,7 @@ class _ViewallPageState extends State<ViewallPage> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              drink[index]['price'].toString(),
+                              fruit[index]['price'].toString(),
                               style: TextStyle(
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
