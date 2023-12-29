@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'home page/home_page.dart';
 import 'package:share_plus/share_plus.dart';
-
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+import 'package:contacts_service/contacts_service.dart';
 
 class ReferralPage extends StatefulWidget {
-  const ReferralPage({super.key});
+  const ReferralPage({Key? key}) : super(key: key);
+
 
   @override
   State<ReferralPage> createState() => _ReferralPageState();
 }
 
-void _onShare(context) async {
-  print("testing");
-  final box = context.findRenderObject() as RenderBox?;
-  var referralidController;
-  String text =  referralidController.text;
-  //String link = 'link';
-  await Share.share(text,
-      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
-}
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class _ReferralPageState extends State<ReferralPage> {
-
+  Iterable<Contact>? _contacts;
   TextEditingController referralidController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _getContacts();
+  }
+
+  Future<void> _getContacts() async {
+    var status = await Permission.contacts.status;
+    if (status.isGranted) {
+      Iterable<Contact> contactList = await ContactsService.getContacts();
+      setState(() {
+        _contacts = contactList;
+      });
+    } else {
+      await Permission.contacts.request();
+      _getContacts();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +44,7 @@ class _ReferralPageState extends State<ReferralPage> {
     return Scaffold(
       backgroundColor: colorWhite,
       appBar: AppBar(
-        backgroundColor:
-        colorPrimary,
+        backgroundColor: colorPrimary,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -46,19 +56,23 @@ class _ReferralPageState extends State<ReferralPage> {
         ),
         title: const Text('Referral'),
       ),
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            Text("Earn Money\n  By Refer",style:TextStyle(fontSize:24.0,
-                fontWeight:FontWeight.bold,
-                color: colorBlack )),
+            Text(
+              "Earn Money\n  By Refer",
+              style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: colorBlack),
+            ),
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                    child:Container(
+                    child: Container(
                       height: 45.0,
                       width: 150.0,
                       decoration: BoxDecoration(
@@ -87,16 +101,15 @@ class _ReferralPageState extends State<ReferralPage> {
                         ),
                       ),
                     ),
-
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 20.0,right: 20.0),
+                    padding: EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Container(
                       width: 120.0,
                       height: 45.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          Share.share( referralidController.text);
+                          _onShare(context);
                         },
                         child: const Text('Share'),
                       ),
@@ -127,7 +140,7 @@ class _ReferralPageState extends State<ReferralPage> {
                         children: [
                           SizedBox(width: 8.0),
                           Text(
-                            'Invite a Friends',
+                            'Invite Friends',
                             style: TextStyle(
                               color: colorBlack,
                               fontSize: 20.0,
@@ -144,8 +157,9 @@ class _ReferralPageState extends State<ReferralPage> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: 30,
+                        itemCount: _contacts?.length ?? 0,
                         itemBuilder: (context, index) {
+                          Contact contact = _contacts!.elementAt(index);
                           return ListTile(
                             leading: CircleAvatar(
                               radius: 20.0,
@@ -158,20 +172,19 @@ class _ReferralPageState extends State<ReferralPage> {
                             ),
                             title: Row(
                               children: [
-                                Text('Name'),
-                                SizedBox(width: 150),
+                                Text(contact.displayName ?? ''),
+                                SizedBox(width: 80),
                                 ElevatedButton(
                                   onPressed: () {
                                     print('Button pressed for item $index');
                                   },
-                                  child: Text('share'),
+                                  child: Text('Share'),
                                 ),
                               ],
                             ),
                           );
                         },
                       ),
-
                     ),
                   ],
                 ),
@@ -182,5 +195,11 @@ class _ReferralPageState extends State<ReferralPage> {
       ),
     );
   }
-}
 
+  void _onShare(BuildContext context) async {
+    final box = context.findRenderObject() as RenderBox?;
+    String text = referralidController.text;
+    await Share.share(text,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  }
+}

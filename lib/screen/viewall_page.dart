@@ -3,7 +3,6 @@ import 'package:dcrown_mart/screen/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home page/home_page.dart';
-
 import 'home page/home_page.dart';
 
 class ViewallPage extends StatefulWidget {
