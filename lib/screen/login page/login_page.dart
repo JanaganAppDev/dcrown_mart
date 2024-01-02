@@ -26,7 +26,8 @@ class _LoginPageState extends State<LoginPage> {
     print(password);
     try {
       final response = await http
-          .post(Uri.parse('http://localhost:5000/api/users/login'), body: {
+          .post(Uri.parse('http://localhost:5000/api/users/login'),
+          body: {
         'email': email.toString(),
         'password': password.toString(),
       });

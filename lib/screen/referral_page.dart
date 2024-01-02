@@ -19,6 +19,13 @@ class _ReferralPageState extends State<ReferralPage> {
   Iterable<Contact>? _contacts;
   TextEditingController referralidController = TextEditingController();
 
+  void _onShare(BuildContext context) async {
+    final box = context.findRenderObject() as RenderBox?;
+    String text = referralidController.text;
+    await Share.share(text,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -194,12 +201,5 @@ class _ReferralPageState extends State<ReferralPage> {
         ),
       ),
     );
-  }
-
-  void _onShare(BuildContext context) async {
-    final box = context.findRenderObject() as RenderBox?;
-    String text = referralidController.text;
-    await Share.share(text,
-        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
   }
 }
