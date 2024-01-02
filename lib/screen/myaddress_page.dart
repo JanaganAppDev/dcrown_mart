@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
@@ -31,6 +34,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
   TextEditingController areaControler = TextEditingController();
   TextEditingController landmarkControler = TextEditingController();
   TextEditingController pincodeControler = TextEditingController();
+
 
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -132,8 +136,51 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-  void login(
-      String name, addresstype, flatno, address, lankmark, pincode) {} //api
+  void login(String name, addresstype, flatno, address, landmark, pincode) async {
+    print(name);
+    print(addresstype);
+    print(flatno);
+    print(address);
+    print(landmark);
+    print(pincode);
+    try {
+      final response = await http.post(Uri.parse('https://api.dcrownmart.com/adress/add'),
+          body: {
+            'name': name.toString(),
+            'addresstype': addresstype.toString(),
+            'flatno': flatno.toString(),
+            'address': address.toString(),
+            'landmark': landmark.toString(),
+            'pincode': pincode.toString(),
+      });
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(response.body);
+
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Login Successful"),
+              content: Text("You have successfully Login."),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("OK")),
+              ],
+            );
+          },
+        );
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
