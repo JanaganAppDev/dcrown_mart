@@ -1,3 +1,4 @@
+/*
 import 'package:dcrown_mart/screen/viewall_page.dart';
 import 'package:flutter/material.dart';
 import '../const.dart';
@@ -19,12 +20,14 @@ class _CategoryPageState extends State<CategoryPage> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      /*   body: GridView.count(crossAxisCount: 1,crossAxisSpacing: 5.0,mainAxisSpacing: 15.0,
+      */
+/*   body: GridView.count(crossAxisCount: 1,crossAxisSpacing: 5.0,mainAxisSpacing: 15.0,
 
 
       children: List.generate(4, (index) => card(index: index)),
 
-      ),*/
+      ),*/ /*
+
 
       body: SingleChildScrollView(
         child: Column(
@@ -608,3 +611,4 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
+*/

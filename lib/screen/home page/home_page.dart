@@ -845,7 +845,8 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ViewallPage()));
+                                builder: (context) =>
+                                    ViewallPage(productList: drink)));
                       },
                       child: Row(
                         children: [
@@ -1082,7 +1083,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ViewallPage()));
+                              builder: (context) =>
+                                  ViewallPage(productList: fruit)));
                     },
                     child: Row(
                       children: [
@@ -1319,7 +1321,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ViewallPage()));
+                              builder: (context) =>
+                                  ViewallPage(productList: masala)));
                     },
                     child: Row(
                       children: [
@@ -1556,7 +1559,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ViewallPage()));
+                              builder: (context) =>
+                                  ViewallPage(productList: snacks)));
                     },
                     child: Row(
                       children: [
@@ -1793,7 +1797,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ViewallPage()));
+                              builder: (context) =>
+                                  ViewallPage(productList: bakery)));
                     },
                     child: Row(
                       children: [
@@ -2020,7 +2025,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ViewallPage()));
+                              builder: (context) =>
+                                  ViewallPage(productList: tea)));
                     },
                     child: Row(
                       children: [
