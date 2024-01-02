@@ -62,6 +62,18 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
+  Future<void> fetchData1() async {
+    final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+      print(data);
+    } else {
+      print("not match");
+    }
+  }
+
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Please enter your name';
@@ -228,6 +240,7 @@ class _SignupPageState extends State<SignupPage> {
                           },
                           cursorColor: colorGrey1,
                           decoration: InputDecoration(
+                            hintText: "+91",
                             filled: true,
                             fillColor: colorWhite,
                             suffixIcon:
