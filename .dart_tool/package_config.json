@@ -44,12 +44,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "contacts_service",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/contacts_service-0.6.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "cross_file",
       "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/cross_file-0.3.3+8",
       "packageUri": "lib/",
@@ -338,12 +332,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "quiver",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/quiver-3.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "share_plus",
       "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-7.2.1",
       "packageUri": "lib/",
@@ -524,7 +512,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-01-02T13:07:51.687197Z",
+  "generated": "2023-12-28T04:02:41.602692Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

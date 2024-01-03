@@ -144,7 +144,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     print(landmark);
     print(pincode);
     try {
-      final response = await http.post(Uri.parse('https://api.dcrownmart.com/adress/add'),
+      final response = await http.post(Uri.parse('http://localhost:5000/adress/get'),
           body: {
             'name': name.toString(),
             'addresstype': addresstype.toString(),
@@ -492,7 +492,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           child: Text(
                             "Save",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 25.0),
+                                fontWeight: FontWeight.w600, fontSize: 25.0,color:colorWhite),
                           ),
                         ),
                       ),
