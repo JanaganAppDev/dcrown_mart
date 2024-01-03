@@ -8,6 +8,7 @@ import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
+import 'package:dcrown_mart/screen/referral_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
 import 'package:flutter/foundation.dart';
@@ -63,7 +64,7 @@ print(name) {
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
-    final url = Uri.parse('http://localhost:5000/product/getproduct');
+    final url = Uri.parse('https://api.dcrownmart.com/product/getProduct');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
@@ -379,10 +380,10 @@ class _HomePageState extends State<HomePage> {
               ),
               leading: Icon(Icons.share, color: colorBlack),
               onTap: () {
-                /*Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyAddressPage()),
-                );*/
+                  MaterialPageRoute(builder: (context) => ReferralPage()),
+                );
               },
             ),
             ListTile(
