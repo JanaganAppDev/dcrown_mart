@@ -6,7 +6,7 @@ class ApiService {
   ApiService(this.client);
 
   Future<void> fetchData() async {
-    final url = Uri.parse('https://api.dcrownmart.com/adress/add');
+    final url = Uri.parse('http://localhost:5000/adress/get');
     final response = await client.get(url);
 
     if (response.statusCode == 200) {
