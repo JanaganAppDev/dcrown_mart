@@ -157,23 +157,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Login Successful"),
-              content: Text("You have successfully Login."),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("OK")),
-              ],
-            );
-          },
-        );
       } else {
         print('failed');
       }
@@ -189,7 +172,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
-            colorPrimary, // Ensure colorPrimary is defined and imported
+            colorPrimary,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
