@@ -23,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
   bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
-  String selectedCountryCode = "+91";
+  String selectedCountryCode = "select country code";
   List<String> countryCodes = [];
 
   TextEditingController nameController = TextEditingController();
@@ -31,7 +31,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController cantactController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPass = TextEditingController();
-  TextEditingController country_code = TextEditingController();
+  TextEditingController country_codeController = TextEditingController();
 
   void signup(String name, email, country_code, password, contact) async {
     try {
@@ -52,6 +52,7 @@ class _SignupPageState extends State<SignupPage> {
         setState(() {
           globalVariable = data["token"];
           print(globalVariable);
+          print(country_code);
           print("Registration successful!");
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Register successfully!'),
@@ -66,7 +67,7 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
-  Future<void> fetchData1() async {
+  /*Future<void> fetchData1() async {
     final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
     final response = await http.get(url);
     if (response.statusCode == 200) {
@@ -80,7 +81,7 @@ class _SignupPageState extends State<SignupPage> {
     } else {
       print("Failed to load country codes");
     }
-  }
+  }*/
 
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -135,6 +136,37 @@ class _SignupPageState extends State<SignupPage> {
     if (_formKey.currentState!.validate()) {
       print("Signup Button Clicked");
     }
+  }
+
+  void showCountryCodeDropdown(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Select Country Code"),
+          content: DropdownButton<String>(
+            value: selectedCountryCode,
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedCountryCode = newValue!;
+                country_codeController.text = newValue; // Update the text field
+              });
+              Navigator.of(context).pop(); // Close the dropdown
+            },
+            items: <String>['select country code', '+91', '+94']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                  value,
+                  style: TextStyle(fontSize: 13.0, color: Colors.black),
+                ),
+              );
+            }).toList(),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -239,36 +271,24 @@ class _SignupPageState extends State<SignupPage> {
                     children: [
                       SizedBox(
                         width: 120.0,
-                        child: DropdownButtonFormField<String>(
-                          value: selectedCountryCode,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedCountryCode = newValue!;
-                            });
-                          },
+                        child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please select a country code';
+                              return 'Please enter your country code';
                             }
                             return null;
                           },
-                          items: <String>['+91', '+94']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(
-                                    fontSize: 13.0, color: colorGrey2),
-                              ),
-                            );
-                          }).toList(),
+                          readOnly: true,
+                          controller: country_codeController,
+                          onTap: () {
+                            showCountryCodeDropdown(context);
+                          },
                           decoration: InputDecoration(
+                            hintText: "Country Code",
                             filled: true,
                             fillColor: colorWhite,
-                            /*suffixIcon:
-                                Icon(Icons.arrow_drop_down, color: colorGrey),
-                            hintStyle: TextStyle(color: colorGrey),*/
+                            prefixIcon: Icon(Icons.phone, color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(color: colorPrimary),
@@ -481,7 +501,7 @@ class _SignupPageState extends State<SignupPage> {
                       signup(
                           nameController.text.toString(),
                           emailController.text.toString(),
-                          country_code.text.toString(),
+                          country_codeController.text.toString(),
                           passwordController.text.toString(),
                           cantactController.text.toString());
                       Navigator.push(context,
