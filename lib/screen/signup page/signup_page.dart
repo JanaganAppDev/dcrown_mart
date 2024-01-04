@@ -23,22 +23,26 @@ class _SignupPageState extends State<SignupPage> {
   bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
+  String selectedCountryCode = "+91";
+  List<String> countryCodes = [];
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController mobileController = TextEditingController();
+  TextEditingController cantactController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPass = TextEditingController();
+  TextEditingController country_code = TextEditingController();
 
-  void signup(String name, email, mobile, password) async {
+  void signup(String name, email, country_code, password, contact) async {
     try {
-      final url = Uri.parse("http://localhost:5000/api/users/register");
+      final url = Uri.parse("http://localhost:5000/users/register");
 
       final response = await http.post(url, body: {
         'name': name,
         'email': email,
-        'phone': mobile,
+        'country_code': country_code,
         'password': password,
+        'phone': contact,
       });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -66,11 +70,15 @@ class _SignupPageState extends State<SignupPage> {
     final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      final jsonResponse = jsonDecode(response.body);
-      data = jsonResponse;
-      print(data);
+      final List<dynamic> jsonResponse = jsonDecode(response.body);
+
+      // Extract country codes from the response
+      countryCodes =
+          jsonResponse.map((item) => item['code'].toString()).toList();
+
+      print(countryCodes);
     } else {
-      print("not match");
+      print("Failed to load country codes");
     }
   }
 
@@ -231,21 +239,36 @@ class _SignupPageState extends State<SignupPage> {
                     children: [
                       SizedBox(
                         width: 120.0,
-                        child: TextFormField(
+                        child: DropdownButtonFormField<String>(
+                          value: selectedCountryCode,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedCountryCode = newValue!;
+                            });
+                          },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your country code';
+                              return 'Please select a country code';
                             }
                             return null;
                           },
-                          cursorColor: colorGrey1,
+                          items: <String>['+91', '+94']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(
+                                    fontSize: 13.0, color: colorGrey2),
+                              ),
+                            );
+                          }).toList(),
                           decoration: InputDecoration(
-                            hintText: "+91",
                             filled: true,
                             fillColor: colorWhite,
-                            suffixIcon:
+                            /*suffixIcon:
                                 Icon(Icons.arrow_drop_down, color: colorGrey),
-                            hintStyle: TextStyle(color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),*/
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(color: colorPrimary),
@@ -280,10 +303,10 @@ class _SignupPageState extends State<SignupPage> {
                             }
                             return null;
                           },
-                          controller: mobileController,
+                          controller: cantactController,
                           cursorColor: colorGrey1,
                           decoration: InputDecoration(
-                            hintText: "Mobile",
+                            hintText: "Cantact",
                             filled: true,
                             fillColor: colorWhite,
                             prefixIcon:
@@ -458,8 +481,9 @@ class _SignupPageState extends State<SignupPage> {
                       signup(
                           nameController.text.toString(),
                           emailController.text.toString(),
-                          mobileController.text.toString(),
-                          passwordController.text.toString());
+                          country_code.text.toString(),
+                          passwordController.text.toString(),
+                          cantactController.text.toString());
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => LoginPage()));
                     }
