@@ -26,8 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     print(password);
     try {
       final response = await http
-          .post(Uri.parse('http://localhost:5000/users/login'),
-          body: {
+          .post(Uri.parse('http://localhost:5000/users/login'), body: {
         'email': email.toString(),
         'password': password.toString(),
       });
@@ -215,6 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
+                    print("test");
                     // Validate the form
 
                     if (_formKey.currentState!.validate()) {
