@@ -12,10 +12,10 @@ class ApiService {
     } else {}
   }
 
-  Future<void> fetchData1() async {
+  /*Future<void> fetchData1() async {
     final url = Uri.parse("https://api.dcrownmart.com/country/country_code");
     final response = await client.get(url);
     if (response.statusCode == 200) {
     } else {}
-  }
+  }*/
 }
