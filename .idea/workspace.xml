@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="Kathiresh- Home page api">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/login page/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login page/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/signup page/signup_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup page/signup_api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/signup page/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup page/signup_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,6 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/welcome/AndroidStudioProjects/dcrown_mart/assets&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
@@ -248,15 +243,7 @@
       <option name="project" value="LOCAL" />
       <updated>1703566053004</updated>
     </task>
-    <task id="LOCAL-00024" summary="Kathiresh- Home page api">
-      <option name="closed" value="true" />
-      <created>1704427900634</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1704427900634</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

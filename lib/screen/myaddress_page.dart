@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
+String auth_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE3OCwiaWF0IjoxNzA0MjYzNzcwLCJleHAiOjE3MDY4NTU3NzB9.YkpVOEWIexcky4iGoojFm2yzkE9ZUUS28AVempk-rAw";
+
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
 
@@ -136,15 +138,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-  void login(String name, addresstype, flatno, address, landmark, pincode) async {
-    print(name);
-    print(addresstype);
-    print(flatno);
-    print(address);
-    print(landmark);
-    print(pincode);
+  void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
+
     try {
+      print(nameControler.text.toString());
       final response = await http.post(Uri.parse('http://localhost:5000/adress/get'),
+
           body: {
             'name': name.toString(),
             'addresstype': addresstype.toString(),
@@ -153,7 +152,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
             'landmark': landmark.toString(),
             'pincode': pincode.toString(),
       });
-
+      final res = await http.get(Uri.parse('http://localhost:5000/adress/get'),headers: {
+        'authorization': auth_key,
+      });
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
@@ -199,7 +200,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         controller: nameControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'Name',
+                          hintText: 'user id',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -230,7 +231,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         controller: addresstypeControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'Address Type',
+                          hintText: 'Flat',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -261,7 +262,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         controller: flatnoControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'House/Flat no',
+                          hintText: 'Address',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -292,7 +293,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         controller: addressControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'Address',
+                          hintText: 'District',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -331,7 +332,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         ),
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding: EdgeInsets.all(10.0),
                       child: DropdownButtonFormField<String>(
                         decoration: InputDecoration(
@@ -369,6 +370,37 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           );
                         }).toList(),
                         validator: validateLocation,
+                      ),
+                    ),*/
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        controller: landmarkControler,
+                        cursorColor: colorPrimary,
+                        decoration: InputDecoration(
+                          hintText: 'State',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 15.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: _isButtonClicked ? colorRed : colorPrimary,
+                            ),
+                          ),
+                        ),
+                        validator: validateLandmark,
                       ),
                     ),
                     Padding(
@@ -412,7 +444,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           FilteringTextInputFormatter.digitsOnly,
                         ],
                         decoration: InputDecoration(
-                          hintText: '      Pin code',
+                          hintText: 'Pin code',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -450,7 +482,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                                 _isButtonClicked = true;
                               });
                               print("test");
-                              login(
+                              myaddress(
                                 nameControler.text.toString(),
                                 addresstypeControler.text.toString(),
                                 flatnoControler.text.toString(),
