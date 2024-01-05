@@ -149,7 +149,7 @@ class _SignupPageState extends State<SignupPage> {
             onChanged: (String? newValue) {
               setState(() {
                 selectedCountryCode = newValue!;
-                country_codeController.text = newValue; // Update the text field
+                country_codeController.text = newValue;
               });
               Navigator.of(context).pop(); // Close the dropdown
             },
