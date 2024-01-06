@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dcrown_mart/screen/login%20page/login_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
@@ -34,8 +35,12 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController country_codeController = TextEditingController();
 
   void signup(String name, email, country_code, password, contact) async {
+    print("names");
     try {
       final url = Uri.parse("http://localhost:5000/users/register");
+      print(emailController.text.toString());
+      print("name");
+      print(name);
 
       final response = await http.post(url, body: {
         'name': name,
@@ -67,21 +72,22 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
-  /*Future<void> fetchData1() async {
+  Future<void> fetchData1() async {
     final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
+    print(country_codeController.text.toString());
+
     final response = await http.get(url);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       final List<dynamic> jsonResponse = jsonDecode(response.body);
 
-      // Extract country codes from the response
       countryCodes =
-          jsonResponse.map((item) => item['code'].toString()).toList();
+          jsonResponse.map((item) => item["code"].toString()).toList();
 
       print(countryCodes);
     } else {
       print("Failed to load country codes");
     }
-  }*/
+  }
 
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -149,9 +155,9 @@ class _SignupPageState extends State<SignupPage> {
             onChanged: (String? newValue) {
               setState(() {
                 selectedCountryCode = newValue!;
-                country_codeController.text = newValue; // Update the text field
+                country_codeController.text = newValue;
               });
-              Navigator.of(context).pop(); // Close the dropdown
+              Navigator.of(context).pop();
             },
             items: <String>['select country code', '+91', '+94']
                 .map<DropdownMenuItem<String>>((String value) {
@@ -159,7 +165,7 @@ class _SignupPageState extends State<SignupPage> {
                 value: value,
                 child: Text(
                   value,
-                  style: TextStyle(fontSize: 13.0, color: Colors.black),
+                  style: TextStyle(fontSize: 13.0, color: colorBlack),
                 ),
               );
             }).toList(),
@@ -496,7 +502,7 @@ class _SignupPageState extends State<SignupPage> {
                       mobileController.text.toString(),
                       confirmPass.text.toString(),
                     );*/
-
+                    print("trues");
                     if (_formKey.currentState!.validate()) {
                       signup(
                           nameController.text.toString(),
@@ -506,6 +512,8 @@ class _SignupPageState extends State<SignupPage> {
                           cantactController.text.toString());
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => LoginPage()));
+                    } else {
+                      print("failed");
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -516,7 +524,7 @@ class _SignupPageState extends State<SignupPage> {
                     shadowColor: colorGrey,
                     elevation: 8,
                   ),
-                  child: Text("Signup"),
+                  child: Text("Signups"),
                 ),
               ),
             ),
