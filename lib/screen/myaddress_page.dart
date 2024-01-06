@@ -29,13 +29,16 @@ class _MyAddressPageState extends State<MyAddressPage> {
   String selectedLocation = 'Location';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController nameControler = TextEditingController();
-  TextEditingController addresstypeControler = TextEditingController();
-  TextEditingController flatnoControler = TextEditingController();
+  TextEditingController useridControler = TextEditingController();
+  TextEditingController flatControler = TextEditingController();
   TextEditingController addressControler = TextEditingController();
-  TextEditingController areaControler = TextEditingController();
+  TextEditingController districtControler = TextEditingController();
+  TextEditingController stateControler = TextEditingController();
   TextEditingController landmarkControler = TextEditingController();
   TextEditingController pincodeControler = TextEditingController();
+
+  //static get index => null;
+
 
 
   String? validateName(String? value) {
@@ -138,7 +141,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-  void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
+ /* void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
 
     try {
       print(nameControler.text.toString());
@@ -164,7 +167,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     } catch (e) {
       print(e.toString());
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -197,10 +200,11 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: nameControler,
+                        controller: useridControler,
                         cursorColor: colorPrimary,
+                        //initialValue: 'Your default text here',
                         decoration: InputDecoration(
-                          hintText: 'user id',
+                          hintText: 'user',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -228,7 +232,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: addresstypeControler,
+                        controller: flatControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'Flat',
@@ -259,7 +263,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: flatnoControler,
+                        controller: addressControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'Address',
@@ -482,14 +486,14 @@ class _MyAddressPageState extends State<MyAddressPage> {
                                 _isButtonClicked = true;
                               });
                               print("test");
-                              myaddress(
+                              /*myaddress(
                                 nameControler.text.toString(),
                                 addresstypeControler.text.toString(),
                                 flatnoControler.text.toString(),
                                 addressControler.text.toString(),
                                 landmarkControler.text.toString(),
                                 pincodeControler.text.toString(),
-                              );
+                              );*/
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -520,5 +524,18 @@ class _MyAddressPageState extends State<MyAddressPage> {
         ),
       ),
     );
+  }
+
+
+
+  Future<void> getAddress() async {
+    final url = Uri.parse('http://localhost:5000/adress/get');
+    final response = await http.get(url);
+    if (response.statusCode == 200||response.statusCode == 201) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+    } else {
+      print("not match");
+    }
   }
 }

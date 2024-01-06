@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
+import 'package:http/http.dart'as http;
 import 'package:flutter/material.dart';
 
 class AddresslistPage extends StatefulWidget {
@@ -14,6 +17,15 @@ class _AddresslistPageState extends State<AddresslistPage> {
   String groupValue = "Method $index";
 
   static get index => null;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("safe");
+    getAddress();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,4 +159,23 @@ class _AddresslistPageState extends State<AddresslistPage> {
       ),
     );
   }
+
+
+  /// api integration
+
+  Future<void> getAddress() async {
+    final url = Uri.parse('http://localhost:5000/adress/get');
+    final response = await http.get(url,headers: {
+      'Authorization':auth_key,
+    });
+    if (response.statusCode == 200||response.statusCode == 201) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+      print(data);
+      print("object");
+    } else {
+      print("not match");
+    }
+  }
+
 }
