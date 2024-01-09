@@ -57,14 +57,12 @@ List<bool> addedToCart6 = List.generate(limit6, (index) => false);
 int limit7 = tea.length;
 List<bool> addedToCart7 = List.generate(limit7, (index) => false);
 
-print(name) {
+/*print(name) {
   // TODO: implement print
   throw UnimplementedError();
-}
+}*/
 
 class _HomePageState extends State<HomePage> {
-
-
   Future<void> fetchData() async {
     final url = Uri.parse('https://api.dcrownmart.com/product/getProduct');
     final response = await http.get(url);
