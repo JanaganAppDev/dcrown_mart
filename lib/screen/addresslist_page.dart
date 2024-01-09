@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
@@ -18,13 +17,33 @@ class _AddresslistPageState extends State<AddresslistPage> {
 
   static get index => null;
 
+  /// api integration
+
+  Future<void> getAddress() async {
+    final url = Uri.parse('http://localhost:5000/adress/get');
+    final response = await http.get(url,headers: {
+      'Authorization':auth_key,
+    });
+    if (response.statusCode == 200||response.statusCode == 201) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+      print(data);
+      print("object");
+    } else {
+      print(response.body);
+      print("not match");
+    }
+  }
+
+
+
 
   @override
   void initState() {
     // TODO: implement initState
+    getAddress();
     super.initState();
     print("safe");
-    getAddress();
   }
 
   @override
@@ -53,7 +72,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
             Container(
               height: 600.0,
               child: ListView.builder(
-                itemCount: 2,
+                itemCount: data.isEmpty ? 0 : data.length,
                 itemBuilder: (context, index) {
                   return RadioListTile(
                     title: Container(
@@ -105,7 +124,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 2.0),
                                 child: Text(
-                                    "1.50/12, Sasthri street, Chennai-689001",
+                                    data[index]['flat'].toString(),
                                     style: TextStyle(fontSize: 13.0)),
                               ),
                             ],
@@ -159,23 +178,4 @@ class _AddresslistPageState extends State<AddresslistPage> {
       ),
     );
   }
-
-
-  /// api integration
-
-  Future<void> getAddress() async {
-    final url = Uri.parse('http://localhost:5000/adress/get');
-    final response = await http.get(url,headers: {
-      'Authorization':auth_key,
-    });
-    if (response.statusCode == 200||response.statusCode == 201) {
-      final jsonResponse = jsonDecode(response.body);
-      data = jsonResponse;
-      print(data);
-      print("object");
-    } else {
-      print("not match");
-    }
-  }
-
 }
