@@ -37,7 +37,7 @@ List masala = [];
 List snacks = [];
 List bakery = [];
 List tea = [];
-String name = "asdfghj";
+//String name = "asdfghj";
 
 int limit1 = drink.length;
 List<bool> addedToCart1 = List.generate(limit1, (index) => false);

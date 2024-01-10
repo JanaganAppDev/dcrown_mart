@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:dcrown_mart/screen/login%20page/login_page.dart';
 import 'package:flutter/foundation.dart';
@@ -35,19 +36,20 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController country_codeController = TextEditingController();
 
   void signup(String name, email, country_code, password, contact) async {
-    print("names");
+    print(name);
     try {
       final url = Uri.parse("http://localhost:5000/users/register");
       print(emailController.text.toString());
       print("name");
       print(name);
+      print(country_code);
 
       final response = await http.post(url, body: {
         'name': name,
         'email': email,
         'country_code': country_code,
         'password': password,
-        'phone': contact,
+        'contact': contact,
       });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -57,7 +59,7 @@ class _SignupPageState extends State<SignupPage> {
         setState(() {
           globalVariable = data["token"];
           print(globalVariable);
-          print(country_code);
+          //print(country_code);
           print("Registration successful!");
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Register successfully!'),
@@ -65,7 +67,8 @@ class _SignupPageState extends State<SignupPage> {
           ));
         });
       } else {
-        print('failed');
+        print(response.body);
+        print('Signup failed');
       }
     } catch (e) {
       print(e.toString());
@@ -496,13 +499,9 @@ class _SignupPageState extends State<SignupPage> {
                 height: 45.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    /* signup(
-                      nameController.text.toString(),
-                      emailController.text.toString(),
-                      mobileController.text.toString(),
-                      confirmPass.text.toString(),
-                    );*/
                     print("trues");
+                    //print(nameController);
+                    //print(country_codeController);
                     if (_formKey.currentState!.validate()) {
                       signup(
                           nameController.text.toString(),
@@ -524,7 +523,7 @@ class _SignupPageState extends State<SignupPage> {
                     shadowColor: colorGrey,
                     elevation: 8,
                   ),
-                  child: Text("Signups"),
+                  child: Text("Signup"),
                 ),
               ),
             ),
