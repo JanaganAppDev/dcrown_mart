@@ -34,10 +34,6 @@ class _AddresslistPageState extends State<AddresslistPage> {
       print("not match");
     }
   }
-
-
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -121,11 +117,20 @@ class _AddresslistPageState extends State<AddresslistPage> {
                           ),
                           Row(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 2.0),
-                                child: Text(
-                                    data[index]['flat'].toString(),
-                                    style: TextStyle(fontSize: 13.0)),
+                              Text(
+                                  data[index]['flat'].toString(),
+                              ),
+                              Text(
+                                data[index]['address'].toString(),
+                              ),
+                              Text(
+                                data[index]['district'].toString(),
+                              ),
+                              Text(
+                                data[index]['state'].toString(),
+                              ),
+                              Text(
+                                data[index]['landmark'].toString(),
                               ),
                             ],
                           ),
