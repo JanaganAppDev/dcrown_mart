@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
       data = jsonResponse;
+
       for (int i = 0; i < jsonResponse.length; i++) {
         if (jsonResponse[i]['categories'] == "Cold Drinks & juices") {
           drink.add(jsonResponse[i]);
