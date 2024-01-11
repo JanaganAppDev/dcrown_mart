@@ -141,7 +141,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
- /* void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
+  void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
 
     try {
       print(nameControler.text.toString());
@@ -155,9 +155,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
             'landmark': landmark.toString(),
             'pincode': pincode.toString(),
       });
-      final res = await http.get(Uri.parse('http://localhost:5000/adress/get'),headers: {
+      /*final res = await http.get(Uri.parse('http://localhost:5000/adress/get'),headers: {
         'authorization': auth_key,
-      });
+      });*/
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
@@ -167,7 +167,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     } catch (e) {
       print(e.toString());
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
