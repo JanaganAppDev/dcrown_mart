@@ -87,6 +87,8 @@ class _SignupPageState extends State<SignupPage> {
           jsonResponse.map((item) => item["code"].toString()).toList();
 
       print(countryCodes);
+      print('code test');
+      print(response.body);
     } else {
       print("Failed to load country codes");
     }
@@ -154,7 +156,11 @@ class _SignupPageState extends State<SignupPage> {
         return AlertDialog(
           title: Text("Select Country Code"),
           content: DropdownButton<String>(
-            value: selectedCountryCode,
+            value: countryCodes.contains(selectedCountryCode)
+                ? selectedCountryCode
+                : countryCodes.isNotEmpty
+                    ? countryCodes[0]
+                    : null,
             onChanged: (String? newValue) {
               setState(() {
                 selectedCountryCode = newValue!;
@@ -162,8 +168,7 @@ class _SignupPageState extends State<SignupPage> {
               });
               Navigator.of(context).pop();
             },
-            items: <String>['select country code', '+91', '+94']
-                .map<DropdownMenuItem<String>>((String value) {
+            items: countryCodes.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
@@ -176,6 +181,12 @@ class _SignupPageState extends State<SignupPage> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    fetchData1();
+    super.initState();
   }
 
   @override
@@ -198,7 +209,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 10.0),
             Text(
-              "Create an account on to use all \n                   the features",
+              "Create an account on to use all \n the features",
               style: TextStyle(
                 fontSize: 15.0,
                 color: colorGrey1,
