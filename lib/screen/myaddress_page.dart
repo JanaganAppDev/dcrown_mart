@@ -28,7 +28,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
   ];
   String selectedLocation = 'Location';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   TextEditingController nameControler = TextEditingController();
   TextEditingController addresstypeControler = TextEditingController();
   TextEditingController houseflatnoControler = TextEditingController();
@@ -145,7 +144,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
     try {
       print(nameControler.text.toString());
-      final response = await http.post(Uri.parse('http://localhost:5000/adress/get'),
+      final response = await http.post(Uri.parse('http://localhost:5000/adress/post'),
 
           body: {
             'name': name.toString(),
@@ -498,7 +497,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
 
   Future<void> getAddress() async {
-    final url = Uri.parse('http://localhost:5000/adress/get');
+    final url = Uri.parse('http://localhost:5000/adress/post');
     final response = await http.get(url);
     if (response.statusCode == 200||response.statusCode == 201) {
       final jsonResponse = jsonDecode(response.body);
