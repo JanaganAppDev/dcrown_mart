@@ -168,7 +168,9 @@ class _SignupPageState extends State<SignupPage> {
               });
               Navigator.of(context).pop();
             },
-            items: countryCodes.map<DropdownMenuItem<String>>((String value) {
+            //items: countryCodes.map<DropdownMenuItem<String>>((String value) {
+            items: <String>['select country code', '+91', '+94']
+                .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
