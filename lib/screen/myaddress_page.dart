@@ -29,11 +29,11 @@ class _MyAddressPageState extends State<MyAddressPage> {
   ];
   String selectedLocation = 'Location';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController nameControler = TextEditingController();
-  TextEditingController addresstypeControler = TextEditingController();
-  TextEditingController houseflatnoControler = TextEditingController();
+  TextEditingController useridControler = TextEditingController();
+  TextEditingController flatControler = TextEditingController();
   TextEditingController addressControler = TextEditingController();
-  TextEditingController locationControler = TextEditingController();
+  TextEditingController districtControler = TextEditingController();
+  TextEditingController stateControler = TextEditingController();
   TextEditingController landmarkControler = TextEditingController();
   TextEditingController pincodeControler = TextEditingController();
 
@@ -139,22 +139,23 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
+  /// api integration
+
   void myaddress(
-      String name, addresstype, flatno, address, landmark, pincode) async {
+      String userid, flat, address, district, landmark, pincode) async {
     try {
-      print(nameControler.text.toString());
-      final response = await http
-          .post(Uri.parse('http://localhost:5000/adress/post'), body: {
-        'name': name.toString(),
-        'addresstype': addresstype.toString(),
-        'flatno': flatno.toString(),
+      print(useridControler.text.toString());
+      final response =
+          await http.post(Uri.parse('http://localhost:5000/adress/add'), body: {
+        'userid': userid.toString(),
+        'flat': flat.toString(),
         'address': address.toString(),
-        'landmark': landmark.toString(),
+        'district': district.toString(),
+/*
+        'state': state.toString(),
+*/'landMark':landmark.toString(),
         'pincode': pincode.toString(),
       });
-      /*final res = await http.get(Uri.parse('http://localhost:5000/adress/get'),headers: {
-        'authorization': auth_key,
-      });*/
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
@@ -165,43 +166,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
       print(e.toString());
     }
   }
-
-  void updateAddress(
-      String name, addresstype, flatno, address, landmark, pincode) async {
-    try {
-      final response = await http.put(
-        Uri.parse('http://localhost:5000/address/put'),
-        body: {
-          'name': name.toString(),
-          'addresstype': addresstype.toString(),
-          'flatno': flatno.toString(),
-          'address': address.toString(),
-          'landmark': landmark.toString(),
-          'pincode': pincode.toString(),
-        },
-      );
-
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body.toString());
-        print(response.body);
-      } else {
-        print('Update failed');
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
-  /*Future<void> getAddress() async {
-    final url = Uri.parse('http://localhost:5000/adress/post');
-    final response = await http.get(url);
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      final jsonResponse = jsonDecode(response.body);
-      data = jsonResponse;
-    } else {
-      print("not match");
-    }
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -233,11 +197,11 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: nameControler,
+                        controller: useridControler,
                         cursorColor: colorPrimary,
                         //initialValue: 'Your default text here',
                         decoration: InputDecoration(
-                          hintText: 'Name',
+                          hintText: 'userid',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -265,10 +229,10 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: addresstypeControler,
+                        controller: flatControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'Address Type',
+                          hintText: 'flat',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -296,10 +260,10 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: houseflatnoControler,
+                        controller: addressControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'House flat',
+                          hintText: ' address',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -330,7 +294,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         controller: addressControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
-                          hintText: 'Address',
+                          hintText: 'district',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 15.0),
                           focusedBorder: OutlineInputBorder(
@@ -369,7 +333,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         ),
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding: EdgeInsets.all(10.0),
                       child: DropdownButtonFormField<String>(
                         decoration: InputDecoration(
@@ -407,6 +371,37 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           );
                         }).toList(),
                         validator: validateLocation,
+                      ),
+                    ),*/
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        controller: stateControler,
+                        cursorColor: colorPrimary,
+                        decoration: InputDecoration(
+                          hintText: ' state',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 15.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(55.0),
+                            borderSide: BorderSide(
+                              color: _isButtonClicked ? colorRed : colorPrimary,
+                            ),
+                          ),
+                        ),
+                        validator: validateFlatno,
                       ),
                     ),
                     Padding(
@@ -488,14 +483,14 @@ class _MyAddressPageState extends State<MyAddressPage> {
                                 _isButtonClicked = true;
                               });
                               print("test");
-                              /*myaddress(
-                                nameControler.text.toString(),
-                                addresstypeControler.text.toString(),
-                                flatnoControler.text.toString(),
-                                addressControler.text.toString(),
-                                landmarkControler.text.toString(),
-                                pincodeControler.text.toString(),
-                              );*/
+                              myaddress(
+                                  useridControler.text.toString(),
+                                  flatControler.text.toString(),
+                                  addressControler.text.toString(),
+                                  addressControler.text.toString(),
+                                  districtControler.text.toString(),
+                                  landmarkControler.text.toString(),
+                              );
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -529,4 +524,15 @@ class _MyAddressPageState extends State<MyAddressPage> {
       ),
     );
   }
+
+/*Future<void> getAddress() async {
+    final url = Uri.parse('http://localhost:5000/adress/add');
+    final response = await http.get(url);
+    if (response.statusCode == 200||response.statusCode == 201) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+    } else {
+      print("not match");
+    }
+  }*/
 }
