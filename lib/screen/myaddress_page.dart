@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
-String auth_key="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE3OCwiaWF0IjoxNzA0MjYzNzcwLCJleHAiOjE3MDY4NTU3NzB9.YkpVOEWIexcky4iGoojFm2yzkE9ZUUS28AVempk-rAw";
+String auth_key =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE3OCwiaWF0IjoxNzA0MjYzNzcwLCJleHAiOjE3MDY4NTU3NzB9.YkpVOEWIexcky4iGoojFm2yzkE9ZUUS28AVempk-rAw";
 
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
@@ -37,8 +38,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
   TextEditingController pincodeControler = TextEditingController();
 
   //static get index => null;
-
-
 
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -140,19 +139,18 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-  void myaddress(String name, addresstype, flatno, address, landmark, pincode) async {
-
+  void myaddress(
+      String name, addresstype, flatno, address, landmark, pincode) async {
     try {
       print(nameControler.text.toString());
-      final response = await http.post(Uri.parse('http://localhost:5000/adress/post'),
-
-          body: {
-            'name': name.toString(),
-            'addresstype': addresstype.toString(),
-            'flatno': flatno.toString(),
-            'address': address.toString(),
-            'landmark': landmark.toString(),
-            'pincode': pincode.toString(),
+      final response = await http
+          .post(Uri.parse('http://localhost:5000/adress/post'), body: {
+        'name': name.toString(),
+        'addresstype': addresstype.toString(),
+        'flatno': flatno.toString(),
+        'address': address.toString(),
+        'landmark': landmark.toString(),
+        'pincode': pincode.toString(),
       });
       /*final res = await http.get(Uri.parse('http://localhost:5000/adress/get'),headers: {
         'authorization': auth_key,
@@ -168,14 +166,50 @@ class _MyAddressPageState extends State<MyAddressPage> {
     }
   }
 
+  void updateAddress(
+      String name, addresstype, flatno, address, landmark, pincode) async {
+    try {
+      final response = await http.put(
+        Uri.parse('http://localhost:5000/address/put'),
+        body: {
+          'name': name.toString(),
+          'addresstype': addresstype.toString(),
+          'flatno': flatno.toString(),
+          'address': address.toString(),
+          'landmark': landmark.toString(),
+          'pincode': pincode.toString(),
+        },
+      );
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(response.body);
+      } else {
+        print('Update failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  /*Future<void> getAddress() async {
+    final url = Uri.parse('http://localhost:5000/adress/post');
+    final response = await http.get(url);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final jsonResponse = jsonDecode(response.body);
+      data = jsonResponse;
+    } else {
+      print("not match");
+    }
+  }*/
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
-            colorPrimary,
+        backgroundColor: colorPrimary,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -479,7 +513,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
                           child: Text(
                             "Save",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 25.0,color:colorWhite),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 25.0,
+                                color: colorWhite),
                           ),
                         ),
                       ),
@@ -492,18 +528,5 @@ class _MyAddressPageState extends State<MyAddressPage> {
         ),
       ),
     );
-  }
-
-
-
-  Future<void> getAddress() async {
-    final url = Uri.parse('http://localhost:5000/adress/post');
-    final response = await http.get(url);
-    if (response.statusCode == 200||response.statusCode == 201) {
-      final jsonResponse = jsonDecode(response.body);
-      data = jsonResponse;
-    } else {
-      print("not match");
-    }
   }
 }
