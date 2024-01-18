@@ -108,8 +108,8 @@ file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_for_we
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_for_web-3.0.2/lib/
 image_picker_ios
 3.0
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_ios-0.8.9/
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_ios-0.8.9/lib/
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_ios-0.8.9+1/
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_ios-0.8.9+1/lib/
 image_picker_linux
 2.19
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_linux-0.2.1+1/
@@ -167,9 +167,9 @@ path_provider_android
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.2/
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.2/lib/
 path_provider_foundation
-2.19
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.1/
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.1/lib/
+3.0
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.2/
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.2/lib/
 path_provider_linux
 2.19
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.2.1/
@@ -235,9 +235,9 @@ shared_preferences_android
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.2.1/
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.2.1/lib/
 shared_preferences_foundation
-2.19
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.4/
-file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.4/lib/
+3.0
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/
+file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/lib/
 shared_preferences_linux
 2.19
 file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
