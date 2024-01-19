@@ -153,7 +153,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
         'district': district.toString(),
 /*
         'state': state.toString(),
-*/'landMark':landmark.toString(),
+*/
+        'landMark': landmark.toString(),
         'pincode': pincode.toString(),
       });
       if (response.statusCode == 200) {
@@ -484,12 +485,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
                               });
                               print("test");
                               myaddress(
-                                  useridControler.text.toString(),
-                                  flatControler.text.toString(),
-                                  addressControler.text.toString(),
-                                  addressControler.text.toString(),
-                                  districtControler.text.toString(),
-                                  landmarkControler.text.toString(),
+                                useridControler.text.toString(),
+                                flatControler.text.toString(),
+                                addressControler.text.toString(),
+                                addressControler.text.toString(),
+                                districtControler.text.toString(),
+                                landmarkControler.text.toString(),
                               );
                               Navigator.push(
                                   context,
