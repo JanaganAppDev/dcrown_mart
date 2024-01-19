@@ -36,8 +36,8 @@ class _LoginPageState extends State<LoginPage> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('LOGIN SUCCESFULLY'),
@@ -48,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
           duration: Duration(seconds: 1),
         ));
-
       } else {
         print('failed');
       }

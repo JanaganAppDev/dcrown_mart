@@ -25,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
-  String selectedCountryCode = "select";
+  String selectedCountryCode = "+91";
   List<String> countryCodes = [];
 
   TextEditingController nameController = TextEditingController();
@@ -76,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Future<void> fetchData1() async {
-    final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
+    final url = Uri.parse('http://localhost:5000/country/country_code');
     print(country_codeController.text.toString());
 
     final response = await http.get(url);
@@ -318,6 +318,7 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             );
                           }).toList(),
+
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: colorWhite,
