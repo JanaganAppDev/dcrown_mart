@@ -4,6 +4,7 @@ import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/signup%20page/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -21,9 +22,13 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
 
-  ///api
+  String? _token;
 
-  void login(String email, password) async {
+
+
+  /// api integration
+
+  void login(String email, password,) async {
     print(email);
     print(password);
     try {
@@ -33,11 +38,24 @@ class _LoginPageState extends State<LoginPage> {
         'password': password.toString(),
       });
 
+
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        print(data);
+        var token = data["token"];
+        print(token);
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        print('token: $token');
+        await prefs.remove('token');
+        prefs.setString('token', token.toString());
+
+        /*setState(() {
+          _token = token;
+        });*/
+
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomePage()));
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('LOGIN SUCCESFULLY'),
@@ -48,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           duration: Duration(seconds: 1),
         ));
+
       } else {
         print('failed');
       }
