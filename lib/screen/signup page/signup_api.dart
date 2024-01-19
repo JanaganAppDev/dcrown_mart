@@ -14,7 +14,7 @@ class ApiService {
   }
 
   Future<void> fetchData1() async {
-    final url = Uri.parse("$base_url/country/country_code");
+    final url = Uri.parse("http://localhost:5000/country/country_code");
     final response = await client.get(url);
     if (response.statusCode == 200) {
     } else {}

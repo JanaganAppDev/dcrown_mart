@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:html';
 
 import 'package:dcrown_mart/screen/login%20page/login_page.dart';
-import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -26,9 +25,8 @@ class _SignupPageState extends State<SignupPage> {
   bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
-  String selectedCountryCode = "select country code";
+  String selectedCountryCode = "select";
   List<String> countryCodes = [];
-  //List<String> countryCodes = ['select country code'];
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -40,7 +38,7 @@ class _SignupPageState extends State<SignupPage> {
   void signup(String name, email, country_code, password, contact) async {
     print(name);
     try {
-      final url = Uri.parse("$base_url/users/register");
+      final url = Uri.parse("http://localhost:5000/users/register");
       print(emailController.text.toString());
       print("name");
       print(name);
@@ -78,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Future<void> fetchData1() async {
-    final url = Uri.parse('$base_url/country/country_code');
+    final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
     print(country_codeController.text.toString());
 
     final response = await http.get(url);
@@ -170,9 +168,9 @@ class _SignupPageState extends State<SignupPage> {
               });
               Navigator.of(context).pop();
             },
-            items: countryCodes.map<DropdownMenuItem<String>>((String value) {
-              */ /*items: <String>['select country code', '+91', '+94']
-                .map<DropdownMenuItem<String>>((String value) {*/ /*
+            //items: countryCodes.map<DropdownMenuItem<String>>((String value) {
+            items: <String>['select country code', '+91', '+94']
+                .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
@@ -184,55 +182,6 @@ class _SignupPageState extends State<SignupPage> {
           ),
         );
       },
-    );
-  }*/
-
-  /*Widget buildCountryCodeDropdown() {
-    return Container(
-      width: 120.0,
-      child: DropdownButtonFormField<String>(
-        value: selectedCountryCode,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedCountryCode = newValue!;
-            country_codeController.text = selectedCountryCode;
-          });
-        },
-        decoration: InputDecoration(
-          hintText: "Country Code",
-          filled: true,
-          fillColor: colorWhite,
-          prefixIcon: Icon(Icons.phone, color: colorGrey),
-          hintStyle: TextStyle(color: colorGrey),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            borderSide: BorderSide(color: colorPrimary),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            borderSide: BorderSide(
-              color: colorPrimary,
-            ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(
-              _isButtonClicked ? 30.0 : 20.0,
-            ),
-            borderSide: BorderSide(
-              color: _isButtonClicked ? colorRed : colorPrimary,
-            ),
-          ),
-        ),
-        items: countryCodes.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(
-              value,
-              style: TextStyle(fontSize: 13.0, color: colorBlack),
-            ),
-          );
-        }).toList(),
-      ),
     );
   }*/
 
@@ -344,13 +293,20 @@ class _SignupPageState extends State<SignupPage> {
                     children: [
                       SizedBox(
                         width: 120.0,
-                        child: DropdownButton<String>(
+                        child: DropdownButtonFormField<String>(
                           value: selectedCountryCode,
                           onChanged: (String? newValue) {
                             setState(() {
                               selectedCountryCode = newValue!;
                             });
                           },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please select a country code';
+                            }
+                            return null;
+                          },
+                          //items: <String>['select', '+91', '+94'].map<DropdownMenuItem<String>>((String value) {
                           items: countryCodes
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
@@ -362,10 +318,32 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             );
                           }).toList(),
-                          style: TextStyle(fontSize: 13.0, color: colorGrey2),
-                          icon: Icon(Icons.arrow_drop_down),
-                          underline: SizedBox.shrink(),
-                          isExpanded: true,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: colorWhite,
+                            /*suffixIcon:
+                                Icon(Icons.arrow_drop_down, color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),*/
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(color: colorPrimary),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: colorPrimary,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0,
+                              ),
+                              borderSide: BorderSide(
+                                color:
+                                    _isButtonClicked ? colorRed : colorPrimary,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       SizedBox(width: 10.0),
