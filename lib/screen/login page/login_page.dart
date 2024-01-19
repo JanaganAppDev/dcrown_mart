@@ -22,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
 
+  String? _token;
+
 
 
   /// api integration
@@ -36,17 +38,21 @@ class _LoginPageState extends State<LoginPage> {
         'password': password.toString(),
       });
 
-      /*SharedPreferences prefs = await SharedPreferences.getInstance();
-      print('user_id: ');
-      await prefs.remove('userId');
-      prefs.setString('userId',toString());
-      print("sf");*/
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
+        print(data);
         var token = data["token"];
         print(token);
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        print('token: $token');
+        await prefs.remove('token');
+        prefs.setString('token', token.toString());
+
+        /*setState(() {
+          _token = token;
+        });*/
 
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => HomePage()));
