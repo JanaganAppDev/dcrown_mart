@@ -291,7 +291,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: addressControler,
+                        controller: districtControler,
                         cursorColor: colorPrimary,
                         decoration: InputDecoration(
                           hintText: 'district',
