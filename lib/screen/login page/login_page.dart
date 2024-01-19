@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:dcrown_mart/screen/login%20page/ForgotPassword_page.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/signup%20page/signup_page.dart';
-import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,12 +21,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
 
+  ///api
+
   void login(String email, password) async {
     print(email);
     print(password);
     try {
-      final response =
-          await http.post(Uri.parse('$base_url/users/login'), body: {
+      final response = await http
+          .post(Uri.parse('http://localhost:5000/users/login'), body: {
         'email': email.toString(),
         'password': password.toString(),
       });
@@ -35,25 +36,19 @@ class _LoginPageState extends State<LoginPage> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomePage()));
 
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Login Successful"),
-              content: Text("You have successfully Login."),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("OK")),
-              ],
-            );
-          },
-        );
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('LOGIN SUCCESFULLY'),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          duration: Duration(seconds: 1),
+        ));
+
       } else {
         print('failed');
       }
@@ -227,6 +222,8 @@ class _LoginPageState extends State<LoginPage> {
                       print("test");
                       login(emailControler.text.toString(),
                           passwordControler.text.toString());
+                      /*Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));*/
                     } else {
                       print("test1");
                     }
