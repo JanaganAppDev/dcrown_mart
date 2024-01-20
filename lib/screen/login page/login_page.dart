@@ -43,7 +43,8 @@ class _LoginPageState extends State<LoginPage> {
         var data = jsonDecode(response.body.toString());
         print(response.body);
         print(data);
-        var token = data["token"];
+
+        var token = data["token"]?.toString();
         print(token);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         print('token: $token');
