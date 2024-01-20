@@ -120,15 +120,19 @@ class _AddresslistPageState extends State<AddresslistPage> {
                               Text(
                                   data[index]['flat'].toString(),
                               ),
+                              Text(","),
                               Text(
                                 data[index]['address'].toString(),
                               ),
+                              Text(","),
                               Text(
                                 data[index]['district'].toString(),
                               ),
+                              Text(","),
                               Text(
                                 data[index]['state'].toString(),
                               ),
+                              Text(","),
                               Text(
                                 data[index]['landmark'].toString(),
                               ),
