@@ -41,7 +41,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
           itemBuilder: (BuildContext context, index) {
             return Container(
               padding: EdgeInsets.all(10.0),
-              height: 75.0,
+              height: 80.0,
               width: screenWidth,
               decoration: BoxDecoration(
                 color: colorWhite,
