@@ -25,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   bool isNameValid = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String globalVariable = "";
-  String selectedCountryCode = "select country code";
+  String selectedCountryCode = "+91";
   List<String> countryCodes = [];
 
   TextEditingController nameController = TextEditingController();
@@ -76,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Future<void> fetchData1() async {
-    final url = Uri.parse('https://api.dcrownmart.com/country/country_code');
+    final url = Uri.parse('http://localhost:5000/country/country_code');
     print(country_codeController.text.toString());
 
     final response = await http.get(url);
@@ -149,7 +149,7 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
-  void showCountryCodeDropdown(BuildContext context) {
+  /*void showCountryCodeDropdown(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -183,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
         );
       },
     );
-  }
+  }*/
 
   @override
   void initState() {
@@ -293,24 +293,38 @@ class _SignupPageState extends State<SignupPage> {
                     children: [
                       SizedBox(
                         width: 120.0,
-                        child: TextFormField(
+                        child: DropdownButtonFormField<String>(
+                          value: selectedCountryCode,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedCountryCode = newValue!;
+                            });
+                          },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your country code';
+                              return 'Please select a country code';
                             }
                             return null;
                           },
-                          readOnly: true,
-                          controller: country_codeController,
-                          onTap: () {
-                            showCountryCodeDropdown(context);
-                          },
+                          //items: <String>['select', '+91', '+94'].map<DropdownMenuItem<String>>((String value) {
+                          items: countryCodes
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(
+                                    fontSize: 13.0, color: colorGrey2),
+                              ),
+                            );
+                          }).toList(),
+
                           decoration: InputDecoration(
-                            hintText: "Country Code",
                             filled: true,
                             fillColor: colorWhite,
-                            prefixIcon: Icon(Icons.phone, color: colorGrey),
-                            hintStyle: TextStyle(color: colorGrey),
+                            /*suffixIcon:
+                                Icon(Icons.arrow_drop_down, color: colorGrey),
+                            hintStyle: TextStyle(color: colorGrey),*/
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(color: colorPrimary),

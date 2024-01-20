@@ -20,6 +20,7 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
+import 'package:dcrown_mart/service/api_response.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
@@ -64,7 +65,7 @@ List<bool> addedToCart7 = List.generate(limit7, (index) => false);
 
 class _HomePageState extends State<HomePage> {
   Future<void> fetchData() async {
-    final url = Uri.parse('https://api.dcrownmart.com/product/getProduct');
+    final url = Uri.parse('$base_url/product/getProduct');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);

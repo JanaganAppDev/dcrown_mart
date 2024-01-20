@@ -1,4 +1,4 @@
-String base_url = "http://localhost:5000/";
+String base_url = "http://localhost:5000";
 String forgot = "$base_url/forgots/forgot";
 String otp = "$base_url/forgots/otpVerify/:id";
 String newpassword = "$base_url/users/update";

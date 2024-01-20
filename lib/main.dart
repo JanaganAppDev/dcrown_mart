@@ -1,4 +1,3 @@
-import 'package:dcrown_mart/screen/login%20page/ForgotPassword_page.dart';
 import 'package:dcrown_mart/screen/login%20page/NewPassword.dart';
 import 'package:dcrown_mart/screen/addresslist_page.dart';
 import 'package:dcrown_mart/screen/category_page.dart';
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: SignupPage(),
     );
   }
 }
