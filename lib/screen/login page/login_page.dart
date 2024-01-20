@@ -24,11 +24,12 @@ class _LoginPageState extends State<LoginPage> {
 
   String? _token;
 
-
-
   /// api integration
 
-  void login(String email, password,) async {
+  void login(
+    String email,
+    password,
+  ) async {
     print(email);
     print(password);
     try {
@@ -37,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
         'email': email.toString(),
         'password': password.toString(),
       });
-
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
@@ -54,8 +54,8 @@ class _LoginPageState extends State<LoginPage> {
           _token = token;
         });*/
 
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('LOGIN SUCCESFULLY'),
@@ -66,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
           duration: Duration(seconds: 1),
         ));
-
       } else {
         print('failed');
       }
