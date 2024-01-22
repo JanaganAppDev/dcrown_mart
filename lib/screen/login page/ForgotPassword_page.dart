@@ -49,7 +49,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Future<void> generateOTP(String email) async {
     // final String baseUrl = "http://localhost:5000/api/forgots/forgot";
-    final url = Uri.parse("http://localhost:5000/api/forgots/forgot");
+    final url = Uri.parse("$base_url/users/forget");
     print(emailController.text.toString());
 
     try {
@@ -67,6 +67,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         print(response.body);
         var message = data["message"];
         var user_id = data["user_id"];
+        print(message);
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         print('user_id: $user_id');

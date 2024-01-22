@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:html';
 
 import 'package:dcrown_mart/screen/login%20page/login_page.dart';
+import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
@@ -38,7 +39,7 @@ class _SignupPageState extends State<SignupPage> {
   void signup(String name, email, country_code, password, contact) async {
     print(name);
     try {
-      final url = Uri.parse("http://localhost:5000/users/register");
+      final url = Uri.parse("$base_url/users/register");
       print(emailController.text.toString());
       print("name");
       print(name);
