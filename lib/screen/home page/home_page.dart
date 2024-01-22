@@ -949,7 +949,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              drink[index]['price'].toString(),
+                                              "Rs" +
+                                                  drink[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1187,7 +1189,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              fruit[index]['price'].toString(),
+                                              "Rs" +
+                                                  fruit[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1425,7 +1429,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              masala[index]['price'].toString(),
+                                              "Rs" +
+                                                  masala[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1663,7 +1669,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              snacks[index]['price'].toString(),
+                                              "Rs" +
+                                                  snacks[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -1891,7 +1899,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              bakery[index]['price'].toString(),
+                                              "Rs" +
+                                                  bakery[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -2119,7 +2129,9 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              tea[index]['price'].toString(),
+                                              "Rs" +
+                                                  tea[index]['price']
+                                                      .toString(),
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,

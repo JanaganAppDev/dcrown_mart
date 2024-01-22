@@ -38,7 +38,7 @@ class _UpgradePageState extends State<UpgradePage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 58.0,
+        height: 70.0,
         child: Padding(
           padding:
               EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0, top: 0.0),
@@ -74,7 +74,7 @@ class _UpgradePageState extends State<UpgradePage> {
                 ],
               ),
               Container(
-                width: 65.0,
+                width: 75.0,
                 height: 40.0,
                 child: ElevatedButton(
                   onPressed: () {
