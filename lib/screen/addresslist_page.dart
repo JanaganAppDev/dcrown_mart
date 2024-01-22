@@ -4,6 +4,7 @@ import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:http/http.dart'as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddresslistPage extends StatefulWidget {
   const AddresslistPage({super.key});
@@ -17,18 +18,26 @@ class _AddresslistPageState extends State<AddresslistPage> {
 
   static get index => null;
 
+
   /// api integration
 
   Future<void> getAddress() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = await prefs.getString('token') ?? "";
+    print("fazil");
+    print(token);
     final url = Uri.parse('http://localhost:5000/adress/get');
-    final response = await http.get(url,headers: {
-      'Authorization':auth_key,
+    print(token);
+    final response = await http.get(url,
+        headers: {
+      'Authorization':'Bearer'+' '+token,
     });
     if (response.statusCode == 200||response.statusCode == 201) {
+      print("auth");
       final jsonResponse = jsonDecode(response.body);
       data = jsonResponse;
       print(data);
-      print("object");
+      print("response");
     } else {
       print(response.body);
       print("not match");
@@ -68,7 +77,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
             Container(
               height: 600.0,
               child: ListView.builder(
-                itemCount: data.isEmpty ? 0 : data.length,
+                itemCount: data.length,
                 itemBuilder: (context, index) {
                   return RadioListTile(
                     title: Container(
