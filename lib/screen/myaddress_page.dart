@@ -6,9 +6,9 @@ import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-String auth_key =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjE3OCwiaWF0IjoxNzA0MjYzNzcwLCJleHAiOjE3MDY4NTU3NzB9.YkpVOEWIexcky4iGoojFm2yzkE9ZUUS28AVempk-rAw";
+
 
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
@@ -16,6 +16,8 @@ class MyAddressPage extends StatefulWidget {
   @override
   State<MyAddressPage> createState() => _MyAddressPageState();
 }
+String token = "";
+String auth_key = token;
 
 bool _isButtonClicked = false;
 
@@ -36,6 +38,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
   TextEditingController stateControler = TextEditingController();
   TextEditingController landmarkControler = TextEditingController();
   TextEditingController pincodeControler = TextEditingController();
+
+  //String token = "";
+
 
   //static get index => null;
 
@@ -144,6 +149,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
   void myaddress(
       String userid, flat, address, district, landmark, pincode) async {
     try {
+
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      token = await prefs.getString('token') ?? "";
+      print("check");
+      print(token);
+
       print(useridControler.text.toString());
       final response =
           await http.post(Uri.parse('http://localhost:5000/adress/add'), body: {
@@ -160,6 +171,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
+
       } else {
         print('failed');
       }
@@ -168,6 +180,31 @@ class _MyAddressPageState extends State<MyAddressPage> {
     }
   }
 
+  void updateAddress(
+      String name, addresstype, flatno, address, landmark, pincode) async {
+    try {
+      final response = await http.put(
+        Uri.parse('http://localhost:5000/address/put'),
+        body: {
+          'name': name.toString(),
+          'addresstype': addresstype.toString(),
+          'flatno': flatno.toString(),
+          'address': address.toString(),
+          'landmark': landmark.toString(),
+          'pincode': pincode.toString(),
+        },
+      );
+
+      if (response.statusCode == 200) {
+        var update_data = jsonDecode(response.body.toString());
+        print(response.body);
+      } else {
+        print('Update failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -195,7 +232,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                 padding: EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Padding(
+                    /*Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: useridControler,
@@ -226,7 +263,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         ),
                         validator: validateName,
                       ),
-                    ),
+                    ),*/
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: TextFormField(
