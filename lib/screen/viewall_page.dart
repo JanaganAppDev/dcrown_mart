@@ -14,7 +14,7 @@ class ViewallPage extends StatefulWidget {
   State<ViewallPage> createState() => _ViewallPageState();
 }
 
-int limit = 15;
+int limit = data.length;
 List<bool> addedToCart = List.generate(limit, (index) => false);
 /*List<bool> addedToCart = [
   false,
@@ -64,7 +64,7 @@ class _ViewallPageState extends State<ViewallPage> {
             print('Container tapped!');
           },
           child: GridView.builder(
-            itemCount: widget.productList.length ?? 0,
+            itemCount: widget.productList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 40,
               mainAxisSpacing: 20,
