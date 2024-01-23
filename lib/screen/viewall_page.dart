@@ -64,7 +64,7 @@ class _ViewallPageState extends State<ViewallPage> {
             print('Container tapped!');
           },
           child: GridView.builder(
-            itemCount: widget.productList.length,
+            itemCount: widget.productList.length ?? 0,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 40,
               mainAxisSpacing: 20,
@@ -119,7 +119,7 @@ class _ViewallPageState extends State<ViewallPage> {
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                product['price'].toString(),
+                                "Rs" + product['price'].toString(),
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
