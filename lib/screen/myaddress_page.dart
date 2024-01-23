@@ -176,11 +176,14 @@ class _MyAddressPageState extends State<MyAddressPage> {
     }
   }
 
+ /// api integration put
+
   void updateAddress(
       String name, addresstype, flatno, address, landmark, pincode) async {
     try {
+      print('Update failed');
       final response = await http.put(
-        Uri.parse('http://localhost:5000/address/put'),
+          Uri.parse('http://localhost:5000/address/put'),
         body: {
           'name': name.toString(),
           'addresstype': addresstype.toString(),
@@ -193,7 +196,9 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
       if (response.statusCode == 200) {
         var update_data = jsonDecode(response.body.toString());
+        print(update_data);
         print(response.body);
+
       } else {
         print('Update failed');
       }
@@ -513,12 +518,13 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         height: 50.0,
                         child: ElevatedButton(
                           onPressed: () {
+
                             if (_formKey.currentState!.validate()) {
                               setState(() {
                                 _isButtonClicked = true;
                               });
                               print("test");
-                              myaddress(
+                              myaddress;updateAddress(
                                 useridControler.text.toString(),
                                 flatControler.text.toString(),
                                 addressControler.text.toString(),
