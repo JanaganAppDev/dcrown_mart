@@ -19,7 +19,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
   static get index => null;
 
 
-  /// api integration
+  /// api integration get
 
   Future<void> getAddress() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -145,10 +145,14 @@ class _AddresslistPageState extends State<AddresslistPage> {
                               Text(
                                 data[index]['landmark'].toString(),
                               ),
+                              Text(","),
+                              Text(
+                                data[index]['pincode'].toString(),
+                              ),
                             ],
                           ),
                           Divider(
-                            height: 30,
+                            height: 20,///30
                             thickness: 1,
                             indent: 0,
                             endIndent: 0,

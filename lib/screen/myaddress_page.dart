@@ -39,7 +39,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
   TextEditingController pincodeControler = TextEditingController();
 
   //String token = "";
-
   //static get index => null;
 
   String? validateName(String? value) {
@@ -142,7 +141,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
-  /// api integration
+  /// api integration add
 
   void myaddress(
       String userid, flat, address, district, landmark, pincode) async {
@@ -176,37 +175,37 @@ class _MyAddressPageState extends State<MyAddressPage> {
     }
   }
 
+
  /// api integration put
 
-  void updateAddress(
-      String name, addresstype, flatno, address, landmark, pincode) async {
+  void updateAddress(String name, addresstype, flatno, address, landmark, pincode) async {
     try {
-      print('Update failed');
       final response = await http.put(
-          Uri.parse('http://localhost:5000/address/put'),
-        body: {
+        Uri.parse('http://localhost:5000/address/put'),
+        headers: {
+          'Authorization':'Bearer'+' '+token,
+        },
+        body: jsonEncode({
           'name': name.toString(),
           'addresstype': addresstype.toString(),
           'flatno': flatno.toString(),
           'address': address.toString(),
           'landmark': landmark.toString(),
           'pincode': pincode.toString(),
-        },
+        }),
       );
 
       if (response.statusCode == 200) {
         var update_data = jsonDecode(response.body.toString());
         print(update_data);
         print(response.body);
-
-      } else {
+      }  else {
         print('Update failed');
       }
     } catch (e) {
       print(e.toString());
     }
   }
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -518,7 +517,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
                         height: 50.0,
                         child: ElevatedButton(
                           onPressed: () {
-
                             if (_formKey.currentState!.validate()) {
                               setState(() {
                                 _isButtonClicked = true;
