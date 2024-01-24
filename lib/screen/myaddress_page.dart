@@ -8,14 +8,13 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({Key? key}) : super(key: key);
 
   @override
   State<MyAddressPage> createState() => _MyAddressPageState();
 }
+
 String token = "";
 String auth_key = token;
 
@@ -40,7 +39,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
   TextEditingController pincodeControler = TextEditingController();
 
   //String token = "";
-
 
   //static get index => null;
 
@@ -149,7 +147,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
   void myaddress(
       String userid, flat, address, district, landmark, pincode) async {
     try {
-
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       token = await prefs.getString('token') ?? "";
       print("check");
@@ -171,7 +168,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
-
       } else {
         print('failed');
       }
@@ -210,6 +206,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
       print(e.toString());
     }
   }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;

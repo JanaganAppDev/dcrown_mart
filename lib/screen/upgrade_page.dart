@@ -195,6 +195,14 @@ class _UpgradePageState extends State<UpgradePage> {
                 padding: EdgeInsets.only(top: 20.0),
                 child: TextFormField(
                   cursorColor: colorPrimary,
+                  validator: (value) {
+                    // Your validation logic goes here
+                    if (value == null || value.isEmpty) {
+                      return 'Referral ID is required';
+                    }
+                    // You can add more complex validation rules if needed
+                    return null; // Return null if the input is valid
+                  },
                   decoration: InputDecoration(
                     hintText: "Referral ID",
                     contentPadding: EdgeInsets.symmetric(vertical: 12.0),
