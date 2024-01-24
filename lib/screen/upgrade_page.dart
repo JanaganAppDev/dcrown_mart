@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/payment_page.dart';
+import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
+import 'package:http/http.dart' as http;
 
 class UpgradePage extends StatefulWidget {
   const UpgradePage({super.key});
@@ -10,8 +14,35 @@ class UpgradePage extends StatefulWidget {
   State<UpgradePage> createState() => _UpgradePageState();
 }
 
+bool _isButtonClicked = false;
+
 class _UpgradePageState extends State<UpgradePage> {
   String? selectedPaymentMethod;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController referralidController = TextEditingController();
+  TextEditingController idController = TextEditingController();
+
+  void upgrade(String id, ref_id) async {
+    print(ref_id);
+    print(id);
+    try {
+      final url = Uri.parse("$base_url/membership/membershipadd");
+      print(referralidController.text.toString());
+
+      final response = await http.post(url, body: {"id": id, "ref_id": ref_id});
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body.toString());
+        print(response.body);
+        print(data);
+      } else {
+        print(response.body);
+        print('Upgrade failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +109,18 @@ class _UpgradePageState extends State<UpgradePage> {
                 height: 40.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PaymentPage()),
-                    );
+                    if (_formKey.currentState!.validate()) {
+                      upgrade(
+                        referralidController.text.toString(),
+                        idController.text.toString(),
+                      );
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentPage()));
+                    } else {
+                      print("failed");
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.lightGreen.shade700,
@@ -191,147 +230,150 @@ class _UpgradePageState extends State<UpgradePage> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-                child: TextFormField(
-                  cursorColor: colorPrimary,
-                  validator: (value) {
-                    // Your validation logic goes here
-                    if (value == null || value.isEmpty) {
-                      return 'Referral ID is required';
-                    }
-                    // You can add more complex validation rules if needed
-                    return null; // Return null if the input is valid
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Referral ID",
-                    contentPadding: EdgeInsets.symmetric(vertical: 12.0),
-                    filled: true,
-                    fillColor: colorWhite,
-                    prefixIcon: Icon(Icons.person, color: colorGrey),
-                    hintStyle: TextStyle(color: colorGrey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(color: colorPrimary),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(
-                        color: colorPrimary,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10.0),
-                margin: EdgeInsets.all(10.0),
-                height: 290.0,
-                width: screenWidth,
-                decoration: BoxDecoration(
-                  color: colorWhite,
-                  boxShadow: [
-                    BoxShadow(
-                      color: colorGrey1,
-                      blurRadius: 8,
-                      spreadRadius: -2.1,
-                      offset: Offset(-1, 2),
-                    ),
-                  ],
-                ),
+              Form(
+                key: _formKey,
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Payment Method ₹ 99",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: colorBlack,
-                              fontWeight: FontWeight.w600,
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: TextFormField(
+                        controller: referralidController,
+                        cursorColor: colorPrimary,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Referral ID is required';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          hintText: "Referral ID",
+                          contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                          filled: true,
+                          fillColor: colorWhite,
+                          prefixIcon: Icon(Icons.person, color: colorGrey),
+                          hintStyle: TextStyle(color: colorGrey),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide(color: colorPrimary),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide(
+                              color: colorPrimary,
                             ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                _isButtonClicked ? 30.0 : 20.0),
+                            borderSide: BorderSide(
+                              color: _isButtonClicked ? colorRed : colorPrimary,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      margin: EdgeInsets.all(10.0),
+                      height: 290.0,
+                      width: screenWidth,
+                      decoration: BoxDecoration(
+                        color: colorWhite,
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorGrey1,
+                            blurRadius: 8,
+                            spreadRadius: -2.1,
+                            offset: Offset(-1, 2),
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: 4.0),
-                    Divider(
-                      height: 5,
-                      thickness: 1,
-                      indent: 0,
-                      endIndent: 0,
-                      color: colorGrey1,
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Payment Gateway"),
-                        value: "Method 1",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Paytm"),
-                        value: "Method 2",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Google Pay"),
-                        value: "Method 3",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("PhonePe"),
-                        value: "Method 4",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
-                      ),
-                    ),
-                    Container(
-                      child: RadioListTile(
-                        title: Text("Direct Bank Transfer"),
-                        value: "Method 5",
-                        groupValue: selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedPaymentMethod = value as String;
-                          });
-                        },
-                        activeColor: colorPrimary,
-                        dense: true,
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Payment Method ₹ 99",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: colorBlack,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 4.0),
+                          Divider(
+                            height: 5,
+                            thickness: 1,
+                            indent: 0,
+                            endIndent: 0,
+                            color: colorGrey1,
+                          ),
+                          RadioListTile(
+                            title: Text("Payment Gateway"),
+                            value: "Method 1",
+                            groupValue: selectedPaymentMethod,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPaymentMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
+                          RadioListTile(
+                            title: Text("Paytm"),
+                            value: "Method 2",
+                            groupValue: selectedPaymentMethod,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPaymentMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
+                          RadioListTile(
+                            title: Text("Google Pay"),
+                            value: "Method 3",
+                            groupValue: selectedPaymentMethod,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPaymentMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
+                          RadioListTile(
+                            title: Text("PhonePe"),
+                            value: "Method 4",
+                            groupValue: selectedPaymentMethod,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPaymentMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
+                          RadioListTile(
+                            title: Text("Direct Bank Transfer"),
+                            value: "Method 5",
+                            groupValue: selectedPaymentMethod,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedPaymentMethod = value as String;
+                              });
+                            },
+                            activeColor: colorPrimary,
+                            dense: true,
+                          ),
+                        ],
                       ),
                     ),
                   ],
