@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="kathir - Signup page api">
+    <list default="true" id="fa572a86-2678-4b40-9acd-07b37aa7c8e9" name="Changes" comment="kathir - upgrade page api">
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/signup page/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/signup page/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/upgrade_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706102551553</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="kathir - upgrade page api">
+      <option name="closed" value="true" />
+      <created>1706155139259</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706155139259</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,6 +277,7 @@
     <MESSAGE value="Kathiresh- Order Summary page UI and view all page" />
     <MESSAGE value="Aravind-  referral added controller" />
     <MESSAGE value="kathir - Signup page api" />
-    <option name="LAST_COMMIT_MESSAGE" value="kathir - Signup page api" />
+    <MESSAGE value="kathir - upgrade page api" />
+    <option name="LAST_COMMIT_MESSAGE" value="kathir - upgrade page api" />
   </component>
 </project>
