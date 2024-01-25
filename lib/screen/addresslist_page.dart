@@ -104,7 +104,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MyAddressPage()),
+                                        builder: (context) => MyAddressPage(addresslist:data)),
                                   );
                                   print('Container tapped!');
                                 },
@@ -181,7 +181,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyAddressPage()));
+                      MaterialPageRoute(builder: (context) => MyAddressPage(addresslist:data)));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorPrimary,

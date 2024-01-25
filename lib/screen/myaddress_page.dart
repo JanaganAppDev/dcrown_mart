@@ -9,7 +9,9 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyAddressPage extends StatefulWidget {
-  const MyAddressPage({Key? key}) : super(key: key);
+  final List<dynamic> addresslist;
+
+  const MyAddressPage({Key? key,required this.addresslist}) : super(key: key);
 
   @override
   State<MyAddressPage> createState() => _MyAddressPageState();
@@ -153,7 +155,11 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
       print(useridControler.text.toString());
       final response =
-          await http.post(Uri.parse('http://localhost:5000/adress/add'), body: {
+          await http.post(Uri.parse('http://localhost:5000/adress/add'),
+              headers: {
+                'Authorization':'Bearer'+' '+token,
+              },
+              body: {
         'userid': userid.toString(),
         'flat': flat.toString(),
         'address': address.toString(),
