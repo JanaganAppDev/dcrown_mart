@@ -363,7 +363,7 @@ class _SignupPageState extends State<SignupPage> {
                           controller: cantactController,
                           cursorColor: colorGrey1,
                           decoration: InputDecoration(
-                            hintText: "Cantact",
+                            hintText: "Contact",
                             filled: true,
                             fillColor: colorWhite,
                             prefixIcon:

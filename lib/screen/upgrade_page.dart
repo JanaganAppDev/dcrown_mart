@@ -34,6 +34,7 @@ class _UpgradePageState extends State<UpgradePage> {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
+        print(response.statusCode);
         print(data);
       } else {
         print(response.body);
