@@ -6,6 +6,7 @@ import 'package:dcrown_mart/service/api_response.dart';
 import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UpgradePage extends StatefulWidget {
   const UpgradePage({super.key});
@@ -21,24 +22,52 @@ class _UpgradePageState extends State<UpgradePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController referralidController = TextEditingController();
   TextEditingController idController = TextEditingController();
+  String Id = '';
 
-  void upgrade(String id, ref_id) async {
+  void upgrade(String ref_id) async {
     print(ref_id);
-    print(id);
+
     try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      //await prefs.remove('userId');
+      Id = await prefs.getString('Id') ?? "";
+      print("check");
+      print(Id);
       final url = Uri.parse("$base_url/membership/membershipadd");
       print(referralidController.text.toString());
 
-      final response = await http.post(url, body: {"id": id, "ref_id": ref_id});
+      final response = await http.post(url, body: {"id": Id, "ref_id": ref_id});
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body.toString());
         print(response.body);
         print(response.statusCode);
         print(data);
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(response.body),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          duration: Duration(seconds: 1),
+        ));
+
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => PaymentPage()));
       } else {
         print(response.body);
         print('Upgrade failed');
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(response.body),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          duration: Duration(seconds: 1),
+        ));
       }
     } catch (e) {
       print(e.toString());
@@ -113,12 +142,11 @@ class _UpgradePageState extends State<UpgradePage> {
                     if (_formKey.currentState!.validate()) {
                       upgrade(
                         referralidController.text.toString(),
-                        idController.text.toString(),
                       );
-                      Navigator.push(
+                      /*Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PaymentPage()));
+                              builder: (context) => PaymentPage()));*/
                     } else {
                       print("failed");
                     }

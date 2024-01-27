@@ -249,9 +249,9 @@
     },
     {
       "name": "mime",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.4",
+      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.5",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.2"
     },
     {
       "name": "path",
@@ -530,7 +530,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-01-23T13:25:48.864234Z",
+  "generated": "2024-01-27T06:22:40.602861Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }
