@@ -7,15 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'addresslist_page.dart';
 
 class MyAddressPage extends StatefulWidget {
-  final List<dynamic> addresslist;
 
-  const MyAddressPage({Key? key,required this.addresslist}) : super(key: key);
+  final  addDetails;
+
+   MyAddressPage({Key? key, this.addDetails}) : super(key: key);
 
   @override
   State<MyAddressPage> createState() => _MyAddressPageState();
 }
+
 
 String token = "";
 String auth_key = token;
@@ -143,10 +146,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
     return null;
   }
 
+
+
   /// api integration add
 
   void myaddress(
-      String userid, flat, address, district, landmark, pincode) async {
+      String userid, flat, address, district,state, landmark, pincode) async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       token = await prefs.getString('token') ?? "";
@@ -164,9 +169,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
         'flat': flat.toString(),
         'address': address.toString(),
         'district': district.toString(),
-/*
         'state': state.toString(),
-*/
         'landMark': landmark.toString(),
         'pincode': pincode.toString(),
       });
@@ -184,18 +187,20 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
  /// api integration put
 
-  void updateAddress(String name, addresstype, flatno, address, landmark, pincode) async {
+  void updateAddress(String  flatno, address,district,state, landmark, pincode) async {
     try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      token = await prefs.getString('token') ?? "";
       final response = await http.put(
         Uri.parse('http://localhost:5000/address/put'),
         headers: {
           'Authorization':'Bearer'+' '+token,
         },
         body: jsonEncode({
-          'name': name.toString(),
-          'addresstype': addresstype.toString(),
           'flatno': flatno.toString(),
           'address': address.toString(),
+          'district':district.toString(),
+          'state':state.toString(),
           'landmark': landmark.toString(),
           'pincode': pincode.toString(),
         }),
@@ -212,9 +217,26 @@ class _MyAddressPageState extends State<MyAddressPage> {
       print(e.toString());
     }
   }
+
+  List address=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    address.add(widget.addDetails!);
+    print(address[0]['flat']);
+    print("addresss");
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    flatControler.text = address[0]['flat'].toString();
+    addressControler.text = address[0]['address'].toString();
+    districtControler.text = address[0]['district'].toString();
+    stateControler.text = address[0]['state'].toString();
+    landmarkControler.text = address[0]['landmark'].toString();
+    pincodeControler.text = address[0]['pincode'].toString();
 
     return Scaffold(
       appBar: AppBar(
@@ -529,12 +551,12 @@ class _MyAddressPageState extends State<MyAddressPage> {
                               });
                               print("test");
                               myaddress;updateAddress(
-                                useridControler.text.toString(),
                                 flatControler.text.toString(),
                                 addressControler.text.toString(),
-                                addressControler.text.toString(),
                                 districtControler.text.toString(),
+                                stateControler.text.toString(),
                                 landmarkControler.text.toString(),
+                                pincodeControler.text.toString(),
                               );
                               Navigator.push(
                                   context,
