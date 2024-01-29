@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:dcrown_mart/const.dart';
 import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key});
@@ -57,6 +58,14 @@ class _SignupPageState extends State<SignupPage> {
         var data = jsonDecode(response.body.toString());
 
         print(response.body);
+        var id = data["user_detail"]["id"]?.toString();
+        print(id);
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        print('id: $id');
+        await prefs.remove('Id');
+        prefs.setString('Id', id.toString());
+        print("sf");
         setState(() {
           globalVariable = data["token"];
           print(globalVariable);
