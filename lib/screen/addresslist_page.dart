@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:dcrown_mart/const.dart';
-import 'package:dcrown_mart/screen/home%20page/home_page.dart';
 import 'package:dcrown_mart/screen/myaddress_page.dart';
 import 'package:http/http.dart'as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'home page/home_page.dart';
 
 class AddresslistPage extends StatefulWidget {
   const AddresslistPage({super.key});
@@ -18,15 +18,21 @@ class _AddresslistPageState extends State<AddresslistPage> {
 
   static get index => null;
 
+  bool loader= false;
+
+  List addressList =[];
 
   /// api integration get
 
   Future<void> getAddress() async {
+    setState(() {
+      loader=true;
+    });
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     token = await prefs.getString('token') ?? "";
     print("fazil");
     print(token);
-    final url = Uri.parse('http://localhost:5000/adress/get');
+    final url = Uri.parse('http://localhost:5000/adress/get/2175');
     print(token);
     final response = await http.get(url,
         headers: {
@@ -35,8 +41,11 @@ class _AddresslistPageState extends State<AddresslistPage> {
     if (response.statusCode == 200||response.statusCode == 201) {
       print("auth");
       final jsonResponse = jsonDecode(response.body);
-      data = jsonResponse;
-      print(data);
+      addressList = jsonResponse;
+      print(addressList);
+      setState(() {
+        loader=false;
+      });
       print("response");
     } else {
       print(response.body);
@@ -74,10 +83,10 @@ class _AddresslistPageState extends State<AddresslistPage> {
           children: [
             SizedBox(height: 15.0),
             SizedBox(height: 10.0),
-            Container(
+            loader == false ? Container(
               height: 600.0,
               child: ListView.builder(
-                itemCount: data.length,
+                itemCount: addressList.length,
                 itemBuilder: (context, index) {
                   return RadioListTile(
                     title: Container(
@@ -101,10 +110,12 @@ class _AddresslistPageState extends State<AddresslistPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  print(addressList[index]);
+                                  print("addressList[index]['flat']");
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MyAddressPage(addresslist:data)),
+                                        builder: (context) => MyAddressPage(addDetails:addressList[index])),
                                   );
                                   print('Container tapped!');
                                 },
@@ -127,27 +138,27 @@ class _AddresslistPageState extends State<AddresslistPage> {
                           Row(
                             children: [
                               Text(
-                                  data[index]['flat'].toString(),
+                                addressList[index]['flat'].toString(),
                               ),
                               Text(","),
                               Text(
-                                data[index]['address'].toString(),
+                                addressList[index]['address'].toString(),
                               ),
                               Text(","),
                               Text(
-                                data[index]['district'].toString(),
+                                addressList[index]['district'].toString(),
                               ),
                               Text(","),
                               Text(
-                                data[index]['state'].toString(),
+                                addressList[index]['state'].toString(),
                               ),
                               Text(","),
                               Text(
-                                data[index]['landmark'].toString(),
+                                addressList[index]['landmark'].toString(),
                               ),
                               Text(","),
                               Text(
-                                data[index]['pincode'].toString(),
+                                addressList[index]['pincode'].toString(),
                               ),
                             ],
                           ),
@@ -173,6 +184,8 @@ class _AddresslistPageState extends State<AddresslistPage> {
                   );
                 },
               ),
+            ): Center(
+              child: CircularProgressIndicator(),
             ),
             Container(
               //margin: EdgeInsets.only(top: 60.0),
@@ -181,7 +194,7 @@ class _AddresslistPageState extends State<AddresslistPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyAddressPage(addresslist:data)));
+                      MaterialPageRoute(builder: (context) => MyAddressPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorPrimary,
