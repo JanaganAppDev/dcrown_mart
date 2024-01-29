@@ -58,14 +58,14 @@ class _SignupPageState extends State<SignupPage> {
         var data = jsonDecode(response.body.toString());
 
         print(response.body);
-        var id = data["user_detail"]["id"]?.toString();
+        /*var id = data["user_detail"]["id"]?.toString();
         print(id);
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         print('id: $id');
         await prefs.remove('Id');
         prefs.setString('Id', id.toString());
-        print("sf");
+        print("sf");*/
         setState(() {
           globalVariable = data["token"];
           print(globalVariable);
