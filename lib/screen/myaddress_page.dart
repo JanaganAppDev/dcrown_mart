@@ -186,6 +186,8 @@ class _MyAddressPageState extends State<MyAddressPage> {
 
   void updateAddress(String name, addresstype, flatno, address, landmark, pincode) async {
     try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      token = await prefs.getString('token') ?? "";
       final response = await http.put(
         Uri.parse('http://localhost:5000/address/put'),
         headers: {
