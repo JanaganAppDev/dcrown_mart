@@ -550,7 +550,15 @@ class _MyAddressPageState extends State<MyAddressPage> {
                                 _isButtonClicked = true;
                               });
                               print("test");
-                              myaddress;updateAddress(
+                              /*myaddress;updateAddress(
+                                flatControler.text.toString(),
+                                addressControler.text.toString(),
+                                districtControler.text.toString(),
+                                stateControler.text.toString(),
+                                landmarkControler.text.toString(),
+                                pincodeControler.text.toString(),
+                              );*/
+                              updateAddress;updateAddress(
                                 flatControler.text.toString(),
                                 addressControler.text.toString(),
                                 districtControler.text.toString(),
