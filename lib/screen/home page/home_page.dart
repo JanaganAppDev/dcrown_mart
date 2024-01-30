@@ -8,6 +8,7 @@ import 'package:dcrown_mart/screen/mycart_page.dart';
 import 'package:dcrown_mart/screen/myorder_page.dart';
 import 'package:dcrown_mart/screen/placedorder_page.dart';
 import 'package:dcrown_mart/screen/product_page.dart';
+import 'package:dcrown_mart/screen/profile_page.dart';
 import 'package:dcrown_mart/screen/referral_page.dart';
 import 'package:dcrown_mart/screen/upgrade_page.dart';
 import 'package:dcrown_mart/screen/viewall_page.dart';
@@ -195,13 +196,22 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Row(
                 children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      radius: 40,
-                      backgroundImage: AssetImage("assets/profile.png"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      );
+                      print('Container tapped!');
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 40,
+                        backgroundImage: AssetImage("assets/profile.png"),
+                      ),
                     ),
                   ),
                   SizedBox(width: 8.0),

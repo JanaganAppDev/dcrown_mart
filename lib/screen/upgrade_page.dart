@@ -28,9 +28,9 @@ class _UpgradePageState extends State<UpgradePage> {
     print(ref_id);
 
     try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final SharedPreferences prefsId = await SharedPreferences.getInstance();
       //await prefs.remove('userId');
-      Id = await prefs.getString('Id') ?? "";
+      Id = await prefsId.getString('Id') ?? "";
       print("check");
       print(Id);
       final url = Uri.parse("$base_url/membership/membershipadd");
